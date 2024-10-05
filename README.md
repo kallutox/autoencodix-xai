@@ -3,4 +3,4 @@
 <br /><br />
 [Abstract to be added]
 <br /><br />
-Master's Thesis by Isabella Kreller, Leipzig University
+Master Thesis Project by Isabella Kreller, Leipzig University
