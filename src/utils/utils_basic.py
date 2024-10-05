@@ -55,11 +55,11 @@ def read_ont_file(file_path, sep="\t"):
     return ont_dic
 
 
-def get_device(verbose=False):
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-    if verbose:
-        print(f"Device: {device}")
+def get_device(verbose=True):
+    device = "cpu"
+    if torch.cuda.is_available():
+        device = "cuda:0"
+        torch.use_deterministic_algorithms(False)
     return device
 
 

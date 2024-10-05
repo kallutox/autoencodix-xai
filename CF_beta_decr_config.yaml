@@ -2,61 +2,38 @@
 # -----------------------------------------------------------------------------
 DATA_TYPE: # TODO This variable specifies the details for each data type.
 # if you don't use a data type, just comment it out, or delete it
-  RNA:
-    FILE_RAW: "data_mrna_seq_v2_rsem_formatted.parquet" # TODO your file name here. Standard is parquet format. DELIM-based files can be provided and should have file extension: "csv","tsv" or "txt".
-    TYPE: "NUMERIC" # TODO (your data type here) MIXED, IMG, NUMERIC and ANNOTATION are possible
-    SCALING: "Standard" # TODO (your scaling method here) NoScaler, MinMax, Standard, Robust, MaxAbs, are possilbe. Be sure to make this consistent with your loss function i.e. BCE and MinMax
-    FILTERING: "Var" # SHOULDDO NoFilt, NonZeroVar, Var, MAD, Corr, Var+Corr are possible, Var is recommended because of faster computation
-  METH:
-    FILE_RAW: "data_methylation_per_gene_formatted.parquet"
-    TYPE: "NUMERIC"
-    SCALING: "Standard"
-    FILTERING: "Var"
-  ANNO:
-    FILE_RAW: "data_clinical_formatted.parquet"
-    TYPE: "ANNOTATION" ## ANNOTATION files will be ignored as data modality in AE
-  # CLIN:
-  #   FILE_RAW: "data_clinical_formatted.parquet" # TODO your file name here
-  #   TYPE: "MIXED" # TODO (your data type here) MIXED, IMAGE, NUMERIC are possible, for clinical usually MIXED
-  #   REL_CLIN_C: # TODO colnames of categorial features
-  #     - "SUBTYPE"
-  #     - "ONCOTREE_CODE"
-  #     - "SEX"
-  #     - "AJCC_PATHOLOGIC_TUMOR_STAGE"
-  #     - "ETHNICITY"
-  #     - "PATH_M_STAGE"
-  #     - "PATH_N_STAGE"
-  #     - "PATH_T_STAGE"
-  #     - "GRADE"
-  #   REL_CLIN_N: # TODO colnames of numerical features
-  #     - "AGE"
-  #     - "ANEUPLOIDY_SCORE"
-  #     - "MSI_SCORE_MANTIS"
-  #     - "TMB_NONSYNONYMOUS"
-  #   SCALING: "Standard" # TODO MinMax, Standard, Robust, MaxAbs, are possilbe. Be sure to make this consistent with your loss function i.e. BCE and MinMax
-  #   FILTERING: "NoFilt" # SHOULDDO NoFilt, Var, Corr, Var+Corr are possible, Var is recommended because of faster computation
+    RNA:
+      FILE_RAW: "cf_formatted.parquet"
+      TYPE: "NUMERIC" # TODO (your data type here) MIXED, IMG, NUMERIC and ANNOTATION are possible
+      SCALING: "Standard" # TODO (your scaling method here) NoScaler, MinMax, Standard, Robust, MaxAbs, are possilbe. Be sure to make this consistent with your loss function i.e. BCE and MinMax
+      FILTERING: "Var" # SHOULDDO NoFilt, NonZeroVar, Var, MAD, Corr, Var+Corr are possible, Var is recommended because of faster computation
+    ANNO:
+      FILE_RAW: "cf_clinical_data_formatted.parquet"
+      TYPE: "ANNOTATION" ## ANNOTATION files will be ignored as data modality in AE
 
-K_FILTER: 1000 # SHOULDDO Number of features after filtering per data modality
+
+K_FILTER: 2000 # SHOULDDO Number of features after filtering per data modality
 
 ## Model and Training --------------------------------------------------------
 # ----------------------------------------------------------------------------
 TRAIN_TYPE: "train" # SHOULDDO train or tune are possible
 MODEL_TYPE: "varix" #SHOULDO which autoencoder to use: vanillix, varix, stackix, ontix or x-modalix
-BETA: 0.1 # OPTIONAL float that adds a weight to the KL divergence or MMD loss of variational autoencoder
+BETA: 0.01 # OPTIONAL float that adds a weight to the KL divergence or MMD loss of variational autoencoder
 
-LATENT_DIM_FIXED: 2 # SHOULDDO number of neurons in latent dimenion (all integer values are possible)
+LATENT_DIM_FIXED: 8 # SHOULDDO number of neurons in latent dimenion (all integer values are possible)
 BATCH_SIZE: 512 # SHOULDDO (all integer values are possible, depending on your hardware and data size)
-EPOCHS: 100 # SHOULDDO (all integer values are possible)
+EPOCHS: 300 # SHOULDDO (all integer values are possible)
 LR_FIXED: 0.0005 # SHOULDDO Learning Rate for training (all float values are possible)
 VAE_LOSS: "KL" # SHOULDDO  loss function for VAE to fit standard normal distribution (KL or MMD)
 RECONSTR_LOSS: "MSE" # SHOULDDO (BCE or MSE)
 
 PREDICT_SPLIT: "all" # SHOULDDO data split the trainied model uses to generate latent space (all, train, test, valid are possible) default is all
+FIX_RANDOMNESS: all
 
 # # Ontix specific
-# NON_ONT_LAYER: 1 # OPTIONAL Specify additional layer for ontix if should LATENT_DIM_FIXED < Ontology Dimension
-# FILE_ONT_LVL1: "full_ont_lvl1_reactome.txt" # OPTIONAL Mandotory for ontix; LVL1 specifies relationship of features and first ontology level in sparse decoder
-# FILE_ONT_LVL2: "full_ont_lvl2_reactome.txt" # OPTIONAL for ontix; LVL2 specifies relationship of first ontology level and a second level (dim(lvl1) > dim(lvl2)) in sparse decoder
+#NON_ONT_LAYER: 0 # OPTIONAL Specify additional layer for ontix if should LATENT_DIM_FIXED < Ontology Dimension
+#FILE_ONT_LVL1: "full_ont_lvl1_ensembl_reactome.txt" # OPTIONAL Mandotory for ontix; LVL1 specifies relationship of features and first ontology level in sparse decoder
+#FILE_ONT_LVL2: "full_ont_lvl2_reactome.txt" # OPTIONAL for ontix; LVL2 specifies relationship of first ontology level and a second level (dim(lvl1) > dim(lvl2)) in sparse decoder
 
 
 # # X-modalix specific
@@ -83,12 +60,21 @@ PREDICT_SPLIT: "all" # SHOULDDO data split the trainied model uses to generate l
 # EVALUATION and VISUALIZATION ------------------------------------------------
 # -----------------------------------------------------------------------------
 DIM_RED_METH: "UMAP" # OPTIPNAL PCA or UMAP or TSNE
-CLUSTER_ALG: "KMeans" # OPTIONAL KMeans or HDBScan
+CLUSTER_ALG: "HDBScan" # OPTIONAL KMeans or HDBScan
 CLUSTER_N: 32 # OPTIONAL Number of clusters for KMeans
 MIN_CLUSTER_N: 20 # OPTIONAL Minimal number of samples per cluster as crucial parameter for HDBSCAN
-CLINIC_PARAM: # TODO needs to be a column name of the ANNOTATION data
-  - "CANCER_TYPE_ACRONYM" # Feature to be visualized on latent space plot and used for learning alling of downstream machine learning task
-  - "TMB_NONSYNONYMOUS"
+CLINIC_PARAM:
+- "disease"
+- "lung_condition"
+- "age_range"
+- "cell_type"
+- "development_stage"
+- "sex"
+- "smoking_status"
+#- "BMI"
+- "assay"
+- "self_reported_ethnicity"
+- "development_stage"
 ML_TYPE: "Auto-detect" # TODO For the given CLINIC_PARAM either regression or classification ML tasks will be performed. If auto-detect, non-string parameters will be assumed to be regression tasks.
 # ML_TYPE: # TODO manual specification if given CLINIC_PARAM are either regression or classification (recommended). Must be similar entries as CLINIC_PARAM
 #   CANCER_TYPE: "classification" # OPTIONAL classification or regression
@@ -96,11 +82,9 @@ ML_TYPE: "Auto-detect" # TODO For the given CLINIC_PARAM either regression or cl
 ML_ALG: # OPTIONAL which machine learning algorithms should be used for evaluation, Linear, RF, SVM are possible
   - Linear
   - RF
-  - SVM
 ML_SPLIT: "use-split" # OPTIONAL "use-split" or "CV-on-all-data"
 ML_TASKS: # OPTIONAL which dimension reduction methods should be used for the ml task, Latent, UMAP, PCA, RandomFeature are possible
   - Latent
-  - UMAP
   - PCA
-  - RandomFeature
 
+RUN_ID: CF_beta_decr
