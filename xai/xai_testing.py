@@ -15,20 +15,14 @@ from xai_methods import captum_importance_values, shap_importance_values
 from src.models.models import Vanillix, Varix
 
 # captum attribution methods
-# run_id = 'TCGA_rna'
 run_id = 'CF_beta_decr'
 data_types = 'RNA'
 
 attribution_values, delta_values = captum_importance_values(run_id=run_id, data_types=data_types, model_type='varix',
-                                                            dimension=0, latent_space_explain=True, xai_method='deepshap',
-                                                            visualize=True, return_delta=True)
+    dimension=0, latent_space_explain=True, xai_method='deepshap', visualize=True, return_delta=True)
 
 
-print('Attribution values: ', attribution_values)
-print('Delta values: ', delta_values)
-print('Max delta: ', tf.reduce_max(delta_values))
-print('Min delta: ', tf.reduce_min(delta_values))
-top_f = get_top_features(attribution_values, get_processed_data(run_id), top_n=2000)
+top_f = get_top_features(attribution_values, get_processed_data(run_id), top_n=10)
 #print('Top features: ', top_f)
 gene_metadata = get_cf_metadata(top_f)
 

@@ -4,20 +4,11 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import shap
+import tensorflow as tf
 from helper_functions import *
 from captum.attr import GradientShap, DeepLiftShap, LRP
-
-# #current_directory = os.path.dirname(__file__)
-# current_directory = os.getcwd()
-#
-# models_path = os.path.abspath(os.path.join(current_directory, "..", "models"))
-# utils_path = os.path.abspath(os.path.join(current_directory, "..", "utils"))
-# sys.path.append(models_path)
-# sys.path.append(utils_path)
-#
-# from models import Vanillix, Varix
-
 from src.models.models import Vanillix, Varix
+
 
 def captum_importance_values(
     run_id,
@@ -59,7 +50,6 @@ def captum_importance_values(
         else:
             feature_names_final.append(name)
 
-
     input_dim = get_input_dim(state_dict)
     config_latent_dim = config_data["LATENT_DIM_FIXED"]
     feature_num = get_feature_num(run_id)
@@ -93,8 +83,6 @@ def captum_importance_values(
 
     model.load_state_dict(state_dict)
 
-    ## with no_grad or without?
-    # with torch.no_grad():
     if latent_space_explain:
         model = model_encoder_dim
     else:
@@ -145,8 +133,12 @@ def captum_importance_values(
         )
 
     if return_delta:
+        print('Attribution values: ', attributions)
+        print('Delta values: ', delta)
+        print('Max absolute delta: {:.4f}'.format(tf.reduce_max(tf.abs(delta)).numpy()))
         return attributions, delta
     else:
+        print('Attribution values: ', attributions)
         return attributions
 
 
@@ -182,7 +174,6 @@ def shap_importance_values(
     #####
     input_dim = get_input_dim(state_dict)
     config_latent_dim = config_data["LATENT_DIM_FIXED"]
-    #feature_num = .get_feature_num(run_id)
 
     background_tensor, test_tensor = get_random_data_split_tensors(
         input_data, background_n=500, test_n=50

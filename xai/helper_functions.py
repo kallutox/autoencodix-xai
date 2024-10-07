@@ -10,7 +10,7 @@ import os
 import torch.nn as nn
 import torch.nn.functional as F
 
-# project_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+# project_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -46,35 +46,13 @@ class VAEEncoderSingleDim(nn.Module):
 
         batch_size = x.size(0)
         x = x.view(batch_size, -1)
-        #x = x.view(-1, self.input_dim)
-
-        #print(f"Input shape after view: {x.shape}")
         latent = self.encoder(x)
-        #print(f"Latent shape: {latent.shape}")
         mu = self.mu(latent)
         logvar = self.logvar(latent)
-        #print(f"Mu shape: {mu.shape}, Logvar shape: {logvar.shape}")
         z = self.reparameterize(mu, logvar)
-        # print(f"Z shape: {z.shape}")
-        # print(f"Dimension: {self.dim}")
         output = z[:, self.dim]
         output = output.unsqueeze(1)  # Equivalent to output.reshape(output.shape[0], 1)
-        #print(f"Output shape: {output.shape}")
         return output
-
-    # def forward(self, x):
-        # print(f"Input shape before view: {x.shape}")
-        # x = x.view(-1, self.input_dim)
-        # print(f"Input shape after view: {x.shape}")
-        # latent = self.encoder(x)
-        # mu = self.mu(latent)
-        # logvar = self.logvar(latent)
-        # # Reparameterization to get the latent vector
-        # z = self.reparameterize(mu, logvar)
-        # # Selecting the specific latent dimension and reshaping it to keep the batch dimension
-        # output = z[:, self.dim]
-        # output = output.unsqueeze(1)  # Equivalent to output.reshape(output.shape[0], 1)
-        # return output
 
 
 class VAEWrapper(nn.Module):
