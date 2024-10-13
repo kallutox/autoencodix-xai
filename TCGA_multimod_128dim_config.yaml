@@ -1,0 +1,76 @@
+BATCH_SIZE: 256
+BETA: 0.1
+CLINIC_PARAM:
+- CANCER_TYPE_ACRONYM
+- TMB_NONSYNONYMOUS
+- AGE
+- SEX
+- AJCC_PATHOLOGIC_TUMOR_STAGE_SHORT
+- OS_STATUS
+- OS_MONTHS
+- DFS_STATUS
+- PFS_STATUS
+- MSI_SCORE_MANTIS
+- ANEUPLOIDY_SCORE
+CV: 5
+DATA_TYPE:
+  ANNO:
+    FILE_LABEL: clinical_data.parquet
+    FILE_RAW: data_clinical_formatted.parquet
+    TYPE: ANNOTATION
+  METH:
+    FILE_RAW: data_methylation_per_gene_formatted.parquet
+    FILTERING: Var
+    SCALING: Standard
+    TYPE: NUMERIC
+  MUT:
+    FILE_RAW: data_combi_MUT_CNA_formatted.parquet
+    FILTERING: Var
+    SCALING: Standard
+    TYPE: NUMERIC
+  RNA:
+    FILE_RAW: data_mrna_seq_v2_rsem_formatted.parquet
+    FILTERING: Var
+    SCALING: Standard
+    TYPE: NUMERIC
+DELIM: "\t"
+DIM_RED_METH: UMAP
+DROP_P: 0.1
+EPOCHS: 300
+FILE_ONT_LVL1: full_ont_lvl1_reactome.txt
+FILE_ONT_LVL2: full_ont_lvl2_reactome.txt
+FIX_RANDOMNESS: all
+GLOBAL_SEED: 42
+KEEP_NOT_ONT: true
+K_FILTER: 1000
+LATENT_DIM_FIXED: 128
+LOGLEVEL: INFO
+LR_FIXED: 0.0001
+ML_ALG:
+- Linear
+- RF
+- SVM
+ML_SPLIT: use-split
+ML_TASKS:
+- Latent
+- UMAP
+- PCA
+- RandomFeature
+ML_TYPE: Auto-detect
+MODEL_TYPE: varix
+NON_ONT_LAYER: 1
+PLOT_LATENTDIST: true
+PLOT_WEIGHTS: false
+PREDICT_SPLIT: all
+RECONSTR_LOSS: MSE
+SPLIT:
+- 0.6
+- 0.2
+- 0.2
+START_FROM_LAST_CHECKPOINT: false
+TRAIN_TYPE: train
+TRANSLATE: ''
+USE_LABEL: ANNO
+VAE_LOSS: KL
+APPLY_SIGNAL: False
+RUN_ID: TCGA_multimod_128dim

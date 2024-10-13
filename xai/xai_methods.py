@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import shap
 import tensorflow as tf
 from helper_functions import *
-from captum.attr import GradientShap, DeepLiftShap, LRP
+from captum.attr import GradientShap, DeepLiftShap, LRP, IntegratedGradients, LimeBase, Lime
 from src.models.models import Vanillix, Varix
 
 
@@ -38,7 +38,7 @@ def captum_importance_values(
 
     config_data = get_config(run_id)
 
-    input_data = get_interim_data(run_id)
+    input_data = get_interim_data(run_id, model_type)
     feature_names = input_data.columns.tolist()
 
     # quick fix solution only
@@ -108,6 +108,27 @@ def captum_importance_values(
             target=dimension if not latent_space_explain else None
         )
 
+    elif xai_method == "integrated_gradients":
+        integrated_gradients = IntegratedGradients(model)
+
+        #### TO DO: just quick fix
+        random_indices = torch.randperm(background_tensor.shape[0])[:background_tensor.shape[0] // 10]
+        downsampled_tensor = background_tensor[random_indices]
+        ####
+
+        attributions, delta = integrated_gradients.attribute(
+            inputs=test_tensor,
+            baselines=downsampled_tensor,
+            return_convergence_delta=True,
+            target=dimension if not latent_space_explain else None
+        )
+
+    elif xai_method == "lime":
+        lime = Lime(model)
+        attributions = lime.attribute(
+            inputs=test_tensor[45].unsqueeze(0), #### TODO
+            target=dimension if not latent_space_explain else None)
+
     elif xai_method == "lrp":
         lrp = LRP(model)
         attributions, delta = lrp.attribute(
@@ -118,19 +139,20 @@ def captum_importance_values(
 
     else:
         print(
-            "{} is not a valid method type, please choose deepshap, gradientshap, or lrp instead.".format(
+            "{} is not a valid method type, please choose deepshap, integrated_gradients, gradientshap, or lrp instead.".format(
                 model_type
             )
         )
         sys.exit()
 
     if visualize:
-        shap.summary_plot(
-            attributions.detach().numpy(),
-            test_tensor,
-            feature_names=feature_names_final,
-            max_display=10,
-        )
+        if xai_method != 'lime':
+            shap.summary_plot(
+                attributions.detach().numpy(),
+                test_tensor,
+                feature_names=feature_names_final,
+                max_display=10,
+            )
 
     if return_delta:
         print('Attribution values: ', attributions)
@@ -139,6 +161,7 @@ def captum_importance_values(
         return attributions, delta
     else:
         print('Attribution values: ', attributions)
+        print('Max absolute attirbution: {:.4f}'.format(tf.reduce_max(attributions).numpy()))
         return attributions
 
 

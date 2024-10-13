@@ -287,8 +287,12 @@ def baseline_add_check(vae_model, data, background_n_arr, n_per_baseline=10):
     # plt.show()
 
 
-def get_top_features(attributions, data, top_n=10):
-    average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
+def get_top_features(attributions, data, dataset='tcga', top_n=10):
+    #average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
+    if attributions.ndim == 1:
+        average_attributions = np.abs(attributions.detach().numpy())
+    else:
+        average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
 
     # match attribution values to genes
     result = pd.concat(
@@ -298,16 +302,19 @@ def get_top_features(attributions, data, top_n=10):
     sorted_results = result.sort_values("importance_value", ascending=False)
     top_feature_names = sorted_results["feature_name"].head(top_n).tolist()
 
-    ### quick fix only
-    top_feature_names_final = []
-    for name in top_feature_names:
-        if 'ENSG' in name:
-            processed_name = name.replace('RNA_', '')  # Remove the 'RNA_' prefix
-            top_feature_names_final.append(processed_name)
-        else:
-            top_feature_names_final.append(name)
+    if dataset == 'cf':
+        top_feature_names_final = []
+        # if data == cf data
+        for name in top_feature_names:
+            if 'ENSG' in name:
+                processed_name = name.replace('RNA_', '')  # Remove the 'RNA_' prefix
+                top_feature_names_final.append(processed_name)
+            else:
+                top_feature_names_final.append(name)
 
-    return top_feature_names_final
+        return top_feature_names_final
+    else:
+        return top_feature_names
 
 
 def get_cf_metadata(ensembl_ids):

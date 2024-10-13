@@ -15,21 +15,27 @@ from xai_methods import captum_importance_values, shap_importance_values
 from src.models.models import Vanillix, Varix
 
 # captum attribution methods
-run_id = 'CF_beta_decr'
-data_types = 'RNA'
+#run_id = 'CF_beta_decr'
+run_id = 'TCGA_ae_multimod_128dim'
+data_types = 'METH_MUT_RNA'
+dataset = 'tcga'
+model_type = 'vanillix'
+xai_method = 'lime'
 
-attribution_values, delta_values = captum_importance_values(run_id=run_id, data_types=data_types, model_type='varix',
-    dimension=0, latent_space_explain=True, xai_method='deepshap', visualize=True, return_delta=True)
+attribution_values = captum_importance_values(run_id=run_id, data_types=data_types, model_type=model_type,
+    dimension=0, latent_space_explain=True, xai_method=xai_method, visualize=True, return_delta=False)
 
 
-top_f = get_top_features(attribution_values, get_processed_data(run_id), top_n=10)
-#print('Top features: ', top_f)
-gene_metadata = get_cf_metadata(top_f)
+top_f = get_top_features(attribution_values, get_interim_data(run_id, model_type), dataset=dataset, top_n=100)
 
-feature_count = 1
-for feature in top_f:
-    print("Feature ", feature_count, ": ", feature, " - ", gene_metadata[feature])
-    feature_count += 1
+if dataset == 'cf':
+    gene_metadata = get_cf_metadata(top_f)
+    feature_count = 1
+    for feature in top_f:
+        print("Feature ", feature_count, ": ", feature, " - ", gene_metadata[feature])
+        feature_count += 1
+else:
+    print(top_f)
 
 
 ## overlap: top features - synthetic signal

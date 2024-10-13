@@ -12,7 +12,7 @@ DATA_TYPE: # TODO This variable specifies the details for each data type.
       TYPE: "ANNOTATION" ## ANNOTATION files will be ignored as data modality in AE
 
 
-K_FILTER: 500 # SHOULDDO Number of features after filtering per data modality
+K_FILTER: 2000 # SHOULDDO Number of features after filtering per data modality
 
 ## Model and Training --------------------------------------------------------
 # ----------------------------------------------------------------------------
@@ -22,7 +22,7 @@ BETA: 0.01 # OPTIONAL float that adds a weight to the KL divergence or MMD loss 
 
 LATENT_DIM_FIXED: 8 # SHOULDDO number of neurons in latent dimenion (all integer values are possible)
 BATCH_SIZE: 512 # SHOULDDO (all integer values are possible, depending on your hardware and data size)
-EPOCHS: 200 # SHOULDDO (all integer values are possible)
+EPOCHS: 300 # SHOULDDO (all integer values are possible)
 LR_FIXED: 0.0005 # SHOULDDO Learning Rate for training (all float values are possible)
 VAE_LOSS: "KL" # SHOULDDO  loss function for VAE to fit standard normal distribution (KL or MMD)
 RECONSTR_LOSS: "MSE" # SHOULDDO (BCE or MSE)
@@ -87,4 +87,4 @@ ML_TASKS: # OPTIONAL which dimension reduction methods should be used for the ml
   - Latent
   - PCA
 
-RUN_ID: CF_test
+RUN_ID: CF_beta001

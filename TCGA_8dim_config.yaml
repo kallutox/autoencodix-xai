@@ -1,0 +1,127 @@
+## TRAINING AND PREDICTION -----------------------------------------------------
+# ----------------------------------------------------------------------------
+LATENT_DIM_FIXED: 8 # SHOULDDO (all integer values are possible)
+BATCH_SIZE: 512 # SHOULDDO (all integer values are possible, depending on your hardware and data size)
+EPOCHS: 300 # SHOULDDO (all integer values are possible)
+LR_FIXED: 0.0001 # SHOULDDO (all float values are possible)
+START_FROM_LAST_CHECKPOINT: False #OPTIONAL (True or False)
+LOGLEVEL: "INFO" # OPTIONAL (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+TRAIN_TYPE: "train" # SHOULDDO train or train_tune or translate are possible
+PREDICT_SPLIT: 'all' # SHOULDDO data split the trainied model uses to generate latent space (all, train, test, valid are possible) default is test
+VAE_LOSS: "KL" # SHOULDDO  loss function for VAE to fit standard normal distribution (KL or MMD)
+RECONSTR_LOSS: "MSE" # SHOULDDO (BCE or MSE)
+MODEL_TYPE: "varix" #SHOULDO which autoencoder to use: varix, vanillix, stackix, ontix, or translate
+BETA: 1 # OPTIONAL float that adds a weight to the KL divergence
+APPLY_SIGNAL: False # OPTIONAL (True or False)
+
+
+NON_ONT_LAYER: 0 # Specify additional layer for ontix if should LATENT_DIM_FIXED < Ontology Dimension
+FILE_ONT_LVL1: "full_ont_lvl1_reactome.txt" # Mandotory for ontix; LVL1 specifies relationship of features and first ontology level in sparse decoder
+FILE_ONT_LVL2: "full_ont_lvl2_reactome.txt"  # Optional for ontix; LVL2 specifies relationship of first ontology level and a second level (dim(lvl1) > dim(lvl2)) in sparse decoder
+
+# DATA DEFINITIONS ------------------------------------------------------------
+# -----------------------------------------------------------------------------
+
+SPLIT: [0.6, 0.2, 0.2] # OPTIONAL Train, Validate, Test or "pre-computed"
+K_FILTER: 2000 # SHOULDDO Number of features after filtering
+DELIM: "\t" # SHOULDDO (all delimiters are possible)
+TRANSLATE: "" # TODO, TRAIN_TYPE=translate, when <FROMDATA>_to_<TODATA>
+DATA_TYPE: # TODO (if you use TCGA data, you can use this config params)
+# if you don't use a data type, just comment it out, or delete it
+  RNA:
+    FILE_RAW: "data_mrna_seq_v2_rsem_formatted.parquet" # TODO your file name here
+    TYPE: "NUMERIC" # TODO (your data type here) MIXED, IMAGE, NUMERIC are possible
+    SCALING: "Standard" # TODO (your scaling method here) MinMax, Standard, Robust, MaxAbs, are possilbe. Be sure to make this consistent with your loss function i.e. BCE and MinMax
+    FILTERING: "Var" # SHOULDDO Var, Corr, Var+Corr, MAD and NonZeroVar are possible
+  # analogous to RNA
+  # CNA:
+  #   FILE_RAW: "data_log2_cna_formatted.parquet"
+  #   TYPE: "NUMERIC"
+  #   SCALING: "MinMax"
+  #   FILTERING: "Var"
+#  METH:
+#    FILE_RAW: "data_methylation_per_gene_formatted.parquet"
+#    TYPE: "NUMERIC"
+#    SCALING: "Standard"
+#    FILTERING: "Var"
+#  MUT:
+#    # FILE_RAW: "data_mutations_formatted.parquet"
+#    FILE_RAW: "data_combi_MUT_CNA_formatted.parquet"
+#    TYPE: "NUMERIC"
+#    SCALING: "Standard"
+#    FILTERING: "Var"
+# if you use clinical data this you need to define which categorial and which numerical features you want to use
+  # CLIN:
+  #   FILE_RAW: "data_clinical_formatted.parquet" # TODO your file name here
+  #   # FILE_LABEL: "clinical_data.txt" # TODO your file name here
+  #   TYPE: "MIXED" # TODO (your data type here) MIXED, IMAGE, NUMERIC are possible, for clinical usually MIXED
+  #   REL_CLIN_C: # TODO colnames of categorial features
+  #     - "SUBTYPE"
+  #     - "ONCOTREE_CODE"
+  #     - "SEX"
+  #     - "AJCC_PATHOLOGIC_TUMOR_STAGE"
+  #     - "ETHNICITY"
+  #     - "PATH_M_STAGE"
+  #     - "PATH_N_STAGE"
+  #     - "PATH_T_STAGE"
+  #     - "GRADE"
+  #   REL_CLIN_N: # TODO colnames of numerical features
+  #     - "AGE"
+  #     - "ANEUPLOIDY_SCORE"
+  #     - "MSI_SCORE_MANTIS"
+  #     - "TMB_NONSYNONYMOUS"
+  #   SCALING: "MinMax" # TODO MinMax, Standard, Robust, MaxAbs, are possilbe. Be sure to make this consistent with your loss function i.e. BCE and MinMax
+  #   FILTERING: "Var" # SHOULDDO Var, Var Corr, Var+Corr are possible, Var is recommended because of faster computation
+  # only for TRAIN_TYPE=translate
+  # for the image data you need to provide a file that maps the sample id to the image path, the mappings file shoud
+  # be located in data/raw/images
+  # IMG:
+  #   FILE_RAW: "sample_mapping.txt" # format is: <sample_id> <path_to_image>
+  #   TYPE: "IMG" # has to be IMG
+  #   WIDTH: 256 # if you want to down/upscale the images, you can do it here, should be quadratic
+  #   HEIGHT: 256 # if you want to down/upscale the images, you can do it here, should be quadratic
+  ANNO:
+    FILE_RAW: "data_clinical_formatted.parquet"
+    TYPE: "ANNOTATION" ## ANNOTATION files will be ignored as data modality in AE
+    FILE_LABEL: "clinical_data.parquet"
+USE_LABEL: ANNO
+# OPTUNA TUNING VARS-----------------------------------------------------------
+# -----------------------------------------------------------------------------
+LAYERS_LOWER_LIMIT: 2 # OPTIONAL  minumum number of layers for hyperparamter tuning(all integer values are possible)
+LAYERS_UPPER_LIMIT: 4 # OPTIONAL maximum number of layers for hyperparamter tuning(all integer values are possible)
+LR_LOWER_LIMIT: 0.0005 # OPTIONAL minimum learning rate for hyperparamter tuning(all float values are possible)
+LR_UPPER_LIMIT: 0.005 # OPTIONAL maximum learning rate for hyperparamter tuning(all float values are possible)
+DROPOUT_LOWER_LIMIT: 0.05 # OPTIONAL minimum dropout rate for hyperparamter tuning(all float values are possible)
+DROPOUT_UPPER_LIMIT: 0.2 # OPTIONAL maximum dropout rate for hyperparamter tuning(all float values are possible)
+OPTUNA_TRIALS: 5 # OPTIONAL number of trials for hyperparamter tuning(all integer values are possible)
+OPTUNA_TRIAL_TIME: 1200 # OPTIONAL maximum time in seconds after one trial is canceled for hyperparamter tuning(all integer values are possible)
+
+
+# EVALUATION and VISUALIZATION ------------------------------------------------
+# -----------------------------------------------------------------------------
+DIM_RED_METH: "UMAP" # OPTIPNAL UMAP or TSNE
+CLUSTER_ALG: "KMeans" # OPTIONAL KMeans or DBSCAN or HDDBSCAN
+CLUSTER_N: 32 # OPTIONAL Number of clusters for KMeans
+CLUSTER_EPS: 0.3 # OPTIONAL Epsilon parameter for DBScan
+CLINIC_PARAM: # TODO needs to be a column name of the clinical data
+  - "CANCER_TYPE" # Feature to be visualized on latent space plot
+  - "TMB_NONSYNONYMOUS"
+  - "SEX"
+# ML_TYPE: "Auto-detect"
+ML_TYPE:
+  CANCER_TYPE: "classification" # OPTIONAL classification or regression
+  TMB_NONSYNONYMOUS: "regression" # OPTIONAL classification or regression
+  SEX: "classification"
+ML_ALG: # OPTIONAL which machine learning algorithms should be used for evaluation, Linear, RF, SVM are possible
+  - Linear
+  - RF
+  # - SVM
+ML_SPLIT: "use-split" # OPTIONAL "use-split" or "CV-on-all-data"
+CV: 5 # OPTIONAL only used when "CV-on-all-data"
+ML_TASKS: # OPTIONAL which dimension reduction methods should be used for the ml task, Latent, UMAP, PCA, RandomFeature are possible
+  - Latent
+  - UMAP
+  - PCA
+  # - RandomFeature
+
+RUN_ID: TCGA_8dim
