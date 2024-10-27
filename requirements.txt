@@ -7,7 +7,7 @@ kaleido==0.2.1
 matplotlib==3.7.1
 networkx==3.3
 numba==0.57.0
-numpy====1.24.3
+numpy==1.24.3
 opencv_python==4.10.0.84
 optuna==3.6.1
 pandas==2.2.2
