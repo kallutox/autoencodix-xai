@@ -111,8 +111,8 @@ def captum_importance_values(
     elif xai_method == "integrated_gradients":
         integrated_gradients = IntegratedGradients(model)
 
-        #### TO DO: just quick fix
-        random_indices = torch.randperm(background_tensor.shape[0])[:background_tensor.shape[0] // 10]
+        #### TODO
+        random_indices = torch.randperm(background_tensor.shape[0])[:background_tensor.shape[0] // 10] # same amount as input tensor
         downsampled_tensor = background_tensor[random_indices]
         ####
 
@@ -126,8 +126,9 @@ def captum_importance_values(
     elif xai_method == "lime":
         lime = Lime(model)
         attributions = lime.attribute(
-            inputs=test_tensor[45].unsqueeze(0), #### TODO
-            target=dimension if not latent_space_explain else None)
+            inputs=test_tensor[0].unsqueeze(0), #### TODO
+            target=dimension if not latent_space_explain else None
+        )
 
     elif xai_method == "lrp":
         lrp = LRP(model)
