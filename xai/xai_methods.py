@@ -16,9 +16,10 @@ def captum_importance_values(
     data_types="RNA",
     dimension=0,
     latent_space_explain=False,
-    xai_method="deepshap",
+    xai_method="deepliftshap",
     visualize=True,
     return_delta=True,
+    random_seed=4598
 ):
     """
     Function returns attribution values according to parameters specified.
@@ -27,9 +28,12 @@ def captum_importance_values(
     :param data_types: 'RNA' etc. TBD
     :param dimension: if latent_space_explain is True, refers to latent dimension; else it refers to feature of model output
     :param latent_space_explain: if True, attribution scores are calculated for a dimension in latent space; else for model output
-    :param xai_method: 'deepshap', 'gradientshap', 'lrp' supported
+    :param xai_method: 'deepliftshap', 'gradientshap', 'lrp' supported
     :param visualize: plots shap.summary_plot of 10 top features
     :param return_delta: if True, returns attributions and delta values, else only attributions
+
+    Args:
+        random_seed:
     """
 
     # get model and data information related to run_id
@@ -39,6 +43,7 @@ def captum_importance_values(
     config_data = get_config(run_id)
 
     input_data = get_interim_data(run_id, model_type)
+    clin_data = get_cf_clin_data(run_id)
     feature_names = input_data.columns.tolist()
 
     # quick fix solution only
@@ -58,6 +63,11 @@ def captum_importance_values(
     background_tensor, test_tensor = get_random_data_split_tensors(
         input_data, background_n=500, test_n=50
     )
+
+    ###### synth data only ######
+    # test_tensor, background_tensor = get_sex_specific_split(
+    #     input_data=input_data, clin_data=clin_data, test_n=50,  ref_n=500, seed=42
+    #     )
 
     # print(f"Background tensor shape: {background_tensor.shape}")
     # print(f"Test tensor shape: {test_tensor.shape}")
@@ -90,7 +100,7 @@ def captum_importance_values(
 
     model.eval()
 
-    if xai_method == "deepshap":
+    if xai_method == "deepliftshap":
         dl = DeepLiftShap(model)
         attributions, delta = dl.attribute(
             inputs=test_tensor,
@@ -156,13 +166,13 @@ def captum_importance_values(
             )
 
     if return_delta:
-        print('Attribution values: ', attributions)
-        print('Delta values: ', delta)
-        print('Max absolute delta: {:.4f}'.format(tf.reduce_max(tf.abs(delta)).numpy()))
+        #print('Attribution values: ', attributions)
+        #print('Delta values: ', delta)
+        #print('Max absolute delta: {:.4f}'.format(tf.reduce_max(tf.abs(delta)).numpy()))
         return attributions, delta
     else:
-        print('Attribution values: ', attributions)
-        print('Max absolute attirbution: {:.4f}'.format(tf.reduce_max(attributions).numpy()))
+        #print('Attribution values: ', attributions)
+        #print('Max absolute attribution: {:.4f}'.format(tf.reduce_max(attributions.detach()).numpy()))
         return attributions
 
 

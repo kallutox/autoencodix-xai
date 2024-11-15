@@ -320,14 +320,27 @@ def make_data_single(cfg, data_type, sample_list):
         #### Synthetic signal ###
         if cfg["APPLY_SIGNAL"]:
             logger.info(f"Inject signal on given features and samples")
-            feature_synth = pd.read_csv(cfg["FEATURE_SIGNAL"], header=None, index_col=0)
-            sample_synth = pd.read_csv(cfg["SAMPLE_SIGNAL"], header=None, index_col=0)
-            feature_synth = feature_synth.index.intersection(df.columns).to_list()
+
+            #sample_synth = pd.read_csv(cfg["SAMPLE_SIGNAL"], sep='\t', on_bad_lines='skip')
+            with open(cfg["SAMPLE_SIGNAL"], "r") as f:
+                sample_synth = f.read().splitlines()
+
+            with open(cfg["FEATURE_SIGNAL"], "r") as f:
+                feature_synth = f.read().splitlines()
+
             logger.info("Feature length " + str(len(feature_synth)))
-            sample_synth = sample_synth.index.intersection(df.index).to_list()
             logger.info("Sample length " + str(len(sample_synth)))
 
-            df = synth_signal(df, feature_list=feature_synth, sample_list=sample_synth)
+            #sample_synth = sample_synth.index.intersection(df.index).to_list(
+            try:
+                feature_synth = pd.Index(feature_synth).intersection(df.columns).to_list()
+                if not feature_synth:
+                    raise ValueError("feature_synth is empty after intersection.")
+            except (AttributeError, ValueError):
+                feature_synth = feature_synth.index.intersection(df.columns).to_list()
+
+            signal_strength = cfg["SIGNAL_STRENGTH"]
+            df = synth_signal(df, feature_list=feature_synth, sample_list=sample_synth, signal_strength=signal_strength)
         ###################################
 
         ### build ontology dictionary
@@ -643,10 +656,10 @@ def encode_clin(
     return df_enc_num
 
 
-def synth_signal(df, feature_list, sample_list):
-    max_q90 = df.max().max() * 0.9
-    df.loc[sample_list, feature_list] = max_q90 + np.random.normal(
-        loc=0, scale=max_q90 * 0.05
+def synth_signal(df, feature_list, sample_list, signal_strength=0.9):
+    max_value = df.max().max() * signal_strength
+    df.loc[sample_list, feature_list] = max_value + np.random.normal(
+        loc=0, scale=max_value * 0.05
     )
 
     return df

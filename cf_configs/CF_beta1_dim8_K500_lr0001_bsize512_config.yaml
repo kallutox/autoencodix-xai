@@ -1,0 +1,48 @@
+BATCH_SIZE: 512
+BETA: 1
+CLINIC_PARAM:
+- disease
+- lung_condition
+- age_range
+- cell_type
+- development_stage
+- sex
+- smoking_status
+- assay
+- self_reported_ethnicity
+- development_stage
+CLUSTER_ALG: HDBScan
+CLUSTER_N: 32
+DATA_TYPE:
+  ANNO:
+    FILE_RAW: cf_clinical_data_formatted.parquet
+    TYPE: ANNOTATION
+  RNA:
+    FILE_RAW: cf_formatted.parquet
+    FILTERING: Var
+    SCALING: Standard
+    TYPE: NUMERIC
+DIM_RED_METH: UMAP
+EPOCHS: 300
+FIX_RANDOMNESS: all
+GLOBAL_SEED: 42
+K_FILTER: 500
+LATENT_DIM_FIXED: 8
+LR_FIXED: 0.001
+MIN_CLUSTER_N: 20
+ML_ALG:
+- Linear
+- RF
+ML_SPLIT: use-split
+ML_TASKS:
+- Latent
+- PCA
+ML_TYPE: Auto-detect
+MODEL_TYPE: varix
+PREDICT_SPLIT: all
+RECONSTR_LOSS: MSE
+SPLIT:
+- 0.6
+- 0.2
+- 0.2
+VAE_LOSS: KL

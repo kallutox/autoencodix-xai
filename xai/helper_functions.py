@@ -1,5 +1,5 @@
 import torch
-import shap
+#import shap
 import pandas as pd
 import random
 import numpy as np
@@ -8,6 +8,7 @@ import yaml
 import sys
 import os
 import torch.nn as nn
+from scipy.stats import ttest_ind
 import torch.nn.functional as F
 
 # project_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -114,7 +115,7 @@ def get_state_dict(run_id, data_types="RNA", model_type="varix"):
         f"{data_types}_{model_type}{run_id}.pt",
     )
 
-    state_dict = torch.load(dict_path)
+    state_dict = torch.load(dict_path, map_location=torch.device('cpu'))
     return state_dict
 
 
@@ -256,38 +257,38 @@ def get_joined_data(run_id):
     return all_data
 
 
-def baseline_add_check(vae_model, data, background_n_arr, n_per_baseline=10):
-    avg_md_per_background = []
-    not_none_n = 0
-    for i in background_n_arr:
-        avg_md = []
+# def baseline_add_check(vae_model, data, background_n_arr, n_per_baseline=10):
+#     avg_md_per_background = []
+#     not_none_n = 0
+#     for i in background_n_arr:
+#         avg_md = []
+#
+#         for _ in range(n_per_baseline):
+#             background_tensor, test_tensor = get_random_data_split_tensors(
+#                 data, background_n=i, test_n=20
+#             )
+#             e = shap.DeepExplainer(vae_model, background_tensor)
+#             max_diff = e.shap_values(test_tensor, check_additivity=True)
+#             if max_diff is not None:
+#                 avg_md.append(max_diff.item())
+#                 not_none_n += 1
+#         avg_md_per_background.append(sum(avg_md) / len(avg_md))
+#         # if not_none_n < n_per_baseline:
+#         #     print("Not all values raised assertion.")
+#         print(f"Max. difference for background_n {i} : {max(avg_md)}")
+#         print(f"Min. difference for background_n {i} : {min(avg_md)}")
+#
+#     # print(f"Number of values < 0.01: ", not_none_n)
+#     print(f"Average value per background_n: ", avg_md_per_background)
+#
+#     # plt.plot(background_n_arr, avg_md_per_background)
+#     # plt.xlabel('baseline_n')
+#     # plt.ylabel('average max. diff')
+#     # plt.title(f'test_n: 20, features: 400, latent dim: 16, beta: 0.01')
+#     # plt.show()
 
-        for _ in range(n_per_baseline):
-            background_tensor, test_tensor = get_random_data_split_tensors(
-                data, background_n=i, test_n=20
-            )
-            e = shap.DeepExplainer(vae_model, background_tensor)
-            max_diff = e.shap_values(test_tensor, check_additivity=True)
-            if max_diff is not None:
-                avg_md.append(max_diff.item())
-                not_none_n += 1
-        avg_md_per_background.append(sum(avg_md) / len(avg_md))
-        # if not_none_n < n_per_baseline:
-        #     print("Not all values raised assertion.")
-        print(f"Max. difference for background_n {i} : {max(avg_md)}")
-        print(f"Min. difference for background_n {i} : {min(avg_md)}")
 
-    # print(f"Number of values < 0.01: ", not_none_n)
-    print(f"Average value per background_n: ", avg_md_per_background)
-
-    # plt.plot(background_n_arr, avg_md_per_background)
-    # plt.xlabel('baseline_n')
-    # plt.ylabel('average max. diff')
-    # plt.title(f'test_n: 20, features: 400, latent dim: 16, beta: 0.01')
-    # plt.show()
-
-
-def get_top_features(attributions, data, dataset='tcga', top_n=10):
+def get_top_features_by_id(attributions, data, dataset='tcga', top_n=10):
     #average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
     if attributions.ndim == 1:
         average_attributions = np.abs(attributions.detach().numpy())
@@ -325,14 +326,167 @@ def get_cf_metadata(ensembl_ids):
         "cf_gene_metadata_formatted.parquet",
     )
     var_df = pd.read_parquet(var_path)
+    print('var head: ', var_df.head())
     if not isinstance(ensembl_ids, pd.Index):
         ensembl_ids = pd.Index(ensembl_ids)
 
-    # Select the matching rows in var_df
-    matched_var_info = var_df.loc[ensembl_ids]
-
-    # Convert the DataFrame to a dictionary of dictionaries
+    matched_var_info = var_df.reindex[ensembl_ids]
     var_info_dict = matched_var_info.to_dict(orient='index')
 
     return var_info_dict
+
+
+def get_cf_clin_data(run_id):
+    clin_path = os.path.join(
+        os.path.abspath(os.path.join(current_directory, "..")),
+        "data",
+        "raw",
+        "cf_clinical_data_formatted.parquet",
+    )
+    clin_df = pd.read_parquet(clin_path)
+    return clin_df
+
+
+def get_best_dimension_ttest(run_id):
+    latent_df = get_latent_space(run_id)
+    clin_df = get_cf_clin_data(run_id)
+    merged_df = latent_df.merge(clin_df[['sex']], left_index=True, right_index=True)
+
+    p_values = {}
+
+    for column in merged_df.columns:
+        if "L_COMBINED-RNA__varix_INPUT_" in column:
+            latent_number = int(column.split("_")[-1])  # Convert latent dimension to integer
+            male_values = merged_df[merged_df['sex'] == 'male'][column]
+            female_values = merged_df[merged_df['sex'] == 'female'][column]
+
+            t_stat, p_val = ttest_ind(male_values, female_values, equal_var=False)
+            p_values[latent_number] = p_val  # Use the integer latent number as the key
+
+            #print(f"Dimension {latent_number} - Males: {len(male_values)}, Females: {len(female_values)}")
+            #print(f"p-value: {p_val}\n")
+
+    best_dimension = min(p_values, key=p_values.get)
+    return best_dimension
+
+
+def get_best_dimension_means(run_id):
+    latent_df = get_latent_space(run_id)
+    clin_df = get_cf_clin_data(run_id)
+    merged_df = latent_df.merge(clin_df[['sex']], left_index=True, right_index=True)
+
+    mean_differences = {}
+
+    for column in merged_df.columns:
+        if "L_COMBINED-RNA__varix_INPUT_" in column:
+            latent_number = column.split("_")[-1]
+
+            male_values = merged_df[merged_df['sex'] == 'male'][column]
+            female_values = merged_df[merged_df['sex'] == 'female'][column]
+
+            male_mean = male_values.mean()
+            female_mean = female_values.mean()
+
+            mean_diff = abs(male_mean - female_mean)
+
+            mean_differences[int(latent_number)] = mean_diff
+
+            #print(f"Dimension {latent_number} - Male Mean: {male_mean}, Female Mean: {female_mean}")
+            #print(f"Absolute Difference in Means: {mean_diff}\n")
+
+    best_dimension = max(mean_differences, key=mean_differences.get)
+    #print(f"The best dimension based on mean difference is {best_dimension} with a difference of {mean_differences[best_dimension]}")
+    return int(best_dimension)
+
+
+def get_sex_matched_split(input_data, clin_data, background_n, test_n, random_state=None):
+    """
+    Splits input_data into background and test sets with sex distribution matching.
+
+    Args:
+        input_data (pd.DataFrame): Input data with features (rows: samples, columns: features).
+        clin_data (pd.DataFrame): Clinical data containing a 'sex' column aligned with input_data.
+        background_n (int): Number of samples for the background dataset.
+        test_n (int): Number of samples for the test dataset.
+        random_state (int): Seed for reproducibility.
+
+    Returns:
+        background_tensor (torch.Tensor): Background dataset matching sex distribution.
+        test_tensor (torch.Tensor): Test dataset matching sex distribution.
+    """
+    np.random.seed(random_state)
+
+    # Merge input_data with clin_data to ensure alignment
+    merged_data = input_data.join(clin_data['sex'])
+
+    # Calculate sex proportions
+    sex_counts = merged_data['sex'].value_counts(normalize=True)
+    male_fraction = sex_counts.get('male', 0)
+    female_fraction = sex_counts.get('female', 0)
+
+    # Separate data by sex
+    male_data = merged_data[merged_data['sex'] == 'male'].drop('sex', axis=1)
+    female_data = merged_data[merged_data['sex'] == 'female'].drop('sex', axis=1)
+
+    # Sample background data
+    male_background = male_data.sample(int(background_n * male_fraction), random_state=random_state)
+    female_background = female_data.sample(int(background_n * female_fraction), random_state=random_state)
+    background_data = pd.concat([male_background, female_background])
+
+    # Sample test data
+    male_test = male_data.sample(int(test_n * male_fraction), random_state=random_state)
+    female_test = female_data.sample(int(test_n * female_fraction), random_state=random_state)
+    test_data = pd.concat([male_test, female_test])
+
+    # Convert to PyTorch tensors
+    background_tensor = torch.tensor(background_data.values, dtype=torch.float32)
+    test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
+
+    return background_tensor, test_tensor
+
+
+def get_sex_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
+    """
+    Select n random samples where sex == "male" as the test tensor and
+    m random samples of all sexes as the reference tensor, ensuring no overlap.
+
+    Parameters:
+    - input_data (pd.DataFrame): Dataframe containing input data.
+    - clin_data (pd.DataFrame): Dataframe containing clinical data with a 'sex' column.
+    - n (int): Number of samples where sex == "male" for the test tensor.
+    - m (int): Number of samples for the reference tensor (all sexes).
+    - seed (int): Random seed for reproducibility (default is None).
+
+    Returns:
+    - test_tensor (torch.Tensor): Tensor of n random samples where sex == "male".
+    - reference_tensor (torch.Tensor): Tensor of m random samples of all sexes.
+    """
+
+    if seed is not None:
+        torch.manual_seed(seed)
+
+    # Ensure input and clin_data have matching indices
+    clin_data = clin_data.loc[input_data.index]
+
+    # Filter male samples
+    male_samples = clin_data[clin_data["sex"] == "male"].index
+
+    # Select n random male samples for the test tensor
+    test_indices = male_samples.to_series().sample(n=test_n, random_state=seed).index
+
+    # Select m random samples for the reference tensor, excluding test_indices
+    remaining_indices = input_data.index.difference(test_indices)
+    reference_indices = remaining_indices.to_series().sample(n=ref_n, random_state=seed).index
+
+    # Extract corresponding data for test and reference
+    test_data = input_data.loc[test_indices]
+    reference_data = input_data.loc[reference_indices]
+
+    # Convert to torch tensors
+    test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
+    reference_tensor = torch.tensor(reference_data.values, dtype=torch.float32)
+
+    return test_tensor, reference_tensor
+
+
 

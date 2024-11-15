@@ -560,9 +560,7 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
     RETURNS:
         fig (matplotlib.figure): Figure handle (of last plot)
     """
-    sns.set_theme(
-        style="white", rc={"axes.facecolor": (0, 0, 0, 0)}
-    )  ## Necessary to enforce overplotting
+    sns.set_theme(style="white", rc={"axes.facecolor": (0, 0, 0, 0)})
 
     df = pd.melt(lat_space, var_name="latent dim", value_name="latent intensity")
     df["sample"] = len(lat_space.columns) * list(
@@ -571,12 +569,9 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
     df = df.join(clin_data[param], on="sample")
 
     labels = df[param]
-    # print(labels[0])
-    if not (type(labels[0]) is str):
+    if not isinstance(labels[0], str):
         if len(np.unique(labels)) > 3:
-            labels = pd.qcut(
-                labels, q=4, labels=["1stQ", "2ndQ", f"3rdQ", f"4thQ"]
-            ).astype(str)
+            labels = pd.qcut(labels, q=4, labels=["1stQ", "2ndQ", "3rdQ", "4thQ"]).astype(str)
         else:
             labels = [str(x) for x in labels]
     df[param] = labels
@@ -611,13 +606,18 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
         palette=cat_pal,
     )
 
+    def conditional_kdeplot(data, **kwargs):
+        if data[param].iloc[0].lower() == "unknown":
+            kwargs["alpha"] = 0.25  # Reduced density for "Unknown"
+        else:
+            kwargs["alpha"] = 0.5
+        sns.kdeplot(data["latent intensity"], **kwargs)
+
     g.map_dataframe(
-        sns.kdeplot,
-        "latent intensity",
+        conditional_kdeplot,
         bw_adjust=0.5,
         clip_on=True,
         fill=True,
-        alpha=0.5,
         warn_singular=False,
         ec="k",
         lw=1,
@@ -639,20 +639,19 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
     g.map_dataframe(label, text="latent dim")
 
     g.set(xlim=(xmin[0], xmax[0]))
-    # Set the subplots to overlap
     g.figure.subplots_adjust(hspace=-0.25)
 
-    # Remove axes details that don't play well with overlap
     g.set_titles("")
     g.set(yticks=[], ylabel="")
     g.despine(bottom=True, left=True)
 
     g.add_legend()
 
-    if len(save_fig) > 0:
+    if save_fig:
         g.savefig(save_fig)
 
     return g
+
 
 
 ### Main ###
