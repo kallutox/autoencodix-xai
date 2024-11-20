@@ -19,7 +19,7 @@ def captum_importance_values(
     xai_method="deepliftshap",
     visualize=True,
     return_delta=True,
-    random_seed=4598
+    random_seed=None
 ):
     """
     Function returns attribution values according to parameters specified.
@@ -59,19 +59,18 @@ def captum_importance_values(
     config_latent_dim = config_data["LATENT_DIM_FIXED"]
     feature_num = get_feature_num(run_id)
 
-    np.random.seed(4598)
-    background_tensor, test_tensor = get_random_data_split_tensors(
-        input_data, background_n=500, test_n=50
-    )
+    # specify target and reference data
+    train_data = get_training_data(run_id, input_data)
 
-    ###### synth data only ######
-    # test_tensor, background_tensor = get_sex_specific_split(
-    #     input_data=input_data, clin_data=clin_data, test_n=50,  ref_n=500, seed=42
-    #     )
+    # background_tensor, test_tensor = get_random_data_split_tensors(
+    #     train_data, background_n=500, test_n=50, seed=42
+    # )
 
-    # print(f"Background tensor shape: {background_tensor.shape}")
-    # print(f"Test tensor shape: {test_tensor.shape}")
-    # print(f"Input dimension: {input_dim}")
+    ###### synth data only ###### input tensor only male, background random
+    test_tensor, background_tensor = get_sex_specific_split(
+        input_data=train_data, clin_data=clin_data, test_n=150,  ref_n=300, which_data='input', seed=44
+        )
+
 
     if model_type == "varix":
         model = Varix(input_dim, config_latent_dim)
@@ -163,7 +162,20 @@ def captum_importance_values(
                 test_tensor,
                 feature_names=feature_names_final,
                 max_display=10,
+                color=plt.get_cmap("cool")
             )
+
+            # shap_explanation = shap.Explanation(
+            #     values=attributions.detach().numpy(),
+            #     feature_names=feature_names_final,
+            #     data=test_tensor.numpy()
+            # )
+
+            #shap.plots.beeswarm(shap_explanation, max_display=10)
+            #shap.plots.heatmap(shap_explanation, max_display=10)
+
+            #shap.plots.bar(shap_explanation, max_display=10)
+
 
     if return_delta:
         #print('Attribution values: ', attributions)

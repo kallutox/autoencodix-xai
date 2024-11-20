@@ -5,7 +5,7 @@ from helper_functions import *
 from xai_methods import captum_importance_values
 
 
-def calculate_and_plot_attributions(base_folders, xai_method='deepliftshap'):
+def feature_importance_across_models(base_folders, xai_method='deepliftshap'):
     """
     Calculates and plots the number of synthetic features in the top 10 for one or multiple base folders,
     including the variance of values by signal strength.
@@ -57,12 +57,13 @@ def calculate_and_plot_attributions(base_folders, xai_method='deepliftshap'):
                 return_delta=False
             )
 
-            top_features = get_top_features_by_id(
+            attribution_dict = attribution_per_feature(
                 attribution_values,
                 get_interim_data(run_id, model_type),
-                dataset=data_set,
-                top_n=10
+                dataset=data_set
             )
+
+            top_features = get_top_features(attribution_dict)
 
             feature_list_path = os.path.join("..", config_data.get("FEATURE_SIGNAL"))
             with open(feature_list_path, "r") as f:
@@ -70,6 +71,8 @@ def calculate_and_plot_attributions(base_folders, xai_method='deepliftshap'):
 
             positions = [i for i, feature in enumerate(top_features) if feature in feature_list]
             top_10_positions.append(positions)
+
+            print(f"Feature Importance for {run_id} finished computing.")
 
         aggregated_top_10_positions.append(top_10_positions)
 
@@ -98,7 +101,7 @@ def calculate_and_plot_attributions(base_folders, xai_method='deepliftshap'):
     # save the plot
     base_names = "_".join(base_folders)
     os.makedirs("synth_data/figures", exist_ok=True)
-    plt.savefig(f"synth_data/figures/synth_data_{base_names}_{xai_method}_random_input.png")
+    plt.savefig(f"synth_reports/figures/synth_data_{base_names}_{xai_method}_male_target.png")
     plt.show()
 
     # save the averaged positions data
@@ -109,9 +112,50 @@ def calculate_and_plot_attributions(base_folders, xai_method='deepliftshap'):
         "aggregated_top_10_positions": aggregated_top_10_positions
     }
     os.makedirs("synth_data", exist_ok=True)
-    with open(f"synth_data/synth_data_{base_names}_{xai_method}_random_input.json", "w") as f:
+    with open(f"synth_reports/synth_data_{base_names}_{xai_method}_male_target.json", "w") as f:
         json.dump(data_to_save, f)
 
 
-# calculate_and_plot_attributions(['base1', 'base2', 'base3'], xai_method='deepliftshap')
-calculate_and_plot_attributions(['base1', 'base2', 'base3'], xai_method='deepliftshap')
+def feature_importance_and_visualize(run_id, data_set, xai_method='deepliftshap', scatterplot=True, synth_test=False):
+
+    attribution_values = captum_importance_values(
+        run_id=run_id,
+        data_types='rna',
+        model_type='varix',
+        dimension=get_best_dimension_means(run_id),
+        latent_space_explain=True,
+        xai_method=xai_method,
+        visualize=scatterplot,
+        return_delta=False
+    )
+
+    attribution_dict = attribution_per_feature(
+        attribution_values,
+        get_interim_data(run_id, 'varix'),
+        dataset=data_set
+    )
+
+    #top_n_attributions_with_plot(attribution_dict, top_n=10)
+
+    top_features = get_top_features(attribution_dict, 10)
+
+    if synth_test:
+        config_data = get_config(run_id)
+        feature_list_path = os.path.join("..", config_data.get("FEATURE_SIGNAL"))
+        with open(feature_list_path, "r") as f:
+            feature_list = f.read().splitlines()
+
+        positions = [i for i, feature in enumerate(top_features) if feature in feature_list]
+
+        print('Positions of top features that were modified:', positions)
+        print('Number of top features that were modified:', len(positions))
+
+    print(top_features)
+
+
+def overlap_plot(intra_run_id, top_n=100):
+
+    # intra model: same model, calculate feature importance 5 times for each method (15x)
+    
+
+

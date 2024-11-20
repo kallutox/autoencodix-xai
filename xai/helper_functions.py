@@ -9,6 +9,7 @@ import sys
 import os
 import torch.nn as nn
 from scipy.stats import ttest_ind
+import seaborn as sns
 import torch.nn.functional as F
 
 # project_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -202,8 +203,9 @@ def get_random_data_split_arrays(data, background_n, test_n, seed=4598):
     return background_data, test_data
 
 
-def get_random_data_split_tensors(data, background_n, test_n, seed=4598):
-    np.random.seed(seed)
+def get_random_data_split_tensors(data, background_n, test_n, seed=None):
+    if seed is not None:
+        torch.manual_seed(seed)
     random_state_bg = np.random.randint(0, 10000)
     df_part1 = data.sample(frac=0.8, random_state=random_state_bg)
     df_part2 = data.drop(df_part1.index)
@@ -257,65 +259,134 @@ def get_joined_data(run_id):
     return all_data
 
 
-# def baseline_add_check(vae_model, data, background_n_arr, n_per_baseline=10):
-#     avg_md_per_background = []
-#     not_none_n = 0
-#     for i in background_n_arr:
-#         avg_md = []
-#
-#         for _ in range(n_per_baseline):
-#             background_tensor, test_tensor = get_random_data_split_tensors(
-#                 data, background_n=i, test_n=20
-#             )
-#             e = shap.DeepExplainer(vae_model, background_tensor)
-#             max_diff = e.shap_values(test_tensor, check_additivity=True)
-#             if max_diff is not None:
-#                 avg_md.append(max_diff.item())
-#                 not_none_n += 1
-#         avg_md_per_background.append(sum(avg_md) / len(avg_md))
-#         # if not_none_n < n_per_baseline:
-#         #     print("Not all values raised assertion.")
-#         print(f"Max. difference for background_n {i} : {max(avg_md)}")
-#         print(f"Min. difference for background_n {i} : {min(avg_md)}")
-#
-#     # print(f"Number of values < 0.01: ", not_none_n)
-#     print(f"Average value per background_n: ", avg_md_per_background)
-#
-#     # plt.plot(background_n_arr, avg_md_per_background)
-#     # plt.xlabel('baseline_n')
-#     # plt.ylabel('average max. diff')
-#     # plt.title(f'test_n: 20, features: 400, latent dim: 16, beta: 0.01')
-#     # plt.show()
-
-
-def get_top_features_by_id(attributions, data, dataset='tcga', top_n=10):
-    #average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
+def attribution_per_feature(attributions, data, dataset='tcga'):
     if attributions.ndim == 1:
         average_attributions = np.abs(attributions.detach().numpy())
     else:
         average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
 
-    # match attribution values to genes
-    result = pd.concat(
-        [pd.DataFrame(data.columns), pd.DataFrame(average_attributions)], axis=1
-    )
-    result.columns = ["feature_name", "importance_value"]
-    sorted_results = result.sort_values("importance_value", ascending=False)
-    top_feature_names = sorted_results["feature_name"].head(top_n).tolist()
-
+    # process feature names if dataset is 'cf'
+    feature_names = list(data.columns)
     if dataset == 'cf':
-        top_feature_names_final = []
-        # if data == cf data
-        for name in top_feature_names:
+        processed_feature_names = []
+        for name in feature_names:
             if 'ENSG' in name:
-                processed_name = name.replace('RNA_', '')  # Remove the 'RNA_' prefix
-                top_feature_names_final.append(processed_name)
+                processed_name = name.replace('RNA_', '')
+                processed_feature_names.append(processed_name)
             else:
-                top_feature_names_final.append(name)
-
-        return top_feature_names_final
+                processed_feature_names.append(name)
     else:
-        return top_feature_names
+        processed_feature_names = feature_names
+
+    attribution_dict = dict(zip(processed_feature_names, average_attributions))
+
+    return attribution_dict
+
+
+def get_top_features(attribution_dict, top_n=10):
+    sorted_features = sorted(attribution_dict.items(), key=lambda x: x[1], reverse=True)
+    top_features = [feature[0] for feature in sorted_features[:top_n]]
+
+    return top_features
+
+
+def top_n_attributions_with_plot(attribution_dict, top_n=10):
+    """
+    Get the top N features with their attributions, calculate the average for the rest with min/max range,
+    and plot the result as a barplot.
+
+    Parameters:
+        attribution_dict (dict): A dictionary of feature names and their attributions.
+        top_n (int): Number of top features to display.
+
+    Returns:
+        pd.DataFrame: A DataFrame containing the top N features and the average of the rest.
+        The function also creates a bar plot of the attributions.
+    """
+    # Sort attributions in descending order
+    sorted_attributions = sorted(attribution_dict.items(), key=lambda x: x[1], reverse=True)
+
+    # Extract top N features
+    top_features = sorted_attributions[:top_n]
+
+    # Extract the rest of the features
+    rest_features = sorted_attributions[top_n:]
+    rest_attributions = [value for _, value in rest_features]
+
+    # Calculate mean, min, and max for the rest
+    rest_mean = np.mean(rest_attributions)
+    rest_min = np.min(rest_attributions)
+    rest_max = np.max(rest_attributions)
+
+    # Create a DataFrame for the top N features
+    data = pd.DataFrame(top_features, columns=["Feature", "Attribution"])
+    data["Error"] = 0  # Set error to 0 for top features as individual errors are not calculated
+
+    # Add the average of the rest as the last row using pd.concat()
+    rest_row = pd.DataFrame({
+        "Feature": ["Average of remaining features"],
+        "Attribution": [rest_mean],
+        "Error": [0],  # No error for bar height itself
+        "Min": [rest_min],
+        "Max": [rest_max]
+    })
+    data = pd.concat([data, rest_row], ignore_index=True)
+
+    # Reverse the order for plotting (highest at the top, average at the bottom)
+    data = data.iloc[::-1].reset_index(drop=True)
+
+    # Plot the results
+    sns.set_style("whitegrid")
+    sns.set_context("notebook", rc={"lines.linewidth": 3})
+
+    # Create the bar plot
+    plt.figure(figsize=(10, 6))
+    palette = sns.color_palette("pastel")
+    bar_colors = [palette[i % len(palette)] for i in range(len(data))]
+
+    # Plot the bars
+    plt.barh(
+        data["Feature"],
+        data["Attribution"],
+        color=bar_colors,
+        alpha=0.9,
+    )
+
+    # Add min/max range as a horizontal line for the "Average of remaining features"
+    rest_index = data[data["Feature"] == "Average of remaining features"].index[0]
+    plt.hlines(
+        y=rest_index + 0.5,  # Center the line horizontally for the last bar
+        xmin=data.loc[rest_index, "Min"],
+        xmax=data.loc[rest_index, "Max"],
+        color="black",
+        linestyle="--",
+        linewidth=1.5,
+        label="Range (min-max)" if rest_index == len(data) - 1 else None,  # Add label only once
+    )
+
+    # Draw a vertical line at x=0
+    plt.axvline(0, color="black", linestyle="--", linewidth=1, alpha=0.7)
+
+    # Add labels and title
+    plt.xlabel("Attribution Value", fontsize=12)
+    plt.ylabel("Feature", fontsize=12)
+    plt.title(f"Top {top_n} Features and Average of Remaining Features", fontsize=14)
+
+    # Configure y-axis ticks
+    plt.yticks(
+        range(len(data)),
+        data["Feature"],
+        fontsize=12
+    )
+
+    # Add legend for the range line
+    plt.legend(loc="lower right")
+
+    # Adjust layout
+    plt.tight_layout()
+    plt.show()
+
+    return data
 
 
 def get_cf_metadata(ensembl_ids):
@@ -326,11 +397,12 @@ def get_cf_metadata(ensembl_ids):
         "cf_gene_metadata_formatted.parquet",
     )
     var_df = pd.read_parquet(var_path)
-    print('var head: ', var_df.head())
     if not isinstance(ensembl_ids, pd.Index):
         ensembl_ids = pd.Index(ensembl_ids)
 
-    matched_var_info = var_df.reindex[ensembl_ids]
+    #matched_var_info = var_df.reindex[ensembl_ids]
+    matched_var_info = var_df.reindex(ensembl_ids)
+
     var_info_dict = matched_var_info.to_dict(orient='index')
 
     return var_info_dict
@@ -345,6 +417,32 @@ def get_cf_clin_data(run_id):
     )
     clin_df = pd.read_parquet(clin_path)
     return clin_df
+
+
+def get_training_data(run_id, input_data):
+    """
+    Filters the input data to only include training samples for the given run_id.
+
+    Parameters:
+        run_id (str): Identifier for the current run.
+        input_data (pd.DataFrame): The interim data containing all samples.
+        sample_split_path (str): Path to the sample_split.parquet file.
+
+    Returns:
+        pd.DataFrame: Filtered input data containing only training samples.
+    """
+
+    sample_split_path = f"../data/processed/{run_id}/sample_split.parquet"
+    sample_split = pd.read_parquet(sample_split_path)
+
+    training_samples = sample_split[sample_split["SPLIT"] == "train"]["SAMPLE_ID"]
+
+    # Filter the input_data based on the training samples
+    filtered_input_data = input_data[
+        input_data.index.isin(training_samples)
+    ]
+
+    return filtered_input_data
 
 
 def get_best_dimension_ttest(run_id):
@@ -445,7 +543,7 @@ def get_sex_matched_split(input_data, clin_data, background_n, test_n, random_st
     return background_tensor, test_tensor
 
 
-def get_sex_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
+def get_sex_specific_split(input_data, clin_data, test_n, ref_n, which_data='input', seed=None):
     """
     Select n random samples where sex == "male" as the test tensor and
     m random samples of all sexes as the reference tensor, ensuring no overlap.
@@ -470,13 +568,27 @@ def get_sex_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
 
     # Filter male samples
     male_samples = clin_data[clin_data["sex"] == "male"].index
+    female_unknown_samples = clin_data[clin_data["sex"].isin(["female", "unknown"])].index
 
-    # Select n random male samples for the test tensor
-    test_indices = male_samples.to_series().sample(n=test_n, random_state=seed).index
+    if which_data == 'input':
+        test_indices = male_samples.to_series().sample(n=test_n, random_state=seed).index
 
-    # Select m random samples for the reference tensor, excluding test_indices
-    remaining_indices = input_data.index.difference(test_indices)
-    reference_indices = remaining_indices.to_series().sample(n=ref_n, random_state=seed).index
+        # reference with no male samples
+        #reference_indices = female_unknown_samples.to_series().sample(n=ref_n, random_state=seed).index
+
+        # reference random
+        remaining_indices = input_data.index.difference(test_indices)
+        reference_indices = remaining_indices.to_series().sample(n=ref_n, random_state=seed).index
+
+    elif which_data == 'reference':
+        reference_indices = male_samples.to_series().sample(n=ref_n, random_state=seed).index
+        remaining_indices = input_data.index.difference(reference_indices)
+        test_indices = remaining_indices.to_series().sample(n=test_n, random_state=seed).index
+
+    else:
+        raise ValueError(
+            "'input' or 'reference' expected for which_data"
+        )
 
     # Extract corresponding data for test and reference
     test_data = input_data.loc[test_indices]

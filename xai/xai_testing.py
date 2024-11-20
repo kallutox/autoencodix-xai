@@ -23,9 +23,14 @@ xai_method = 'deepliftshap'
 # add parameter to change reference?
 
 attribution_values = captum_importance_values(run_id=run_id, data_types=data_types, model_type=model_type,
-    dimension=3, latent_space_explain=True, xai_method=xai_method, visualize=False, return_delta=False, random_seed=4598)
+    dimension=3, latent_space_explain=True, xai_method=xai_method, visualize=True, return_delta=False, random_seed=4598)
 
-top_f = get_top_features_by_id(attribution_values, get_interim_data(run_id, model_type), dataset=dataset, top_n=10)
+attribution_dict = attribution_per_feature(
+                attribution_values,
+                get_interim_data(run_id, model_type),
+                dataset=dataset
+            )
+top_features = get_top_features(attribution_dict)
 
 # with open(f"../data/raw/feature_list_10.txt", "r") as f:
 #     feature_list = f.read().splitlines()
@@ -37,13 +42,13 @@ top_f = get_top_features_by_id(attribution_values, get_interim_data(run_id, mode
 # print('Number of top features that were modified:', len(positions))
 
 #feature_list = [col.replace('RNA_', '') for col in feature_list]
-print(top_f)
+print(top_features)
 #print(feature_list)
 
-gene_metadata = get_cf_metadata(top_f)
+gene_metadata = get_cf_metadata(top_features)
 print(gene_metadata)
 
-gene_clin_data = get_cf_clin_data(top_f)
+gene_clin_data = get_cf_clin_data(top_features)
 print(gene_clin_data)
 
 
