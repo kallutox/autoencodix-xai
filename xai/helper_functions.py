@@ -10,6 +10,8 @@ import os
 import torch.nn as nn
 from scipy.stats import ttest_ind
 import seaborn as sns
+from matplotlib.colors import LinearSegmentedColormap
+from collections import Counter
 import torch.nn.functional as F
 
 # project_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
@@ -259,24 +261,25 @@ def get_joined_data(run_id):
     return all_data
 
 
-def attribution_per_feature(attributions, data, dataset='tcga'):
+def attribution_per_feature(attributions, data):
     if attributions.ndim == 1:
         average_attributions = np.abs(attributions.detach().numpy())
     else:
         average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
 
-    # process feature names if dataset is 'cf'
-    feature_names = list(data.columns)
-    if dataset == 'cf':
-        processed_feature_names = []
+    if isinstance(data, list):
+        feature_names = data
+    else:
+        feature_names = list(data.columns)
+
+    processed_feature_names = []
+    if not isinstance(attributions, dict):
         for name in feature_names:
-            if 'ENSG' in name:
+            if 'ENSG' in name:  # remove RNA_ prefix if it exists
                 processed_name = name.replace('RNA_', '')
                 processed_feature_names.append(processed_name)
             else:
                 processed_feature_names.append(name)
-    else:
-        processed_feature_names = feature_names
 
     attribution_dict = dict(zip(processed_feature_names, average_attributions))
 
@@ -445,7 +448,7 @@ def get_training_data(run_id, input_data):
     return filtered_input_data
 
 
-def get_best_dimension_ttest(run_id):
+def get_best_dimension_by_sex_ttest(run_id):
     latent_df = get_latent_space(run_id)
     clin_df = get_cf_clin_data(run_id)
     merged_df = latent_df.merge(clin_df[['sex']], left_index=True, right_index=True)
@@ -468,7 +471,7 @@ def get_best_dimension_ttest(run_id):
     return best_dimension
 
 
-def get_best_dimension_means(run_id):
+def get_best_dimension_by_sex_means(run_id):
     latent_df = get_latent_space(run_id)
     clin_df = get_cf_clin_data(run_id)
     merged_df = latent_df.merge(clin_df[['sex']], left_index=True, right_index=True)
@@ -497,69 +500,24 @@ def get_best_dimension_means(run_id):
     return int(best_dimension)
 
 
-def get_sex_matched_split(input_data, clin_data, background_n, test_n, random_state=None):
-    """
-    Splits input_data into background and test sets with sex distribution matching.
-
-    Args:
-        input_data (pd.DataFrame): Input data with features (rows: samples, columns: features).
-        clin_data (pd.DataFrame): Clinical data containing a 'sex' column aligned with input_data.
-        background_n (int): Number of samples for the background dataset.
-        test_n (int): Number of samples for the test dataset.
-        random_state (int): Seed for reproducibility.
-
-    Returns:
-        background_tensor (torch.Tensor): Background dataset matching sex distribution.
-        test_tensor (torch.Tensor): Test dataset matching sex distribution.
-    """
-    np.random.seed(random_state)
-
-    # Merge input_data with clin_data to ensure alignment
-    merged_data = input_data.join(clin_data['sex'])
-
-    # Calculate sex proportions
-    sex_counts = merged_data['sex'].value_counts(normalize=True)
-    male_fraction = sex_counts.get('male', 0)
-    female_fraction = sex_counts.get('female', 0)
-
-    # Separate data by sex
-    male_data = merged_data[merged_data['sex'] == 'male'].drop('sex', axis=1)
-    female_data = merged_data[merged_data['sex'] == 'female'].drop('sex', axis=1)
-
-    # Sample background data
-    male_background = male_data.sample(int(background_n * male_fraction), random_state=random_state)
-    female_background = female_data.sample(int(background_n * female_fraction), random_state=random_state)
-    background_data = pd.concat([male_background, female_background])
-
-    # Sample test data
-    male_test = male_data.sample(int(test_n * male_fraction), random_state=random_state)
-    female_test = female_data.sample(int(test_n * female_fraction), random_state=random_state)
-    test_data = pd.concat([male_test, female_test])
-
-    # Convert to PyTorch tensors
-    background_tensor = torch.tensor(background_data.values, dtype=torch.float32)
-    test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
-
-    return background_tensor, test_tensor
-
-
 def get_sex_specific_split(input_data, clin_data, test_n, ref_n, which_data='input', seed=None):
     """
     Select n random samples where sex == "male" as the test tensor and
     m random samples of all sexes as the reference tensor, ensuring no overlap.
+    If ref_n == 1, the reference tensor contains the average values across all remaining indices.
 
     Parameters:
     - input_data (pd.DataFrame): Dataframe containing input data.
     - clin_data (pd.DataFrame): Dataframe containing clinical data with a 'sex' column.
-    - n (int): Number of samples where sex == "male" for the test tensor.
-    - m (int): Number of samples for the reference tensor (all sexes).
+    - test_n (int): Number of samples where sex == "male" for the test tensor.
+    - ref_n (int): Number of samples for the reference tensor (all sexes) or 1 for the average reference tensor.
+    - which_data (str): Whether to specify test samples based on 'input' or 'reference'.
     - seed (int): Random seed for reproducibility (default is None).
 
     Returns:
     - test_tensor (torch.Tensor): Tensor of n random samples where sex == "male".
-    - reference_tensor (torch.Tensor): Tensor of m random samples of all sexes.
+    - reference_tensor (torch.Tensor): Tensor of m random samples or the average values tensor if ref_n == 1.
     """
-
     if seed is not None:
         torch.manual_seed(seed)
 
@@ -573,12 +531,12 @@ def get_sex_specific_split(input_data, clin_data, test_n, ref_n, which_data='inp
     if which_data == 'input':
         test_indices = male_samples.to_series().sample(n=test_n, random_state=seed).index
 
-        # reference with no male samples
-        #reference_indices = female_unknown_samples.to_series().sample(n=ref_n, random_state=seed).index
-
-        # reference random
+        # Reference indices
         remaining_indices = input_data.index.difference(test_indices)
-        reference_indices = remaining_indices.to_series().sample(n=ref_n, random_state=seed).index
+        if ref_n == 1:
+            reference_indices = remaining_indices
+        else:
+            reference_indices = remaining_indices.to_series().sample(n=ref_n, random_state=seed).index
 
     elif which_data == 'reference':
         reference_indices = male_samples.to_series().sample(n=ref_n, random_state=seed).index
@@ -592,13 +550,148 @@ def get_sex_specific_split(input_data, clin_data, test_n, ref_n, which_data='inp
 
     # Extract corresponding data for test and reference
     test_data = input_data.loc[test_indices]
-    reference_data = input_data.loc[reference_indices]
 
-    # Convert to torch tensors
+    if ref_n == 1:
+        # Compute the average values for reference data
+        reference_data = input_data.loc[remaining_indices].mean(axis=0)
+        reference_tensor = torch.tensor(reference_data.values.reshape(1, -1), dtype=torch.float32)
+    else:
+        reference_data = input_data.loc[reference_indices]
+        reference_tensor = torch.tensor(reference_data.values, dtype=torch.float32)
+
+    # Convert test data to tensor
     test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
-    reference_tensor = torch.tensor(reference_data.values, dtype=torch.float32)
 
     return test_tensor, reference_tensor
 
 
+def bar_plot_top_features(attributions, data, top_n=10, xai_method='deepshaplift'):
+    attribution_dict = attribution_per_feature(attributions, data)
+    top_features = get_top_features(attribution_dict, top_n=top_n)
 
+    # Prepare data for plotting
+    top_features_names = [feature for feature in top_features]
+    top_features_scores = [attribution_dict[feature] for feature in top_features]
+
+    # Reverse for horizontal barplot (highest score at the top)
+    top_features_names.reverse()
+    top_features_scores.reverse()
+
+    # Set seaborn style and context
+    sns.set_style("whitegrid")
+    sns.set_context("notebook", rc={"lines.linewidth": 3})
+
+    norm_scores = (np.array(top_features_scores) - min(top_features_scores)) / (max(top_features_scores) - min(top_features_scores))
+    cmap = LinearSegmentedColormap.from_list(
+        "custom_gradient",
+        ["#4354b5", "#43a2b5", "#43b582"]
+    )
+    colors = cmap(norm_scores)
+    if xai_method == 'deepliftshap':
+        xai_name = 'DeepLiftShap'
+    elif xai_method == 'lime':
+        xai_name = 'LIME'
+    elif xai_method == 'integrated_gradients':
+        xai_name = 'Integrated Gradients'
+    else:
+        xai_name = None
+
+    # Create the barplot with a gradient
+    plt.figure(figsize=(8, 6))
+    for i, (name, score, color) in enumerate(zip(top_features_names, top_features_scores, colors)):
+        plt.barh(name, score, color=color, alpha=0.9)
+
+    plt.xlabel("Attribution Value", fontsize=12)
+    plt.title(f"{xai_name} - Top 10 Features by Attribution Value", fontsize=14, fontweight="bold")
+    plt.tight_layout()
+    # Save and show the plot
+    os.makedirs("synth_data/figures", exist_ok=True)
+    plt.savefig(f"synth_reports/figures/top_features_barplot.png")
+    plt.show()
+
+
+def zero_counts_per_feature(attributions, test_tensor):
+    """
+    Calculate the percentage of samples with zero attribution scores for each feature.
+
+    Args:
+        attributions (torch.Tensor): Attribution scores with shape [num_samples, num_features].
+        test_tensor (torch.Tensor): The input tensor for which the attributions were calculated.
+
+    Returns:
+        zero_percentage (list): Percentage of zero attributions per feature.
+    """
+    # Ensure the attributions are a tensor if not already
+    if not isinstance(attributions, torch.Tensor):
+        attributions = torch.tensor(attributions, dtype=torch.float32)
+
+    # Boolean mask where attributions are zero
+    zero_mask = (attributions == 0)
+
+    # Count the number of zero scores per feature
+    zero_counts = zero_mask.sum(dim=0).numpy()  # Summing across samples (rows)
+
+    # Calculate percentage of zeros
+    num_samples = test_tensor.shape[0]
+    zero_percentage = (zero_counts / num_samples) * 100
+
+    return zero_percentage
+
+
+def attr_dict_all_samples(attribution_values, feature_names):
+    attribution_scores_dict = {}
+
+    for feature_idx, feature_name in enumerate(feature_names):
+        attribution_scores_dict[feature_name] = attribution_values[:, feature_idx].detach().numpy().tolist()
+
+    return attribution_scores_dict
+
+
+def calculate_zero_score_percentage(attr_dict):
+    zero_percentage_dict = {}
+
+    for feature, scores in attr_dict.items():
+        if isinstance(scores, (list, np.ndarray)):  # Handle lists or arrays of scores
+            total_scores = len(scores)
+            zero_count = np.sum(np.array(scores) == 0)
+        else:  # Handle single score
+            total_scores = 1
+            zero_count = 1 if scores == 0 else 0
+
+        zero_percentage = (zero_count / total_scores) * 100
+        zero_percentage_dict[feature] = zero_percentage
+
+    #features_with_zero_scores_dict = {feature: percentage for feature, percentage in zero_percentage_dict.items() if percentage > 0}
+    return zero_percentage_dict
+
+
+def separate_zero_score_percentage(zero_percentage_dict, feature_list):
+    feature_set = set(feature_list)
+
+    specified_features = {feature: zero_percentage_dict[feature] for feature in zero_percentage_dict if feature in feature_set}
+    remaining_features = {feature: zero_percentage_dict[feature] for feature in zero_percentage_dict if feature not in feature_set}
+
+    return specified_features, remaining_features
+
+
+def get_best_dimension_cf(run_id):
+    latent_df = get_latent_space(run_id)
+    clin_df = get_cf_clin_data(run_id)
+    merged_df = latent_df.merge(clin_df[['disease']], left_index=True, right_index=True)
+
+    mean_differences = {}
+
+    for column in merged_df.columns:
+        if "L_COMBINED-RNA__varix_INPUT_" in column:
+            latent_number = column.split("_")[-1]
+
+            disease_values = merged_df[merged_df['disease'] == 'cystic fibrosis'][column]
+            control_values = merged_df[merged_df['disease'] == 'normal'][column]
+
+            cf_mean = disease_values.mean()
+            normal_mean = control_values.mean()
+            mean_diff = abs(cf_mean - normal_mean)
+            mean_differences[int(latent_number)] = mean_diff
+
+    best_dimension = max(mean_differences, key=mean_differences.get)
+    return int(best_dimension)

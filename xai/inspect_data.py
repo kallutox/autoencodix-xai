@@ -2,6 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
+from helper_functions import *
+from matplotlib.colors import LinearSegmentedColormap
 
 data_cf = pd.read_parquet("../data/raw/cf_clinical_data_formatted.parquet")
 data_tcga = pd.read_parquet("../data/raw/data_clinical_formatted.parquet")
@@ -28,7 +30,12 @@ def example_plot():
     sns.set_context("notebook", rc={"lines.linewidth": 3})
 
     # Define a modern color palette
-    palette = sns.color_palette("Set2")
+    palette = ["#4354b5", "#43a2b5", "#43b582"]
+    palette = {
+        "Female": "#4354b5",  # Fully opaque
+        "Male": "#43b582",  # Fully opaque
+        "Unknown": "#43b582" # RGBA for transparency (50%)
+    }
 
     # Create the ridge plot
     g = sns.FacetGrid(
@@ -60,5 +67,8 @@ def example_plot():
     plt.show()
 
 
-example_plot()
+run_id = 'synth_data_10features_09signal_base1'
+clin_data = get_cf_clin_data(run_id)
 
+latent_dim = get_best_dimension_cf('base2')
+print(latent_dim)
