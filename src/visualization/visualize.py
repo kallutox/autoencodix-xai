@@ -11,6 +11,10 @@ import click
 import matplotlib.pyplot as plt
 import seaborn as sns
 import seaborn.objects as so
+from matplotlib.colors import ListedColormap
+from matplotlib.colors import LinearSegmentedColormap, Normalize
+from matplotlib.cm import ScalarMappable
+
 
 from src.utils.config import get_cfg
 from src.utils.utils_basic import getlogger, read_ont_file
@@ -175,21 +179,10 @@ def plot_latent_2D(
 ):
     """
     Creates a 2D visualization of the 2D embedding of the latent space.
-    ARGS:
-        cfg (dict): config dictionary
-        embedding (pd.DataFrame): embedding on which is visualized. Assumes prior 2D dimension reduction.
-        labels (list): Clinical parameters or cluster labels to colorize samples (points)
-        layer (str): Label for plot title to indicate which network layer is represented by UMAP/TSNE
-        figsize (tuple): Figure size specification.
-        center (boolean): If True (default) centers of clusters/groups are visualized as stars.
-        save_fig (str): File path for saving the plot. Use appropriate file
-                        endings to specify image type (e.g. '*.png')
-    RETURNS:
-        fig (matplotlib.figure): Figure handle
-
     """
     logger = getlogger(cfg)
     numeric = False
+
     if not (type(labels[0]) is str):
         if len(np.unique(labels)) > 3:
             if not cfg["PLOT_NUMERIC"]:
@@ -200,33 +193,27 @@ def plot_latent_2D(
                     labels, q=4, labels=["1stQ", "2ndQ", f"3rdQ", f"4thQ"]
                 ).astype(str)
             else:
-                center = False  ## Disable centering for numeric params
+                center = False
                 numeric = True
         else:
             labels = [str(x) for x in labels]
 
     fig, ax1 = plt.subplots(figsize=figsize)
 
-    # check if label or embedding is longerm and duplicate the shorter one
-    if len(labels) < embedding.shape[0]:
-        logger.warning(
-            "Given labels do not have the same length as given sample size. Labels will be duplicated."
-        )
-        labels = [
-            label for label in labels for _ in range(embedding.shape[0] // len(labels))
-        ]
-    elif len(labels) > embedding.shape[0]:
-        labels = list(set(labels))
+    # Set custom colors if number of clusters is 2
+    if len(np.unique(labels)) == 2:
+        custom_palette = ["#43b582", "#4354b5"]
+    else:
+        custom_palette = None
 
     if numeric:
         ax2 = sns.scatterplot(
             x=embedding.iloc[:, 0],
             y=embedding.iloc[:, 1],
             hue=labels,
-            palette="bwr",
+            palette=custom_palette if custom_palette else "bwr",
             s=40,
             alpha=0.5,
-            ec="black",
         )
     else:
         ax2 = sns.scatterplot(
@@ -234,58 +221,58 @@ def plot_latent_2D(
             y=embedding.iloc[:, 1],
             hue=labels,
             hue_order=np.unique(labels),
+            palette=custom_palette if custom_palette else None,
             s=40,
             alpha=0.5,
-            ec="black",
         )
+
     if center:
+        unique_labels = np.unique(labels)
+        if custom_palette:
+            center_colors = dict(zip(unique_labels, custom_palette))
+        else:
+            center_colors = None
+
         means = embedding.groupby(by=labels).mean()
-        # logger.info(labels)
-        # logger.info(means)
+        for label in unique_labels:
+            color = center_colors[label] if center_colors else None
+            sns.scatterplot(
+                x=[means.loc[label, embedding.columns[0]]],
+                y=[means.loc[label, embedding.columns[1]]],
+                color=color,
+                s=200,
+                alpha=0.9,
+                marker="*",
+                legend=False,
+                ax=ax2,
+            )
 
-        ax2 = sns.scatterplot(
-            x=means.iloc[:, 0],
-            y=means.iloc[:, 1],
-            hue=np.unique(labels),
-            hue_order=np.unique(labels),
-            s=200,
-            ec="black",
-            alpha=0.9,
-            marker="*",
-            legend=False,
-            ax=ax2,
-        )
-
-    if not xlim == None:
+    if xlim:
         ax2.set_xlim(xlim[0], xlim[1])
 
-    if not ylim == None:
+    if ylim:
         ax2.set_ylim(ylim[0], ylim[1])
 
-    if not scale == None:
+    if scale:
         plt.yscale(scale)
         plt.xscale(scale)
+
     ax2.set_xlabel("Dim 1")
     ax2.set_ylabel("Dim 2")
-    # ax2.set(title=f'{cfg["DIM_RED_METH"]} of {layer}')
-    legend_cols = 1
-    if len(np.unique(labels)) > 10:
-        legend_cols = 2
 
-    if no_leg:
-        plt.legend([], [], frameon=False)
-    else:
+    if not no_leg:
         sns.move_legend(
             ax2,
-            "upper left",
-            bbox_to_anchor=(1, 1),
-            ncol=legend_cols,
+            loc="upper right",  # Specify legend location
             title=param,
-            frameon=False,
+            frameon=True,
+            fontsize=24,
+            title_fontsize=26,
         )
 
-    if len(save_fig) > 0:
+    if save_fig:
         fig.savefig(save_fig, bbox_inches="tight")
+
     return fig
 
 

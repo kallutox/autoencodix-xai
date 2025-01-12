@@ -68,7 +68,89 @@ def example_plot():
 
 
 run_id = 'synth_data_10features_09signal_base1'
-clin_data = get_cf_clin_data(run_id)
+example_plot()
 
-latent_dim = get_best_dimension_cf('base2')
-print(latent_dim)
+def get_cf_metadata_old(ensembl_ids=None):
+    """
+    Fetches metadata for the provided Ensembl IDs. If no IDs are provided, returns the entire metadata.
+
+    Args:
+        ensembl_ids (list or pd.Index, optional): List of Ensembl IDs for which metadata is to be fetched.
+
+    Returns:
+        dict: Dictionary with Ensembl IDs as keys and their metadata as values.
+    """
+    var_path = os.path.join(
+        os.path.abspath(os.path.join(current_directory, "..")),
+        "data",
+        "raw",
+        "combined_data_var.parquet",
+    )
+    var_df = pd.read_parquet(var_path)
+
+    if ensembl_ids is None:
+        return var_df.to_dict(orient='index')
+
+    if not isinstance(ensembl_ids, pd.Index):
+        ensembl_ids = pd.Index(ensembl_ids)
+
+    matched_var_info = var_df.reindex(ensembl_ids)
+    var_info_dict = matched_var_info.to_dict(orient='index')
+
+    return var_info_dict
+
+
+def update_feature_names_only(meta_data_preprocessed, meta_data_original):
+    """
+    Updates the `feature_name` in `meta_data_preprocessed` with `original_gene_symbols`
+    from `meta_data_original` for entries where `feature_name` starts with "ENSG".
+
+    Args:
+        meta_data_preprocessed (dict): The preprocessed metadata dictionary.
+        meta_data_original (dict): The original metadata dictionary.
+
+    Returns:
+        dict: Updated `meta_data_preprocessed`.
+    """
+    for key, entry in meta_data_preprocessed.items():
+        # Check if the feature_name starts with ENSG
+        if entry.get("feature_name", "").startswith("ENSG"):
+            # Fetch the corresponding entry from the original metadata
+            original_entry = meta_data_original.get(key, {})
+            original_gene_symbol = original_entry.get("original_gene_symbols")
+
+            # Update the feature_name if original_gene_symbols exists
+            if original_gene_symbol:
+                entry["feature_name"] = original_gene_symbol
+
+    return meta_data_preprocessed
+
+
+def check_for_genes():
+    clin_data = get_cf_clin_data()
+    metadata_processed = get_cf_metadata()
+    expr_data = get_raw_data('cf_formatted.parquet')
+
+    ensembl_ids =['ENSG00000165471', 'ENSG00000134184', 'ENSG00000204490']
+
+    for eid in ensembl_ids:
+        if eid in expr_data.columns:
+            print(f"{eid} exists in the DataFrame.")
+        else:
+            print(f"{eid} does not exist in the DataFrame.")
+
+
+# sub_keys = set()  # Use a set to avoid duplicates
+# for key, inner_dict in meta_data_old.items():
+#     sub_keys.update(inner_dict.keys())
+#
+# print(meta_data_processed)
+
+
+# # update feature_names manually:
+# new_meta_data["ENSG00000185641"]["feature_name"] =
+# new_meta_data["ENSG00000230979"]["feature_name"] =
+# new_meta_data["ENSG00000233635"]["feature_name"] =
+
+
+

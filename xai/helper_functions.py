@@ -215,10 +215,11 @@ def get_random_data_split_tensors(data, background_n, test_n, seed=None):
     background_data = df_part1.sample(n=background_n, replace=False, random_state=seed)
     test_data = df_part2.sample(n=test_n, replace=False, random_state=seed)
 
-    background_tensor = torch.tensor(background_data.to_numpy()).float()
     test_tensor = torch.tensor(test_data.to_numpy()).float()
 
-    return background_tensor, test_tensor
+    background_tensor = torch.tensor(background_data.to_numpy()).float()
+
+    return test_tensor, background_tensor
 
 
 def get_latent_space(run_id):
@@ -392,7 +393,16 @@ def top_n_attributions_with_plot(attribution_dict, top_n=10):
     return data
 
 
-def get_cf_metadata(ensembl_ids):
+def get_cf_metadata(ensembl_ids=None):
+    """
+    Fetches metadata for the provided Ensembl IDs. If no IDs are provided, returns the entire metadata.
+
+    Args:
+        ensembl_ids (list or pd.Index, optional): List of Ensembl IDs for which metadata is to be fetched.
+
+    Returns:
+        dict: Dictionary with Ensembl IDs as keys and their metadata as values.
+    """
     var_path = os.path.join(
         os.path.abspath(os.path.join(current_directory, "..")),
         "data",
@@ -400,18 +410,20 @@ def get_cf_metadata(ensembl_ids):
         "cf_gene_metadata_formatted.parquet",
     )
     var_df = pd.read_parquet(var_path)
+
+    if ensembl_ids is None:
+        return var_df.to_dict(orient='index')
+
     if not isinstance(ensembl_ids, pd.Index):
         ensembl_ids = pd.Index(ensembl_ids)
 
-    #matched_var_info = var_df.reindex[ensembl_ids]
     matched_var_info = var_df.reindex(ensembl_ids)
-
     var_info_dict = matched_var_info.to_dict(orient='index')
 
     return var_info_dict
 
 
-def get_cf_clin_data(run_id):
+def get_cf_clin_data():
     clin_path = os.path.join(
         os.path.abspath(os.path.join(current_directory, "..")),
         "data",
@@ -450,7 +462,7 @@ def get_training_data(run_id, input_data):
 
 def get_best_dimension_by_sex_ttest(run_id):
     latent_df = get_latent_space(run_id)
-    clin_df = get_cf_clin_data(run_id)
+    clin_df = get_cf_clin_data()
     merged_df = latent_df.merge(clin_df[['sex']], left_index=True, right_index=True)
 
     p_values = {}
@@ -473,7 +485,7 @@ def get_best_dimension_by_sex_ttest(run_id):
 
 def get_best_dimension_by_sex_means(run_id):
     latent_df = get_latent_space(run_id)
-    clin_df = get_cf_clin_data(run_id)
+    clin_df = get_cf_clin_data()
     merged_df = latent_df.merge(clin_df[['sex']], left_index=True, right_index=True)
 
     mean_differences = {}
@@ -565,7 +577,57 @@ def get_sex_specific_split(input_data, clin_data, test_n, ref_n, which_data='inp
     return test_tensor, reference_tensor
 
 
-def bar_plot_top_features(attributions, data, top_n=10, xai_method='deepshaplift'):
+def get_cf_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
+    """
+    Select n random samples where sex == "male" as the test tensor and
+    m random samples of all sexes as the reference tensor, ensuring no overlap.
+    If ref_n == 1, the reference tensor contains the average values across all remaining indices.
+
+    Parameters:
+    - input_data (pd.DataFrame): Dataframe containing input data.
+    - clin_data (pd.DataFrame): Dataframe containing clinical data with a 'sex' column.
+    - test_n (int): Number of samples where sex == "male" for the test tensor.
+    - ref_n (int): Number of samples for the reference tensor (all sexes) or 1 for the average reference tensor.
+    - which_data (str): Whether to specify test samples based on 'input' or 'reference'.
+    - seed (int): Random seed for reproducibility (default is None).
+
+    Returns:
+    - test_tensor (torch.Tensor): Tensor of n random samples where sex == "male".
+    - reference_tensor (torch.Tensor): Tensor of m random samples or the average values tensor if ref_n == 1.
+    """
+    if seed is not None:
+        torch.manual_seed(seed)
+
+    # ensure input and clin_data have matching indices
+    clin_data = clin_data.loc[input_data.index]
+
+    cf_samples = clin_data[clin_data['disease'] == 'cystic fibrosis'].index
+    normal_samples = clin_data[clin_data['disease'] == 'normal'].index
+
+    test_indices = cf_samples.to_series().sample(n=test_n, random_state=seed).index
+
+    remaining_indices = input_data.index.difference(test_indices)
+    if ref_n == 1:
+        reference_indices = remaining_indices
+    else:
+        reference_indices = remaining_indices.to_series().sample(n=ref_n, random_state=seed).index
+
+    test_data = input_data.loc[test_indices]
+
+    if ref_n == 1:
+        # compute the average values for reference data
+        reference_data = input_data.loc[remaining_indices].mean(axis=0)
+        reference_tensor = torch.tensor(reference_data.values.reshape(1, -1), dtype=torch.float32)
+    else:
+        reference_data = input_data.loc[reference_indices]
+        reference_tensor = torch.tensor(reference_data.values, dtype=torch.float32)
+
+    test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
+
+    return test_tensor, reference_tensor
+
+
+def bar_plot_top_features(attributions, data, top_n=10, dataset='synth', xai_method='deepshaplift', beta=0.01, n=15):
     attribution_dict = attribution_per_feature(attributions, data)
     top_features = get_top_features(attribution_dict, top_n=top_n)
 
@@ -602,12 +664,109 @@ def bar_plot_top_features(attributions, data, top_n=10, xai_method='deepshaplift
         plt.barh(name, score, color=color, alpha=0.9)
 
     plt.xlabel("Attribution Value", fontsize=12)
-    plt.title(f"{xai_name} - Top 10 Features by Attribution Value", fontsize=14, fontweight="bold")
+    plt.title(f"{xai_name} - Top {n} Features by Attribution Value", fontsize=14, fontweight="bold")
     plt.tight_layout()
     # Save and show the plot
-    os.makedirs("synth_data/figures", exist_ok=True)
-    plt.savefig(f"synth_reports/figures/top_features_barplot.png")
+    if dataset == 'synth':
+        os.makedirs("synth_reports/figures", exist_ok=True)
+        plt.savefig(f"synth_reports/figures/top_features_stacked_barplot.png")
+    elif dataset == 'cf':
+        os.makedirs("cf_reports", exist_ok=True)
+        plt.savefig(f"cf_reports/barplot_top{n}_{xai_method}_{beta}.png")
+    elif dataset == 'tcga':
+        os.makedirs("tcga_reports", exist_ok=True)
+        plt.savefig(f"tcga_reports/barplot_top{n}_{xai_method}_{beta}.png")
     plt.show()
+
+
+# TODO - does not work
+def stacked_bar_plot_top_features(attributions, data, clin_data, feature_names, dataset='synth', top_n=10):
+    """
+    Plots top N features with attribution values as stacked bar plots, showing relative contributions
+    from different lung conditions, matching clinical data by feature IDs but plotting gene names.
+
+    Args:
+        attributions: Feature attribution values.
+        data: Feature data.
+        clin_data: Clinical data DataFrame containing 'lung_condition' and feature IDs.
+        feature_names: List of feature IDs corresponding to the attributions.
+        top_n: Number of top features to plot.
+        xai_method: Explainability method name.
+    """
+    try:
+        # Attribution dictionary
+        attribution_dict = attribution_per_feature(attributions, data)
+        top_features = get_top_features(attribution_dict, top_n=top_n)
+
+        # Map feature IDs to gene names
+        gene_metadata = get_cf_metadata(feature_names)
+        feature_id_to_gene_name = {id: gene_metadata[id]['feature_name'] for id in feature_names if id in gene_metadata}
+
+        # Prepare data for plotting
+        top_feature_ids = [feature for feature in top_features]  # Feature IDs
+        top_features_scores = [attribution_dict[feature] for feature in top_features]
+        top_feature_names = [feature_id_to_gene_name.get(feature, feature) for feature in top_feature_ids]
+
+        # Reverse for horizontal barplot (highest score at the top)
+        top_feature_ids.reverse()
+        top_features_scores.reverse()
+        top_feature_names.reverse()
+
+        # Calculate contributions by lung conditions
+        lung_conditions = clin_data['lung_condition'].unique()
+        condition_contributions = {condition: [] for condition in lung_conditions}
+
+        for feature_id in top_feature_ids:
+            for condition in lung_conditions:
+                # Get clinical data for this condition
+                condition_data = clin_data[clin_data['lung_condition'] == condition]
+
+                # Calculate the average contribution of this feature in this condition
+                if feature_id in condition_data.columns:
+                    avg_contribution = condition_data[feature_id].mean()
+                else:
+                    avg_contribution = 0
+                condition_contributions[condition].append(avg_contribution)
+
+        # Normalize contributions to ensure stacked percentages
+        for i in range(len(top_feature_ids)):
+            total = sum(condition_contributions[cond][i] for cond in lung_conditions)
+            if total > 0:
+                for cond in lung_conditions:
+                    condition_contributions[cond][i] /= total
+
+        # Stacked bar plot
+        colors = ["#4354b5", "#43a2b5", "#43b582", "#FF6347", "#FFD700"]  # Add more colors if needed
+        condition_colors = {cond: color for cond, color in zip(lung_conditions, colors)}
+
+        plt.figure(figsize=(10, 8))
+        bottom = np.zeros(len(top_feature_names))
+        for condition, color in condition_colors.items():
+            plt.barh(top_feature_names, condition_contributions[condition], color=color, label=condition, left=bottom)
+            bottom += np.array(condition_contributions[condition])
+
+        # Add labels and title
+        plt.xlabel("Attribution Value (normalized)", fontsize=12)
+        plt.ylabel("Features", fontsize=12)
+        plt.title(f"Top {top_n} Features by Attribution Value with Lung Condition Contributions", fontsize=14, fontweight="bold")
+        plt.legend(title="Lung Conditions", bbox_to_anchor=(1.05, 1), loc='upper left')
+        plt.tight_layout()
+
+        # Save and show plot
+
+        if dataset == 'synth':
+            os.makedirs("synth_reports/figures", exist_ok=True)
+            plt.savefig(f"synth_reports/figures/top_features_stacked_barplot.png")
+        elif dataset == 'cf':
+            os.makedirs("cf_reports", exist_ok=True)
+            plt.savefig(f"cf_reports/venn_diagram_all_explainers.png")
+        elif dataset == 'tcga':
+            os.makedirs("tcga_reports", exist_ok=True)
+            plt.savefig(f"tcga_reports/venn_diagram_all_explainers.png")
+        plt.show()
+
+    except Exception as e:
+        print("An error occurred during plotting:", e)
 
 
 def zero_counts_per_feature(attributions, test_tensor):
@@ -676,7 +835,7 @@ def separate_zero_score_percentage(zero_percentage_dict, feature_list):
 
 def get_best_dimension_cf(run_id):
     latent_df = get_latent_space(run_id)
-    clin_df = get_cf_clin_data(run_id)
+    clin_df = get_cf_clin_data()
     merged_df = latent_df.merge(clin_df[['disease']], left_index=True, right_index=True)
 
     mean_differences = {}

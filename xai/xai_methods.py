@@ -14,6 +14,7 @@ def captum_importance_values(
     run_id,
     model_type="varix",
     data_types="RNA",
+    data_set="cf",
     dimension=0,
     latent_space_explain=False,
     xai_method="deepliftshap",
@@ -43,23 +44,35 @@ def captum_importance_values(
     config_data = get_config(run_id)
 
     input_data = get_interim_data(run_id, model_type)
-    clin_data = get_cf_clin_data(run_id)
+    clin_data_cf = get_cf_clin_data()
     feature_names = input_data.columns.tolist()
     feature_names = [name.replace("RNA_", "") for name in feature_names]  # remove RNA_prefix
+
+    # get gene names -- works for cf
+    gene_metadata = get_cf_metadata(feature_names)
+    gene_names = [gene_metadata[id]['feature_name'] for id in feature_names if id in gene_metadata]
 
     input_dim = get_input_dim(state_dict)
     config_latent_dim = config_data["LATENT_DIM_FIXED"]
 
-    # specify target and reference data
     train_data = get_training_data(run_id, input_data)
 
-    # background_tensor, test_tensor = get_random_data_split_tensors(
-    #     train_data, background_n=500, test_n=50, seed=42
-    # )
-
-    ###### synth data only ###### input tensor only male, background random #last: seed=44
-    test_tensor, background_tensor = get_sex_specific_split(
-        input_data=train_data, clin_data=clin_data, test_n=150,  ref_n=300, which_data='input', seed=random_seed
+    if data_set == "synthetic":
+        test_tensor, background_tensor = get_sex_specific_split(
+            input_data=train_data, clin_data=clin_data_cf, test_n=150,  ref_n=300, seed=random_seed
+            )
+    elif data_set == "cf":
+        test_tensor, background_tensor = get_cf_specific_split(
+            input_data=train_data, clin_data=clin_data_cf, test_n=150, ref_n=300, seed=random_seed
+        )
+    elif data_set == "tcga":    # TODO
+        test_tensor, background_tensor = get_cf_specific_split(
+            input_data=train_data, clin_data=clin_data_cf, test_n=150, ref_n=300, seed=random_seed
+        )
+    else:
+        print("No valid data set was chosen, test and reference data will be random.")
+        test_tensor, background_tensor = get_random_data_split_tensors(
+            train_data, background_n=300, test_n=150, seed=random_seed
         )
 
     if model_type == "varix":
@@ -90,7 +103,7 @@ def captum_importance_values(
     model.eval()
 
     if xai_method == "deepliftshap":
-        dls = DeepLiftShap(model)
+        dls = DeepLiftShap(model, multiply_by_inputs=True)
 
         attributions, delta = dls.attribute(
             inputs=test_tensor,
@@ -99,17 +112,8 @@ def captum_importance_values(
             target=dimension if not latent_space_explain else None
         )
 
-    elif xai_method == "gradientshap":
-        gradient_shap = GradientShap(model)
-        attributions, delta = gradient_shap.attribute(
-            inputs=test_tensor,
-            baselines=background_tensor,
-            return_convergence_delta=True,
-            target=dimension if not latent_space_explain else None
-        )
-
     elif xai_method == "integrated_gradients":
-        integrated_gradients = IntegratedGradients(model)
+        integrated_gradients = IntegratedGradients(model, multiply_by_inputs=True)
         mean_baseline = background_tensor.mean(dim=0, keepdim=True)
 
         attributions, delta = integrated_gradients.attribute(
@@ -157,7 +161,7 @@ def captum_importance_values(
             shap.summary_plot(
                 stacked_attributions.numpy(),
                 test_tensor,
-                feature_names=feature_names,
+                feature_names=gene_names,
                 max_display=15
             )
             bar_plot_top_features(stacked_attributions.numpy(), interim_data, top_n=15, xai_method='lime')
@@ -166,7 +170,7 @@ def captum_importance_values(
             shap.summary_plot(
                 attributions.detach().numpy(),
                 test_tensor,
-                feature_names=feature_names,
+                feature_names=gene_names,
                 max_display=15,
             )
             bar_plot_top_features(attributions, interim_data, top_n=15)
@@ -183,9 +187,9 @@ def captum_importance_values(
 
     # attribution dict with all scores across samples
     if xai_method == 'lime':
-        attr_dict_all = attr_dict_all_samples(stacked_attributions, feature_names)
+        attr_dict_all = attr_dict_all_samples(stacked_attributions, gene_names)
     else:
-        attr_dict_all = attr_dict_all_samples(attributions, feature_names)
+        attr_dict_all = attr_dict_all_samples(attributions, gene_names)
 
     if return_delta:
         return attributions, delta

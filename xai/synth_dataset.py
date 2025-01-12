@@ -134,7 +134,7 @@ def signal_strength_plot_across_model(xai_method='deepliftshap'):
 
     # save the plot
     base_names = "_".join(base_folders)
-    os.makedirs("synth_data/figures", exist_ok=True)
+    os.makedirs("synth_reports/figures", exist_ok=True)
     plt.savefig(f"synth_reports/figures/synth_data_{base_names}_{xai_method}_male_target_abs.png")
     plt.show()
 

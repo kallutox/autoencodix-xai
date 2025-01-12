@@ -19,13 +19,12 @@ run_id = 'synth_data_10features_09signal_base1'
 data_types = 'RNA'
 dataset = 'cf'
 model_type = 'varix'
-xai_method = 'integrated_gradients'
-latent_dim = get_best_dimension_cf(run_id)
+xai_method = 'lime'
+latent_dim = get_best_dimension_by_sex_means(run_id)
 # add parameter to change reference?
 
 attribution_values = captum_importance_values(run_id=run_id, data_types=data_types, model_type=model_type,
     dimension=latent_dim, latent_space_explain=True, xai_method=xai_method, visualize=True, return_delta=False, random_seed=None)
-
 
 
 
