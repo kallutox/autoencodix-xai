@@ -82,40 +82,6 @@ def disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, be
     return top_features, all_features, all_attribution_values
 
 
-def feature_overlap(dls_list, lime_list, ig_list):
-    gene_metadata_dls = get_cf_metadata(dls_list)
-    gene_names_dls = [gene_metadata_dls[id]['feature_name'] for id in dls_list if id in gene_metadata_dls]
-
-    gene_metadata_lime = get_cf_metadata(lime_list)
-    gene_names_lime = [gene_metadata_lime[id]['feature_name'] for id in lime_list if id in gene_metadata_lime]
-
-    gene_metadata_ig = get_cf_metadata(ig_list)
-    gene_names_ig = [gene_metadata_ig[id]['feature_name'] for id in ig_list if id in gene_metadata_ig]
-
-    overlap_1_2 = set(gene_names_dls) & set(gene_names_lime)
-    overlap_1_3 = set(gene_names_dls) & set(gene_names_ig)
-    overlap_2_3 = set(gene_names_lime) & set(gene_names_ig)
-    overlap_all = set(gene_names_dls) & set(gene_names_lime) & set(gene_names_ig)
-
-    # Calculate unique features for each explainer
-    unique_dls = set(gene_names_dls) - (set(gene_names_lime) | set(gene_names_ig))
-    unique_lime = set(gene_names_lime) - (set(gene_names_dls) | set(gene_names_ig))
-    unique_ig = set(gene_names_ig) - (set(gene_names_dls) | set(gene_names_lime))
-
-
-    # Print the overlaps and unique features
-    print("Overlapping Features:")
-    print(f"DLS & LIME: {list(overlap_1_2)}")
-    print(f"DLS & IG: {list(overlap_1_3)}")
-    print(f"LIME & IG: {list(overlap_2_3)}")
-    print(f"All Explainers: {list(overlap_all)}")
-
-    print("\nUnique Features:")
-    print(f"Unique to DLS: {list(unique_dls)}")
-    print(f"Unique to LIME: {list(unique_lime)}")
-    print(f"Unique to IG: {list(unique_ig)}")
-
-
 def get_cftr_rank(feature_list):
     cftr_id = 'ENSG00000001626'
 
@@ -168,82 +134,6 @@ def print_overlap_only():
     print(feature_overlap(deeplift_top15, lime_top15, ig_top15))
 
 
-def plot_venn_diagram(dls_set, lime_set, ig_set, beta, n):
-    """
-    Plots a Venn diagram showing overlaps between three sets of features.
-    Only colors regions with actual overlaps to maintain visual simplicity.
-    """
-    # Convert lists to sets
-    dls_set = set(dls_set)
-    lime_set = set(lime_set)
-    ig_set = set(ig_set)
-
-    # Set up the figure
-    plt.figure(figsize=(6, 6))
-
-    # Create the Venn diagram
-    venn = venn3(
-        [dls_set, lime_set, ig_set],
-        ('DeepLiftShap', 'LIME', 'Integrated Gradients')
-    )
-
-    # Define colors for each region
-    patch_colors = {
-        '100': "#4354b5",  # DLS only (Blue)
-        '010': "#43a2b5",  # LIME only (Teal)
-        '001': "#43b582",  # IG only (Green)
-        '110': "#4a74d6",  # DLS & LIME (Blue + Teal blend)
-        '101': "#4a7c93",  # DLS & IG (Blue + Green blend)
-        '011': "#43b5a8",  # LIME & IG (Teal + Green blend)
-        '111': "#7a87cc"   # All three (Purple)
-    }
-
-    # Apply colors to the patches
-    for patch_id, color in patch_colors.items():
-        patch = venn.get_patch_by_id(patch_id)
-        if patch is not None:
-            patch.set_color(color)
-            patch.set_alpha(0.6)  # Set transparency for the color
-
-    plt.title(f"Top {n} Features Overlap", fontsize=14, fontweight="bold")
-    plt.tight_layout()
-    os.makedirs("cf_reports", exist_ok=True)
-    plt.savefig(f"cf_reports/venn_diagram_top{n}_{beta}.png")
-    plt.show()
-
-
-def plot_attribution_histogram(attribution_values, beta, xai_method='deepliftshap'):
-    plt.figure(figsize=(10, 6))
-    plt.hist(attribution_values, bins=50, color="#43a2b5", alpha=0.8)
-
-    if xai_method == 'deepliftshap':
-        xai_label = 'DeepLiftShap'
-    elif xai_method == 'lime':
-        xai_label = 'LIME'
-    elif xai_method == 'integrated_gradients':
-        xai_label = 'Integrated Gradients'
-    else:
-        print("{} is not a valid method, please choose deepliftshap, lime or integrated_gradient instead.".format(xai_method))
-        sys.exit()
-
-    plt.xlabel("Attribution Scores", fontsize=12)
-    plt.ylabel("Number of Features", fontsize=12)
-    plt.title(f" {xai_label} - Distribution of Attribution Scores", fontsize=14, fontweight="bold")
-
-    if beta == 0.01:
-        beta_val = '001'
-    elif beta == 1:
-        beta_val = '1'
-    else:
-        print('beta invalid.')
-        sys.exit()
-
-    os.makedirs("cf_reports", exist_ok=True)
-    plt.savefig(f"cf_reports/attribution_histogram_{xai_method}_{beta_val}.png")
-    plt.tight_layout()
-    plt.show()
-
-
 def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_plot=False, beta=0.01):
     dls_top15, dls_all, dls_attr = disease_results_using_model_aggr(xai_method='deepliftshap', barplot=bar_plot, beeswarmplot=beeswarm_plot, top_n=15, beta=beta)
     lime_top15, lime_all, lime_attr = disease_results_using_model_aggr(xai_method='lime', barplot=bar_plot, beeswarmplot=beeswarm_plot, top_n=15, beta=beta)
@@ -258,7 +148,7 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
         else:
             beta_val = '1'
 
-        plot_venn_diagram(dls_top15, lime_top15, ig_top15, beta_val, 15)
+        plot_venn_diagram(dls_top15, lime_top15, ig_top15, beta_val, 15, show=False, dataset='cf')
 
         dls_top100 = dls_all[:100]
         lime_top100 = lime_all[:100]
@@ -268,12 +158,12 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
         print(f"LIME Top 100: {len(lime_top100)}")
         print(f"IG Top 100: {len(ig_top100)}")
 
-        plot_venn_diagram(dls_top100, lime_top100, ig_top100, beta_val, 100)
+        plot_venn_diagram(dls_top100, lime_top100, ig_top100, beta_val, 100, show=False, dataset='cf')
 
     if histogram:
-        plot_attribution_histogram(dls_attr, beta, xai_method='deepliftshap')
-        plot_attribution_histogram(lime_attr, beta, xai_method='lime')
-        plot_attribution_histogram(ig_attr, beta, xai_method='integrated_gradients')
+        plot_attribution_histogram(dls_attr, beta, xai_method='deepliftshap', show=True, dataset='cf')
+        plot_attribution_histogram(lime_attr, beta, xai_method='lime', show=True, dataset='cf')
+        plot_attribution_histogram(ig_attr, beta, xai_method='integrated_gradients', show=True, dataset='cf')
 
     # optional
     # gene_metadata = get_cf_metadata(ig_top15)
@@ -285,7 +175,7 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
 
 
 #disease_results_using_model_aggr()
-run_cf_analysis(beta=1)
+run_cf_analysis(beta=1, bar_plot=True, venn_diagram=True)
 # topf, allf, allattr = disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, top_n=15, beta=0.01)
 # plot_attribution_histogram(allattr, xai_method='deepliftshap')
 

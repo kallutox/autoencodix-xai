@@ -1,23 +1,44 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
 from helper_functions import *
-from matplotlib.colors import LinearSegmentedColormap
 
 data_cf = pd.read_parquet("../data/raw/cf_clinical_data_formatted.parquet")
 data_tcga = pd.read_parquet("../data/raw/data_clinical_formatted.parquet")
+expr_tcga = get_raw_data("data_mrna_seq_v2_rsem_formatted.parquet")
+mut_tcga = pd.read_parquet("../data/raw/data_combi_MUT_CNA_formatted.parquet")
+met_tcga = pd.read_parquet("../data/raw/data_methylation_per_gene_formatted.parquet")
+var_path = os.path.join(
+    os.path.abspath(os.path.join(current_directory, "..")),
+    "data",
+    "raw",
+    "data_mutations.txt",
+)
+tcga_var = pd.read_csv(var_path, sep='\t')
 
 sex_counts_tcga = data_tcga['SEX'].value_counts()
 sex_counts_cf = data_cf['sex'].value_counts()
 cf_perc = data_cf['sex'].value_counts(normalize=True) * 100
 tcga_perc = data_tcga['SEX'].value_counts(normalize=True) * 100
+tcga_interim = get_interim_data('tcga_001_9')
 
-sample_split = pd.read_parquet("../data/processed/synth_data_10features_09signal/sample_split.parquet")
-#print(sample_split.head())
+# Align column names if necessary
+# mut_tcga.columns = expr_tcga.columns
+# met_tcga.columns = expr_tcga.columns
+
+combined_df = pd.concat([expr_tcga, mut_tcga, met_tcga], axis=1, join='inner')
+merged_df = tcga_interim.merge(data_tcga['CANCER_TYPE_ACRONYM'], left_index=True, right_index=True)
+
+print(tcga_interim.shape)
+
+merged_df = combined_df.merge(data_tcga['CANCER_TYPE_ACRONYM'], left_index=True, right_index=True)
+#merged_df = tcga_interim.merge(data_tcga['CANCER_TYPE_ACRONYM'], left_index=True, right_index=True)
+#print(merged_df['CANCER_TYPE_ACRONYM'].value_counts())
+#print(expr_tcga.shape)
+
+# merged_df = expr_tcga.merge(data_tcga['CANCER_TYPE_ACRONYM'], left_index=True, right_index=True)
+# print(len(data_tcga['CANCER_TYPE_ACRONYM'].unique()))
 
 
 def example_plot():
+
     # Example data format (replace with your actual data)
     data = pd.DataFrame({
         "latent_dim": np.repeat([f"DIM_{i}" for i in range(1, 9)], 50),
@@ -30,11 +51,10 @@ def example_plot():
     sns.set_context("notebook", rc={"lines.linewidth": 3})
 
     # Define a modern color palette
-    palette = ["#4354b5", "#43a2b5", "#43b582"]
     palette = {
-        "Female": "#4354b5",  # Fully opaque
-        "Male": "#43b582",  # Fully opaque
-        "Unknown": "#43b582" # RGBA for transparency (50%)
+        "Unknown": "#43a2b5",
+        "Female": "#4354b5",
+        "Male": "#43b582"
     }
 
     # Create the ridge plot
@@ -43,32 +63,28 @@ def example_plot():
         row="latent_dim",
         hue="sex",
         aspect=3,
-        height=1,
+        height=0.8,  # Reduce height for compression
         palette=palette,
         sharex=False,
-        sharey=False,
-        margin_titles=False
+        sharey=False
     )
-    g.map(sns.kdeplot, "latent_intensity", alpha=0.7, fill=True, warn_singular=False)
+    g.map(sns.kdeplot, "latent_intensity", alpha=0.8, fill=True, warn_singular=False)  # Increase opacity
 
     g.set(xlim=(-3, 12))
     for ax in g.axes.flat:
         ax.set_title("")
-    g.set_titles("{row_name}", loc="left", size=11)
+    g.set_titles("{row_name}", loc="left", size=10)
     g.set_axis_labels("Latent Intensity", "")
     g.set(yticks=[], ylabel="")
     g.despine(left=True)
 
     # Adjust spacing and position of the legend
-    g.fig.subplots_adjust(hspace=0.5)
-    g.add_legend(title="Latent Dimension - sex", loc="upper right", bbox_to_anchor=(1, 0.7))
+    g.fig.subplots_adjust(hspace=0.4)  # Reduce spacing between rows
+    g.add_legend(title="Sex", loc="upper right", bbox_to_anchor=(1, 0.7))
 
     plt.tight_layout()
     plt.show()
 
-
-run_id = 'synth_data_10features_09signal_base1'
-example_plot()
 
 def get_cf_metadata_old(ensembl_ids=None):
     """
@@ -140,6 +156,10 @@ def check_for_genes():
             print(f"{eid} does not exist in the DataFrame.")
 
 
+
+
+
+
 # sub_keys = set()  # Use a set to avoid duplicates
 # for key, inner_dict in meta_data_old.items():
 #     sub_keys.update(inner_dict.keys())
@@ -151,6 +171,5 @@ def check_for_genes():
 # new_meta_data["ENSG00000185641"]["feature_name"] =
 # new_meta_data["ENSG00000230979"]["feature_name"] =
 # new_meta_data["ENSG00000233635"]["feature_name"] =
-
 
 

@@ -18,6 +18,7 @@ def captum_importance_values(
     dimension=0,
     latent_space_explain=False,
     xai_method="deepliftshap",
+    cancer_type="BRCA",
     visualize=True,
     return_delta=True,
     random_seed=None
@@ -45,6 +46,7 @@ def captum_importance_values(
 
     input_data = get_interim_data(run_id, model_type)
     clin_data_cf = get_cf_clin_data()
+    clin_data_tcga = get_tcga_clin_data()
     feature_names = input_data.columns.tolist()
     feature_names = [name.replace("RNA_", "") for name in feature_names]  # remove RNA_prefix
 
@@ -59,20 +61,20 @@ def captum_importance_values(
 
     if data_set == "synthetic":
         test_tensor, background_tensor = get_sex_specific_split(
-            input_data=train_data, clin_data=clin_data_cf, test_n=150,  ref_n=300, seed=random_seed
+            input_data=input_data, clin_data=clin_data_cf, test_n=150, ref_n=300, seed=random_seed
             )
     elif data_set == "cf":
         test_tensor, background_tensor = get_cf_specific_split(
-            input_data=train_data, clin_data=clin_data_cf, test_n=150, ref_n=300, seed=random_seed
+            input_data=input_data, clin_data=clin_data_cf, test_n=150, ref_n=300, seed=random_seed
         )
-    elif data_set == "tcga":    # TODO
-        test_tensor, background_tensor = get_cf_specific_split(
-            input_data=train_data, clin_data=clin_data_cf, test_n=150, ref_n=300, seed=random_seed
+    elif data_set == "tcga":
+        test_tensor, background_tensor = get_cancer_specific_split(
+            input_data=input_data, clin_data=clin_data_tcga, cancer_type=cancer_type, test_n=150, ref_n=300, seed=random_seed
         )
     else:
-        print("No valid data set was chosen, test and reference data will be random.")
+        print("No valid dataset was chosen, test and reference data will be random.")
         test_tensor, background_tensor = get_random_data_split_tensors(
-            train_data, background_n=300, test_n=150, seed=random_seed
+            train_data, test_n=150, background_n=300, seed=random_seed
         )
 
     if model_type == "varix":

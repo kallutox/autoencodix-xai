@@ -51,6 +51,9 @@ sns_out_type = "png"
 from seaborn import axes_style
 so.Plot.config.theme.update(axes_style("whitegrid"))
 
+from matplotlib.colors import to_rgba, to_rgb
+import matplotlib.colors as mcolors  # Import the correct module
+
 
 def make_optuna_plots(study, savefig=""):
     """
@@ -179,6 +182,136 @@ def plot_latent_2D(
 ):
     """
     Creates a 2D visualization of the 2D embedding of the latent space.
+    ARGS:
+        cfg (dict): config dictionary
+        embedding (pd.DataFrame): embedding on which is visualized. Assumes prior 2D dimension reduction.
+        labels (list): Clinical parameters or cluster labels to colorize samples (points)
+        layer (str): Label for plot title to indicate which network layer is represented by UMAP/TSNE
+        figsize (tuple): Figure size specification.
+        center (boolean): If True (default) centers of clusters/groups are visualized as stars.
+        save_fig (str): File path for saving the plot. Use appropriate file
+                        endings to specify image type (e.g. '*.png')
+    RETURNS:
+        fig (matplotlib.figure): Figure handle
+
+    """
+    logger = getlogger(cfg)
+    numeric = False
+    if not (type(labels[0]) is str):
+        if len(np.unique(labels)) > 3:
+            if not cfg["PLOT_NUMERIC"]:
+                logger.info(
+                    f"The provided label column is numeric and converted to categories."
+                )
+                labels = pd.qcut(
+                    labels, q=4, labels=["1stQ", "2ndQ", f"3rdQ", f"4thQ"]
+                ).astype(str)
+            else:
+                center = False  ## Disable centering for numeric params
+                numeric = True
+        else:
+            labels = [str(x) for x in labels]
+
+    fig, ax1 = plt.subplots(figsize=figsize)
+
+    # check if label or embedding is longerm and duplicate the shorter one
+    if len(labels) < embedding.shape[0]:
+        logger.warning(
+            "Given labels do not have the same length as given sample size. Labels will be duplicated."
+        )
+        labels = [
+            label for label in labels for _ in range(embedding.shape[0] // len(labels))
+        ]
+    elif len(labels) > embedding.shape[0]:
+        labels = list(set(labels))
+
+    if numeric:
+        ax2 = sns.scatterplot(
+            x=embedding.iloc[:, 0],
+            y=embedding.iloc[:, 1],
+            hue=labels,
+            palette="bwr",
+            s=40,
+            alpha=0.5,
+        )
+    else:
+        ax2 = sns.scatterplot(
+            x=embedding.iloc[:, 0],
+            y=embedding.iloc[:, 1],
+            hue=labels,
+            hue_order=np.unique(labels),
+            s=40,
+            alpha=0.5
+        )
+    if center:
+        means = embedding.groupby(by=labels).mean()
+        # logger.info(labels)
+        # logger.info(means)
+
+        ax2 = sns.scatterplot(
+            x=means.iloc[:, 0],
+            y=means.iloc[:, 1],
+            hue=np.unique(labels),
+            hue_order=np.unique(labels),
+            s=200,
+            alpha=0.9,
+            marker="*",
+            legend=False,
+            ax=ax2,
+        )
+
+    if not xlim == None:
+        ax2.set_xlim(xlim[0], xlim[1])
+
+    if not ylim == None:
+        ax2.set_ylim(ylim[0], ylim[1])
+
+    if not scale == None:
+        plt.yscale(scale)
+        plt.xscale(scale)
+    ax2.set_xlabel("Dim 1")
+    ax2.set_ylabel("Dim 2")
+    # ax2.set(title=f'{cfg["DIM_RED_METH"]} of {layer}')
+    legend_cols = 1
+    if len(np.unique(labels)) > 10:
+        legend_cols = 2
+
+    if not no_leg:
+        num_clusters = len(np.unique(labels))
+        legend_fontsize = 24 if num_clusters <= 10 else 14  # Adjust font size for larger clusters
+        legend_title_fontsize = 26 if num_clusters <= 10 else 16  # Adjust title font size for larger clusters
+
+        sns.move_legend(
+            ax2,
+            loc="upper right",  # Specify legend location
+            title=param,
+            frameon=True,
+            fontsize=legend_fontsize,
+            title_fontsize=legend_title_fontsize,
+        )
+
+    if len(save_fig) > 0:
+        fig.savefig(save_fig, bbox_inches="tight")
+    return fig
+
+
+
+def plot_latent_2D_new(
+    cfg,
+    embedding,
+    labels,
+    param=None,
+    layer="latent space",
+    figsize=(24, 15),
+    center=True,
+    save_fig="",
+    xlim=None,
+    ylim=None,
+    scale=None,
+    no_leg=False,
+):
+    """
+    Creates a 2D visualization of the 2D embedding of the latent space.
     """
     logger = getlogger(cfg)
     numeric = False
@@ -203,6 +336,8 @@ def plot_latent_2D(
     # Set custom colors if number of clusters is 2
     if len(np.unique(labels)) == 2:
         custom_palette = ["#43b582", "#4354b5"]
+    elif len(np.unique(labels)) == 3:
+        custom_palette = ["#4354b5", "#43b582", "#43a2b5"]
     else:
         custom_palette = None
 
@@ -261,13 +396,17 @@ def plot_latent_2D(
     ax2.set_ylabel("Dim 2")
 
     if not no_leg:
+        num_clusters = len(np.unique(labels))
+        legend_fontsize = 24 if num_clusters <= 10 else 14  # Adjust font size for larger clusters
+        legend_title_fontsize = 26 if num_clusters <= 10 else 16  # Adjust title font size for larger clusters
+
         sns.move_legend(
             ax2,
             loc="upper right",  # Specify legend location
             title=param,
             frameon=True,
-            fontsize=24,
-            title_fontsize=26,
+            fontsize=legend_fontsize,
+            title_fontsize=legend_title_fontsize,
         )
 
     if save_fig:
@@ -545,24 +684,27 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
         param (str): Clinical parameter to create groupings and coloring of ridges. Must be a column name (str) of clin_data
         save_fig (str): Path specifying save name and location.
     RETURNS:
-        fig (matplotlib.figure): Figure handle (of last plot)
+        g (seaborn.FacetGrid): The FacetGrid object for the plot
     """
     sns.set_theme(style="white", rc={"axes.facecolor": (0, 0, 0, 0)})
 
+    # Melt latent space data for easier plotting
     df = pd.melt(lat_space, var_name="latent dim", value_name="latent intensity")
     df["sample"] = len(lat_space.columns) * list(
         lat_space.index.str.removeprefix("FROM_").str.removeprefix("TO_")
     )
     df = df.join(clin_data[param], on="sample")
 
+    # Dynamically generate labels
     labels = df[param]
-    if not isinstance(labels[0], str):
+    if not isinstance(labels.iloc[0], str):
         if len(np.unique(labels)) > 3:
             labels = pd.qcut(labels, q=4, labels=["1stQ", "2ndQ", "3rdQ", "4thQ"]).astype(str)
         else:
             labels = [str(x) for x in labels]
     df[param] = labels
 
+    # Exclude missing or unknown data
     exclude_missing_info = (df[param] == "unknown") | (df[param] == "nan")
 
     xmin = (
@@ -578,11 +720,28 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
         .max()
     )
 
-    if len(np.unique(df[param])) > 8:
-        cat_pal = sns.husl_palette(len(np.unique(df[param])))
+    # Dynamically create palette
+    unique_labels = df[param].unique()
+    if len(unique_labels) <= 3:
+        # Use predefined colors for 2-3 groups (order matters)
+        predefined_colors = ["#4354b5", "#43b582", "#43a2b5"]  # Blue, Green, Teal
+        # Add transparency (alpha = 0.3 for all)
+        palette = {label: to_rgba(predefined_colors[i], alpha=0.3) for i, label in enumerate(unique_labels)}
     else:
-        cat_pal = sns.color_palette(n_colors=len(np.unique(df[param])))
+        # Generate dynamic colors for larger groups
+        dynamic_colors = sns.color_palette("husl", len(unique_labels))
+        # Add transparency (alpha = 0.3 for all)
+        palette = {label: to_rgba(color, alpha=0.3) for label, color in zip(unique_labels, dynamic_colors)}
 
+    # Adjust opacity for unknown data
+    transparent_palette = {}
+    for key, color in palette.items():
+        if str(key).lower() == "unknown":
+            transparent_palette[key] = to_rgba(color, alpha=0.1)  # More transparent
+        else:
+            transparent_palette[key] = color  # Keep original alpha
+
+    # Create the ridge plot
     g = sns.FacetGrid(
         df[~exclude_missing_info],
         row="latent dim",
@@ -590,14 +749,14 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
         aspect=12,
         height=0.4,
         xlim=(xmin[0], xmax[0]),
-        palette=cat_pal,
+        palette=palette,
     )
 
     def conditional_kdeplot(data, **kwargs):
         if data[param].iloc[0].lower() == "unknown":
-            kwargs["alpha"] = 0.25  # Reduced density for "Unknown"
+            kwargs["alpha"] = 0.4  # Reduced opacity for "Unknown"
         else:
-            kwargs["alpha"] = 0.5
+            kwargs["alpha"] = 0.7
         sns.kdeplot(data["latent intensity"], **kwargs)
 
     g.map_dataframe(
@@ -606,8 +765,6 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
         clip_on=True,
         fill=True,
         warn_singular=False,
-        ec="k",
-        lw=1,
     )
 
     def label(data, color, label, text="latent dim"):
@@ -617,7 +774,8 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
             0.0,
             0.2,
             label_text,
-            fontweight="bold",
+            fontweight="normal",  # Changed to non-bold
+            fontsize=10,
             ha="right",
             va="center",
             transform=ax.transAxes,
@@ -625,19 +783,22 @@ def plot_latent_ridge(lat_space, clin_data, param, save_fig=""):
 
     g.map_dataframe(label, text="latent dim")
 
+    # Adjust grid appearance
     g.set(xlim=(xmin[0], xmax[0]))
     g.figure.subplots_adjust(hspace=-0.25)
-
     g.set_titles("")
     g.set(yticks=[], ylabel="")
     g.despine(bottom=True, left=True)
 
+    # Add legend
     g.add_legend()
 
+    # Save the figure if a path is specified
     if save_fig:
         g.savefig(save_fig)
 
     return g
+
 
 
 

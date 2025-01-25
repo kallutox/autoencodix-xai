@@ -3,11 +3,11 @@ import yaml
 from pathlib import Path
 
 # Define the ranges for each parameter
-beta_values = [0.01, 0.1, 1, 10]
-latent_dim_values = [8, 16, 32, 128]  # Including 128 as a value based on the new config
-k_filter_values = [1000, 2000, 3000]
-lr_values = [1e-4, 1e-3, 1e-2]
-batch_size_values = [128, 256, 512]
+beta_values = [1]
+latent_dim_values = [32]
+k_filter_values = [2000]
+lr_values = [0.001]
+batch_size_values = [256]
 
 # Create the config folder if it doesn't exist
 config_save_root = "../tcga_configs/"
@@ -18,8 +18,6 @@ for beta, latent_dim, k_filter, lr, batch_size in product(beta_values, latent_di
     cfg = dict()
 
     # Add your fixed values to the config
-    cfg['FIX_RANDOMNESS'] = 'all'
-    cfg['GLOBAL_SEED'] = 42
     cfg['EPOCHS'] = 300
     cfg['RECONSTR_LOSS'] = "MSE"
     cfg['VAE_LOSS'] = "KL"
@@ -41,8 +39,8 @@ for beta, latent_dim, k_filter, lr, batch_size in product(beta_values, latent_di
     # Additional configurations from the provided YAML file
     cfg['DATA_TYPE'] = {
         'ANNO': {'FILE_LABEL': 'clinical_data.parquet', 'FILE_RAW': 'data_clinical_formatted.parquet', 'TYPE': 'ANNOTATION'},
-        #'METH': {'FILE_RAW': 'data_methylation_per_gene_formatted.parquet', 'FILTERING': 'Var', 'SCALING': 'Standard', 'TYPE': 'NUMERIC'},
-        #'MUT': {'FILE_RAW': 'data_combi_MUT_CNA_formatted.parquet', 'FILTERING': 'Var', 'SCALING': 'Standard', 'TYPE': 'NUMERIC'},
+        'METH': {'FILE_RAW': 'data_methylation_per_gene_formatted.parquet', 'FILTERING': 'Var', 'SCALING': 'Standard', 'TYPE': 'NUMERIC'},
+        'MUT': {'FILE_RAW': 'data_combi_MUT_CNA_formatted.parquet', 'FILTERING': 'Var', 'SCALING': 'Standard', 'TYPE': 'NUMERIC'},
         'RNA': {'FILE_RAW': 'data_mrna_seq_v2_rsem_formatted.parquet', 'FILTERING': 'Var', 'SCALING': 'Standard', 'TYPE': 'NUMERIC'}
     }
     cfg['CLINIC_PARAM'] = [
@@ -57,6 +55,8 @@ for beta, latent_dim, k_filter, lr, batch_size in product(beta_values, latent_di
     cfg['ML_ALG'] = ['Linear', 'RF', 'SVM']
     cfg['ML_SPLIT'] = 'use-split'
     cfg['ML_TASKS'] = ['Latent', 'UMAP', 'PCA', 'RandomFeature']
+    cfg['TRAIN_TYPE'] = 'train'
+    cfg['FIX_RANDOMNESS'] = 'random'
 
     # Assign values from the loop
     cfg['BETA'] = beta
@@ -65,11 +65,14 @@ for beta, latent_dim, k_filter, lr, batch_size in product(beta_values, latent_di
     cfg['LR_FIXED'] = lr
     cfg['BATCH_SIZE'] = batch_size
 
-    # Create a unique filename based on the parameter values
-    run_id = f"TCGA_beta{beta}_dim{latent_dim}_K{k_filter}_lr{lr}_bs{batch_size}_config.yaml"
+    formatted_beta_value = str(beta).replace('.', '')
+    lr_val = "0001"
 
-    # Save the config to a YAML file
-    with open(config_save_root + run_id, 'w') as file:
-        yaml.dump(cfg, file)
+    for i in range(1,11):
+        run_id = f"tcga_1_{i}_config.yaml"
+
+        # Save the config to a YAML file
+        with open(config_save_root + run_id, 'w') as file:
+            yaml.dump(cfg, file)
 
 print("Config files generated!")

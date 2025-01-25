@@ -11,8 +11,15 @@ import torch.nn as nn
 from scipy.stats import ttest_ind
 import seaborn as sns
 from matplotlib.colors import LinearSegmentedColormap
+from matplotlib_venn import venn3
 from collections import Counter
 import torch.nn.functional as F
+from scipy.stats import f_oneway
+import mygene
+import warnings
+
+# Suppress all warnings (due to gene name retrieval or LIME)
+warnings.filterwarnings("ignore")
 
 # project_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -268,10 +275,12 @@ def attribution_per_feature(attributions, data):
     else:
         average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
 
+    #print("data: ", data)
     if isinstance(data, list):
         feature_names = data
     else:
         feature_names = list(data.columns)
+    #print("feature names: ", feature_names)
 
     processed_feature_names = []
     if not isinstance(attributions, dict):
@@ -429,6 +438,48 @@ def get_cf_clin_data():
         "data",
         "raw",
         "cf_clinical_data_formatted.parquet",
+    )
+    clin_df = pd.read_parquet(clin_path)
+    return clin_df
+
+
+def get_tcga_metadata(entrez_ids):
+    """
+    Maps feature names (Entrez Gene IDs) to Hugo symbols using the TCGA mutation dataset.
+
+    Args:
+        feature_names (pd.Index or list): Feature names (Entrez Gene IDs) from expr_tcga.
+
+    Returns:
+        dict: A dictionary mapping Entrez Gene IDs to their corresponding Hugo symbols.
+    """
+    mg = mygene.MyGeneInfo()
+
+    stripped_ids = [gene_id.split('_')[1] for gene_id in entrez_ids]
+
+    results = mg.querymany(stripped_ids, scopes="entrezgene", fields="symbol", species="human")
+
+    id_to_name = {}
+    for res, prefixed_id in zip(results, entrez_ids):
+        if "symbol" in res:
+            if prefixed_id.startswith("MUT_"):
+                id_to_name[prefixed_id] = f"{res['symbol']} (mut.)"
+            elif prefixed_id.startswith("METH_"):
+                id_to_name[prefixed_id] = f"{res['symbol']} (meth.)"
+            else:
+                id_to_name[prefixed_id] = res["symbol"]
+        else:
+            id_to_name[prefixed_id] = 'not found'
+
+    return id_to_name
+
+
+def get_tcga_clin_data():
+    clin_path = os.path.join(
+        os.path.abspath(os.path.join(current_directory, "..")),
+        "data",
+        "raw",
+        "data_clinical_formatted.parquet",
     )
     clin_df = pd.read_parquet(clin_path)
     return clin_df
@@ -627,7 +678,54 @@ def get_cf_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
     return test_tensor, reference_tensor
 
 
-def bar_plot_top_features(attributions, data, top_n=10, dataset='synth', xai_method='deepshaplift', beta=0.01, n=15):
+def get_cancer_specific_split(input_data, clin_data, cancer_type, test_n, ref_n, seed=None):
+    """
+    Select n random samples where CANCER_TYPE_ACRONYM == cancer_type as the test tensor
+    and m random samples from all cancer types as the reference tensor, ensuring no overlap.
+    If ref_n == 1, the reference tensor contains the average values across all remaining indices.
+
+    Parameters:
+    - input_data (pd.DataFrame): Dataframe containing input data.
+    - clin_data (pd.DataFrame): Dataframe containing clinical data with a 'CANCER_TYPE_ACRONYM' column.
+    - cancer_type (str): Cancer type acronym to specify the test group.
+    - test_n (int): Number of samples where CANCER_TYPE_ACRONYM == cancer_type for the test tensor.
+    - ref_n (int): Number of samples for the reference tensor (all cancer types) or 1 for the average reference tensor.
+    - seed (int): Random seed for reproducibility (default is None).
+
+    Returns:
+    - test_tensor (torch.Tensor): Tensor of n random samples where CANCER_TYPE_ACRONYM == cancer_type.
+    - reference_tensor (torch.Tensor): Tensor of m random samples or the average values tensor if ref_n == 1.
+    """
+    if seed is not None:
+        torch.manual_seed(seed)
+
+    clin_data = clin_data.loc[input_data.index]
+    cancer_samples = clin_data[clin_data['CANCER_TYPE_ACRONYM'] == cancer_type].index
+    #print(f"Available samples for {cancer_type}: {len(cancer_samples)}")
+
+    test_indices = cancer_samples.to_series().sample(n=test_n, random_state=seed).index
+
+    remaining_indices = input_data.index.difference(test_indices)
+    if ref_n == 1:
+        reference_indices = remaining_indices
+    else:
+        reference_indices = remaining_indices.to_series().sample(n=ref_n, random_state=seed).index
+
+    test_data = input_data.loc[test_indices]
+
+    if ref_n == 1:
+        reference_data = input_data.loc[remaining_indices].mean(axis=0)
+        reference_tensor = torch.tensor(reference_data.values.reshape(1, -1), dtype=torch.float32)
+    else:
+        reference_data = input_data.loc[reference_indices]
+        reference_tensor = torch.tensor(reference_data.values, dtype=torch.float32)
+
+    test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
+
+    return test_tensor, reference_tensor
+
+
+def bar_plot_top_features(attributions, data, top_n=15, dataset='synth', xai_method='deepshaplift', cancer_type='LUAD', beta=0.01, n=15):
     attribution_dict = attribution_per_feature(attributions, data)
     top_features = get_top_features(attribution_dict, top_n=top_n)
 
@@ -664,7 +762,10 @@ def bar_plot_top_features(attributions, data, top_n=10, dataset='synth', xai_met
         plt.barh(name, score, color=color, alpha=0.9)
 
     plt.xlabel("Attribution Value", fontsize=12)
-    plt.title(f"{xai_name} - Top {n} Features by Attribution Value", fontsize=14, fontweight="bold")
+    if dataset == 'tcga':
+        plt.title(f"{xai_name} - Top {n} Features by Attribution Value for {cancer_type}", fontsize=14, fontweight="bold")
+    else:
+        plt.title(f"{xai_name} - Top {n} Features by Attribution Value", fontsize=14, fontweight="bold")
     plt.tight_layout()
     # Save and show the plot
     if dataset == 'synth':
@@ -675,24 +776,12 @@ def bar_plot_top_features(attributions, data, top_n=10, dataset='synth', xai_met
         plt.savefig(f"cf_reports/barplot_top{n}_{xai_method}_{beta}.png")
     elif dataset == 'tcga':
         os.makedirs("tcga_reports", exist_ok=True)
-        plt.savefig(f"tcga_reports/barplot_top{n}_{xai_method}_{beta}.png")
-    plt.show()
+        plt.savefig(f"tcga_reports/barplot_top{n}_{xai_method}_{cancer_type}_{beta}.png")
+    #plt.show()
 
 
 # TODO - does not work
-def stacked_bar_plot_top_features(attributions, data, clin_data, feature_names, dataset='synth', top_n=10):
-    """
-    Plots top N features with attribution values as stacked bar plots, showing relative contributions
-    from different lung conditions, matching clinical data by feature IDs but plotting gene names.
-
-    Args:
-        attributions: Feature attribution values.
-        data: Feature data.
-        clin_data: Clinical data DataFrame containing 'lung_condition' and feature IDs.
-        feature_names: List of feature IDs corresponding to the attributions.
-        top_n: Number of top features to plot.
-        xai_method: Explainability method name.
-    """
+def stacked_bar_plot_top_features(attributions, data, clin_data, feature_names, dataset='synth', cancer_type='LUAD', top_n=10):
     try:
         # Attribution dictionary
         attribution_dict = attribution_per_feature(attributions, data)
@@ -762,7 +851,7 @@ def stacked_bar_plot_top_features(attributions, data, clin_data, feature_names, 
             plt.savefig(f"cf_reports/venn_diagram_all_explainers.png")
         elif dataset == 'tcga':
             os.makedirs("tcga_reports", exist_ok=True)
-            plt.savefig(f"tcga_reports/venn_diagram_all_explainers.png")
+            plt.savefig(f"tcga_reports/{cancer_type}_venn_diagram_all_explainers.png")
         plt.show()
 
     except Exception as e:
@@ -854,3 +943,248 @@ def get_best_dimension_cf(run_id):
 
     best_dimension = max(mean_differences, key=mean_differences.get)
     return int(best_dimension)
+
+
+def get_best_dimension_tcga_by_cancer_means(run_id, cancer_type_acronym):
+    cancer_list = ['CHOL', 'OV', 'CESC', 'UCS', 'PRAD', 'DLBC', 'PCPG', 'KIRC', 'UVM', 'BLCA', 'STAD', 'UCEC', 'LGG',
+                   'KIRP', 'READ', 'COAD', 'LIHC', 'LUAD', 'GBM', 'THCA', 'PAAD', 'SARC', 'MESO', 'ACC', 'HNSC', 'ESCA',
+                   'LUSC', 'SKCM', 'KICH', 'BRCA', 'THYM', 'LAML', 'TGCT']
+
+    if cancer_type_acronym not in cancer_list:
+        print(f"Cancer type acronym {cancer_type_acronym} invalid.")
+        sys.exit()
+
+    latent_df = get_latent_space(run_id)
+    clin_df = get_tcga_clin_data()
+
+    merged_df = latent_df.merge(clin_df[['CANCER_TYPE_ACRONYM']], left_index=True, right_index=True)
+
+    mean_differences = {}
+
+    for column in merged_df.columns:
+        if "L_COMBINED-RNA__varix_INPUT_" in column:
+            # extract the latent dimension number from the column name
+            latent_number = int(column.split("_")[-1])
+
+            cancer_values = merged_df[merged_df['CANCER_TYPE_ACRONYM'] == cancer_type_acronym][column]
+            rest_values = merged_df[merged_df['CANCER_TYPE_ACRONYM'] != cancer_type_acronym][column]
+
+            cancer_mean = cancer_values.mean()
+            rest_mean = rest_values.mean()
+            mean_diff = abs(cancer_mean - rest_mean)
+            mean_differences[latent_number] = mean_diff
+
+    best_dimension = max(mean_differences, key=mean_differences.get)
+    return best_dimension
+
+
+def get_best_dimension_by_cancer_anova(run_id, cancer_type_acronym):
+    """
+    Identifies the latent dimension that best separates a specific cancer type from all other cancer types
+    based on one-way ANOVA tests.
+
+    Args:
+        run_id (str): Identifier for the specific run.
+        cancer_type_acronym (str): The acronym of the cancer type to analyze.
+
+    Returns:
+        int: The latent dimension with the highest F-statistic.
+    """
+    # List of valid cancer types
+    cancer_list = ['CHOL', 'OV', 'CESC', 'UCS', 'PRAD', 'DLBC', 'PCPG', 'KIRC', 'UVM', 'BLCA', 'STAD', 'UCEC', 'LGG',
+                   'KIRP', 'READ', 'COAD', 'LIHC', 'LUAD', 'GBM', 'THCA', 'PAAD', 'SARC', 'MESO', 'ACC', 'HNSC', 'ESCA',
+                   'LUSC', 'SKCM', 'KICH', 'BRCA', 'THYM', 'LAML', 'TGCT']
+
+    if cancer_type_acronym not in cancer_list:
+        raise ValueError(f"Invalid cancer type: {cancer_type_acronym}.")
+
+    latent_df = get_latent_space(run_id)
+    clin_df = get_tcga_clin_data()
+
+    merged_df = latent_df.merge(clin_df[['CANCER_TYPE_ACRONYM']], left_index=True, right_index=True)
+
+    mean_differences = {}
+
+    for column in merged_df.columns:
+        if "L_COMBINED-RNA_METH_MUT__varix_INPUT_" in column:
+            latent_number = int(column.split("_")[-1])
+
+            cancer_values = merged_df[merged_df['CANCER_TYPE_ACRONYM'] == cancer_type_acronym][column].dropna()
+            others_values = merged_df[merged_df['CANCER_TYPE_ACRONYM'] != cancer_type_acronym][column].dropna()
+
+            if len(cancer_values) > 1 and len(others_values) > 1:
+                # perform one-way ANOVA
+                f_stat, p_value = f_oneway(cancer_values, others_values)
+                mean_differences[latent_number] = f_stat
+
+    if not mean_differences:
+        raise ValueError("No valid dimensions found for ANOVA.")
+
+    # find the dimension with the highest F-statistic
+    best_dimension = max(mean_differences, key=mean_differences.get)
+    return best_dimension
+
+
+def get_best_dimension_by_cancer_lda(run_id, cancer_type_acronym):
+    cancer_list = ['CHOL','OV','CESC','UCS','PRAD','DLBC','PCPG','KIRC','UVM','BLCA','STAD','UCEC','LGG','KIRP','READ',
+                   'COAD','LIHC','LUAD','GBM','THCA','PAAD','SARC','MESO','ACC','HNSC','ESCA','LUSC','SKCM','KICH','BRCA',
+                   'THYM','LAML','TGCT']
+    if cancer_type_acronym not in cancer_list:
+        raise ValueError("Invalid cancer type.")
+    latent_df = get_latent_space(run_id)
+    clin_df = get_tcga_clin_data()
+    merged_df = latent_df.merge(clin_df[['CANCER_TYPE_ACRONYM']], left_index=True, right_index=True)
+    fisher_scores = {}
+    for column in merged_df.columns:
+        if "L_COMBINED-METH_MUT_RNA__varix_INPUT_" in column:
+            latent_number = int(column.split("_")[-1])
+            cancer_values = merged_df[merged_df['CANCER_TYPE_ACRONYM'] == cancer_type_acronym][column].dropna()
+            others_values = merged_df[merged_df['CANCER_TYPE_ACRONYM'] != cancer_type_acronym][column].dropna()
+            if len(cancer_values) > 1 and len(others_values) > 1:
+                mu_c = cancer_values.mean()
+                mu_o = others_values.mean()
+                var_c = cancer_values.var(ddof=1)
+                var_o = others_values.var(ddof=1)
+                fisher_ratio = (mu_c - mu_o) ** 2 / (var_c + var_o)
+                fisher_scores[latent_number] = fisher_ratio
+    if not fisher_scores:
+        raise ValueError("No valid dimensions found for LDA.")
+    best_dimension = max(fisher_scores, key=fisher_scores.get)
+    return best_dimension
+
+
+def feature_overlap(dls_list, lime_list, ig_list):
+    gene_metadata_dls = get_tcga_metadata(dls_list)
+    gene_names_dls = [gene_metadata_dls[id] for id in dls_list if id in gene_metadata_dls]
+
+    gene_metadata_lime = get_tcga_metadata(lime_list)
+    gene_names_lime = [gene_metadata_lime[id] for id in lime_list if id in gene_metadata_lime]
+
+    gene_metadata_ig = get_tcga_metadata(ig_list)
+    gene_names_ig = [gene_metadata_ig[id] for id in ig_list if id in gene_metadata_ig]
+
+    overlap_1_2 = set(gene_names_dls) & set(gene_names_lime)
+    overlap_1_3 = set(gene_names_dls) & set(gene_names_ig)
+    overlap_2_3 = set(gene_names_lime) & set(gene_names_ig)
+    overlap_all = set(gene_names_dls) & set(gene_names_lime) & set(gene_names_ig)
+
+    # Calculate unique features for each explainer
+    unique_dls = set(gene_names_dls) - (set(gene_names_lime) | set(gene_names_ig))
+    unique_lime = set(gene_names_lime) - (set(gene_names_dls) | set(gene_names_ig))
+    unique_ig = set(gene_names_ig) - (set(gene_names_dls) | set(gene_names_lime))
+
+
+    # Print the overlaps and unique features
+    print("Overlapping Features:")
+    print(f"DLS & LIME: {list(overlap_1_2)}")
+    print(f"DLS & IG: {list(overlap_1_3)}")
+    print(f"LIME & IG: {list(overlap_2_3)}")
+    print(f"All Explainers: {list(overlap_all)}")
+
+    print("\nUnique Features:")
+    print(f"Unique to DLS: {list(unique_dls)}")
+    print(f"Unique to LIME: {list(unique_lime)}")
+    print(f"Unique to IG: {list(unique_ig)}")
+
+
+def plot_venn_diagram(dls_set, lime_set, ig_set, beta, n, show=True, dataset='cf', cancer_type='LUAD'):
+    """
+    Plots a Venn diagram showing overlaps between three sets of features.
+    Only colors regions with actual overlaps to maintain visual simplicity.
+    """
+    # Convert lists to sets
+    dls_set = set(dls_set)
+    lime_set = set(lime_set)
+    ig_set = set(ig_set)
+
+    # Set up the figure
+    plt.figure(figsize=(6, 6))
+
+    # Create the Venn diagram
+    venn = venn3(
+        [dls_set, lime_set, ig_set],
+        ('DeepLiftShap', 'LIME', 'Integrated Gradients')
+    )
+
+    # Define colors for each region
+    patch_colors = {
+        '100': "#4354b5",  # DLS only (Blue)
+        '010': "#43a2b5",  # LIME only (Teal)
+        '001': "#43b582",  # IG only (Green)
+        '110': "#4a74d6",  # DLS & LIME (Blue + Teal blend)
+        '101': "#4a7c93",  # DLS & IG (Blue + Green blend)
+        '011': "#43b5a8",  # LIME & IG (Teal + Green blend)
+        '111': "#7a87cc"   # All three (Purple)
+    }
+
+    # Apply colors to the patches
+    for patch_id, color in patch_colors.items():
+        patch = venn.get_patch_by_id(patch_id)
+        if patch is not None:
+            patch.set_color(color)
+            patch.set_alpha(0.6)  # Set transparency for the color
+
+    plt.title(f"Top {n} Features Overlap", fontsize=14, fontweight="bold")
+    plt.tight_layout()
+
+    if beta == 0.01:
+        beta_val = '001'
+    elif beta == 1:
+        beta_val = '1'
+    else:
+        print('beta invalid.')
+        sys.exit()
+
+    if dataset == 'cf':
+        os.makedirs("cf_reports", exist_ok=True)
+        plt.savefig(f"cf_reports/venn_diagram_top{n}_{beta_val}.png")
+    elif dataset == 'tcga':
+        os.makedirs("tcga_reports", exist_ok=True)
+        plt.savefig(f"tcga_reports/venn_diagram_top{n}_{cancer_type}_{beta_val}.png")
+    else:
+        print(f"{dataset} not a valid dataset, choose cf or tcga instead.")
+        sys.exit()
+
+    if show:
+        plt.show()
+
+
+def plot_attribution_histogram(attribution_values, beta, xai_method='deepliftshap', show=True, dataset='cf', cancer_type='LUAD'):
+    plt.figure(figsize=(10, 6))
+    plt.hist(attribution_values, bins=50, color="#43a2b5", alpha=0.8)
+
+    if xai_method == 'deepliftshap':
+        xai_label = 'DeepLiftShap'
+    elif xai_method == 'lime':
+        xai_label = 'LIME'
+    elif xai_method == 'integrated_gradients':
+        xai_label = 'Integrated Gradients'
+    else:
+        print("{} is not a valid method, please choose deepliftshap, lime or integrated_gradient instead.".format(xai_method))
+        sys.exit()
+
+    plt.xlabel("Attribution Scores", fontsize=12)
+    plt.ylabel("Number of Features", fontsize=12)
+    plt.title(f" {xai_label} - Distribution of Attribution Scores", fontsize=14, fontweight="bold")
+    plt.tight_layout()
+
+    if beta == 0.01:
+        beta_val = '001'
+    elif beta == 1:
+        beta_val = '1'
+    else:
+        print('beta invalid.')
+        sys.exit()
+
+    if dataset == 'cf':
+        os.makedirs("cf_reports", exist_ok=True)
+        plt.savefig(f"cf_reports/attribution_histogram_{xai_method}_{beta_val}.png")
+    elif dataset == 'tcga':
+        os.makedirs("tcga_reports", exist_ok=True)
+        plt.savefig(f"tcga_reports/attribution_histogram_{xai_method}_{cancer_type}_{beta_val}.png")
+    else:
+        print(f"{dataset} not a valid dataset, choose cf or tcga instead.")
+        sys.exit()
+
+    if show:
+        plt.show()
