@@ -1053,15 +1053,27 @@ def get_best_dimension_by_cancer_lda(run_id, cancer_type_acronym):
     return best_dimension
 
 
-def feature_overlap(dls_list, lime_list, ig_list):
-    gene_metadata_dls = get_tcga_metadata(dls_list)
-    gene_names_dls = [gene_metadata_dls[id] for id in dls_list if id in gene_metadata_dls]
+def feature_overlap(dls_list, lime_list, ig_list, dataset='cf'):
+    if dataset == 'cf':
+        gene_metadata_dls = get_cf_metadata(dls_list)
+        gene_metadata_lime = get_cf_metadata(lime_list)
+        gene_metadata_ig = get_cf_metadata(ig_list)
 
-    gene_metadata_lime = get_tcga_metadata(lime_list)
-    gene_names_lime = [gene_metadata_lime[id] for id in lime_list if id in gene_metadata_lime]
+        gene_names_dls = [gene_metadata_dls[id]['feature_name'] for id in dls_list if id in gene_metadata_dls]
+        gene_names_lime = [gene_metadata_lime[id]['feature_name'] for id in lime_list if id in gene_metadata_lime]
+        gene_names_ig = [gene_metadata_ig[id]['feature_name'] for id in ig_list if id in gene_metadata_ig]
 
-    gene_metadata_ig = get_tcga_metadata(ig_list)
-    gene_names_ig = [gene_metadata_ig[id] for id in ig_list if id in gene_metadata_ig]
+    elif dataset == 'tcga':
+        gene_metadata_dls = get_tcga_metadata(dls_list)
+        gene_metadata_lime = get_tcga_metadata(lime_list)
+        gene_metadata_ig = get_tcga_metadata(ig_list)
+
+        gene_names_dls = [gene_metadata_dls[id] for id in dls_list if id in gene_metadata_dls]
+        gene_names_lime = [gene_metadata_lime[id] for id in lime_list if id in gene_metadata_lime]
+        gene_names_ig = [gene_metadata_ig[id] for id in ig_list if id in gene_metadata_ig]
+    else:
+        print(f"{dataset} invalid, please choose cf or tcga instead.")
+        sys.exit()
 
     overlap_1_2 = set(gene_names_dls) & set(gene_names_lime)
     overlap_1_3 = set(gene_names_dls) & set(gene_names_ig)
@@ -1132,7 +1144,7 @@ def plot_venn_diagram(dls_set, lime_set, ig_set, beta, n, show=True, dataset='cf
     elif beta == 1:
         beta_val = '1'
     else:
-        print('beta invalid.')
+        print('beta invalid (venn diagram)')
         sys.exit()
 
     if dataset == 'cf':

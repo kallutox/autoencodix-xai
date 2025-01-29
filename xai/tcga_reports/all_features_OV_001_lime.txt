@@ -1,0 +1,6001 @@
+Gene Name,Score
+CYTIP (meth.),0.0443
+BCAT1,0.0392
+LCE2D (meth.),0.0364
+LIN7A (meth.),0.0344
+CD1C (meth.),0.0340
+FAM216B (meth.),0.0320
+TNFRSF17 (meth.),0.0314
+H4C6 (meth.),0.0314
+MYH4 (meth.),0.0310
+HOXA5 (meth.),0.0309
+IL18 (meth.),0.0305
+GZMA (meth.),0.0304
+PYDC2 (meth.),0.0302
+VNN1 (meth.),0.0301
+STMN2 (meth.),0.0300
+HTR2C (meth.),0.0297
+UTF1 (meth.),0.0296
+CDK14 (meth.),0.0295
+FXYD3 (meth.),0.0294
+PTGDR (meth.),0.0294
+CNTNAP2 (meth.),0.0291
+CRIP3 (meth.),0.0289
+TMED6 (meth.),0.0289
+KCNE3 (meth.),0.0288
+ACRBP (meth.),0.0285
+CPA3 (meth.),0.0283
+CNGB3 (meth.),0.0282
+LYPD5 (meth.),0.0278
+IFFO1 (meth.),0.0278
+PRSS58 (meth.),0.0277
+NELL1 (meth.),0.0275
+HTR3D (meth.),0.0275
+FCAR (meth.),0.0272
+TLX3 (meth.),0.0268
+EPHA5 (meth.),0.0267
+PRG3 (meth.),0.0267
+CD28 (meth.),0.0265
+GPRASP3 (meth.),0.0264
+TRHR (meth.),0.0264
+TGFB3 (meth.),0.0263
+GCSAML (meth.),0.0262
+HKDC1 (meth.),0.0262
+EPB41L3 (meth.),0.0261
+FAM180A (meth.),0.0260
+WDR72 (meth.),0.0260
+HOXA9 (meth.),0.0259
+XDH (meth.),0.0258
+ZFP42 (meth.),0.0257
+KSR1 (meth.),0.0255
+ARHGDIB (meth.),0.0254
+OTOP1 (meth.),0.0254
+RGL3 (meth.),0.0254
+ZSCAN12 (meth.),0.0252
+CCRL2 (meth.),0.0252
+TAS2R16 (meth.),0.0252
+CLIC6 (meth.),0.0251
+UMOD (meth.),0.0250
+SSTR4 (meth.),0.0250
+CD69 (meth.),0.0249
+GFRA3 (meth.),0.0249
+KLK1 (meth.),0.0248
+SGK2 (meth.),0.0247
+RDH5 (meth.),0.0247
+MS4A8 (meth.),0.0246
+GIMAP4 (meth.),0.0246
+MYLK (meth.),0.0244
+SLC6A13 (meth.),0.0243
+GJB6 (meth.),0.0243
+FERD3L (meth.),0.0243
+DNAH5 (meth.),0.0241
+MAT1A (meth.),0.0241
+CXCR2 (meth.),0.0241
+BANK1 (meth.),0.0240
+CRMP1 (meth.),0.0240
+DRD4 (meth.),0.0240
+PABPC5 (meth.),0.0239
+IL1RL2 (meth.),0.0238
+NOX1 (meth.),0.0238
+CASP8 (meth.),0.0237
+ST6GALNAC1 (meth.),0.0237
+PTPN22 (meth.),0.0236
+PLAC8 (meth.),0.0236
+RASGRP3 (meth.),0.0236
+FOXG1 (meth.),0.0236
+BBOX1 (meth.),0.0236
+SLC6A15 (meth.),0.0236
+ZNF671 (meth.),0.0236
+KLF8 (meth.),0.0235
+PCSK1 (meth.),0.0235
+AGR2 (meth.),0.0235
+PTHLH (meth.),0.0235
+FCER1A (meth.),0.0235
+CCDC181 (meth.),0.0235
+SELENBP1 (meth.),0.0234
+SLITRK1 (meth.),0.0234
+MAGEC3 (meth.),0.0232
+H3C12 (meth.),0.0232
+ACVR1 (meth.),0.0232
+ANPEP (meth.),0.0232
+ANXA4 (meth.),0.0232
+ZNF577 (meth.),0.0231
+SULT2A1 (meth.),0.0230
+MYO3A (meth.),0.0230
+ELN (meth.),0.0229
+MAP2 (meth.),0.0228
+DYNLT5 (meth.),0.0228
+ZNF536 (meth.),0.0227
+HLF (meth.),0.0227
+BNIPL (meth.),0.0227
+GPX5 (meth.),0.0227
+HCAR1 (meth.),0.0226
+NEBL (meth.),0.0226
+FRZB (meth.),0.0225
+CCR6 (meth.),0.0225
+C8A (meth.),0.0225
+CYTL1 (meth.),0.0225
+ADCY4 (meth.),0.0224
+DISP1 (meth.),0.0223
+GABRB1 (meth.),0.0223
+NEFM (meth.),0.0222
+CA3 (meth.),0.0222
+MGST1 (meth.),0.0222
+HEPACAM (meth.),0.0222
+FOXI1 (meth.),0.0222
+WDR17 (meth.),0.0222
+DQX1 (meth.),0.0221
+GLRA2 (meth.),0.0221
+RUNX1 (meth.),0.0221
+TMEM255A (meth.),0.0221
+HYLS1 (meth.),0.0220
+OR7C2 (meth.),0.0220
+KRT5 (meth.),0.0220
+CD5L (meth.),0.0219
+CAVIN2 (meth.),0.0219
+IRAG2 (meth.),0.0218
+CHL1 (meth.),0.0218
+MIR1207 (mut.),0.0217
+TFAP2B (meth.),0.0216
+CFTR (meth.),0.0215
+FCRL2 (meth.),0.0215
+BTNL2 (meth.),0.0214
+CD33 (meth.),0.0213
+SLC26A5 (meth.),0.0213
+H3C3 (meth.),0.0213
+LAMB3 (meth.),0.0211
+G6PC2 (meth.),0.0210
+TRH (meth.),0.0210
+F7 (meth.),0.0210
+HAAO (meth.),0.0209
+SLC30A8 (meth.),0.0208
+CLEC12B (meth.),0.0207
+KRTAP13-3 (meth.),0.0207
+TRPM8 (meth.),0.0207
+INPP5B (meth.),0.0207
+C1QTNF7 (meth.),0.0207
+PHACTR2 (meth.),0.0206
+ARL14 (meth.),0.0206
+FABP3 (meth.),0.0206
+OR5V1 (meth.),0.0204
+ALX1 (meth.),0.0204
+ZNF154 (meth.),0.0203
+TM4SF4 (meth.),0.0203
+IFITM1 (meth.),0.0201
+TMPRSS3 (meth.),0.0201
+GSDMC (meth.),0.0201
+CDO1 (meth.),0.0201
+PCP4 (meth.),0.0201
+C11orf52 (meth.),0.0201
+PICALM (meth.),0.0201
+SCRG1 (meth.),0.0201
+GCNT3 (meth.),0.0200
+GLIPR1L1 (meth.),0.0200
+SLITRK4 (meth.),0.0200
+TBXT (meth.),0.0199
+CMTM3 (meth.),0.0199
+EPB41L1 (meth.),0.0199
+PEAK3 (meth.),0.0198
+HOXA2 (meth.),0.0198
+CD53 (meth.),0.0197
+GCSAM (meth.),0.0197
+TBX5 (meth.),0.0197
+HCG9 (meth.),0.0197
+DMBT1 (meth.),0.0197
+FAM135B (meth.),0.0197
+CNTN6 (meth.),0.0197
+RD3 (meth.),0.0196
+A4GNT (meth.),0.0196
+ACSL4 (meth.),0.0195
+FAXDC2 (meth.),0.0194
+VXN (meth.),0.0194
+HOXD10 (meth.),0.0193
+NETO1 (meth.),0.0193
+PXDN (meth.),0.0193
+LGALS12 (meth.),0.0193
+CLRN3 (meth.),0.0192
+DPP6 (meth.),0.0192
+CPA6 (meth.),0.0191
+BPIFA3 (meth.),0.0190
+C15orf48 (meth.),0.0190
+ZNF436 (meth.),0.0190
+CYBA (meth.),0.0190
+IRF8 (meth.),0.0190
+FIBIN (meth.),0.0190
+LMNTD1 (meth.),0.0189
+GPR143 (meth.),0.0189
+TCN1 (meth.),0.0189
+B4GALT6 (meth.),0.0188
+SARM1 (meth.),0.0188
+COL5A2 (meth.),0.0188
+NMUR2 (meth.),0.0188
+FAM83A (meth.),0.0187
+DEF6 (meth.),0.0187
+GCNT2 (meth.),0.0187
+AIM2 (meth.),0.0187
+MS4A15 (meth.),0.0187
+BATF (meth.),0.0186
+ST6GALNAC5 (meth.),0.0186
+CNKSR2 (meth.),0.0186
+CD38 (meth.),0.0186
+GLYAT (meth.),0.0185
+VILL (meth.),0.0185
+PGLYRP3 (meth.),0.0185
+TM4SF19 (meth.),0.0184
+EPPIN (meth.),0.0184
+IL13RA1 (meth.),0.0184
+MTMR8 (meth.),0.0184
+BCAN (meth.),0.0184
+NKX6-2 (meth.),0.0184
+KCNMB2 (meth.),0.0183
+TRIM2 (meth.),0.0182
+SLC8A2 (meth.),0.0182
+ZDHHC15 (meth.),0.0182
+WNK3 (meth.),0.0181
+CD1B (meth.),0.0181
+HOXD9 (meth.),0.0181
+SPRR4 (meth.),0.0181
+SPATA16 (meth.),0.0180
+H3C8 (meth.),0.0180
+DLEC1 (meth.),0.0180
+TIAM1 (meth.),0.0180
+GDF3 (meth.),0.0180
+SRPX2 (meth.),0.0179
+SLC38A11 (meth.),0.0179
+PLEKHS1 (meth.),0.0179
+SLC35G2 (meth.),0.0179
+GP2 (meth.),0.0179
+PCYT1B (meth.),0.0179
+GNG4 (meth.),0.0178
+SPACA7 (meth.),0.0178
+MSC (meth.),0.0178
+SLC22A9 (meth.),0.0176
+C1orf115 (meth.),0.0176
+GREB1 (meth.),0.0175
+ADGRG7 (meth.),0.0174
+TTN (meth.),0.0174
+APC (meth.),0.0174
+FSHR (meth.),0.0173
+CD200R1 (meth.),0.0172
+SRGN (meth.),0.0172
+COL11A2 (meth.),0.0172
+CD1A (meth.),0.0172
+LPAR5 (meth.),0.0172
+CFAP44 (meth.),0.0171
+FYB1 (meth.),0.0170
+SCG5 (meth.),0.0170
+USH2A (meth.),0.0170
+POU4F2 (meth.),0.0170
+ADA (meth.),0.0169
+EDARADD (meth.),0.0169
+SPHKAP (meth.),0.0168
+ZNF667 (meth.),0.0168
+VSTM1 (meth.),0.0168
+GCM1 (meth.),0.0167
+RBM47 (meth.),0.0167
+FLI1 (meth.),0.0167
+FTHL17 (meth.),0.0167
+PON3 (meth.),0.0166
+C5AR1 (meth.),0.0166
+CDH8 (meth.),0.0165
+DOCK2 (meth.),0.0165
+WWC3 (meth.),0.0165
+KCNAB2 (meth.),0.0165
+GIMAP5 (meth.),0.0165
+KCNK17 (meth.),0.0164
+WFDC6 (meth.),0.0163
+LMO3 (meth.),0.0163
+FAM50A (meth.),0.0162
+TAT (meth.),0.0162
+PAX7 (meth.),0.0161
+FAM107A (meth.),0.0161
+IL1RAPL1 (meth.),0.0160
+CD96 (meth.),0.0159
+ADH6 (meth.),0.0159
+LCE3D (meth.),0.0158
+SLC22A12 (meth.),0.0158
+FPR2 (meth.),0.0158
+CHRM5 (meth.),0.0157
+EHF (meth.),0.0157
+CRACR2A (meth.),0.0156
+GRIA2 (meth.),0.0156
+HNF4A (meth.),0.0156
+RNLS (meth.),0.0156
+LYN (meth.),0.0156
+ZNF560 (meth.),0.0156
+DENND2D (meth.),0.0156
+IL20RA (meth.),0.0156
+SOSTDC1 (meth.),0.0155
+GBP4 (meth.),0.0155
+GRIA1 (meth.),0.0154
+HSD17B2 (meth.),0.0154
+BEST3 (meth.),0.0153
+XPNPEP2 (meth.),0.0153
+AJAP1 (meth.),0.0153
+PON1 (meth.),0.0153
+SPATS1 (meth.),0.0153
+SPARCL1 (meth.),0.0153
+FAP (meth.),0.0152
+PCK1 (meth.),0.0152
+PCDHB6 (meth.),0.0152
+IRAK3 (meth.),0.0151
+KIF12 (meth.),0.0151
+SLITRK3 (meth.),0.0150
+TBC1D9B (meth.),0.0150
+STRA6 (meth.),0.0149
+AKAP4 (mut.),0.0149
+CA9 (meth.),0.0149
+CBLC (meth.),0.0148
+HOXB1 (meth.),0.0148
+TBR1 (meth.),0.0148
+BEGAIN (meth.),0.0148
+DNTT (meth.),0.0147
+CGAS (meth.),0.0147
+VWC2 (meth.),0.0147
+SLC17A8 (meth.),0.0147
+CIMIP4 (meth.),0.0146
+HEPH (meth.),0.0146
+IFNA8 (meth.),0.0146
+RIMBP2 (meth.),0.0146
+REPS2 (meth.),0.0145
+GRIK2 (meth.),0.0145
+DAPP1 (meth.),0.0144
+AFF3 (meth.),0.0143
+SEMG2 (meth.),0.0143
+FOXI2 (meth.),0.0142
+HBE1 (meth.),0.0142
+APCS (meth.),0.0142
+ARHGAP15 (meth.),0.0141
+HPCAL1 (meth.),0.0141
+SPAG6 (meth.),0.0141
+SST (meth.),0.0140
+SERPINA6 (meth.),0.0140
+SFN (meth.),0.0140
+TRAK1 (meth.),0.0139
+SUMO3 (meth.),0.0139
+PLAC1 (meth.),0.0139
+IVL (meth.),0.0139
+LAMA1 (meth.),0.0138
+SULT2B1 (meth.),0.0138
+DPYS (meth.),0.0138
+RHAG (meth.),0.0138
+GATA2 (meth.),0.0137
+H1-1 (meth.),0.0137
+POU3F4 (meth.),0.0137
+TPSD1 (meth.),0.0137
+PCOLCE (meth.),0.0136
+PHOX2A (meth.),0.0136
+AP1M2 (mut.),0.0136
+PPP1R36 (meth.),0.0136
+RNASE6 (meth.),0.0136
+IL7R (meth.),0.0136
+SPARC (meth.),0.0135
+CCDC69 (meth.),0.0135
+DCD (meth.),0.0135
+SORCS3 (meth.),0.0135
+NPY (meth.),0.0134
+TNFSF8 (meth.),0.0134
+CRABP1,0.0133
+COL19A1 (meth.),0.0133
+VSX1 (meth.),0.0133
+HHIPL1 (meth.),0.0133
+FCN2 (meth.),0.0132
+ESX1 (meth.),0.0132
+EXOC3L2 (meth.),0.0132
+PRKAR1B (meth.),0.0132
+APOBEC3C (meth.),0.0131
+LGALS2 (meth.),0.0131
+HOXB2 (meth.),0.0131
+MIA (meth.),0.0130
+ADAM12 (meth.),0.0130
+CLEC14A (meth.),0.0130
+WBP1L (meth.),0.0130
+PDE6B (meth.),0.0130
+ZNF177 (meth.),0.0129
+SEC31B (meth.),0.0129
+SLC16A5 (meth.),0.0128
+TASL (meth.),0.0128
+HNF4G (meth.),0.0128
+HFE (meth.),0.0128
+CD40 (meth.),0.0128
+RHOH (meth.),0.0128
+PLPPR4 (meth.),0.0127
+ANKRD53 (meth.),0.0127
+ARSL (meth.),0.0127
+SRD5A2 (meth.),0.0127
+LINC02694 (meth.),0.0126
+CD164L2 (meth.),0.0126
+ABCC2 (meth.),0.0126
+HYDIN (meth.),0.0125
+WFDC2 (meth.),0.0125
+MCF2 (meth.),0.0125
+SALL3 (meth.),0.0125
+LYZL2 (meth.),0.0125
+CAPSL (meth.),0.0125
+CBLN4 (meth.),0.0125
+ADHFE1 (meth.),0.0124
+PRKAR2B (meth.),0.0124
+GRIP1 (meth.),0.0124
+PGLYRP1 (meth.),0.0124
+FMO1 (meth.),0.0124
+TAAR5 (meth.),0.0124
+CLEC12A (meth.),0.0123
+RPRM (meth.),0.0123
+MAGEE2 (meth.),0.0123
+KLK2 (meth.),0.0123
+TMEM139 (meth.),0.0123
+LPP (meth.),0.0122
+TOX2 (meth.),0.0122
+BTBD2 (meth.),0.0122
+SPRR2A (meth.),0.0122
+DDO (meth.),0.0122
+NOS3 (meth.),0.0121
+MS4A1 (meth.),0.0121
+MUCL1 (meth.),0.0121
+SPSB4 (meth.),0.0121
+FAR2 (meth.),0.0120
+LINC00336 (meth.),0.0120
+SLN (meth.),0.0120
+CEACAM7 (meth.),0.0120
+HNF1B (meth.),0.0120
+CER1 (meth.),0.0120
+CXCL5 (meth.),0.0119
+SLC9A6 (meth.),0.0118
+TTLL2 (meth.),0.0118
+SPRR2E (meth.),0.0118
+TAFA4 (meth.),0.0117
+KRT7 (meth.),0.0117
+PRELP (meth.),0.0117
+H4C4 (meth.),0.0116
+MORF4 (meth.),0.0116
+CRH (meth.),0.0116
+CDH26 (meth.),0.0115
+EEF1E1 (mut.),0.0115
+HOXD12 (meth.),0.0115
+RFLNA (meth.),0.0115
+SLC38A10 (meth.),0.0115
+ZIC1 (meth.),0.0115
+CLIP4 (meth.),0.0115
+SERHL (meth.),0.0115
+GRM8 (meth.),0.0115
+DNAJC6 (meth.),0.0115
+CDK15 (meth.),0.0114
+ATP8A2 (meth.),0.0114
+SLC23A2 (meth.),0.0114
+PI15 (meth.),0.0114
+DKK4 (meth.),0.0114
+IL37 (meth.),0.0114
+PRSS21 (meth.),0.0114
+TNFRSF10C (meth.),0.0114
+MUC16,0.0113
+SFT2D3 (meth.),0.0113
+DDR2 (meth.),0.0113
+EPB42 (meth.),0.0113
+NIBAN3 (meth.),0.0113
+ZNF875 (meth.),0.0112
+GCM2 (meth.),0.0112
+GYPC (meth.),0.0112
+GALR1 (meth.),0.0112
+DSC3 (meth.),0.0112
+ORAI2 (meth.),0.0112
+PLA2G4E (meth.),0.0111
+CST5 (meth.),0.0111
+TSPYL5 (meth.),0.0111
+PCDHB5 (meth.),0.0111
+EPHA10 (meth.),0.0111
+CRYBB3 (meth.),0.0111
+ZNF606 (meth.),0.0111
+SCUBE3 (meth.),0.0111
+PCDH11X (meth.),0.0110
+SLC22A16 (meth.),0.0110
+RBBP8NL (meth.),0.0110
+THY1 (meth.),0.0110
+MKRN3 (meth.),0.0110
+LY75 (meth.),0.0109
+CLDN16 (meth.),0.0109
+MED12 (meth.),0.0109
+SORCS1 (meth.),0.0109
+KCNN2 (meth.),0.0108
+ARHGAP25 (meth.),0.0108
+CD14 (meth.),0.0108
+CD200 (meth.),0.0108
+SERPINB12 (meth.),0.0108
+ST8SIA5 (meth.),0.0108
+STEAP4 (meth.),0.0108
+PIPOX (meth.),0.0108
+HBG1 (meth.),0.0107
+MGAM (meth.),0.0107
+NAALAD2 (meth.),0.0107
+CRB3 (meth.),0.0107
+FLG (meth.),0.0106
+TP63 (meth.),0.0106
+UBXN10 (meth.),0.0106
+GPR150 (meth.),0.0106
+ARMCX2 (meth.),0.0106
+S100A2 (meth.),0.0106
+SLC16A12 (meth.),0.0106
+SLAIN1 (meth.),0.0105
+ADAMTSL1 (meth.),0.0105
+GPR101 (meth.),0.0105
+MBL2 (meth.),0.0104
+MFAP5 (meth.),0.0104
+FGF20 (meth.),0.0104
+VNN2 (meth.),0.0104
+PPM1M (meth.),0.0104
+APOL1 (meth.),0.0104
+TPO (meth.),0.0104
+TINAGL1 (meth.),0.0103
+TRIM15 (meth.),0.0103
+HTRA4 (meth.),0.0103
+CFB (meth.),0.0103
+MIR143 (mut.),0.0103
+MSN (meth.),0.0103
+MARK2 (meth.),0.0103
+ADGRG1 (meth.),0.0102
+A2ML1 (meth.),0.0102
+SSUH2 (meth.),0.0102
+MX2 (meth.),0.0102
+TNFSF4 (meth.),0.0102
+SLC24A2 (meth.),0.0102
+DEFB123 (meth.),0.0102
+CCDC81 (meth.),0.0101
+SLC16A3 (meth.),0.0101
+KL (meth.),0.0101
+CHI3L2 (meth.),0.0101
+TRIM31 (meth.),0.0101
+ENTPD1 (meth.),0.0101
+CEACAM5 (meth.),0.0100
+ALKAL1 (meth.),0.0100
+SPOCD1 (meth.),0.0100
+AHSP (meth.),0.0100
+PLEKHA4 (meth.),0.0099
+MEGF11 (meth.),0.0099
+MAGED1 (meth.),0.0099
+RXFP3 (meth.),0.0099
+ALK (meth.),0.0099
+PRICKLE2 (meth.),0.0098
+PTPRN (meth.),0.0098
+CCK (meth.),0.0098
+GBP6 (meth.),0.0098
+RGN (meth.),0.0097
+MAGEB18 (meth.),0.0097
+MARCHF10 (meth.),0.0096
+RPL39L (meth.),0.0096
+ZFP82 (meth.),0.0096
+NEUROD1 (meth.),0.0096
+DACT3 (meth.),0.0096
+GRIA3 (meth.),0.0096
+MACROH2A1 (meth.),0.0095
+MADD (meth.),0.0095
+GRIK5 (meth.),0.0095
+ANK2 (meth.),0.0095
+AMMECR1 (meth.),0.0094
+SPRR1A (meth.),0.0094
+UCN3 (meth.),0.0094
+ASB4 (meth.),0.0094
+KRT8 (meth.),0.0094
+SPDEF (meth.),0.0094
+SIRPD (meth.),0.0094
+PITX1 (meth.),0.0094
+CCL7 (meth.),0.0094
+DEFB126 (meth.),0.0093
+CYP11B1 (meth.),0.0093
+CFAP100 (meth.),0.0093
+TMEM100 (meth.),0.0093
+NALCN (meth.),0.0093
+BST2 (meth.),0.0092
+ITK (meth.),0.0092
+RXRG (meth.),0.0092
+NRIP2 (meth.),0.0092
+ZAR1 (meth.),0.0092
+CCDC178 (meth.),0.0092
+STAT5A (meth.),0.0092
+KAZALD1 (meth.),0.0092
+UBQLN3 (meth.),0.0092
+CLCA1 (meth.),0.0092
+SLC52A3 (meth.),0.0092
+GUCY2C (meth.),0.0092
+TRIM58 (meth.),0.0091
+REG1A (meth.),0.0091
+TRIM40 (meth.),0.0091
+NECTIN4 (meth.),0.0091
+MCHR2 (meth.),0.0091
+SYT6 (meth.),0.0091
+COL21A1 (meth.),0.0091
+CES5A (meth.),0.0090
+CFAP45 (meth.),0.0090
+FAM3B (meth.),0.0090
+MEGF10 (meth.),0.0090
+FLRT2 (meth.),0.0090
+PARVG (meth.),0.0090
+SLAMF7 (meth.),0.0090
+TCEAL2 (meth.),0.0089
+SCN7A (meth.),0.0089
+EFEMP1 (meth.),0.0089
+COL15A1 (meth.),0.0089
+C2CD6 (meth.),0.0089
+USP51 (meth.),0.0089
+POU3F3 (meth.),0.0089
+SLC34A2 (meth.),0.0088
+CYP1B1-AS1 (meth.),0.0088
+TMEM71 (meth.),0.0088
+SORBS2 (meth.),0.0087
+FAM20B (meth.),0.0087
+VIPR2 (meth.),0.0087
+ZIC5 (meth.),0.0087
+SNX20 (meth.),0.0086
+SERPINA7 (meth.),0.0086
+EMD (meth.),0.0086
+ZNF677 (meth.),0.0086
+IL1R2 (meth.),0.0086
+IL5RA (meth.),0.0086
+FGF23 (meth.),0.0085
+ARMCX1 (meth.),0.0085
+HTR4 (meth.),0.0085
+NR0B1 (meth.),0.0085
+SLC7A9 (meth.),0.0085
+ADAM29 (meth.),0.0085
+RHCG (meth.),0.0085
+ASIC4 (meth.),0.0085
+PCDHB15 (meth.),0.0085
+CADPS (meth.),0.0085
+AMDHD1 (meth.),0.0084
+FABP2 (meth.),0.0084
+LRIT1 (meth.),0.0084
+DTX1 (meth.),0.0084
+CUBN (meth.),0.0084
+CYP27A1 (meth.),0.0083
+MAMDC2 (meth.),0.0083
+EBP (meth.),0.0083
+COG2 (meth.),0.0083
+TMEM106A (meth.),0.0083
+VEPH1 (meth.),0.0083
+GUCA1A (meth.),0.0083
+SLC9A7 (meth.),0.0083
+HNF1A (meth.),0.0083
+HTR3A (meth.),0.0083
+ADIPOQ (meth.),0.0083
+POU4F1 (meth.),0.0083
+RAB34 (meth.),0.0083
+DEFB125 (meth.),0.0083
+ZDHHC11 (meth.),0.0082
+SNTB1 (meth.),0.0082
+DMRT1 (meth.),0.0082
+DAB2IP (meth.),0.0081
+ACOX2 (meth.),0.0081
+SLC13A1 (meth.),0.0081
+POU3F1 (meth.),0.0081
+H2AC14 (meth.),0.0081
+TEK (meth.),0.0081
+DOCK3 (meth.),0.0081
+SPNS3 (meth.),0.0081
+SLC32A1 (meth.),0.0081
+PKIA (meth.),0.0081
+ATP6AP1 (meth.),0.0080
+C15orf32 (meth.),0.0080
+IL12RB2 (meth.),0.0080
+KRT24 (meth.),0.0080
+TRIM36 (meth.),0.0080
+DRC1 (meth.),0.0080
+CDH22 (meth.),0.0080
+KRTDAP (meth.),0.0079
+FCN1 (meth.),0.0079
+MARCO (meth.),0.0079
+SAXO4 (meth.),0.0079
+SLC39A4 (meth.),0.0079
+SPINK7 (meth.),0.0079
+RELN (meth.),0.0079
+GJA10 (meth.),0.0078
+SLC5A12 (meth.),0.0078
+PLP1 (meth.),0.0078
+CCL8 (meth.),0.0078
+CRNN (meth.),0.0078
+ADGRE3 (meth.),0.0078
+SMIM10L2A (meth.),0.0078
+HSD17B14 (meth.),0.0078
+DMRT2 (meth.),0.0077
+STMN4 (meth.),0.0077
+PTPN6 (meth.),0.0077
+MIR1205 (mut.),0.0077
+TMEM140 (meth.),0.0077
+FURIN (meth.),0.0077
+TRPA1 (meth.),0.0077
+SP6 (meth.),0.0077
+SRXN1 (meth.),0.0077
+EPO (meth.),0.0077
+LHX5 (meth.),0.0077
+ITGBL1 (meth.),0.0077
+AZGP1 (meth.),0.0077
+CRISP2 (meth.),0.0076
+SIRPG (meth.),0.0076
+UNC5C (meth.),0.0076
+GNE (meth.),0.0076
+NOS2 (meth.),0.0076
+RNASE1 (meth.),0.0076
+SLC15A2 (meth.),0.0076
+STC2 (meth.),0.0076
+TMEM52B (meth.),0.0076
+CACNG5 (meth.),0.0076
+MCEMP1 (meth.),0.0076
+H2BC11 (meth.),0.0076
+GRIN3A (meth.),0.0075
+CIITA (meth.),0.0075
+SLC38A4 (meth.),0.0075
+MR1 (meth.),0.0075
+NAV3 (meth.),0.0075
+ABTB1 (meth.),0.0075
+S100P (meth.),0.0075
+ACY3 (meth.),0.0075
+ASB17 (meth.),0.0074
+KHDRBS2 (meth.),0.0074
+ANKRD45 (meth.),0.0074
+TRPC6 (meth.),0.0074
+ASF1B (mut.),0.0074
+MTM1 (meth.),0.0074
+TMEM74 (meth.),0.0074
+PDZRN3 (meth.),0.0074
+MMP27 (meth.),0.0073
+KIR3DX1 (meth.),0.0073
+FOXE1 (meth.),0.0073
+SLC18A1 (meth.),0.0073
+BDNF (meth.),0.0073
+PLA2G12B (meth.),0.0073
+FLT3 (meth.),0.0073
+CLIC2 (meth.),0.0073
+CYP11B1 (mut.),0.0073
+KCNA6 (meth.),0.0073
+RYR2 (meth.),0.0073
+KLHL6 (meth.),0.0073
+MXRA5 (meth.),0.0072
+FUT9 (meth.),0.0072
+ALAS1 (meth.),0.0072
+PRDM14 (meth.),0.0072
+OR7A17 (meth.),0.0072
+AOC1 (meth.),0.0072
+IRAK1 (meth.),0.0072
+CBY2 (meth.),0.0072
+CASP14 (meth.),0.0072
+PGK2 (meth.),0.0072
+DPYSL4 (meth.),0.0072
+LORICRIN (meth.),0.0072
+PCDHB12 (meth.),0.0072
+ATRX (meth.),0.0072
+F2RL1 (meth.),0.0072
+GJD2 (meth.),0.0071
+TRIML1 (meth.),0.0071
+TRPV6 (meth.),0.0071
+SPRR1B (meth.),0.0071
+SPINK2 (meth.),0.0071
+OR1D2 (meth.),0.0071
+MLC1 (meth.),0.0071
+RPL36A (meth.),0.0071
+BCAS1 (meth.),0.0071
+H2BC6 (meth.),0.0071
+CSNK1E (meth.),0.0070
+PADI4 (meth.),0.0070
+PLEKHA6 (meth.),0.0070
+SOX3 (meth.),0.0070
+PIM2 (meth.),0.0070
+APEX2 (meth.),0.0070
+DPPA2 (meth.),0.0070
+CD72 (meth.),0.0070
+ADRA2C (meth.),0.0070
+RSPH9 (meth.),0.0069
+GPR26 (meth.),0.0069
+PRKG2 (meth.),0.0069
+MT4 (meth.),0.0069
+MAGEB4 (meth.),0.0069
+TAMALIN (meth.),0.0069
+UBASH3A (meth.),0.0069
+PEPD (meth.),0.0069
+KRT38 (meth.),0.0069
+DLG2 (meth.),0.0068
+S100A8 (meth.),0.0068
+PTK6 (meth.),0.0068
+SPMIP8 (meth.),0.0068
+REG3A (meth.),0.0068
+GSX2 (meth.),0.0068
+TMEFF2 (meth.),0.0068
+WFIKKN2 (meth.),0.0068
+HOXA4 (meth.),0.0068
+NR0B2 (meth.),0.0068
+ACSS3 (meth.),0.0067
+VSX2 (meth.),0.0067
+CCDC65 (meth.),0.0067
+TSPAN16 (meth.),0.0067
+OTOF (meth.),0.0067
+TMEM200A (meth.),0.0067
+SNAP25 (meth.),0.0067
+RXFP4 (meth.),0.0067
+SLC6A2 (meth.),0.0067
+SNAP91 (meth.),0.0067
+NEFH (meth.),0.0067
+IL24 (meth.),0.0067
+PCDHB1 (meth.),0.0067
+HOXB8 (meth.),0.0067
+FBLIM1 (meth.),0.0067
+S100A16 (meth.),0.0067
+SELPLG (meth.),0.0067
+KDR (meth.),0.0066
+LACRT (meth.),0.0066
+RUFY3 (meth.),0.0066
+TMPRSS11F (meth.),0.0066
+CPNE4 (meth.),0.0066
+SH3GL3 (meth.),0.0066
+P2RY10 (meth.),0.0066
+SNX31 (meth.),0.0066
+CSPG5 (meth.),0.0066
+SOX11 (meth.),0.0066
+CFAP91 (meth.),0.0065
+TRIM63 (meth.),0.0065
+BMP3 (meth.),0.0065
+MYADM (meth.),0.0065
+QRFPR (meth.),0.0065
+CPQ (meth.),0.0065
+HTR1B (meth.),0.0065
+ODAPH (meth.),0.0065
+PTGDR2 (meth.),0.0065
+CSF1R (meth.),0.0065
+TNFRSF10D (meth.),0.0065
+ISL1 (meth.),0.0065
+KALRN (meth.),0.0065
+HMGB3 (meth.),0.0065
+SLC4A1 (meth.),0.0065
+RETNLB (meth.),0.0065
+GMFG (meth.),0.0065
+POMC (meth.),0.0064
+DEFB1 (meth.),0.0064
+MAPK4 (meth.),0.0064
+TACSTD2 (meth.),0.0064
+FAM114A1 (meth.),0.0064
+TRO (meth.),0.0064
+TBX20 (meth.),0.0064
+SLC27A6 (meth.),0.0063
+OLIG2 (meth.),0.0063
+OR10A4 (meth.),0.0063
+BPIFB6 (meth.),0.0063
+MAGEB6 (meth.),0.0063
+AGXT2 (meth.),0.0063
+KCTD1 (meth.),0.0063
+JADE3 (meth.),0.0062
+NEIL1 (meth.),0.0062
+NCKAP1L (meth.),0.0062
+GPC3 (meth.),0.0062
+AKR1B1 (meth.),0.0062
+PODN (meth.),0.0062
+SLC2A3 (meth.),0.0062
+CUX2 (meth.),0.0062
+DEFA5 (meth.),0.0062
+MAGEH1 (meth.),0.0062
+SLC22A11 (meth.),0.0062
+CNIH3 (meth.),0.0062
+ARX (meth.),0.0062
+SLAMF1 (meth.),0.0062
+CARD8 (meth.),0.0062
+CDH12 (meth.),0.0062
+HOXA6 (meth.),0.0062
+KRTAP13-4 (meth.),0.0062
+C12orf54 (meth.),0.0062
+G0S2 (meth.),0.0062
+TCERG1L (meth.),0.0062
+CTNNA3 (mut.),0.0061
+SLCO1C1 (meth.),0.0061
+SYTL5 (meth.),0.0061
+MTSS1 (meth.),0.0061
+PNLIP (meth.),0.0061
+GYS2 (meth.),0.0061
+RERGL (meth.),0.0061
+CD244 (meth.),0.0061
+CRIP1 (meth.),0.0061
+HS3ST2 (meth.),0.0061
+MAOB (meth.),0.0061
+GZMB (meth.),0.0061
+FGF3 (meth.),0.0061
+OGDH (meth.),0.0061
+PDE1C (meth.),0.0061
+MOGAT2 (meth.),0.0061
+CLEC4G (meth.),0.0060
+WDR45 (meth.),0.0060
+KCNA4 (meth.),0.0060
+SLC6A18 (meth.),0.0060
+LAGE3 (meth.),0.0060
+SNRK (meth.),0.0060
+OR5I1 (meth.),0.0060
+KIF25 (meth.),0.0060
+LCE2B (meth.),0.0060
+IRX4 (meth.),0.0060
+ERP27 (meth.),0.0060
+SPACA3 (meth.),0.0059
+THSD4,0.0059
+SAT1 (meth.),0.0059
+NCALD (meth.),0.0059
+GFI1 (meth.),0.0059
+PREX2 (meth.),0.0059
+ZNF662 (meth.),0.0059
+CDKL2 (meth.),0.0059
+RBP5 (meth.),0.0059
+DNM3 (meth.),0.0059
+TCF21 (meth.),0.0059
+CD99L2 (meth.),0.0059
+NXF3 (meth.),0.0059
+FSD1 (meth.),0.0059
+CHST2 (meth.),0.0059
+SCML1 (meth.),0.0059
+CCDC22 (meth.),0.0058
+CABS1 (meth.),0.0058
+CGREF1 (meth.),0.0058
+MAPRE3 (meth.),0.0058
+BCOR (meth.),0.0058
+SLC13A5 (meth.),0.0058
+OR7A5 (meth.),0.0058
+SLC39A2 (meth.),0.0058
+NRG4 (mut.),0.0058
+SCNN1B (meth.),0.0058
+WT1-AS (meth.),0.0058
+TGFBR1 (meth.),0.0058
+HTR5A (meth.),0.0058
+SPAG4 (meth.),0.0058
+GPR142 (meth.),0.0058
+NINJ2 (meth.),0.0057
+CDH5 (meth.),0.0057
+DNAJC5B (meth.),0.0057
+SAA1 (meth.),0.0057
+C3orf62 (meth.),0.0057
+MAS1L (meth.),0.0057
+KCNQ2 (meth.),0.0057
+EPS8L3 (meth.),0.0057
+PZP (meth.),0.0057
+ADORA3 (meth.),0.0057
+ALOX15 (meth.),0.0057
+KRT79 (meth.),0.0057
+TRPM2 (meth.),0.0057
+COL9A1 (meth.),0.0057
+CLDN18 (meth.),0.0057
+HABP2 (meth.),0.0057
+CD1E (meth.),0.0057
+KRT27 (meth.),0.0057
+ALPK2 (meth.),0.0057
+GIMAP7 (meth.),0.0057
+SCNN1A (meth.),0.0057
+SLITRK5 (meth.),0.0056
+EEF1A2 (mut.),0.0056
+CES3 (meth.),0.0056
+KRTCAP3 (meth.),0.0056
+FAM107B (meth.),0.0056
+ANXA9 (meth.),0.0056
+NPR3 (meth.),0.0056
+HP (meth.),0.0056
+ITGB2 (meth.),0.0056
+LCN12 (meth.),0.0056
+SFTA2 (meth.),0.0056
+GAS2 (meth.),0.0056
+NRG1 (meth.),0.0056
+DIO3 (meth.),0.0056
+ACKR2 (mut.),0.0056
+SYT9 (meth.),0.0056
+IFI44L (meth.),0.0056
+NPSR1 (meth.),0.0056
+KRTAP21-2 (mut.),0.0056
+HOXC11 (meth.),0.0056
+GALNTL5 (meth.),0.0056
+STAC2 (meth.),0.0056
+ZNF254 (meth.),0.0056
+PCDHB3 (meth.),0.0056
+MAOA (meth.),0.0055
+LCE1A (meth.),0.0055
+FRK (meth.),0.0055
+PTN (meth.),0.0055
+ST6GAL2 (meth.),0.0055
+ADIG (meth.),0.0055
+ACTA1 (meth.),0.0055
+ABLIM1 (meth.),0.0055
+AKR1B10 (meth.),0.0055
+NAF1 (meth.),0.0055
+NOX4 (meth.),0.0055
+BPIFA1 (meth.),0.0055
+TFF1 (meth.),0.0055
+CXCL6 (mut.),0.0055
+AFP (mut.),0.0055
+TSLP (meth.),0.0055
+DDX43 (meth.),0.0055
+ZNF415 (meth.),0.0055
+CHRNB3 (meth.),0.0055
+ATP6V0C (meth.),0.0054
+H4C13 (meth.),0.0054
+GSG1L (meth.),0.0054
+ISL2 (meth.),0.0054
+PCDHB2 (meth.),0.0054
+CALCOCO2 (mut.),0.0054
+PTGFR (meth.),0.0054
+GJB5 (meth.),0.0054
+HCN1 (meth.),0.0054
+TFPI2 (meth.),0.0054
+CYP2W1 (meth.),0.0054
+DACH2 (meth.),0.0054
+KRBOX4 (meth.),0.0054
+TCEAL3 (meth.),0.0054
+KCNA1 (meth.),0.0054
+GPR55 (meth.),0.0054
+OR12D3 (meth.),0.0054
+CD8A (meth.),0.0053
+FETUB (meth.),0.0053
+CD226 (mut.),0.0053
+DENND3 (mut.),0.0053
+ACTN3 (meth.),0.0053
+SLC7A11 (meth.),0.0053
+C9 (meth.),0.0053
+ZNF280A (meth.),0.0053
+ACAN (meth.),0.0053
+SOST (meth.),0.0053
+TNXB (meth.),0.0053
+SCARA5 (meth.),0.0053
+AOX1 (meth.),0.0053
+NAV1 (meth.),0.0053
+CRISPLD1 (meth.),0.0053
+TM4SF18 (meth.),0.0053
+TH (meth.),0.0053
+FOXS1 (meth.),0.0053
+SAA2 (meth.),0.0052
+PRR15L (meth.),0.0052
+LTF (meth.),0.0052
+NPY4R (meth.),0.0052
+MYF6 (meth.),0.0052
+DEFB119 (mut.),0.0052
+ESR2 (meth.),0.0052
+CLCNKB (meth.),0.0052
+SULF1 (meth.),0.0052
+ACTBL2 (mut.),0.0052
+PCDHB14 (meth.),0.0052
+SFRP2 (meth.),0.0052
+LINC00305 (meth.),0.0052
+KCNT2 (meth.),0.0052
+SIGLEC7 (meth.),0.0052
+ABHD5 (mut.),0.0052
+SYNGR3 (meth.),0.0052
+PATE1 (meth.),0.0052
+SIRPB1 (meth.),0.0052
+LINC00674 (mut.),0.0052
+ERG (meth.),0.0051
+IDS (meth.),0.0051
+POU2AF1 (meth.),0.0051
+AIFM1 (meth.),0.0051
+CPT1A (mut.),0.0051
+SPON1,0.0051
+ADAM18 (mut.),0.0051
+ZBTB7B (meth.),0.0051
+FFAR3 (meth.),0.0051
+B4GALT6 (mut.),0.0051
+SLC10A2 (meth.),0.0051
+RBP1 (meth.),0.0051
+AMER1 (meth.),0.0051
+NCAPD2 (meth.),0.0051
+TMEM101 (meth.),0.0051
+MEST (meth.),0.0051
+TOR4A (meth.),0.0051
+PDPN (meth.),0.0051
+PRDX4 (meth.),0.0051
+ADAMTSL3 (meth.),0.0051
+SPDYA (meth.),0.0051
+GZMH (meth.),0.0051
+SIGLEC12 (meth.),0.0051
+EFNB1 (meth.),0.0050
+ACKR1 (meth.),0.0050
+ANGPTL3 (mut.),0.0050
+TSTD1 (meth.),0.0050
+CD37 (meth.),0.0050
+NEUROD6 (meth.),0.0050
+KRTAP19-7 (mut.),0.0050
+PDE4C (meth.),0.0050
+OPRM1 (meth.),0.0050
+ANGPTL5 (mut.),0.0050
+SV2A (meth.),0.0050
+C16orf90 (mut.),0.0050
+NGEF (meth.),0.0050
+MPG (meth.),0.0050
+RPGR (meth.),0.0050
+LAT (meth.),0.0050
+LEP (meth.),0.0050
+SEMA3E (meth.),0.0050
+CA13 (meth.),0.0050
+PTGES (meth.),0.0050
+GPX2 (meth.),0.0050
+GZMK (meth.),0.0049
+LRG1 (meth.),0.0049
+LPAR2 (meth.),0.0049
+KCNV1 (meth.),0.0049
+IL9 (meth.),0.0049
+KRT72 (meth.),0.0049
+TRIM42 (meth.),0.0049
+GJD4 (meth.),0.0049
+TRPV3 (meth.),0.0049
+PDGFD (meth.),0.0049
+ELMO3 (meth.),0.0049
+C1orf210 (meth.),0.0049
+SULT1C4 (meth.),0.0049
+PPP1R3C (meth.),0.0049
+CLEC4M (meth.),0.0049
+PLCL1 (meth.),0.0049
+CNTN4 (meth.),0.0049
+KCNQ5 (meth.),0.0049
+TNFRSF8 (meth.),0.0049
+TMEM35A (meth.),0.0048
+VEGFA,0.0048
+MAFB (meth.),0.0048
+GLDC (meth.),0.0048
+PNOC (meth.),0.0048
+RABGEF1 (meth.),0.0048
+JAM2 (meth.),0.0048
+BTG2 (mut.),0.0048
+GALM (meth.),0.0048
+NECAB2 (meth.),0.0048
+HAPLN1 (meth.),0.0048
+RBFOX1 (meth.),0.0048
+CPM (mut.),0.0047
+HOXA7 (meth.),0.0047
+INA (meth.),0.0047
+PPP1R14D (meth.),0.0047
+TSR2 (meth.),0.0047
+MKX (meth.),0.0047
+CLDN11 (meth.),0.0047
+FBLN2 (meth.),0.0047
+PABPC4,0.0047
+PPP1R11 (mut.),0.0047
+SIPA1 (meth.),0.0047
+TUSC3 (meth.),0.0047
+EN1 (meth.),0.0047
+ARMS2 (mut.),0.0047
+NAT16 (meth.),0.0047
+FAT1 (mut.),0.0047
+MIA2 (meth.),0.0047
+ZNF549 (meth.),0.0047
+DEFB129 (meth.),0.0047
+MUC13 (meth.),0.0047
+CYP2E1 (meth.),0.0047
+AKR1D1 (mut.),0.0047
+APCDD1L (meth.),0.0047
+GDF5 (meth.),0.0047
+LMO2 (meth.),0.0047
+GPR6 (meth.),0.0047
+ADAMTS1 (meth.),0.0047
+GRIK3 (meth.),0.0047
+CTNND2 (meth.),0.0047
+NKRF (meth.),0.0047
+BLK (meth.),0.0047
+RIPK3 (meth.),0.0047
+ME1 (meth.),0.0047
+NGB (meth.),0.0047
+PLEKHB1 (meth.),0.0047
+FAM30A (meth.),0.0047
+SPRR3 (meth.),0.0046
+SLC49A3 (meth.),0.0046
+CSRNP2 (meth.),0.0046
+RNASE1,0.0046
+CCDC89 (meth.),0.0046
+APOH (meth.),0.0046
+CXCL6 (meth.),0.0046
+SMAGP (meth.),0.0046
+GRM3 (meth.),0.0046
+CABP7 (meth.),0.0046
+KRT17 (meth.),0.0046
+BEX1 (meth.),0.0046
+RTL8C (meth.),0.0046
+KRTAP19-5 (meth.),0.0046
+FGF2 (meth.),0.0046
+BTBD16 (mut.),0.0046
+CXCL12 (meth.),0.0046
+CTNNBIP1 (mut.),0.0046
+FMOD (meth.),0.0046
+ZBTB18 (meth.),0.0046
+HAPLN2 (meth.),0.0046
+MSLN (meth.),0.0046
+WNK2 (meth.),0.0046
+COL14A1 (meth.),0.0046
+TEKT4 (meth.),0.0046
+CRYGN (meth.),0.0046
+KLK5 (meth.),0.0045
+HOXD3 (meth.),0.0045
+HTATSF1 (meth.),0.0045
+IMP4 (meth.),0.0045
+GALNT5 (meth.),0.0045
+IL32 (meth.),0.0045
+CEACAM19 (meth.),0.0045
+CA5B (meth.),0.0045
+CBX4 (mut.),0.0045
+IL2RG (meth.),0.0045
+SHOX2 (meth.),0.0045
+NMBR (meth.),0.0045
+TSGA10 (mut.),0.0045
+ADAP2 (meth.),0.0045
+CIDEC (meth.),0.0045
+ANAPC10 (mut.),0.0045
+FOXJ1 (meth.),0.0045
+HLA-DRA (meth.),0.0045
+ITIH4 (meth.),0.0044
+PVALB (meth.),0.0044
+CXCL1 (meth.),0.0044
+ARHGAP4 (meth.),0.0044
+RMST (meth.),0.0044
+SYT10 (meth.),0.0044
+UBE2A (meth.),0.0044
+SYDE1 (meth.),0.0044
+ABHD10 (mut.),0.0044
+ARHGEF15 (meth.),0.0044
+OIT3 (meth.),0.0044
+ISG20L2 (meth.),0.0044
+PGK1 (meth.),0.0044
+CHTF8 (mut.),0.0044
+SFTPB (meth.),0.0044
+XAGE5 (meth.),0.0044
+EVL (meth.),0.0044
+MS4A2 (meth.),0.0044
+C16orf74 (mut.),0.0044
+FOLR2 (meth.),0.0044
+AMPD1 (meth.),0.0044
+HOPX (meth.),0.0043
+EGFL6 (meth.),0.0043
+MRGPRX1 (meth.),0.0043
+ATP4B (meth.),0.0043
+ARF3 (mut.),0.0043
+SOX1 (meth.),0.0043
+DAW1 (meth.),0.0043
+MIR1307 (mut.),0.0043
+ZG16B (meth.),0.0043
+ICAM4 (meth.),0.0043
+NAIF1 (meth.),0.0043
+PRKG2 (mut.),0.0043
+ACSBG2 (mut.),0.0043
+PRECSIT (meth.),0.0043
+CSNK1A1L (meth.),0.0043
+ROMO1 (mut.),0.0043
+ASPA (meth.),0.0043
+CST2 (meth.),0.0042
+GAL3ST1 (meth.),0.0042
+AIF1 (mut.),0.0042
+L3MBTL4 (meth.),0.0042
+NFATC2 (meth.),0.0042
+RGS4 (meth.),0.0042
+SLC22A8 (meth.),0.0042
+SLC34A1 (meth.),0.0042
+DOK5 (meth.),0.0042
+KEL (meth.),0.0042
+CLCN4 (meth.),0.0042
+MGAT4A (meth.),0.0042
+SULT1C2 (meth.),0.0042
+PAK5 (meth.),0.0042
+GNLY (meth.),0.0042
+FHL2 (meth.),0.0042
+MMP2 (meth.),0.0042
+SLC17A1 (meth.),0.0042
+CDH19 (mut.),0.0042
+GH1 (meth.),0.0042
+CD300C (meth.),0.0042
+BRAF (mut.),0.0041
+not found,0.0041
+ME3 (meth.),0.0041
+SOX7 (meth.),0.0041
+OR10H3 (meth.),0.0041
+COPZ2 (mut.),0.0041
+DGKI (meth.),0.0041
+CNP (mut.),0.0041
+GABRA6 (meth.),0.0041
+SECTM1 (meth.),0.0041
+RAB9B (meth.),0.0041
+BCL2L1 (mut.),0.0041
+MEPCE (meth.),0.0041
+CXCL12 (mut.),0.0041
+ACTL6B (meth.),0.0041
+MT1M (mut.),0.0041
+ACKR3 (meth.),0.0041
+PRSS16 (meth.),0.0041
+IL1B (meth.),0.0041
+ATP6V1D (mut.),0.0041
+DUSP22 (meth.),0.0041
+AMIGO2 (meth.),0.0041
+FRMPD4 (meth.),0.0041
+MCF2L (meth.),0.0041
+PLP2 (meth.),0.0041
+HOXB4 (meth.),0.0041
+PMEPA1 (meth.),0.0041
+CCKBR (meth.),0.0040
+IFITM1 (mut.),0.0040
+ZSCAN18 (meth.),0.0040
+SOX18 (meth.),0.0040
+ARL14EP (mut.),0.0040
+GYPB (mut.),0.0040
+REG1B (meth.),0.0040
+CCL15 (mut.),0.0040
+HIGD1B (meth.),0.0040
+LPL (meth.),0.0040
+PLXNB1 (meth.),0.0040
+VHL (meth.),0.0040
+ARMC6 (mut.),0.0040
+KCNMA1 (meth.),0.0040
+CYP7B1 (meth.),0.0040
+CDKL1 (mut.),0.0040
+ARHGEF7 (mut.),0.0040
+FGD1 (meth.),0.0040
+MEDAG (meth.),0.0040
+CCM2L (meth.),0.0040
+PKHD1 (meth.),0.0040
+FBXW10 (meth.),0.0040
+ENO3 (meth.),0.0040
+C1QB (meth.),0.0040
+ART4 (mut.),0.0040
+CLC (meth.),0.0040
+MST1R (meth.),0.0040
+B2M (mut.),0.0040
+XAGE3 (meth.),0.0040
+ANP32D (mut.),0.0040
+SLIT3 (meth.),0.0040
+MIR498 (mut.),0.0040
+CCT8L2 (meth.),0.0040
+APOBEC1 (meth.),0.0040
+SERPINA10 (meth.),0.0039
+EXD1 (mut.),0.0039
+ANKRD11 (mut.),0.0039
+NAB2 (mut.),0.0039
+MAGEC1 (meth.),0.0039
+ARHGDIB (mut.),0.0039
+CAVIN3 (meth.),0.0039
+ALAS2 (meth.),0.0039
+CDH11 (meth.),0.0039
+SYCP2 (meth.),0.0039
+TAL1 (meth.),0.0039
+LAT2 (meth.),0.0039
+ACSF2 (mut.),0.0039
+STAP1 (meth.),0.0039
+CHRNB1 (meth.),0.0039
+VSIG2 (meth.),0.0039
+AQP10 (meth.),0.0039
+NRSN1 (meth.),0.0039
+IFITM2 (mut.),0.0039
+SHANK1 (meth.),0.0039
+PITX3 (meth.),0.0039
+KRTAP19-2 (mut.),0.0039
+BEX4 (mut.),0.0039
+RAB33A (meth.),0.0039
+MIR1185-1 (mut.),0.0039
+CTNND2 (mut.),0.0039
+LAMP2 (meth.),0.0039
+CDHR1 (mut.),0.0039
+BMP4 (meth.),0.0039
+ATP13A4 (meth.),0.0039
+DEFB115 (mut.),0.0039
+ADAMTS18 (meth.),0.0039
+FZD6 (meth.),0.0039
+SYNC (meth.),0.0039
+IZUMO1 (meth.),0.0039
+HJV (meth.),0.0039
+REEP6 (meth.),0.0039
+GDAP1L1 (meth.),0.0039
+ADGRE1 (meth.),0.0038
+ADAM2 (mut.),0.0038
+ZNF804B (meth.),0.0038
+NTNG2 (meth.),0.0038
+TF (meth.),0.0038
+MUC7 (meth.),0.0038
+PLAT (meth.),0.0038
+OTOS (meth.),0.0038
+EDA2R (meth.),0.0038
+FGF10 (meth.),0.0038
+NPTX2 (meth.),0.0038
+SPINK5 (meth.),0.0038
+DRP2 (meth.),0.0038
+DEFB123 (mut.),0.0038
+COCH (meth.),0.0038
+ADAMTSL1 (mut.),0.0038
+FBLN1 (meth.),0.0038
+PTGFRN,0.0038
+KRT6B (meth.),0.0038
+MASP1 (meth.),0.0038
+CLEC10A (meth.),0.0038
+LTC4S (meth.),0.0038
+COL1A2 (meth.),0.0038
+CX3CR1 (meth.),0.0038
+FFAR2 (meth.),0.0038
+PRTN3 (meth.),0.0038
+PTPRT (meth.),0.0038
+ITGA8 (meth.),0.0038
+MSH4 (meth.),0.0038
+LIPC (meth.),0.0038
+HOXD8 (meth.),0.0038
+RBP2 (meth.),0.0038
+SPMIP10 (meth.),0.0038
+SOX17 (meth.),0.0038
+SLC6A11 (meth.),0.0038
+CDKL5 (meth.),0.0038
+NEUROG1 (meth.),0.0038
+ZNF471 (meth.),0.0037
+SLC35D2 (meth.),0.0037
+FAM24B (meth.),0.0037
+LCP1 (meth.),0.0037
+EDN3 (meth.),0.0037
+SCML2 (meth.),0.0037
+GNL3L (meth.),0.0037
+LAMA5,0.0037
+ACE (meth.),0.0037
+AKIRIN1 (mut.),0.0037
+RAP2C (meth.),0.0037
+C16orf54 (meth.),0.0037
+PGAP4 (meth.),0.0037
+FAM107A,0.0037
+TMEM179 (meth.),0.0037
+APOA2 (meth.),0.0037
+PTF1A (meth.),0.0037
+PRLHR (meth.),0.0037
+ABCB8 (mut.),0.0037
+CD86 (meth.),0.0037
+LPO (meth.),0.0037
+MOG (meth.),0.0037
+ARMC8 (mut.),0.0037
+TUB (meth.),0.0037
+HPSE2 (meth.),0.0037
+STK38 (meth.),0.0037
+ZNF454 (meth.),0.0037
+SLC16A2 (meth.),0.0037
+PAH (meth.),0.0037
+FMO3 (meth.),0.0037
+GSDME (meth.),0.0037
+ACER1 (meth.),0.0037
+CAMK1G (meth.),0.0037
+CD80 (meth.),0.0037
+BAG4 (mut.),0.0037
+OR6A2 (meth.),0.0037
+SEPTIN9 (meth.),0.0037
+LILRA1 (meth.),0.0037
+C18orf32 (mut.),0.0036
+AQP7 (mut.),0.0036
+MEIOB (meth.),0.0036
+PRAMEF1 (meth.),0.0036
+FEZF2 (mut.),0.0036
+KCNC2 (meth.),0.0036
+C1orf56 (mut.),0.0036
+AOC3 (mut.),0.0036
+MAGT1 (meth.),0.0036
+AKR7L (mut.),0.0036
+CLDN10 (mut.),0.0036
+CCKAR (meth.),0.0036
+GFI1B (meth.),0.0036
+ACTR1B (mut.),0.0036
+VWA5B1 (meth.),0.0036
+SLC2A2 (meth.),0.0036
+GABRB2 (meth.),0.0036
+SLC24A5 (meth.),0.0036
+PROP1 (meth.),0.0036
+EBF1 (meth.),0.0036
+NMNAT3 (meth.),0.0036
+CACNA1A (meth.),0.0036
+HOXC8 (meth.),0.0036
+CAPNS1,0.0036
+CYP3A5 (meth.),0.0036
+MIR124-2 (mut.),0.0036
+SPIC (meth.),0.0036
+PPT2 (meth.),0.0036
+PRAF2 (meth.),0.0036
+ELMO1 (meth.),0.0036
+TNFSF15 (meth.),0.0036
+PIGR,0.0036
+ARC,0.0036
+BTG1 (mut.),0.0036
+EDNRB (meth.),0.0036
+LAMA4 (meth.),0.0036
+CLEC3A (meth.),0.0036
+CDR1 (meth.),0.0036
+TUFM,0.0036
+RADX (meth.),0.0036
+DIO1 (mut.),0.0036
+ARHGEF4 (meth.),0.0036
+KCNA5 (meth.),0.0036
+SULF2,0.0036
+TREML1 (meth.),0.0036
+COX7A2 (mut.),0.0036
+EPHX1,0.0035
+ADCY5 (meth.),0.0035
+GRM7 (meth.),0.0035
+MIR15B (mut.),0.0035
+MDFI (meth.),0.0035
+FGF12 (meth.),0.0035
+BCLAF1 (mut.),0.0035
+MID2 (meth.),0.0035
+TNFRSF4 (meth.),0.0035
+CRHR2 (meth.),0.0035
+VMO1 (meth.),0.0035
+APOC3 (mut.),0.0035
+FGFBP2 (meth.),0.0035
+CDX4 (meth.),0.0035
+LCE5A (meth.),0.0035
+EDIL3 (meth.),0.0035
+CD5 (meth.),0.0035
+S100A9 (meth.),0.0035
+ZIC3 (meth.),0.0035
+MID1 (meth.),0.0035
+CLPSL1 (mut.),0.0035
+C1S (meth.),0.0035
+EVX1 (meth.),0.0035
+NTRK2,0.0035
+VSTM2A (meth.),0.0035
+FEZF2 (meth.),0.0035
+PDK4 (meth.),0.0035
+DCSTAMP (meth.),0.0035
+ESPNL (meth.),0.0035
+LCE3A (meth.),0.0035
+ADAM29 (mut.),0.0035
+C8G (meth.),0.0035
+SYCP1 (meth.),0.0035
+ALPL (mut.),0.0035
+ISLR (meth.),0.0035
+S100A2,0.0035
+CLDN17 (meth.),0.0034
+ADTRP (meth.),0.0034
+PROCA1 (meth.),0.0034
+HTR3B (meth.),0.0034
+TSGA13 (meth.),0.0034
+NOTCH4 (meth.),0.0034
+ENPP3 (meth.),0.0034
+ATXN7L3B (mut.),0.0034
+PLXND1 (mut.),0.0034
+FBXO17 (meth.),0.0034
+MICU3 (meth.),0.0034
+ZNF41 (meth.),0.0034
+SYN1 (meth.),0.0034
+CHD2 (mut.),0.0034
+OR8B8 (meth.),0.0034
+ARR3 (meth.),0.0034
+CPLX2 (meth.),0.0034
+OR1E2 (meth.),0.0034
+CDK5RAP1 (mut.),0.0034
+MPP1 (meth.),0.0034
+AP1M1 (mut.),0.0034
+BTG3 (mut.),0.0034
+MYO16 (meth.),0.0034
+FSTL3 (mut.),0.0034
+AKNAD1 (mut.),0.0034
+USP11 (meth.),0.0034
+SLC6A1 (meth.),0.0034
+CNMD (meth.),0.0034
+PLA2G1B (meth.),0.0034
+GRIK3 (mut.),0.0034
+MIR3654 (mut.),0.0034
+ANO10 (mut.),0.0034
+KRTAP19-6 (mut.),0.0034
+PCDH17 (meth.),0.0033
+C1QB (mut.),0.0033
+ASTN1 (mut.),0.0033
+DOCK5 (mut.),0.0033
+MAGED2 (meth.),0.0033
+COX4I2 (meth.),0.0033
+MIR1-1 (mut.),0.0033
+VSIG4 (meth.),0.0033
+EYA4 (meth.),0.0033
+CYP4F2 (meth.),0.0033
+MMP1 (mut.),0.0033
+FHL5 (meth.),0.0033
+DGKA (meth.),0.0033
+IL21R (meth.),0.0033
+LRRC74A (meth.),0.0033
+CLEC5A (mut.),0.0033
+ACCSL (mut.),0.0033
+CADM3 (mut.),0.0033
+EPSTI1 (meth.),0.0033
+CD48 (meth.),0.0033
+ISG20 (meth.),0.0033
+TNS3 (meth.),0.0033
+COL1A1 (mut.),0.0033
+CDH12 (mut.),0.0033
+HRG (meth.),0.0033
+FPR3 (meth.),0.0033
+ACSM5 (mut.),0.0033
+RBM46 (meth.),0.0033
+AHNAK (mut.),0.0033
+PIGA (meth.),0.0033
+GPSM1 (meth.),0.0033
+MT1E (mut.),0.0033
+EFS (meth.),0.0033
+FAM13A (meth.),0.0033
+GBX2 (meth.),0.0033
+KRT20 (meth.),0.0033
+ZFP28 (meth.),0.0033
+GSX1 (meth.),0.0033
+ZNF625 (meth.),0.0033
+MIR139 (mut.),0.0033
+CCNP (meth.),0.0033
+CALML4 (meth.),0.0033
+CKM (meth.),0.0033
+ALDH1A2 (meth.),0.0033
+GCHFR (mut.),0.0033
+TTLL3 (meth.),0.0032
+DIS3L (mut.),0.0032
+ATP10D (mut.),0.0032
+XDH (mut.),0.0032
+KRT1 (meth.),0.0032
+CCDC60 (meth.),0.0032
+LRRN3 (mut.),0.0032
+LAX1 (meth.),0.0032
+SPON1 (meth.),0.0032
+WNT2 (meth.),0.0032
+SULT1A2 (meth.),0.0032
+ZNF438 (meth.),0.0032
+CTSE (meth.),0.0032
+CLEC1A (meth.),0.0032
+B3GALNT1 (mut.),0.0032
+CLEC11A (meth.),0.0032
+MIR371A (mut.),0.0032
+GIPC2 (meth.),0.0032
+CCL21 (meth.),0.0032
+ZNF157 (meth.),0.0032
+CPXM2 (meth.),0.0032
+DCAF12L1 (meth.),0.0032
+NCCRP1 (meth.),0.0032
+FGF19 (meth.),0.0032
+IER3IP1 (mut.),0.0032
+DTNA (mut.),0.0032
+MGAT4B,0.0032
+CYP4B1 (meth.),0.0032
+CHRDL2 (meth.),0.0032
+ELK1 (meth.),0.0032
+LHCGR (meth.),0.0032
+ACAP2 (mut.),0.0032
+ABO (meth.),0.0032
+ITM2A (meth.),0.0032
+GPR87 (mut.),0.0032
+PCDH15 (mut.),0.0032
+ZNF354C (meth.),0.0032
+ATG16L2 (mut.),0.0032
+INTS7 (mut.),0.0032
+LINC02880 (meth.),0.0032
+SEPHS2,0.0032
+PCDHGA2 (mut.),0.0032
+VEGFC (meth.),0.0032
+ANKDD1A (meth.),0.0032
+MYO1A (meth.),0.0032
+METAP1D (meth.),0.0032
+DNAH7 (mut.),0.0031
+AKR1C1 (mut.),0.0031
+CHP1 (mut.),0.0031
+MT1A (meth.),0.0031
+MIR100 (mut.),0.0031
+NTF3 (meth.),0.0031
+UPK2,0.0031
+DNAJA3 (mut.),0.0031
+CMTM5 (meth.),0.0031
+COPS4 (mut.),0.0031
+AKAP14 (mut.),0.0031
+HYDIN (mut.),0.0031
+ACTN2 (meth.),0.0031
+CCNA1 (meth.),0.0031
+MCTS1 (meth.),0.0031
+CES1 (mut.),0.0031
+ADNP2 (mut.),0.0031
+SOD3 (meth.),0.0031
+PDLIM1,0.0031
+FZD10 (meth.),0.0031
+SNORA10 (mut.),0.0031
+BST2 (mut.),0.0031
+SERPIND1,0.0031
+TBX22 (meth.),0.0031
+SSTR3 (meth.),0.0031
+FAM209B (mut.),0.0031
+FMNL1 (meth.),0.0031
+HDAC2 (mut.),0.0031
+IL20 (meth.),0.0031
+MIR3196 (mut.),0.0031
+ABCB5 (mut.),0.0031
+TREM2 (meth.),0.0031
+KCNQ4 (meth.),0.0031
+HUNK (meth.),0.0031
+XIST,0.0031
+CHRNB4 (meth.),0.0031
+NLRP12 (meth.),0.0031
+FRMD1 (meth.),0.0031
+S100A4,0.0031
+DBH (meth.),0.0031
+AQP5 (meth.),0.0030
+CHCHD1 (mut.),0.0030
+COL17A1 (meth.),0.0030
+MTMR1 (meth.),0.0030
+PAX4 (meth.),0.0030
+CYP2B6 (meth.),0.0030
+THPO (meth.),0.0030
+SNTG1 (meth.),0.0030
+ACTB (mut.),0.0030
+IRS4 (meth.),0.0030
+ATIC (mut.),0.0030
+NRN1 (meth.),0.0030
+ATP6V1G3 (mut.),0.0030
+CCDC74B (mut.),0.0030
+ACOX1 (mut.),0.0030
+DLG1 (mut.),0.0030
+FMR1NB (meth.),0.0030
+MIR1-2 (mut.),0.0030
+PTH2R (meth.),0.0030
+SMARCA1 (meth.),0.0030
+EVC (meth.),0.0030
+RAI2 (meth.),0.0030
+ANKRD27 (mut.),0.0030
+PDE4D (meth.),0.0030
+BRINP2 (meth.),0.0030
+CNRIP1 (meth.),0.0030
+PHACTR3 (meth.),0.0030
+APOO (mut.),0.0030
+CBX3 (mut.),0.0030
+NTRK3 (meth.),0.0030
+SERPINB3 (meth.),0.0030
+AGT (meth.),0.0030
+CHST9 (mut.),0.0030
+ARID5B (mut.),0.0030
+CGA (mut.),0.0030
+ATP6AP2 (meth.),0.0030
+CDK18 (meth.),0.0030
+TEX26 (meth.),0.0030
+AKR1B10 (mut.),0.0030
+SORL1 (mut.),0.0030
+ADCY8 (mut.),0.0030
+HMGN3 (mut.),0.0030
+ADCK5 (mut.),0.0030
+PCDHB6 (mut.),0.0030
+RBP4,0.0030
+ADAMTS3 (meth.),0.0030
+ADAM7 (mut.),0.0030
+UCHL1 (meth.),0.0030
+EDN2 (meth.),0.0030
+FREM1 (mut.),0.0030
+ADAP1 (mut.),0.0030
+CCL4 (mut.),0.0030
+CHRM2 (meth.),0.0029
+MIR208B (mut.),0.0029
+LRIT2 (mut.),0.0029
+SVOPL (meth.),0.0029
+DYNLT3 (meth.),0.0029
+C11orf96 (mut.),0.0029
+ANKRD20A19P (mut.),0.0029
+DCC (meth.),0.0029
+MMP14 (meth.),0.0029
+ADIRF (meth.),0.0029
+EPHA7 (meth.),0.0029
+MOXD1 (meth.),0.0029
+S100A10,0.0029
+RNU11 (mut.),0.0029
+EXTL1 (meth.),0.0029
+NLRP10 (meth.),0.0029
+VGLL2 (meth.),0.0029
+CHRNA4 (meth.),0.0029
+LYPD3 (meth.),0.0029
+HAPLN3 (meth.),0.0029
+ACTB,0.0029
+C19orf53 (mut.),0.0029
+CD164,0.0029
+CR1 (meth.),0.0029
+TTN,0.0029
+SLC15A3 (meth.),0.0029
+DCC (mut.),0.0029
+BTNL8 (meth.),0.0029
+GRB7 (meth.),0.0029
+PWAR5 (meth.),0.0029
+DPH3 (mut.),0.0029
+ACOT13 (mut.),0.0029
+NMUR1 (meth.),0.0029
+NLRP9 (meth.),0.0029
+SPATA18 (meth.),0.0029
+PROK2 (meth.),0.0029
+CST11 (meth.),0.0029
+EBAG9 (mut.),0.0029
+HBA1 (meth.),0.0029
+MED24 (mut.),0.0029
+VTCN1 (meth.),0.0029
+CNR1 (mut.),0.0029
+EXO5 (mut.),0.0029
+CDH7 (meth.),0.0029
+CYP4F3 (meth.),0.0029
+SEC14L4 (meth.),0.0029
+PCBP3 (meth.),0.0029
+NODAL (meth.),0.0029
+SNCA (meth.),0.0029
+GSTP1,0.0028
+APOL1 (mut.),0.0028
+MAPK15 (meth.),0.0028
+ACVR2A (mut.),0.0028
+AMN1 (mut.),0.0028
+P2RX1 (meth.),0.0028
+PRX (meth.),0.0028
+RETN (mut.),0.0028
+PROK1 (meth.),0.0028
+SMOC2 (meth.),0.0028
+SLC48A1 (mut.),0.0028
+NXNL1 (meth.),0.0028
+MIR330 (mut.),0.0028
+CYP2C19 (mut.),0.0028
+CHN1 (mut.),0.0028
+PLCH1 (mut.),0.0028
+TACR3 (meth.),0.0028
+F10 (meth.),0.0028
+C1QTNF6 (meth.),0.0028
+PWWP2B (meth.),0.0028
+APBA3 (meth.),0.0028
+TEKTL1 (meth.),0.0028
+FRMD4A (meth.),0.0028
+JAG2 (meth.),0.0028
+COX7A1 (mut.),0.0028
+LGALS4 (meth.),0.0028
+C8orf74 (mut.),0.0028
+SLC10A3 (meth.),0.0028
+STK33 (meth.),0.0028
+ARHGAP22 (mut.),0.0028
+PORCN (meth.),0.0028
+MIOX (meth.),0.0028
+KRTAP20-1 (meth.),0.0028
+DCAF4L2 (meth.),0.0028
+ARID5A (mut.),0.0028
+DCAF4 (mut.),0.0028
+ABHD12 (mut.),0.0028
+AHSG (meth.),0.0028
+PLD5 (meth.),0.0028
+MAP7D2 (meth.),0.0028
+CDH8 (mut.),0.0028
+CUX2 (mut.),0.0028
+DRD2 (mut.),0.0028
+CPSF6 (mut.),0.0028
+RNF14 (meth.),0.0028
+ZNF331 (meth.),0.0028
+TCEA2 (meth.),0.0028
+CBLL2 (meth.),0.0028
+REN (meth.),0.0028
+DBF4 (mut.),0.0028
+BHMT (mut.),0.0028
+OR1G1 (meth.),0.0028
+BFSP2 (meth.),0.0028
+ANO1 (mut.),0.0028
+LPCAT2 (meth.),0.0028
+ZNF569 (meth.),0.0028
+COL9A2 (meth.),0.0027
+AASS (mut.),0.0027
+SMPX (meth.),0.0027
+EPB41L4B (mut.),0.0027
+CHCHD7 (mut.),0.0027
+APOD (meth.),0.0027
+H3C11 (meth.),0.0027
+C1QTNF9 (meth.),0.0027
+CLMN (mut.),0.0027
+UPK1B (meth.),0.0027
+PF4V1 (meth.),0.0027
+LECT2 (meth.),0.0027
+CTRC (meth.),0.0027
+TNFAIP8L2 (meth.),0.0027
+DSC1 (meth.),0.0027
+BCAP29 (mut.),0.0027
+CTH (mut.),0.0027
+ALDH8A1 (mut.),0.0027
+TIGD2 (meth.),0.0027
+EEF2,0.0027
+ADORA1 (mut.),0.0027
+ARHGAP26 (mut.),0.0027
+NPY5R (meth.),0.0027
+BAD (mut.),0.0027
+ARFGEF2 (mut.),0.0027
+ABCC9 (mut.),0.0027
+APOL2 (mut.),0.0027
+ACOT6 (mut.),0.0027
+C3orf22 (meth.),0.0027
+CYP24A1 (meth.),0.0027
+NPM1,0.0027
+CHST8 (meth.),0.0027
+ATXN1L (mut.),0.0027
+SPEF2 (mut.),0.0027
+ATG4B (mut.),0.0027
+ALKBH4 (mut.),0.0027
+BTNL8 (mut.),0.0027
+ARF4 (mut.),0.0027
+PGBD5 (meth.),0.0027
+CIB3 (meth.),0.0027
+ADH1B,0.0027
+UGT3A2 (meth.),0.0027
+DNAJB13 (meth.),0.0027
+AHSG (mut.),0.0027
+TMEM185A (meth.),0.0027
+BACC1 (mut.),0.0027
+NGF (meth.),0.0027
+LDOC1 (meth.),0.0027
+MAMSTR (meth.),0.0027
+PXDNL (mut.),0.0027
+GNMT (meth.),0.0027
+CEL,0.0027
+CCL22 (mut.),0.0027
+NEFL (meth.),0.0027
+CSAG1 (mut.),0.0027
+EIF2D (mut.),0.0027
+ENPEP (mut.),0.0026
+FGFR1 (mut.),0.0026
+COX6A2 (meth.),0.0026
+HSPB3 (meth.),0.0026
+CD70 (mut.),0.0026
+CIDEA (meth.),0.0026
+AKAP12,0.0026
+DAB1 (meth.),0.0026
+CSNK1G2 (mut.),0.0026
+GNG7 (mut.),0.0026
+GLT8D2 (meth.),0.0026
+CPQ (mut.),0.0026
+PCDH8 (meth.),0.0026
+MAGEE1 (meth.),0.0026
+ABCE1 (mut.),0.0026
+SH3BP2 (meth.),0.0026
+ACTR2 (mut.),0.0026
+MEOX1 (mut.),0.0026
+APEH (mut.),0.0026
+GFRA1 (meth.),0.0026
+TMEM256-PLSCR3 (mut.),0.0026
+ANKS4B (mut.),0.0026
+ADGRD1 (meth.),0.0026
+COX7B (mut.),0.0026
+ACTR6 (mut.),0.0026
+GRIK1 (meth.),0.0026
+MLN (meth.),0.0026
+CD200R1L (mut.),0.0026
+PBDC1 (meth.),0.0026
+BCORL1 (meth.),0.0026
+FAM135B (mut.),0.0026
+GPX7 (meth.),0.0026
+LILRB4 (meth.),0.0026
+COX8A (mut.),0.0026
+TNFAIP8 (meth.),0.0026
+PNMA3 (meth.),0.0026
+ADH6 (mut.),0.0026
+C3 (meth.),0.0026
+ALG6 (mut.),0.0026
+H2BC12 (meth.),0.0026
+TAC1 (meth.),0.0026
+SPMIP3 (mut.),0.0026
+TMEM215 (meth.),0.0026
+ADAM32 (mut.),0.0026
+ADD3 (mut.),0.0026
+FAM120C (meth.),0.0026
+SAMD9L (mut.),0.0026
+NR2E1 (meth.),0.0026
+ARHGEF26 (mut.),0.0026
+CST3,0.0026
+TLL1 (meth.),0.0026
+CFL1,0.0026
+A2ML1 (mut.),0.0026
+TRMT2B (meth.),0.0026
+TFF3,0.0026
+MYH2 (mut.),0.0026
+NPBWR2 (meth.),0.0026
+ESR1 (meth.),0.0026
+NDUFS4 (mut.),0.0026
+SCN9A (meth.),0.0026
+SNORA54 (mut.),0.0026
+ALDH16A1 (mut.),0.0026
+CMC4 (mut.),0.0026
+ACMSD (mut.),0.0026
+PRODH,0.0026
+TNFRSF1B (meth.),0.0025
+ACAP3 (meth.),0.0025
+ABCA8 (mut.),0.0025
+APOA4 (mut.),0.0025
+AZIN1 (mut.),0.0025
+MAP3K13 (meth.),0.0025
+CENPW (mut.),0.0025
+SMCO4 (mut.),0.0025
+CCDC92 (mut.),0.0025
+ZFP37 (meth.),0.0025
+CEACAM4 (mut.),0.0025
+C9orf43 (mut.),0.0025
+BMPER (mut.),0.0025
+CCBE1 (mut.),0.0025
+ADAMTS18 (mut.),0.0025
+PTPRO (meth.),0.0025
+MIR1298 (mut.),0.0025
+NOL4 (meth.),0.0025
+SPP2 (meth.),0.0025
+DHX15 (mut.),0.0025
+AKT2 (mut.),0.0025
+GDF15,0.0025
+MIR320D1 (mut.),0.0025
+EPB41L4A (mut.),0.0025
+VCAN (meth.),0.0025
+GPR174 (meth.),0.0025
+ZNF790 (meth.),0.0025
+ISM2 (meth.),0.0025
+PDCD1 (meth.),0.0025
+NKX2-8 (meth.),0.0025
+BCAM,0.0025
+SPINT2 (meth.),0.0025
+NINL (meth.),0.0025
+ABHD17B (mut.),0.0025
+AP3M2 (mut.),0.0025
+A2M,0.0025
+NEDD4L,0.0025
+ACTRT3 (mut.),0.0025
+COL9A2 (mut.),0.0025
+ECE2 (mut.),0.0025
+HBZ (mut.),0.0025
+CCDC80 (mut.),0.0025
+HTR1E (meth.),0.0025
+AURKC (mut.),0.0025
+ANKK1 (mut.),0.0025
+PTMS,0.0025
+CDAN1 (mut.),0.0025
+ZNF541 (meth.),0.0025
+IL25 (meth.),0.0025
+CXXC5 (mut.),0.0025
+APRT (mut.),0.0025
+TMEM176A,0.0025
+SERPING1 (meth.),0.0025
+TNFAIP2 (meth.),0.0025
+COX6C (mut.),0.0025
+APOBEC3C (mut.),0.0025
+IRAG1 (meth.),0.0025
+ZNF185 (meth.),0.0025
+FAM124B (meth.),0.0025
+OR10J1 (meth.),0.0025
+CACNB2 (meth.),0.0024
+CCDC9 (mut.),0.0024
+CPLX2 (mut.),0.0024
+DZIP1 (meth.),0.0024
+AUTS2 (mut.),0.0024
+POSTN,0.0024
+CPSF4 (mut.),0.0024
+GPLD1 (meth.),0.0024
+CA5A (mut.),0.0024
+SNRPD2,0.0024
+GPC4 (meth.),0.0024
+CREB3L3 (meth.),0.0024
+EPHA7 (mut.),0.0024
+TNNT2 (meth.),0.0024
+STON2 (meth.),0.0024
+ZNF75D (meth.),0.0024
+ARHGAP36 (mut.),0.0024
+MIR1289-2 (mut.),0.0024
+FYCO1 (meth.),0.0024
+ARGFX (mut.),0.0024
+ARHGAP33 (mut.),0.0024
+CREBBP (mut.),0.0024
+AFF2 (meth.),0.0024
+ANKRD22 (mut.),0.0024
+JOSD1 (mut.),0.0024
+FOXP4 (mut.),0.0024
+TBX19 (meth.),0.0024
+EIF3B,0.0024
+OPN4 (meth.),0.0024
+GEMIN7 (mut.),0.0024
+GNS (mut.),0.0024
+ATOX1 (mut.),0.0024
+LDB2 (meth.),0.0024
+PRNP,0.0024
+HECW1 (meth.),0.0024
+MIR4700 (mut.),0.0024
+KRT25 (meth.),0.0024
+CAMK2N2 (mut.),0.0024
+C1QC (mut.),0.0024
+TMEM105 (meth.),0.0024
+ITGA5,0.0024
+MEOX2 (meth.),0.0024
+ABI3 (meth.),0.0024
+ADD2 (meth.),0.0024
+ZFHX4 (mut.),0.0024
+MIR1252 (mut.),0.0024
+ACBD7 (mut.),0.0024
+C12orf57 (mut.),0.0024
+CD300LF (mut.),0.0024
+ASPHD1 (mut.),0.0024
+PDLIM4 (meth.),0.0024
+TENM3 (mut.),0.0024
+KIAA1217 (mut.),0.0024
+KCNK16 (meth.),0.0024
+COX6B1,0.0024
+F3,0.0024
+NME5 (meth.),0.0024
+HAMP (meth.),0.0024
+ADAT2 (mut.),0.0024
+PF4 (meth.),0.0024
+APOC2,0.0024
+ACSM4 (mut.),0.0024
+FAM215A (meth.),0.0024
+GLTP,0.0024
+BNC1 (meth.),0.0024
+EFEMP1,0.0024
+DYNLRB2 (mut.),0.0023
+CLOCK (mut.),0.0023
+AHSP (mut.),0.0023
+ADAMTS10 (mut.),0.0023
+ABHD8 (mut.),0.0023
+UBC,0.0023
+ASS1,0.0023
+CCL11 (meth.),0.0023
+LZTS1 (meth.),0.0023
+ARHGAP24 (meth.),0.0023
+TDRD9 (meth.),0.0023
+VAT1,0.0023
+FAM163A (meth.),0.0023
+ABLIM3 (mut.),0.0023
+ATF7IP2 (mut.),0.0023
+SPIB (meth.),0.0023
+AP3S1 (mut.),0.0023
+CRTAM (meth.),0.0023
+DYNLT3 (mut.),0.0023
+SH3KBP1 (meth.),0.0023
+CCDC146 (mut.),0.0023
+AIG1 (mut.),0.0023
+CCL7 (mut.),0.0023
+AIFM3 (mut.),0.0023
+CNEP1R1 (mut.),0.0023
+GPR119 (meth.),0.0023
+CCT6A,0.0023
+CCR7 (meth.),0.0023
+CFH (mut.),0.0023
+DNAJB8 (meth.),0.0023
+FAM3C (mut.),0.0023
+MIR1256 (mut.),0.0023
+LHX2 (meth.),0.0023
+ADCY9 (mut.),0.0023
+HCRTR2 (meth.),0.0023
+GCSAML (mut.),0.0023
+OR1F1 (meth.),0.0023
+CCDC80,0.0023
+BAGE2 (mut.),0.0023
+C11orf16 (mut.),0.0023
+EML2 (meth.),0.0023
+CCDC47 (meth.),0.0023
+ORMDL3 (mut.),0.0023
+ABRACL (mut.),0.0023
+AKT3 (mut.),0.0023
+CHAT (mut.),0.0023
+ARL5A (mut.),0.0023
+ALG2 (mut.),0.0023
+LHFPL1 (meth.),0.0023
+CUL3 (mut.),0.0023
+C7orf57 (mut.),0.0023
+ACTR3C (mut.),0.0023
+TSC22D3,0.0023
+PIN4 (mut.),0.0023
+ADAT1 (mut.),0.0023
+SCN7A (mut.),0.0023
+LSAMP (meth.),0.0023
+AKAP14 (meth.),0.0023
+GCLC (mut.),0.0023
+LEFTY1 (meth.),0.0023
+CFI,0.0023
+ANXA2,0.0023
+ACER2 (mut.),0.0023
+CCDC150 (mut.),0.0023
+C10orf71 (mut.),0.0023
+PHGDH,0.0023
+ADGRG6 (meth.),0.0023
+SUSD1 (meth.),0.0022
+ANTXR2 (mut.),0.0022
+JUP,0.0022
+ADIG (mut.),0.0022
+SYNE4 (meth.),0.0022
+CCND2 (mut.),0.0022
+BMP4 (mut.),0.0022
+RLIM (meth.),0.0022
+LRIG3 (mut.),0.0022
+SRP9 (mut.),0.0022
+ADRB3 (meth.),0.0022
+B3GALNT2 (mut.),0.0022
+ST6GALNAC3 (meth.),0.0022
+ZBBX (meth.),0.0022
+IER3 (meth.),0.0022
+SNORA29 (mut.),0.0022
+PHF3 (mut.),0.0022
+SCUBE2 (meth.),0.0022
+ANXA5 (mut.),0.0022
+ADAMDEC1 (mut.),0.0022
+GPC5 (meth.),0.0022
+SLC14A1 (meth.),0.0022
+RBM24 (meth.),0.0022
+ELOVL4 (meth.),0.0022
+KCTD8 (meth.),0.0022
+HEATR6 (mut.),0.0022
+ADRB2 (mut.),0.0022
+DDAH1 (mut.),0.0022
+KLF14 (meth.),0.0022
+CDH10 (mut.),0.0022
+CDYL (mut.),0.0022
+KLHDC7A (meth.),0.0022
+ARFGAP3 (mut.),0.0022
+CALM2,0.0022
+A2ML1,0.0022
+MIR4326 (mut.),0.0022
+OSCAR (meth.),0.0022
+CIMIP5 (mut.),0.0022
+C1orf185 (mut.),0.0022
+C3orf22 (mut.),0.0022
+KLRG1 (meth.),0.0022
+CDH2 (meth.),0.0022
+TNKS1BP1 (mut.),0.0022
+CNTN2 (meth.),0.0022
+DDX52 (mut.),0.0022
+KRT6B (mut.),0.0022
+COX14 (mut.),0.0022
+ATP13A4 (mut.),0.0022
+CDH2 (mut.),0.0022
+IL32,0.0022
+CCL19 (mut.),0.0022
+CARD14 (meth.),0.0022
+CNTN3 (mut.),0.0022
+CD2AP (mut.),0.0022
+FGF6 (meth.),0.0022
+SELP (meth.),0.0022
+ABCC5 (mut.),0.0022
+ARFGAP2 (mut.),0.0022
+ACAA2 (mut.),0.0022
+MME (meth.),0.0022
+HNRNPH1,0.0022
+ARTN (mut.),0.0022
+FZD7 (mut.),0.0022
+EXTL3 (mut.),0.0022
+ABHD2 (mut.),0.0022
+SERP1,0.0022
+TF,0.0022
+ADIRF (mut.),0.0022
+EFCAB3 (meth.),0.0022
+CARD16 (mut.),0.0022
+KRT75 (meth.),0.0022
+TMBIM6,0.0022
+KLHL34 (meth.),0.0022
+GGA2 (mut.),0.0022
+BOLL (meth.),0.0022
+ANGPTL4,0.0022
+DSC2 (mut.),0.0022
+KPRP (mut.),0.0022
+CNN3,0.0022
+CD209 (mut.),0.0022
+TNS1 (meth.),0.0022
+HDAC10 (mut.),0.0022
+AJAP1 (mut.),0.0022
+TBC1D8B (meth.),0.0021
+PHF8 (meth.),0.0021
+HERPUD1,0.0021
+TRPC4 (meth.),0.0021
+SLPI,0.0021
+CP (mut.),0.0021
+ELSPBP1 (meth.),0.0021
+CA7 (mut.),0.0021
+SH3TC1 (meth.),0.0021
+C19orf18 (mut.),0.0021
+PHKA1 (meth.),0.0021
+RPS20,0.0021
+WFDC2,0.0021
+TMEM164 (meth.),0.0021
+AP3S2 (mut.),0.0021
+ARL4C (mut.),0.0021
+AK3 (mut.),0.0021
+SLC12A5 (meth.),0.0021
+GNB1,0.0021
+HLA-DRB1,0.0021
+ATP11A (mut.),0.0021
+ABCB4 (mut.),0.0021
+CBLB (mut.),0.0021
+ANKRD33 (mut.),0.0021
+HFM1 (mut.),0.0021
+ASGR2 (meth.),0.0021
+VCP,0.0021
+ATRX (mut.),0.0021
+MRGPRX4 (meth.),0.0021
+ENOX2 (mut.),0.0021
+JUN (mut.),0.0021
+TCF19 (meth.),0.0021
+ADAM10 (mut.),0.0021
+GRK2,0.0021
+CORO6 (meth.),0.0021
+FGFR1,0.0021
+ASCL4 (mut.),0.0021
+MIR1208 (mut.),0.0021
+BPI (mut.),0.0021
+ALAS1,0.0021
+THSD7A (mut.),0.0021
+ZNF572 (meth.),0.0021
+SLC25A3,0.0021
+HPN (meth.),0.0021
+ABLIM1 (mut.),0.0021
+GPR88 (mut.),0.0021
+LAMP5 (meth.),0.0021
+LLGL2 (mut.),0.0021
+CCDC33 (mut.),0.0021
+ANXA2R (mut.),0.0021
+C2orf66 (mut.),0.0021
+AQP8 (mut.),0.0021
+FAM43B (meth.),0.0021
+MS4A6A (meth.),0.0021
+ACSM1 (mut.),0.0021
+DIDO1 (mut.),0.0021
+CRCT1 (meth.),0.0021
+TBX21 (meth.),0.0021
+FGFBP2 (mut.),0.0021
+EEA1 (mut.),0.0021
+CRYBA2 (mut.),0.0021
+AKTIP (mut.),0.0021
+PRKCB (meth.),0.0021
+RPL10 (meth.),0.0021
+MIR4262 (mut.),0.0021
+ANXA6 (meth.),0.0021
+EGR4 (meth.),0.0021
+GTSF1 (meth.),0.0021
+ABCB1 (mut.),0.0021
+CSF2RB (mut.),0.0021
+SPMIP5 (meth.),0.0021
+TNFAIP2,0.0021
+NR2E3 (meth.),0.0021
+ADRA1B (mut.),0.0021
+SERPINA12 (meth.),0.0021
+CASC3 (mut.),0.0021
+ENTPD2 (meth.),0.0021
+CD40 (mut.),0.0021
+ALDH3A1 (mut.),0.0020
+RPL13A,0.0020
+ARID3C (mut.),0.0020
+HMGN4 (mut.),0.0020
+RIPOR2 (meth.),0.0020
+LYL1 (meth.),0.0020
+ADHFE1 (mut.),0.0020
+DKK2 (meth.),0.0020
+FGF1 (meth.),0.0020
+MDK,0.0020
+B3GNT4 (mut.),0.0020
+FUT3 (mut.),0.0020
+CCDC61 (mut.),0.0020
+FMOD,0.0020
+SUN2,0.0020
+ADD2 (mut.),0.0020
+ARG1 (mut.),0.0020
+ASPH (mut.),0.0020
+FAAH2 (meth.),0.0020
+MPO (meth.),0.0020
+IL18BP (meth.),0.0020
+MYRF,0.0020
+SDC4,0.0020
+SPOCK2 (meth.),0.0020
+EMILIN3 (meth.),0.0020
+LRP2 (mut.),0.0020
+ANXA4,0.0020
+RNF145 (mut.),0.0020
+DACH1 (mut.),0.0020
+FLNC,0.0020
+ANKRD34C (mut.),0.0020
+VPREB1 (meth.),0.0020
+ARFRP1 (mut.),0.0020
+ALDOB (mut.),0.0020
+BLOC1S1 (mut.),0.0020
+ITPR2 (mut.),0.0020
+PAEP (meth.),0.0020
+ASGR1,0.0020
+PPP2R2B (meth.),0.0020
+PITPNM1 (mut.),0.0020
+LAMP1,0.0020
+GPRASP2 (meth.),0.0020
+SLC29A1 (meth.),0.0020
+TNIP1,0.0020
+C10orf105 (mut.),0.0020
+ADAMTS3 (mut.),0.0020
+FCRL3 (mut.),0.0020
+KLK11 (mut.),0.0020
+RAP1GAP2 (mut.),0.0020
+PTGS1,0.0020
+CAMK2G (mut.),0.0020
+SNORA81 (mut.),0.0020
+PHKA2 (mut.),0.0020
+CNTN2 (mut.),0.0020
+SLIT3 (mut.),0.0020
+KALRN (mut.),0.0020
+BNIP3L (mut.),0.0020
+PTPRT (mut.),0.0020
+ANKRD37 (mut.),0.0020
+ARHGAP18 (mut.),0.0020
+ACCS (mut.),0.0020
+CYP2S1 (mut.),0.0020
+FBLN2,0.0020
+CD6 (meth.),0.0020
+F2,0.0020
+LRRC7 (mut.),0.0020
+ATF5 (mut.),0.0020
+LINC00472 (meth.),0.0020
+ACOT8 (mut.),0.0020
+TEKT3 (meth.),0.0020
+SLC26A7,0.0020
+PDZD4 (meth.),0.0020
+CACNA2D3 (mut.),0.0020
+AOC1 (mut.),0.0020
+AP5Z1 (mut.),0.0020
+RAB11FIP4 (meth.),0.0020
+HELZ (mut.),0.0020
+ACTL6B (mut.),0.0020
+CEACAM3 (meth.),0.0020
+FAM110D (meth.),0.0020
+C22orf31 (mut.),0.0020
+COL11A1 (mut.),0.0020
+PTPRR (meth.),0.0020
+FXYD1 (mut.),0.0020
+GAD2 (meth.),0.0020
+KCND1 (meth.),0.0020
+SCARNA11 (mut.),0.0020
+ADM (mut.),0.0020
+STEAP4,0.0020
+SCARNA20 (mut.),0.0020
+KCNN4 (meth.),0.0020
+MT1E (meth.),0.0020
+IFITM3 (mut.),0.0020
+CYP4F22 (mut.),0.0020
+EVA1A (mut.),0.0020
+COL6A1,0.0020
+AFF2 (mut.),0.0020
+ACVRL1 (mut.),0.0020
+ACOT12 (mut.),0.0020
+CCDC102B (mut.),0.0020
+PPT1,0.0020
+LONRF3 (meth.),0.0020
+IL20 (mut.),0.0020
+NLRP13 (mut.),0.0020
+CACNB2 (mut.),0.0020
+BOLA1 (mut.),0.0020
+GRM6 (mut.),0.0020
+TMEM176B,0.0019
+AFM (mut.),0.0019
+CCNE2 (mut.),0.0019
+CTSK,0.0019
+COL3A1,0.0019
+SH3RF1 (mut.),0.0019
+UNC5D (mut.),0.0019
+F11R,0.0019
+AURKAIP1 (mut.),0.0019
+TNXB,0.0019
+ACER3 (mut.),0.0019
+ARL5B (mut.),0.0019
+BNC2 (mut.),0.0019
+CCL20 (meth.),0.0019
+GLRB (meth.),0.0019
+GRM1 (meth.),0.0019
+TOMM20L (meth.),0.0019
+PACSIN1 (meth.),0.0019
+TPSB2 (meth.),0.0019
+ANGPT4 (mut.),0.0019
+MAGEL2 (meth.),0.0019
+TFR2 (meth.),0.0019
+DYRK4 (meth.),0.0019
+KRTAP6-1 (meth.),0.0019
+ITGA3 (mut.),0.0019
+TPSAB1 (meth.),0.0019
+NEK10 (mut.),0.0019
+ADAMTSL5 (mut.),0.0019
+ARPP19 (mut.),0.0019
+CCDC127 (mut.),0.0019
+NLRP4 (mut.),0.0019
+STXBP6 (meth.),0.0019
+RIMBP2 (mut.),0.0019
+TMEM184A (meth.),0.0019
+PMEL,0.0019
+BTBD10 (mut.),0.0019
+AMTN (mut.),0.0019
+IGIP (mut.),0.0019
+BLVRA (mut.),0.0019
+WFDC9 (meth.),0.0019
+B4GALNT1 (mut.),0.0019
+CYP2B6 (mut.),0.0019
+HLA-B,0.0019
+PRDX2,0.0019
+KRT10,0.0019
+ZPBP (meth.),0.0019
+ANXA1,0.0019
+CBFA2T2 (mut.),0.0019
+KPNB1,0.0019
+LRRK1 (mut.),0.0019
+KCNMB4 (mut.),0.0019
+ATP2B4 (mut.),0.0019
+PDZD2 (mut.),0.0019
+ADCY2 (mut.),0.0019
+ADAM6,0.0019
+C19orf12 (mut.),0.0019
+CARTPT (meth.),0.0019
+BRK1 (mut.),0.0019
+ACTRT2 (mut.),0.0019
+MIR10B (mut.),0.0019
+DNMT3A (mut.),0.0019
+DTX4,0.0019
+CLN6 (mut.),0.0019
+SCARNA21 (mut.),0.0019
+KIAA0319 (mut.),0.0019
+RNF135 (meth.),0.0019
+EPB41L5 (mut.),0.0019
+FAM174A (mut.),0.0019
+PKP3 (meth.),0.0019
+ADAP2 (mut.),0.0019
+GSN,0.0019
+PTPN21 (mut.),0.0019
+AADAC (mut.),0.0019
+KRT19 (meth.),0.0019
+GREM1 (mut.),0.0019
+AMIGO3 (mut.),0.0019
+KIT (mut.),0.0019
+RAC2 (meth.),0.0019
+CALML4 (mut.),0.0019
+ARC (mut.),0.0019
+FURIN,0.0019
+PLTP,0.0019
+MCF2L2 (mut.),0.0019
+C17orf50 (mut.),0.0019
+CECR7 (mut.),0.0019
+KCNB2 (mut.),0.0019
+FOLR1,0.0019
+ACTA1 (mut.),0.0019
+MIR1200 (mut.),0.0019
+SERTM1 (meth.),0.0019
+TP63,0.0019
+ANKRD35 (mut.),0.0019
+AQP4,0.0019
+PREX2 (mut.),0.0019
+MT1B (mut.),0.0019
+RAD21,0.0019
+VBP1 (meth.),0.0018
+CCDC198 (meth.),0.0018
+ADM2 (mut.),0.0018
+AP4S1 (mut.),0.0018
+MIR181D (mut.),0.0018
+AMHR2 (mut.),0.0018
+PAPPA2 (mut.),0.0018
+PDE6C (meth.),0.0018
+CATSPERG (mut.),0.0018
+ANK3 (mut.),0.0018
+SQSTM1,0.0018
+KMT2E (mut.),0.0018
+ARHGAP44 (mut.),0.0018
+BUB3 (mut.),0.0018
+SPINT2,0.0018
+SCNN1G (mut.),0.0018
+ANKRD34B (mut.),0.0018
+BST2,0.0018
+ASAH2B (mut.),0.0018
+ANKH (mut.),0.0018
+PUF60,0.0018
+C10orf90 (mut.),0.0018
+AFMID (mut.),0.0018
+APOD (mut.),0.0018
+UAP1L1 (meth.),0.0018
+CAMKV (mut.),0.0018
+BHLHE41,0.0018
+AIP (mut.),0.0018
+YWHAE,0.0018
+LYST (mut.),0.0018
+COL4A1,0.0018
+COMP (meth.),0.0018
+DGKG (meth.),0.0018
+TCF15 (meth.),0.0018
+RPSA,0.0018
+CNTN1 (meth.),0.0018
+RPL26,0.0018
+YBX1,0.0018
+TMEM59,0.0018
+FBXL12 (mut.),0.0018
+CXCR1 (mut.),0.0018
+TNFSF10,0.0018
+KIAA1755 (mut.),0.0018
+SLC36A3 (meth.),0.0018
+AIPL1 (mut.),0.0018
+FGF4 (mut.),0.0018
+AGAP5 (mut.),0.0018
+NLRP3 (meth.),0.0018
+ALDH1A2 (mut.),0.0018
+BLOC1S2 (mut.),0.0018
+BMS1P20,0.0018
+CARD10 (meth.),0.0018
+HSP90AB1,0.0018
+MAOB,0.0018
+CANT1 (mut.),0.0018
+ALKBH1 (mut.),0.0018
+HNRNPA1,0.0018
+PEX5L (meth.),0.0018
+BHLHE22 (meth.),0.0018
+KDM5B (mut.),0.0018
+DPYS (mut.),0.0018
+COL5A2,0.0018
+DGAT2L6 (meth.),0.0018
+ELF4 (meth.),0.0018
+RPS16,0.0018
+USP6 (mut.),0.0018
+DCANP1 (meth.),0.0018
+KRTAP7-1 (mut.),0.0018
+GATAD2B (mut.),0.0018
+AGXT2 (mut.),0.0018
+SCN2A (mut.),0.0018
+MIR101-2 (mut.),0.0018
+CKB,0.0018
+ARL6IP5 (mut.),0.0018
+PROM1,0.0018
+GPNMB,0.0018
+MLANA,0.0018
+SPMIP4 (mut.),0.0018
+MTMR11 (mut.),0.0018
+CD72 (mut.),0.0018
+EGLN3,0.0018
+THBS2 (meth.),0.0018
+CEP15 (meth.),0.0018
+NCAN (meth.),0.0018
+PDE3A (mut.),0.0018
+PARP8 (mut.),0.0018
+C7orf33 (mut.),0.0018
+C7 (mut.),0.0018
+ATXN1 (mut.),0.0018
+ZNF660 (meth.),0.0018
+ATP6V0D2,0.0018
+SOCS3,0.0018
+SYT2 (meth.),0.0018
+GRN,0.0018
+AKAP1 (mut.),0.0018
+AGK (mut.),0.0018
+HSP90AA1,0.0018
+PEG10,0.0018
+C2orf68 (mut.),0.0018
+EHMT1 (mut.),0.0018
+FLYWCH2 (mut.),0.0017
+PLA2G2D (meth.),0.0017
+ACTC1 (mut.),0.0017
+HMGN5 (meth.),0.0017
+ACR (mut.),0.0017
+CLDN19 (mut.),0.0017
+ALOX15B (meth.),0.0017
+BRD3 (mut.),0.0017
+SLC38A10 (mut.),0.0017
+RPL11,0.0017
+KAT2A (mut.),0.0017
+FDFT1,0.0017
+CASP10 (mut.),0.0017
+AKAP3 (mut.),0.0017
+ERBB3,0.0017
+CRYBA1 (mut.),0.0017
+PODXL,0.0017
+ALX1 (mut.),0.0017
+ANGPT1 (mut.),0.0017
+ACYP1 (mut.),0.0017
+ASIC4 (mut.),0.0017
+ACVR1B (mut.),0.0017
+CTSD,0.0017
+COL23A1 (meth.),0.0017
+ACE (mut.),0.0017
+AHSA1 (mut.),0.0017
+AIFM1 (mut.),0.0017
+RPL22,0.0017
+GRINA,0.0017
+PHEX (meth.),0.0017
+PPM1E (mut.),0.0017
+ATP1B2 (mut.),0.0017
+C2orf88 (mut.),0.0017
+AP3M1 (mut.),0.0017
+GDPD2 (meth.),0.0017
+APOM (mut.),0.0017
+ANKRD10 (mut.),0.0017
+MYO10,0.0017
+PLAC9 (mut.),0.0017
+GPR152 (meth.),0.0017
+CDCA7 (mut.),0.0017
+FAM83B (mut.),0.0017
+AAR2 (mut.),0.0017
+CD52,0.0017
+DNMT3B (mut.),0.0017
+CAMK1G (mut.),0.0017
+ADD1,0.0017
+CXorf65 (mut.),0.0017
+AANAT (mut.),0.0017
+ARPC5,0.0017
+CYS1 (mut.),0.0017
+C6 (mut.),0.0017
+ACAN (mut.),0.0017
+ACVRL1 (meth.),0.0017
+RPS15A,0.0017
+EIF5A2 (meth.),0.0017
+LGI1 (meth.),0.0017
+GPR61 (mut.),0.0017
+MYC,0.0017
+ANKLE1 (meth.),0.0017
+CEACAM5 (mut.),0.0017
+APOLD1 (mut.),0.0017
+CLTC (mut.),0.0017
+CAV1 (mut.),0.0017
+CABP2 (mut.),0.0017
+CYC1,0.0017
+CBR1,0.0017
+GPC3,0.0017
+PTGDS,0.0017
+HMHB1 (mut.),0.0017
+DLG4 (mut.),0.0017
+MLLT6 (mut.),0.0017
+CHRM4 (mut.),0.0017
+UBA1,0.0017
+GUCY2F (meth.),0.0017
+ATP12A (mut.),0.0017
+ALG9 (mut.),0.0017
+GSPT2 (mut.),0.0017
+ERC2 (mut.),0.0017
+MORC2-AS1 (meth.),0.0017
+RPS9,0.0017
+BRD9 (mut.),0.0017
+CLRN2 (mut.),0.0017
+COL5A1 (mut.),0.0017
+CDH4 (mut.),0.0017
+FCER2 (meth.),0.0017
+CLDN4,0.0017
+CCDC43 (mut.),0.0017
+APOBEC1 (mut.),0.0017
+COL6A6 (mut.),0.0017
+ALOX5AP (mut.),0.0017
+BTNL9 (mut.),0.0017
+CCDC136 (mut.),0.0017
+ARF6 (mut.),0.0017
+ABR,0.0017
+CXCL14 (meth.),0.0017
+CENPP (mut.),0.0017
+CATSPER1 (mut.),0.0017
+ABLIM1,0.0017
+ASB17 (mut.),0.0017
+MMGT1 (meth.),0.0017
+HMGA1,0.0017
+ALB (mut.),0.0017
+BIVM (mut.),0.0017
+MIR1250 (mut.),0.0017
+MYO15A (mut.),0.0017
+CPAMD8 (mut.),0.0017
+XIRP1 (mut.),0.0016
+ALKBH6 (mut.),0.0016
+CXCL1 (mut.),0.0016
+ACAT1 (mut.),0.0016
+RPL8,0.0016
+NLRP8 (mut.),0.0016
+OLIG3 (meth.),0.0016
+FAAH2 (mut.),0.0016
+CELF3 (mut.),0.0016
+EVPL,0.0016
+PATE2 (mut.),0.0016
+RPL28,0.0016
+SLC6A12 (meth.),0.0016
+PZP (mut.),0.0016
+AQP10 (mut.),0.0016
+ADM5 (mut.),0.0016
+AMELX (mut.),0.0016
+BAK1 (mut.),0.0016
+MIR103A1 (mut.),0.0016
+ASTN1 (meth.),0.0016
+CCDC116 (meth.),0.0016
+ACKR4 (mut.),0.0016
+PRM1 (mut.),0.0016
+ABCC12 (mut.),0.0016
+CAB39 (mut.),0.0016
+CEP350 (mut.),0.0016
+TMSB10,0.0016
+SERINC2,0.0016
+TRAM1L1 (meth.),0.0016
+NIBAN2,0.0016
+DEFB106A (mut.),0.0016
+ZNF804A (meth.),0.0016
+MTBP (mut.),0.0016
+CWH43 (meth.),0.0016
+AMBP (mut.),0.0016
+MIR1284 (mut.),0.0016
+GUCY2C (mut.),0.0016
+JAKMIP2 (mut.),0.0016
+COPG1 (mut.),0.0016
+IL1R1,0.0016
+TUBB4B,0.0016
+CSMD3 (mut.),0.0016
+NAP1L1,0.0016
+SEMA6C (mut.),0.0016
+PGC,0.0016
+CRISP1 (mut.),0.0016
+FLT4 (mut.),0.0016
+MIR1229 (mut.),0.0016
+CHRNA5 (meth.),0.0016
+ACER1 (mut.),0.0016
+SIN3A (mut.),0.0016
+COL4A1 (mut.),0.0016
+PHOX2B (meth.),0.0016
+ARRB1 (mut.),0.0016
+RTL3 (meth.),0.0016
+ZNF804A (mut.),0.0016
+SGK1,0.0016
+APBB2 (mut.),0.0016
+EFNA1,0.0016
+CAST,0.0016
+ACAD10 (mut.),0.0016
+ADORA3 (mut.),0.0016
+RFPL3 (meth.),0.0016
+CD320 (mut.),0.0016
+KCNQ3 (mut.),0.0016
+APOC2 (mut.),0.0016
+ARTN (meth.),0.0016
+ACP6 (mut.),0.0016
+IPO5 (meth.),0.0016
+DGKI (mut.),0.0016
+CCNB3 (mut.),0.0016
+MYO1C,0.0016
+BANF1 (mut.),0.0016
+CNKSR1 (mut.),0.0016
+C19orf33 (mut.),0.0016
+DISP1 (mut.),0.0016
+FBLN1 (mut.),0.0016
+CABYR (mut.),0.0016
+S100P,0.0016
+BET1 (mut.),0.0016
+NME2,0.0016
+FGF11 (meth.),0.0016
+LMAN2,0.0016
+C12orf50 (mut.),0.0016
+CPSF2 (mut.),0.0016
+TPM2,0.0016
+MIR492 (mut.),0.0016
+PSPN (meth.),0.0016
+MIR499A (mut.),0.0016
+ABTB2 (mut.),0.0016
+MYO16 (mut.),0.0016
+CXCL10 (mut.),0.0016
+AGFG2 (mut.),0.0016
+PLS3,0.0016
+EEF2 (mut.),0.0016
+SYNPO,0.0016
+PEBP1,0.0016
+ARF1 (mut.),0.0016
+CALR,0.0016
+CYP3A4,0.0016
+C1orf116,0.0016
+COL11A1 (meth.),0.0016
+GRID1 (mut.),0.0016
+PYGB,0.0016
+ARFIP2 (mut.),0.0016
+FNBP4 (mut.),0.0016
+ACP1 (mut.),0.0016
+SP100 (meth.),0.0016
+AQP9 (mut.),0.0016
+BCAR3 (mut.),0.0016
+APOB (mut.),0.0016
+CNGB3 (mut.),0.0016
+KCNJ10,0.0016
+LEPR (mut.),0.0016
+SLC8A3 (meth.),0.0016
+AHR,0.0016
+CARTPT (mut.),0.0015
+DEFB105A (mut.),0.0015
+CD74 (meth.),0.0015
+CDH9 (mut.),0.0015
+COL9A3 (mut.),0.0015
+DSG2 (mut.),0.0015
+CHI3L1 (meth.),0.0015
+AKR1E2 (mut.),0.0015
+AP1S2 (mut.),0.0015
+CSPP1 (mut.),0.0015
+APOBEC4 (mut.),0.0015
+ANXA6,0.0015
+MAP4,0.0015
+ACTR10 (mut.),0.0015
+RPL37A,0.0015
+ATP2C1,0.0015
+BCL2L14 (mut.),0.0015
+ANKIB1 (mut.),0.0015
+ARL2 (mut.),0.0015
+AMY1A,0.0015
+CD24,0.0015
+BAP1 (mut.),0.0015
+CLIP3,0.0015
+CGN (mut.),0.0015
+CHI3L1,0.0015
+BCL9 (mut.),0.0015
+CEACAM6,0.0015
+ACVR1C (mut.),0.0015
+H2AJ,0.0015
+COL6A2 (mut.),0.0015
+LRRTM1 (mut.),0.0015
+ART3 (mut.),0.0015
+ZNF804B (mut.),0.0015
+SCARNA22 (mut.),0.0015
+ANXA11,0.0015
+MYCL,0.0015
+CDH6 (mut.),0.0015
+ACSM2A (mut.),0.0015
+PRG4,0.0015
+SNORD91A (mut.),0.0015
+ADCYAP1 (mut.),0.0015
+ADORA2A (mut.),0.0015
+FADS2 (meth.),0.0015
+HSPA1A,0.0015
+AP4E1 (mut.),0.0015
+GALNT14 (meth.),0.0015
+DDR1,0.0015
+RTTN (mut.),0.0015
+RPL18,0.0015
+CCL13 (meth.),0.0015
+KRTAP20-3 (mut.),0.0015
+ACSM3 (mut.),0.0015
+MLC1,0.0015
+IFI30,0.0015
+ATP5F1D,0.0015
+AXL,0.0015
+ARHGAP42 (mut.),0.0015
+LRCH3 (mut.),0.0015
+ACSF3 (mut.),0.0015
+GSTM5 (meth.),0.0015
+KRTAP6-2 (mut.),0.0015
+XYLT1 (mut.),0.0015
+CPT1A,0.0015
+MIR1324 (mut.),0.0015
+QSOX1,0.0015
+ALKBH5 (mut.),0.0015
+PIK3C2B (mut.),0.0015
+ATMIN (mut.),0.0015
+AGR3 (mut.),0.0015
+TRIO (mut.),0.0015
+RPL10A,0.0015
+ENC1 (mut.),0.0015
+FAM47C (mut.),0.0015
+MUC6,0.0015
+LRRN2 (mut.),0.0015
+ALX3 (mut.),0.0015
+CTNND1,0.0015
+AGPAT3 (mut.),0.0015
+EPPIN (mut.),0.0015
+AKR1B15 (mut.),0.0015
+PSMD2,0.0015
+DNAJB1 (meth.),0.0015
+ATG10 (mut.),0.0015
+GUCY1A2 (mut.),0.0015
+RAP1GAP (meth.),0.0015
+BTN3A1 (mut.),0.0015
+ATF7 (mut.),0.0015
+ASAP1 (mut.),0.0015
+CHRNG (mut.),0.0015
+HSPA6 (mut.),0.0015
+ESRRB (meth.),0.0015
+CRISP3,0.0015
+ANP32E (mut.),0.0015
+BCL2 (mut.),0.0015
+DEFB134 (mut.),0.0015
+ADAMTS17 (mut.),0.0015
+CFB,0.0015
+LGALS3 (meth.),0.0015
+CHIT1,0.0015
+CBR4 (mut.),0.0015
+LDHB,0.0015
+SCN10A (mut.),0.0015
+ATG7 (mut.),0.0015
+GPM6B,0.0015
+CPD,0.0015
+PRSS3,0.0015
+BARHL2 (meth.),0.0015
+TNN (mut.),0.0015
+ALDOC (meth.),0.0015
+RIMS3 (meth.),0.0015
+ALX4 (mut.),0.0015
+HOXB13 (meth.),0.0015
+ITGA4 (mut.),0.0014
+WDR86 (meth.),0.0014
+TALDO1,0.0014
+LENG8,0.0014
+HSPA1B,0.0014
+GSDMD (mut.),0.0014
+EVC2 (meth.),0.0014
+DENND4B (mut.),0.0014
+AXIN2 (mut.),0.0014
+EFCAB13 (mut.),0.0014
+LENEP (mut.),0.0014
+MIR1178 (mut.),0.0014
+FXYD7 (mut.),0.0014
+ARHGEF2 (mut.),0.0014
+ATG5 (mut.),0.0014
+MIR1197 (mut.),0.0014
+POU4F3 (meth.),0.0014
+HBG2 (mut.),0.0014
+BCL6 (mut.),0.0014
+SNORD15A (mut.),0.0014
+SERPING1,0.0014
+CDH20 (mut.),0.0014
+AQP12B (mut.),0.0014
+ARRB2 (mut.),0.0014
+RBMX2 (meth.),0.0014
+ARMC7 (mut.),0.0014
+PPP1R14A (meth.),0.0014
+ZBTB33 (meth.),0.0014
+BCAT1 (mut.),0.0014
+IGSF8 (mut.),0.0014
+SMOC2,0.0014
+B9D1 (mut.),0.0014
+ARPP21 (mut.),0.0014
+SCUBE1 (meth.),0.0014
+GRIA3 (mut.),0.0014
+GALNT10 (mut.),0.0014
+ABHD11 (mut.),0.0014
+TMED9,0.0014
+NUCKS1,0.0014
+DTX4 (mut.),0.0014
+FCRL2 (mut.),0.0014
+WT1 (meth.),0.0014
+ZMYND10 (meth.),0.0014
+AXDND1 (mut.),0.0014
+EPGN (mut.),0.0014
+PEA15,0.0014
+ALDH1B1 (mut.),0.0014
+GALP (meth.),0.0014
+ZFP3 (meth.),0.0014
+MED11 (mut.),0.0014
+MED24,0.0014
+CTSB,0.0014
+AASDHPPT (mut.),0.0014
+CDC37L1 (mut.),0.0014
+CCDC47 (mut.),0.0014
+VTN (meth.),0.0014
+CD248 (mut.),0.0014
+PRDM2 (mut.),0.0014
+AK7 (mut.),0.0014
+ARHGAP25 (mut.),0.0014
+APC (mut.),0.0014
+PPEF1 (meth.),0.0014
+SNRPB,0.0014
+TNS3,0.0014
+ABR (mut.),0.0014
+PML (mut.),0.0014
+CTSC,0.0014
+CUL1 (meth.),0.0014
+AMY2A,0.0014
+ACRBP (mut.),0.0014
+APLP2,0.0014
+ESPN (mut.),0.0014
+HBB,0.0014
+CNIH2 (mut.),0.0014
+IDO1,0.0014
+NDUFAF2 (mut.),0.0014
+ADAM19 (mut.),0.0014
+FCGR3B (meth.),0.0014
+CUL1 (mut.),0.0014
+ARPC4-TTLL3 (mut.),0.0014
+ZNF19 (meth.),0.0014
+ARL8B (mut.),0.0014
+ZC3HAV1 (mut.),0.0014
+SPATA21 (meth.),0.0014
+ACTL9 (meth.),0.0014
+ABCA4 (mut.),0.0014
+C1QA,0.0014
+ASXL1 (mut.),0.0014
+CCL23 (meth.),0.0014
+CCDC159 (mut.),0.0014
+TSPAN31,0.0014
+CGB1 (mut.),0.0014
+HSD11B2,0.0014
+LAPTM5,0.0014
+AP2M1,0.0014
+TMSB4XP8,0.0014
+CAMKK2,0.0014
+RBM3,0.0014
+APCS (mut.),0.0014
+SLC38A3,0.0014
+EML2 (mut.),0.0014
+FGFBP1 (meth.),0.0014
+CAMK2N1 (mut.),0.0014
+LIMA1,0.0014
+XIST (mut.),0.0014
+CNTNAP3 (mut.),0.0014
+FGF5 (meth.),0.0014
+PNMA8A (meth.),0.0014
+DES (meth.),0.0014
+ALG1L2 (mut.),0.0014
+CYBRD1,0.0014
+NCAM1,0.0014
+CLDN11 (mut.),0.0014
+NEDD4 (mut.),0.0014
+HES2 (mut.),0.0014
+ATP1A1,0.0014
+AGTR1 (mut.),0.0014
+C1QTNF1 (mut.),0.0014
+SPTA1 (mut.),0.0014
+KLK3 (meth.),0.0014
+DGKB (mut.),0.0014
+COA3 (mut.),0.0014
+ARHGEF11 (mut.),0.0014
+HSPB9 (meth.),0.0014
+CLIC4,0.0014
+ADCY1 (meth.),0.0014
+GHSR (meth.),0.0014
+DPP4 (mut.),0.0014
+CYP27B1 (meth.),0.0014
+NUCB1,0.0014
+ITGB2,0.0014
+TAGLN2,0.0014
+ACOXL (mut.),0.0014
+BEX5 (mut.),0.0014
+ATXN2L (mut.),0.0014
+MOV10L1 (mut.),0.0014
+PTPRZ1 (mut.),0.0014
+CANX,0.0014
+PKN1,0.0014
+DGCR2 (mut.),0.0014
+MLXIPL,0.0014
+SMIM3 (mut.),0.0014
+ABCC2 (mut.),0.0014
+C1GALT1 (mut.),0.0013
+NRP2,0.0013
+PIPOX,0.0013
+ANG (mut.),0.0013
+EP300 (mut.),0.0013
+PCBP2,0.0013
+ASMTL (mut.),0.0013
+ANAPC5 (mut.),0.0013
+FILIP1L (mut.),0.0013
+ARMC3 (meth.),0.0013
+KRT15 (meth.),0.0013
+DBN1,0.0013
+CD27 (mut.),0.0013
+DEFB119 (meth.),0.0013
+ARL15 (mut.),0.0013
+GRIK2 (mut.),0.0013
+NKX3-1,0.0013
+ADAM12 (mut.),0.0013
+MIR105-1 (mut.),0.0013
+GPX3,0.0013
+FURIN (mut.),0.0013
+UBE3A (mut.),0.0013
+CRIP1,0.0013
+DCD (mut.),0.0013
+MIR3193 (mut.),0.0013
+STAT1,0.0013
+ELF1 (mut.),0.0013
+EGR1,0.0013
+CCSER2 (mut.),0.0013
+TACSTD2,0.0013
+OGDHL (mut.),0.0013
+ANXA3 (mut.),0.0013
+OLIG1,0.0013
+CHML (mut.),0.0013
+GIPR (mut.),0.0013
+ART5 (mut.),0.0013
+ATP5MC2 (meth.),0.0013
+SSR2,0.0013
+LOC728392,0.0013
+FYTTD1 (mut.),0.0013
+MCHR1 (meth.),0.0013
+ARHGAP30 (mut.),0.0013
+APBB1 (mut.),0.0013
+CCDC83 (mut.),0.0013
+DNAJB7 (mut.),0.0013
+GABARAP (mut.),0.0013
+BTN3A3 (meth.),0.0013
+ARL11 (mut.),0.0013
+CLCA2,0.0013
+CYB5R3,0.0013
+MYO1D,0.0013
+ARL9 (mut.),0.0013
+CHRM1 (mut.),0.0013
+BANP (mut.),0.0013
+GGH,0.0013
+MED1 (mut.),0.0013
+RPL5,0.0013
+STK26 (meth.),0.0013
+WAS (meth.),0.0013
+CST4 (meth.),0.0013
+DIO2 (mut.),0.0013
+PTPRC (mut.),0.0013
+COL9A1 (mut.),0.0013
+FOXB1 (mut.),0.0013
+APBA2 (mut.),0.0013
+NDUFB9,0.0013
+C17orf78 (mut.),0.0013
+ANKRD54 (mut.),0.0013
+CCDC25 (mut.),0.0013
+BRWD3 (mut.),0.0013
+PRDM9 (mut.),0.0013
+PFN2,0.0013
+ABCF2 (mut.),0.0013
+MUC4,0.0013
+BIRC8 (mut.),0.0013
+BCL11B (mut.),0.0013
+TPPP3,0.0013
+AGPAT5 (mut.),0.0013
+CNPY4 (mut.),0.0013
+TIAM1 (mut.),0.0013
+CLINT1 (mut.),0.0013
+FSTL1,0.0013
+BANF2 (mut.),0.0013
+DSCAM (mut.),0.0013
+VAV3 (meth.),0.0013
+NTRK1 (mut.),0.0013
+NRXN3 (mut.),0.0013
+HSP90B1,0.0013
+ADAMTS2 (meth.),0.0013
+RORC (meth.),0.0013
+CABP1 (mut.),0.0013
+GDNF (meth.),0.0013
+BTF3,0.0013
+PPIB,0.0013
+GLMN (mut.),0.0013
+NLRP5 (mut.),0.0013
+APCDD1L (mut.),0.0013
+CD82 (mut.),0.0013
+ATP6V1B1,0.0013
+ARID2 (mut.),0.0013
+CCL13 (mut.),0.0013
+ALOX15B,0.0013
+MCM7,0.0013
+ABCC6 (mut.),0.0013
+CCL21 (mut.),0.0013
+MPO,0.0013
+CARD18 (mut.),0.0013
+CCK (mut.),0.0013
+YBX3,0.0013
+NCAM1 (mut.),0.0013
+CBFA2T3 (meth.),0.0013
+ANXA5,0.0013
+CNFN,0.0013
+AGTR2 (mut.),0.0013
+FBXL5 (mut.),0.0013
+CRABP2,0.0013
+ACTG1 (mut.),0.0013
+RYR2 (mut.),0.0013
+EEF1D,0.0013
+TNFRSF21,0.0013
+PLP1,0.0013
+ARF4,0.0013
+CDKL2 (mut.),0.0013
+AWAT1 (mut.),0.0013
+TAOK1 (mut.),0.0013
+ALDH7A1 (mut.),0.0013
+AMER3 (mut.),0.0013
+UQCRB,0.0013
+CDH13 (mut.),0.0013
+CD3G (mut.),0.0013
+ELAVL4 (meth.),0.0013
+C12orf43 (mut.),0.0013
+AKR1A1 (mut.),0.0012
+APOC1,0.0012
+DDX5,0.0012
+LAMB4 (mut.),0.0012
+CCDC152 (mut.),0.0012
+EFCAB5 (mut.),0.0012
+LAMB2,0.0012
+PLEK (meth.),0.0012
+CNN2,0.0012
+RAB11FIP1 (mut.),0.0012
+ASPDH (mut.),0.0012
+ANGPTL4 (mut.),0.0012
+DNAJC9 (mut.),0.0012
+ATP9A (mut.),0.0012
+MYCBPAP (mut.),0.0012
+DCLK3 (mut.),0.0012
+IFT172 (mut.),0.0012
+MAP2 (mut.),0.0012
+C10orf120 (mut.),0.0012
+ANKMY2 (mut.),0.0012
+ASH2L (mut.),0.0012
+TPM3,0.0012
+TRIM28,0.0012
+ZSCAN20 (mut.),0.0012
+HENMT1 (meth.),0.0012
+GRM7 (mut.),0.0012
+WNK1,0.0012
+CEP72 (mut.),0.0012
+SEZ6L2,0.0012
+COL1A1,0.0012
+BACE2,0.0012
+ALDH3A1,0.0012
+ABLIM2 (mut.),0.0012
+LHX1 (meth.),0.0012
+ACR (meth.),0.0012
+MALAT1 (mut.),0.0012
+AGA (mut.),0.0012
+CDRT15 (mut.),0.0012
+SOD2,0.0012
+BCAP31,0.0012
+KLHL6 (mut.),0.0012
+IDS,0.0012
+ARL3 (mut.),0.0012
+RPL29,0.0012
+LRIG1,0.0012
+EEF1A1P9,0.0012
+INPP5J,0.0012
+NCAPD2,0.0012
+ERGIC3,0.0012
+RPS12,0.0012
+C5orf15 (mut.),0.0012
+SNORA18 (mut.),0.0012
+CYBA,0.0012
+PFN1,0.0012
+KNG1,0.0012
+CSNK1G1 (mut.),0.0012
+ATP7A (meth.),0.0012
+PTPRB (mut.),0.0012
+ADAM28 (mut.),0.0012
+KRT77 (mut.),0.0012
+JAG1,0.0012
+TSKU,0.0012
+MATN2,0.0012
+DHRS3,0.0012
+TNKS1BP1,0.0012
+LILRB2 (mut.),0.0012
+GFRA4 (meth.),0.0012
+PLOD1,0.0012
+ADK (mut.),0.0012
+MIR548H3 (mut.),0.0012
+PTGS2,0.0012
+CSAG4 (mut.),0.0012
+ABHD4 (mut.),0.0012
+ACTL6A (mut.),0.0012
+NOS1 (mut.),0.0012
+CUL4B (mut.),0.0012
+SLC40A1,0.0012
+IGF1R,0.0012
+C9orf152 (mut.),0.0012
+SNAP25,0.0012
+ADPRH (mut.),0.0012
+MCM7 (mut.),0.0012
+GFPT1,0.0012
+FOCAD (mut.),0.0012
+CDK15 (mut.),0.0012
+ORM1,0.0012
+ARPC3,0.0012
+AFF1 (mut.),0.0012
+FZD1 (mut.),0.0012
+KRT1,0.0012
+CALCRL (mut.),0.0012
+ADH5 (mut.),0.0012
+SNHG29,0.0012
+DAD1 (mut.),0.0012
+CYB5B,0.0012
+C1orf122 (mut.),0.0012
+TRAM1,0.0012
+C5orf46 (mut.),0.0012
+AQP12A (mut.),0.0012
+ITIH4,0.0012
+AKT1S1 (mut.),0.0012
+FOS,0.0012
+KIF5B,0.0012
+APOL6 (mut.),0.0012
+BFSP2 (mut.),0.0012
+CD46,0.0012
+MIR106B (mut.),0.0012
+IGFBP7,0.0012
+DCAF8L1 (mut.),0.0012
+FMO3,0.0012
+KRT33B (meth.),0.0012
+RNF43,0.0012
+LMNA,0.0012
+ARL6IP1 (mut.),0.0012
+ITGB4,0.0012
+CTNNA1 (mut.),0.0012
+FOLH1,0.0012
+NOMO1,0.0012
+NCOR2,0.0012
+APBA1 (mut.),0.0012
+ACP5 (mut.),0.0012
+TPM4,0.0012
+ITIH1,0.0012
+INTS1 (meth.),0.0012
+ARHGDIA (mut.),0.0012
+S100A6,0.0012
+CYTH3 (mut.),0.0012
+SORCS1 (mut.),0.0012
+GPT (meth.),0.0012
+EIF4G2,0.0012
+APOH (mut.),0.0012
+KDR (mut.),0.0012
+NPM2 (meth.),0.0012
+TRPS1,0.0012
+ANGPTL1 (mut.),0.0012
+C8orf33 (mut.),0.0012
+CFAP263 (mut.),0.0012
+LRRC32 (mut.),0.0012
+R3HDM2 (mut.),0.0012
+EOMES (meth.),0.0012
+ALDOA,0.0012
+MIR1266 (mut.),0.0012
+CNOT7 (mut.),0.0012
+REG4,0.0012
+ADH1A,0.0012
+NCKAP5 (mut.),0.0012
+ASCC2 (mut.),0.0012
+STC2,0.0012
+KSR2 (mut.),0.0012
+CCDC106 (mut.),0.0012
+ITM2B,0.0012
+ARHGEF4 (mut.),0.0012
+APOC1 (mut.),0.0012
+TCIM,0.0012
+OR2K2 (meth.),0.0012
+ABCC4 (mut.),0.0012
+CSNK1A1,0.0012
+CCT2 (mut.),0.0012
+AKAP5 (mut.),0.0012
+GRIA4 (mut.),0.0012
+B3GAT2 (mut.),0.0012
+APPL1 (mut.),0.0012
+CD80 (mut.),0.0012
+TNPO1 (mut.),0.0012
+SERF2,0.0012
+GABRQ (mut.),0.0012
+PLXNA2 (mut.),0.0012
+NID1,0.0012
+ABCD4 (mut.),0.0012
+TFE3 (meth.),0.0012
+FAR1 (mut.),0.0012
+RPS15,0.0012
+MBP,0.0012
+C12orf54 (mut.),0.0011
+HP,0.0011
+KIAA1217,0.0011
+ACTL7B (mut.),0.0011
+C12orf71 (mut.),0.0011
+PPP2R1A,0.0011
+CPLX2,0.0011
+ANXA13 (mut.),0.0011
+AMPD1 (mut.),0.0011
+C2orf76 (mut.),0.0011
+PCSK6,0.0011
+BEGAIN (mut.),0.0011
+JUND,0.0011
+ATPAF2 (mut.),0.0011
+LMNB1 (mut.),0.0011
+GABARAPL1,0.0011
+DNM3 (mut.),0.0011
+NLRP2,0.0011
+GLG1,0.0011
+MIR101-1 (mut.),0.0011
+CER1 (mut.),0.0011
+CALHM2 (meth.),0.0011
+ANKDD1A (mut.),0.0011
+DPY19L2P2 (mut.),0.0011
+CDCA8 (mut.),0.0011
+IGF2,0.0011
+GABARAP,0.0011
+CCL4L2 (mut.),0.0011
+F10,0.0011
+ENPP2,0.0011
+SARAF,0.0011
+BLZF1 (mut.),0.0011
+A1CF (mut.),0.0011
+GRIA2 (mut.),0.0011
+IFI6,0.0011
+CALML5 (mut.),0.0011
+UHRF1 (meth.),0.0011
+ZNF536 (mut.),0.0011
+AGR2 (mut.),0.0011
+NNAT (mut.),0.0011
+PPFIA2 (mut.),0.0011
+CHRNE (mut.),0.0011
+LAMA3,0.0011
+BOK (mut.),0.0011
+ARID3A (mut.),0.0011
+DNAH5 (mut.),0.0011
+LRP10 (mut.),0.0011
+CDIPT (mut.),0.0011
+CSTA,0.0011
+CRADD (mut.),0.0011
+PTPRH (mut.),0.0011
+CARM1 (mut.),0.0011
+ITGB8,0.0011
+RASSF6 (meth.),0.0011
+AZGP1 (mut.),0.0011
+GRHPR,0.0011
+C1orf210 (mut.),0.0011
+PRSS1,0.0011
+CBLN2 (mut.),0.0011
+TRANK1 (mut.),0.0011
+TSHB (meth.),0.0011
+AIM2 (mut.),0.0011
+NDRG4,0.0011
+AGRP (mut.),0.0011
+FAM32A (mut.),0.0011
+DTNA,0.0011
+CLCN4 (mut.),0.0011
+FNBP1L (mut.),0.0011
+BTNL2 (mut.),0.0011
+ABCA5 (mut.),0.0011
+CILP2 (meth.),0.0011
+ABCC3 (mut.),0.0011
+SFTPB,0.0011
+ARFGEF1 (mut.),0.0011
+PPP1R1B,0.0011
+ATP6V0C,0.0011
+BEX2 (mut.),0.0011
+CFTR (mut.),0.0011
+BCL11A (mut.),0.0011
+ERCC2 (mut.),0.0011
+CARD11 (mut.),0.0011
+EDA (meth.),0.0011
+ARL13B (mut.),0.0011
+POLR2D (meth.),0.0011
+PRDX1,0.0011
+NQO1,0.0011
+CALM3,0.0011
+C20orf202 (mut.),0.0011
+FGA (mut.),0.0011
+CNTN6 (mut.),0.0011
+ACSL1,0.0011
+DSC3 (mut.),0.0011
+COL21A1 (mut.),0.0011
+IZUMO2 (meth.),0.0011
+ALDH1L1,0.0011
+CCAR1 (mut.),0.0011
+CXCL13,0.0011
+C11orf87 (mut.),0.0011
+ATP6V1B1 (mut.),0.0011
+APOE,0.0011
+C11orf86 (mut.),0.0011
+AARD (mut.),0.0011
+CALM2 (mut.),0.0011
+ZC3H3 (mut.),0.0011
+AP2S1 (mut.),0.0011
+AFAP1 (mut.),0.0011
+KLHL3 (mut.),0.0011
+BBS4 (mut.),0.0011
+ATP5F1B,0.0011
+ALDH4A1 (mut.),0.0011
+LINC02870 (meth.),0.0011
+REDIC1 (mut.),0.0011
+ACHE (mut.),0.0011
+SEMA5A (mut.),0.0011
+BCKDHB (mut.),0.0011
+RHOC,0.0011
+MRPL27 (mut.),0.0011
+LRRC4B (mut.),0.0011
+ASCC1 (mut.),0.0011
+IQGAP1,0.0011
+ASIC2 (mut.),0.0011
+EXT1 (mut.),0.0011
+CYP1A1 (mut.),0.0011
+ARSJ (mut.),0.0011
+FADS1,0.0011
+CAPG,0.0011
+MTURN,0.0011
+CTSL,0.0011
+ACTN4 (mut.),0.0011
+UBE4A (meth.),0.0011
+ACTL9 (mut.),0.0011
+ALG10B (mut.),0.0011
+IDH2,0.0011
+APMAP,0.0011
+C1orf21 (mut.),0.0011
+ABCC4,0.0011
+SORD,0.0011
+ASGR2 (mut.),0.0011
+MAPDA (mut.),0.0011
+ARRDC4 (mut.),0.0011
+DHCR7,0.0011
+CHD5 (mut.),0.0011
+CD55,0.0011
+ACADM (mut.),0.0011
+BTC (mut.),0.0011
+EEF1A1,0.0011
+MAP6 (mut.),0.0011
+ABT1 (mut.),0.0011
+ACBD3 (mut.),0.0011
+SYNE1 (meth.),0.0011
+PTPRN2,0.0011
+CASS4 (mut.),0.0011
+FCER1A (mut.),0.0011
+LASP1,0.0011
+IER2,0.0011
+MYO15B (mut.),0.0011
+RARRES1,0.0011
+L1CAM (mut.),0.0011
+CORO7 (mut.),0.0011
+DHX9 (mut.),0.0011
+FBXO21 (mut.),0.0011
+ABI2 (mut.),0.0011
+CTTNBP2 (mut.),0.0011
+DPP4,0.0011
+SCARNA5 (mut.),0.0010
+ALKBH2 (mut.),0.0010
+CTNNB1,0.0010
+DLGAP2 (mut.),0.0010
+SDS,0.0010
+SPON2,0.0010
+KHK,0.0010
+SNRNP70,0.0010
+PPIA,0.0010
+PC (mut.),0.0010
+MDGA1 (mut.),0.0010
+CARD6 (mut.),0.0010
+RNF17 (mut.),0.0010
+MGAM (mut.),0.0010
+SELENON,0.0010
+CLDN16 (mut.),0.0010
+ADAMTS5 (mut.),0.0010
+AHCY,0.0010
+NOTUM,0.0010
+ABHD13 (mut.),0.0010
+LTBP4,0.0010
+SNHG32,0.0010
+CWH43 (mut.),0.0010
+COL16A1 (mut.),0.0010
+CCNL1 (mut.),0.0010
+ANAPC16 (mut.),0.0010
+ALDH3B2 (mut.),0.0010
+PNPLA2 (meth.),0.0010
+MYH9,0.0010
+DSG1 (mut.),0.0010
+HLA-C,0.0010
+CYSTM1,0.0010
+SCD5,0.0010
+APIP (mut.),0.0010
+OGDH,0.0010
+KTN1,0.0010
+ADAMTS16 (mut.),0.0010
+CIRBP,0.0010
+PRDM7 (meth.),0.0010
+AHCY (mut.),0.0010
+DIRAS2 (mut.),0.0010
+OR3A1 (meth.),0.0010
+CYFIP2 (mut.),0.0010
+HUWE1,0.0010
+ADRM1 (mut.),0.0010
+PRSS8,0.0010
+ASIC5 (mut.),0.0010
+ITGB5,0.0010
+FCGBP,0.0010
+EID2B (mut.),0.0010
+CYB5R1 (mut.),0.0010
+LRP1,0.0010
+MYLK,0.0010
+UCN2 (meth.),0.0010
+ANAPC15 (mut.),0.0010
+CPED1 (mut.),0.0010
+UQCRFS1,0.0010
+EPYC (mut.),0.0010
+BTBD7 (mut.),0.0010
+ADAM21P1 (mut.),0.0010
+DKK3,0.0010
+SLC1A3,0.0010
+TPI1,0.0010
+ABRA (mut.),0.0010
+SNRNP200,0.0010
+SCN1A (mut.),0.0010
+GFAP,0.0010
+AQP3,0.0010
+HLA-DPA1,0.0010
+POTEF (mut.),0.0010
+ATP2A2,0.0010
+SLC6A8,0.0010
+ANXA8,0.0010
+EIF1,0.0010
+CD79A,0.0010
+PTK7,0.0010
+ABCB6 (mut.),0.0010
+C16orf82 (mut.),0.0010
+MAP9 (mut.),0.0010
+BAAT,0.0010
+TNC,0.0010
+MUC5B,0.0010
+SELENOP,0.0010
+SYT7,0.0010
+PCDHA8 (mut.),0.0010
+CD59,0.0010
+CLDN18,0.0010
+ATE1 (mut.),0.0010
+ANAPC13 (mut.),0.0010
+CSTA (mut.),0.0010
+NLRP7 (meth.),0.0010
+LRRC8A,0.0010
+ALYREF (mut.),0.0010
+THNSL2 (meth.),0.0010
+APBB1IP (mut.),0.0010
+ADTRP (mut.),0.0010
+AGGF1 (mut.),0.0010
+FLOT1,0.0010
+CCNJ (mut.),0.0010
+SAT1,0.0010
+SLC4A8 (mut.),0.0010
+CASP4 (mut.),0.0010
+HSD17B4,0.0010
+BSDC1 (mut.),0.0010
+CTSE,0.0010
+BEND5 (mut.),0.0010
+ZNF711 (mut.),0.0010
+MIR1282 (mut.),0.0010
+ILF2,0.0010
+ANKRD1 (mut.),0.0010
+GABRE (meth.),0.0010
+FBN2 (mut.),0.0010
+ATP1B3,0.0010
+EFCAB6 (mut.),0.0010
+SHMT1,0.0010
+RCC2,0.0010
+CCND1,0.0010
+CRABP2 (mut.),0.0010
+C4orf50 (meth.),0.0010
+AAMDC (mut.),0.0010
+MIR1184-1 (mut.),0.0010
+ATP1B1,0.0010
+CORO2B (mut.),0.0010
+GYPA (mut.),0.0010
+GNAS,0.0010
+NFASC,0.0010
+CYP17A1,0.0010
+CDKN1A,0.0010
+BPIFC (mut.),0.0010
+CLEC3B (mut.),0.0010
+RACK1,0.0010
+CCDC97 (mut.),0.0010
+ISLR,0.0010
+VDAC1,0.0010
+RGS5,0.0010
+LPCAT1,0.0010
+SERPINC1,0.0010
+AKR1C3,0.0010
+AGO2 (mut.),0.0010
+CDC7 (mut.),0.0010
+RBMS3 (meth.),0.0010
+IPO9 (mut.),0.0010
+SRRM2,0.0010
+PCDHB8 (mut.),0.0010
+HLA-DRB5,0.0010
+ARRDC1 (mut.),0.0010
+ALDH2,0.0010
+HBA2,0.0010
+CR2 (mut.),0.0010
+CHD3,0.0010
+ATP6V0D2 (mut.),0.0010
+PSMB4,0.0010
+ZCCHC12,0.0010
+EFHD1,0.0010
+BRD8 (mut.),0.0010
+MKI67,0.0010
+ATP2A2 (mut.),0.0010
+ADIPOR2,0.0010
+CACNA1S (mut.),0.0010
+CAMK2N1,0.0010
+C9orf78 (mut.),0.0010
+CTSA,0.0010
+ATAD2 (mut.),0.0010
+C15orf62 (mut.),0.0010
+BAALC,0.0010
+PDK4,0.0010
+HECW1 (mut.),0.0010
+IGFBP2,0.0010
+DYNLL1 (mut.),0.0010
+ZYX,0.0010
+SLC4A10 (mut.),0.0010
+NOP10 (mut.),0.0010
+PFKFB3,0.0010
+IHH (meth.),0.0010
+PPL,0.0009
+KCNC3 (meth.),0.0009
+CCDC73 (mut.),0.0009
+CHAMP1 (mut.),0.0009
+CDKL4 (mut.),0.0009
+HAUS3 (mut.),0.0009
+MSN,0.0009
+RSBN1L (mut.),0.0009
+HOPX,0.0009
+BOLL (mut.),0.0009
+CDK12 (mut.),0.0009
+ALG12 (mut.),0.0009
+MIR135A2 (mut.),0.0009
+GJA1,0.0009
+TAP2,0.0009
+RPLP0,0.0009
+AMPD2 (mut.),0.0009
+DCN,0.0009
+KCNT2 (mut.),0.0009
+DYTN (mut.),0.0009
+XBP1,0.0009
+ANKRD33 (meth.),0.0009
+ADCY1 (mut.),0.0009
+SCUBE2,0.0009
+AMD1,0.0009
+FAU,0.0009
+RHOBTB2 (mut.),0.0009
+DLG3 (mut.),0.0009
+KIT,0.0009
+LPAL2 (mut.),0.0009
+EFHB (mut.),0.0009
+BCL2L12 (mut.),0.0009
+SCARNA23 (mut.),0.0009
+CEP63 (mut.),0.0009
+AK1 (mut.),0.0009
+AGAP2 (mut.),0.0009
+SREBF2,0.0009
+COL14A1 (mut.),0.0009
+NDRG2,0.0009
+MORN2 (mut.),0.0009
+CHCHD10 (mut.),0.0009
+LOX,0.0009
+TCP10L (meth.),0.0009
+ATXN3L (mut.),0.0009
+CHD4 (mut.),0.0009
+SLC25A5,0.0009
+NNT (mut.),0.0009
+CPN2 (mut.),0.0009
+ATP5MC2,0.0009
+ADRA2B (mut.),0.0009
+PGAP3,0.0009
+F9 (mut.),0.0009
+SLC46A2 (meth.),0.0009
+AZU1 (mut.),0.0009
+KAT6A (mut.),0.0009
+CS (mut.),0.0009
+ACBD5 (mut.),0.0009
+CD47 (mut.),0.0009
+ALDH9A1 (mut.),0.0009
+PLXNB1,0.0009
+CRTAC1 (mut.),0.0009
+EBF2 (mut.),0.0009
+NES,0.0009
+AKR1C2,0.0009
+APOA1,0.0009
+ANPEP,0.0009
+AGER (mut.),0.0009
+HLA-DMA,0.0009
+ABTB1 (mut.),0.0009
+RPS14,0.0009
+ZEB2 (mut.),0.0009
+DCDC1 (mut.),0.0009
+AEBP2 (mut.),0.0009
+MIR1253 (mut.),0.0009
+CXCL14,0.0009
+TM9SF2,0.0009
+TGM1,0.0009
+PARP1,0.0009
+COL19A1 (mut.),0.0009
+PAIP2 (mut.),0.0009
+TMEM213,0.0009
+ACAD9 (mut.),0.0009
+PDZK1IP1,0.0009
+AOC4P (mut.),0.0009
+CDH26 (mut.),0.0009
+KCNJ1 (meth.),0.0009
+NEAT1,0.0009
+PI3,0.0009
+COL9A3,0.0009
+COPE (mut.),0.0009
+PCDH11Y (meth.),0.0009
+MIR9-1HG,0.0009
+C1GALT1C1 (meth.),0.0009
+ADAMTS19 (mut.),0.0009
+BSND (mut.),0.0009
+CSTB,0.0009
+FBL,0.0009
+AKR1C3 (mut.),0.0009
+NT5DC2,0.0009
+PLOD3,0.0009
+ABCD1 (mut.),0.0009
+PSCA,0.0009
+C6orf141 (mut.),0.0009
+HMGB3,0.0009
+PSMD3,0.0009
+CDKL5 (mut.),0.0009
+KRT13,0.0009
+PCDHB13 (mut.),0.0009
+LRPAP1,0.0009
+ATP6V0B (mut.),0.0009
+TMT1A,0.0009
+HPN,0.0009
+FAM228A (mut.),0.0009
+TOMM20,0.0009
+FER1L4,0.0009
+JUN,0.0009
+ACTN4,0.0009
+MRFAP1,0.0009
+CYP2B7P,0.0009
+RPL15,0.0009
+EPB41L3 (mut.),0.0009
+SCRN1,0.0009
+ADRA2A (mut.),0.0009
+BROX (mut.),0.0009
+SRRM3 (meth.),0.0009
+HIPK1 (mut.),0.0009
+HDAC4 (mut.),0.0009
+RIMS1 (mut.),0.0009
+PDLIM5,0.0009
+ATP1A3 (mut.),0.0009
+DRAM2 (mut.),0.0009
+JAK2 (mut.),0.0009
+ARL5C (mut.),0.0009
+COL15A1,0.0009
+SDC2,0.0009
+THBS1,0.0009
+PLCG2 (mut.),0.0009
+SLC24A4 (mut.),0.0009
+CES2 (mut.),0.0009
+MAGED1,0.0009
+ABHD6 (mut.),0.0009
+ENTHD1 (meth.),0.0009
+AP1G1 (mut.),0.0009
+C22orf39 (mut.),0.0009
+CCDC66 (mut.),0.0009
+GPC4 (mut.),0.0009
+CMPK1,0.0009
+SCARNA1 (mut.),0.0009
+SND1,0.0009
+EPAS1,0.0009
+CDH22 (mut.),0.0009
+S100A16,0.0009
+CWF19L1 (mut.),0.0009
+ENO1,0.0009
+PFDN5,0.0009
+SPART (meth.),0.0009
+MIR1257 (mut.),0.0009
+BTF3L4 (mut.),0.0009
+BPIFB6 (mut.),0.0009
+FOSB,0.0009
+IFITM3,0.0009
+ANKRD26P1 (mut.),0.0009
+NHERF1,0.0009
+TAPBP,0.0009
+MUC1,0.0009
+ALKBH3 (mut.),0.0009
+SFTPA2,0.0009
+FBP1,0.0009
+ETV1,0.0009
+FAM3A (meth.),0.0008
+MRC2,0.0008
+FBXO40 (mut.),0.0008
+TLE5,0.0008
+SEC61G,0.0008
+ADAM9,0.0008
+STAR,0.0008
+ALB,0.0008
+CYP3A5 (mut.),0.0008
+LIPA,0.0008
+GNGT2 (mut.),0.0008
+DUOX1,0.0008
+BCAN (mut.),0.0008
+EIF4A1,0.0008
+DKK1 (meth.),0.0008
+IFI16,0.0008
+CSPG4,0.0008
+DEPP1,0.0008
+ATRNL1 (mut.),0.0008
+COLGALT1,0.0008
+GPATCH8 (mut.),0.0008
+MX1,0.0008
+DES,0.0008
+IGSF1 (mut.),0.0008
+DEFB124 (mut.),0.0008
+DEFA6 (meth.),0.0008
+SLC25A34 (meth.),0.0008
+ASPA (mut.),0.0008
+ARL2BP (mut.),0.0008
+ACADSB (mut.),0.0008
+ERN2 (mut.),0.0008
+ACTR3,0.0008
+DROSHA (mut.),0.0008
+MARCKSL1,0.0008
+ABCA10 (mut.),0.0008
+TIMP3,0.0008
+ADAM15,0.0008
+NFIX,0.0008
+DOCK2 (mut.),0.0008
+C16orf89 (mut.),0.0008
+PDE4DIP (mut.),0.0008
+CORO1C,0.0008
+CCDC3 (meth.),0.0008
+CCDC74A (mut.),0.0008
+HDGF,0.0008
+CBFA2T3 (mut.),0.0008
+CUX1 (mut.),0.0008
+RPL36,0.0008
+CRTAP,0.0008
+RPL27A,0.0008
+DYNC1H1,0.0008
+QPCT,0.0008
+RARRES2,0.0008
+C2orf42 (mut.),0.0008
+ATP8B1 (mut.),0.0008
+RPL17,0.0008
+S100B,0.0008
+RPS3A,0.0008
+EPHA1 (mut.),0.0008
+CTBP1 (mut.),0.0008
+FRMPD2 (mut.),0.0008
+NAPSA,0.0008
+AMY2B (mut.),0.0008
+RGL1 (mut.),0.0008
+ADAT3 (mut.),0.0008
+CHAF1A (mut.),0.0008
+ARPC4 (mut.),0.0008
+TTYH3,0.0008
+ABCC3,0.0008
+MSLN,0.0008
+ENC1,0.0008
+TOP2B,0.0008
+CNTFR (mut.),0.0008
+SOX4,0.0008
+LSR,0.0008
+EML1 (mut.),0.0008
+AKAP6 (mut.),0.0008
+TRIM29,0.0008
+RALY,0.0008
+MYLK (mut.),0.0008
+MAPKAPK2 (mut.),0.0008
+CCDC160 (mut.),0.0008
+PDLIM3 (mut.),0.0008
+POLR2A,0.0008
+RAN,0.0008
+CDK17 (mut.),0.0008
+CDKN2AIPNL (mut.),0.0008
+APOLD1,0.0008
+ARHGAP4 (mut.),0.0008
+BAX (mut.),0.0008
+CEACAM1 (mut.),0.0008
+KNDC1 (mut.),0.0008
+FIG4 (mut.),0.0008
+EHD2,0.0008
+CES1,0.0008
+PRAME,0.0008
+C15orf39 (mut.),0.0008
+GPI,0.0008
+ATN1,0.0008
+DBH,0.0008
+IDO2 (mut.),0.0008
+AIF1L (mut.),0.0008
+BMP5 (mut.),0.0008
+CA2,0.0008
+ACP3,0.0008
+DUSP6,0.0008
+AQP1,0.0008
+SHC1,0.0008
+ATP1A2 (mut.),0.0008
+SEPTIN9,0.0008
+PGR,0.0008
+CD163 (mut.),0.0008
+CRYBG1,0.0008
+CYB5A,0.0008
+FXYD5,0.0008
+ACSL6 (mut.),0.0008
+CAMTA1 (mut.),0.0008
+SCP2,0.0008
+CYBB,0.0008
+HM13,0.0008
+ANO4 (mut.),0.0008
+YWHAB,0.0008
+CCL5,0.0008
+CCL1 (mut.),0.0008
+ACTR3 (mut.),0.0008
+CALU,0.0008
+EFHD2,0.0008
+BPIFA3 (mut.),0.0008
+MT1G,0.0008
+HINT1,0.0008
+JPT1,0.0008
+ADGRG1,0.0008
+XRCC5,0.0008
+MIR1272 (mut.),0.0008
+ATF4 (mut.),0.0008
+IQSEC2 (mut.),0.0008
+ATG4C (mut.),0.0008
+RHOB,0.0008
+C6orf62 (mut.),0.0008
+HAS3,0.0008
+DHRS7,0.0008
+ADGB (mut.),0.0008
+ARHGAP1 (mut.),0.0008
+MAP4K4,0.0008
+RPL32,0.0008
+ALLC (mut.),0.0008
+ESR1,0.0008
+TST,0.0008
+TNFRSF19 (meth.),0.0008
+PSAT1,0.0008
+SLC12A7,0.0008
+FAP (mut.),0.0008
+EDNRB,0.0008
+NAMPT,0.0008
+ARNT (mut.),0.0008
+MYBL2,0.0008
+HSPB6,0.0008
+ALCAM (mut.),0.0008
+CEP290 (mut.),0.0008
+CPS1,0.0008
+DZANK1 (mut.),0.0008
+FERMT1,0.0008
+B4GALT1,0.0008
+CD83 (mut.),0.0008
+FAT1,0.0008
+C1orf226 (mut.),0.0008
+APH1B (mut.),0.0008
+SPARC,0.0008
+TPR (mut.),0.0008
+LMO3,0.0008
+CDKN2B (mut.),0.0008
+CASD1 (mut.),0.0008
+AGR2,0.0008
+COA6 (mut.),0.0008
+NORAD,0.0008
+ALOX12B (mut.),0.0008
+FYN,0.0008
+ABHD16A (mut.),0.0008
+COL11A1,0.0008
+ABAT (mut.),0.0008
+RPL27,0.0007
+HTRA3,0.0007
+ANKRD13A (mut.),0.0007
+ANXA2 (mut.),0.0007
+HLA-DQB1,0.0007
+DEFB1,0.0007
+NBEA (mut.),0.0007
+PDE8B (meth.),0.0007
+BIRC2 (mut.),0.0007
+ILF3,0.0007
+GLI3 (mut.),0.0007
+COX6C,0.0007
+CALD1 (mut.),0.0007
+GPR152 (mut.),0.0007
+ARRDC3,0.0007
+CHD7 (mut.),0.0007
+MLEC,0.0007
+ARF3,0.0007
+MPHOSPH9 (mut.),0.0007
+DPP7,0.0007
+RIMS2 (mut.),0.0007
+NUP210,0.0007
+GPT2,0.0007
+ABCA2,0.0007
+CGNL1 (mut.),0.0007
+FABP4,0.0007
+F12,0.0007
+ORMDL3,0.0007
+FBXL22 (meth.),0.0007
+MUC16 (mut.),0.0007
+TG,0.0007
+ADAM22 (mut.),0.0007
+VGF,0.0007
+EPB41L1 (mut.),0.0007
+KIF1B,0.0007
+ARPC2,0.0007
+IL6ST,0.0007
+HNRNPC,0.0007
+C5orf52 (mut.),0.0007
+DCTPP1 (mut.),0.0007
+CLCA4 (mut.),0.0007
+DEFB107A (mut.),0.0007
+TUBB,0.0007
+MAP2,0.0007
+CNBD2 (mut.),0.0007
+CCN3,0.0007
+COL6A3,0.0007
+UPK1A,0.0007
+PEX1 (mut.),0.0007
+MAP3K19 (mut.),0.0007
+C6orf118 (mut.),0.0007
+KCNMA1 (mut.),0.0007
+FOXJ2 (mut.),0.0007
+PDIA3,0.0007
+NDUFC2,0.0007
+CAVIN1,0.0007
+SYNE1 (mut.),0.0007
+NOTCH3,0.0007
+ACTA2,0.0007
+EPHA2,0.0007
+SEPTIN2,0.0007
+EDF1,0.0007
+PCBP1,0.0007
+FILIP1 (mut.),0.0007
+SYP,0.0007
+OTUD4 (mut.),0.0007
+MMP14,0.0007
+CA1 (mut.),0.0007
+SET,0.0007
+LYZ,0.0007
+ITGAV,0.0007
+SCARB1,0.0007
+ADIPOR1 (mut.),0.0007
+GRID2 (meth.),0.0007
+CPD (mut.),0.0007
+ERBB2 (mut.),0.0007
+PLPP3,0.0007
+EIF4A2,0.0007
+CRLF1,0.0007
+DCAF8 (mut.),0.0007
+MT1H (mut.),0.0007
+DSP,0.0007
+WDR1,0.0007
+CFAP96 (mut.),0.0007
+CSF3R (meth.),0.0007
+CCT5,0.0007
+AGRN,0.0007
+ASAH1 (mut.),0.0007
+MIR1249 (mut.),0.0007
+FLG (mut.),0.0007
+BCL2L2 (mut.),0.0007
+SOX10,0.0007
+ITLN1,0.0007
+ENO2,0.0007
+ATPAF1 (mut.),0.0007
+CRTC3 (mut.),0.0007
+ARHGAP5 (mut.),0.0007
+CCL25,0.0007
+RTN1,0.0007
+SLC45A3,0.0007
+CASP1 (mut.),0.0007
+EPHB3,0.0007
+CCDC181 (mut.),0.0007
+FXYD2,0.0007
+TAP1,0.0007
+AKR1C1,0.0007
+ARHGEF12,0.0007
+CCT3,0.0007
+CARD8 (mut.),0.0007
+AKIP1 (mut.),0.0007
+LOXL2,0.0007
+CCDC77 (mut.),0.0007
+ASNSD1 (mut.),0.0007
+CTSZ,0.0007
+EIF3CL,0.0007
+MYH1 (mut.),0.0007
+PCK2,0.0007
+VWA5B2,0.0007
+DLX1 (meth.),0.0007
+ATP1B2,0.0007
+ADI1 (mut.),0.0007
+C21orf91 (mut.),0.0007
+TAC3,0.0007
+HDLBP (mut.),0.0007
+PRKAR1A,0.0007
+UQCRQ,0.0007
+ANKRD30A (mut.),0.0007
+BDNF (mut.),0.0007
+LTF,0.0007
+AKAP10 (mut.),0.0007
+PIEZO1,0.0007
+HADHA,0.0007
+C1QL4 (mut.),0.0007
+LAMC1 (mut.),0.0007
+PGAM1,0.0007
+XIRP2 (mut.),0.0007
+MKNK2,0.0007
+ACLY (mut.),0.0007
+AK4 (mut.),0.0007
+TFR2,0.0007
+SPINK6 (mut.),0.0007
+SLC44A2,0.0007
+MIEN1,0.0007
+AMZ2 (mut.),0.0007
+C1QTNF4 (mut.),0.0007
+FSCB (mut.),0.0007
+PARM1,0.0007
+ALCAM,0.0007
+CLSTN3,0.0007
+PLP2,0.0007
+ATP6V0E2,0.0007
+LRG1,0.0007
+DENND2A (mut.),0.0007
+MYH14,0.0007
+EPB41L2 (mut.),0.0007
+PLCB4 (mut.),0.0007
+GNGT1 (mut.),0.0007
+MIR1537 (mut.),0.0007
+PTGES3,0.0007
+TIMP1,0.0007
+ACSBG1 (mut.),0.0007
+PON2,0.0007
+COL1A2 (mut.),0.0007
+ATF3 (mut.),0.0007
+ACP5,0.0007
+RTN4,0.0007
+PHACTR1 (mut.),0.0007
+MFAP4 (meth.),0.0007
+ACTA1,0.0007
+MATR3,0.0007
+ADCY5 (mut.),0.0007
+GRIN3A (mut.),0.0007
+BATF2 (mut.),0.0007
+NONO,0.0007
+GPR89A (mut.),0.0007
+RAB1B,0.0007
+AIF1L,0.0007
+ATP11B (mut.),0.0007
+GNB2,0.0007
+CEP55 (mut.),0.0007
+NPTX2,0.0007
+RLIG1 (mut.),0.0007
+B2M,0.0007
+DEFB4A (mut.),0.0007
+BRD10 (mut.),0.0007
+TRIM2,0.0007
+SPAG17 (mut.),0.0007
+AASDH (mut.),0.0007
+COL5A2 (mut.),0.0007
+ADAMTS12 (mut.),0.0007
+FKBP9,0.0007
+PKN2 (mut.),0.0007
+APOBEC3H (mut.),0.0007
+HSPA9,0.0007
+NACA,0.0007
+CCDC63 (mut.),0.0007
+TRIB1,0.0007
+UBB,0.0007
+AQP6,0.0007
+PERP,0.0007
+YWHAZ,0.0007
+SLC26A2,0.0006
+NDFIP1,0.0006
+AGAP2-AS1 (mut.),0.0006
+SLC3A1,0.0006
+GAMT,0.0006
+HPGD,0.0006
+FLT1,0.0006
+PLPP1,0.0006
+CCDC14 (mut.),0.0006
+AHCYL2 (mut.),0.0006
+TNP1 (mut.),0.0006
+NCAPD3,0.0006
+SLC22A1,0.0006
+SNCG,0.0006
+MYO5A,0.0006
+DDA1 (mut.),0.0006
+TMPRSS4,0.0006
+TBC1D16,0.0006
+PPP1CA,0.0006
+NBPF1 (mut.),0.0006
+LRRK2 (mut.),0.0006
+APLN (mut.),0.0006
+DHX16 (mut.),0.0006
+MXRA5,0.0006
+MMP11,0.0006
+NUPR1,0.0006
+SRGAP1 (mut.),0.0006
+NAA35 (mut.),0.0006
+MVP,0.0006
+STMN1,0.0006
+ATF6B (mut.),0.0006
+ERBB2,0.0006
+ANO3 (mut.),0.0006
+CBX2 (mut.),0.0006
+AIFM2 (mut.),0.0006
+BZW1,0.0006
+ITPRID2,0.0006
+EMILIN1,0.0006
+ACKR3 (mut.),0.0006
+NICOL1 (mut.),0.0006
+PCDHA2 (mut.),0.0006
+CTNNA2 (mut.),0.0006
+DNLZ (mut.),0.0006
+SNCAIP (meth.),0.0006
+ATG3 (mut.),0.0006
+C6orf52 (mut.),0.0006
+RND2,0.0006
+AADACL4 (mut.),0.0006
+PPBP (meth.),0.0006
+DGKG (mut.),0.0006
+SREBF1,0.0006
+ITSN1 (mut.),0.0006
+BCAS2 (mut.),0.0006
+AKIRIN2 (mut.),0.0006
+LYPD3,0.0006
+LSP1,0.0006
+CLTC,0.0006
+ALDOA (mut.),0.0006
+CXCL10,0.0006
+ALDH3B2,0.0006
+GPAM (mut.),0.0006
+PXDN,0.0006
+STAB1,0.0006
+CLIC6,0.0006
+TMC5 (mut.),0.0006
+TCF4 (mut.),0.0006
+PPP1CB,0.0006
+BIRC5 (mut.),0.0006
+COX7C,0.0006
+CCDC40 (mut.),0.0006
+ECH1,0.0006
+ABCG2 (mut.),0.0006
+MIR1262 (mut.),0.0006
+OLFM4,0.0006
+CCDC81 (mut.),0.0006
+UBD,0.0006
+SVIL,0.0006
+CCN2,0.0006
+TSPAN3,0.0006
+AMOTL1 (mut.),0.0006
+ARSB (mut.),0.0006
+ST8SIA4 (meth.),0.0006
+CYB561 (mut.),0.0006
+CTBP2 (mut.),0.0006
+FBXW10 (mut.),0.0006
+SRXN1,0.0006
+LBH,0.0006
+ARL6IP4,0.0006
+APOA2 (mut.),0.0006
+RHOA,0.0006
+SYNE2,0.0006
+ALDH3A2,0.0006
+MIR1231 (mut.),0.0006
+CNP,0.0006
+CKAP4,0.0006
+RP1L1 (mut.),0.0006
+IGSF9B (mut.),0.0006
+ACTG1,0.0006
+SEC16A,0.0006
+ANKRD7 (mut.),0.0006
+AMOT (mut.),0.0006
+EMP1,0.0006
+C5,0.0006
+LRATD2,0.0006
+CITED2 (mut.),0.0006
+ANXA9 (mut.),0.0006
+EIF3L,0.0006
+EIF6,0.0006
+LRRC59,0.0006
+RPS10,0.0006
+ADAMTS20 (mut.),0.0006
+AADACL2 (mut.),0.0006
+CARD11 (meth.),0.0006
+MIA3 (mut.),0.0006
+SLITRK6,0.0006
+PAX8,0.0006
+RPL12,0.0006
+PRLR,0.0006
+APMAP (mut.),0.0006
+SURF4,0.0006
+AGPAT1 (mut.),0.0006
+GSTM3,0.0006
+RPL9,0.0006
+HERC2 (mut.),0.0006
+CACNA2D4 (mut.),0.0006
+RPS4X,0.0006
+C5orf63 (mut.),0.0006
+TOB1,0.0006
+KRT18,0.0006
+DIXDC1 (mut.),0.0006
+PTPRB,0.0006
+SCNN1A,0.0006
+MYL6,0.0006
+MYL9,0.0006
+SYNM (mut.),0.0006
+C19orf47 (mut.),0.0006
+PDIA6,0.0006
+COL4A2,0.0006
+IGFBP6,0.0006
+MPST,0.0006
+ASAH1,0.0006
+HSPA8,0.0006
+CCDC117 (mut.),0.0006
+SLC6A17,0.0006
+THOC2 (mut.),0.0006
+HSPA6,0.0006
+INSR,0.0006
+KIF5A (mut.),0.0006
+MAL,0.0006
+ISYNA1,0.0006
+HMGCS1,0.0006
+BCL2L1,0.0006
+UCHL1,0.0006
+BLOC1S6 (mut.),0.0006
+FLNA (mut.),0.0006
+TMEM132A,0.0006
+ALOX5 (mut.),0.0006
+ABI3 (mut.),0.0006
+BTG1,0.0006
+NOP53,0.0006
+MLF2,0.0006
+CYB561,0.0006
+MEST,0.0006
+GNAI2,0.0006
+FDXR,0.0006
+ABHD14B (mut.),0.0006
+ASPHD2 (mut.),0.0006
+CDC25A (mut.),0.0006
+ATP6V1B2,0.0006
+MFGE8,0.0006
+SERPINA1,0.0006
+CD79B,0.0006
+PSMA7,0.0006
+SHD (meth.),0.0006
+ASGR2,0.0006
+PEG3,0.0006
+HMGN2,0.0006
+CSMD1 (mut.),0.0006
+PROC,0.0006
+RDH11,0.0006
+KIF5C,0.0006
+GPAA1 (mut.),0.0006
+G6PD,0.0006
+GPRC5A,0.0006
+ZBTB7C (mut.),0.0006
+ERRFI1,0.0006
+COL1A2,0.0006
+BRS3 (mut.),0.0006
+CD99,0.0006
+SAMD9,0.0006
+AGTRAP (mut.),0.0006
+ACOX3 (mut.),0.0006
+HMGB1,0.0006
+CKLF-CMTM1 (mut.),0.0006
+YWHAQ,0.0006
+NRP1,0.0006
+ABCA6 (mut.),0.0006
+MISP,0.0006
+ATP7A (mut.),0.0006
+GSTM2,0.0006
+DCAF6 (mut.),0.0006
+CDC42EP4,0.0006
+HLA-DQA1,0.0006
+CLIP4 (mut.),0.0006
+PLOD2,0.0006
+CRIM1,0.0006
+SCG5,0.0006
+BLTP2,0.0006
+ABCB11 (mut.),0.0006
+ALK (mut.),0.0006
+LIN54 (mut.),0.0006
+COL2A1,0.0006
+HGD,0.0006
+CXCL5,0.0006
+CAPRIN1,0.0006
+HSPA5,0.0006
+BBS7 (mut.),0.0005
+RPS18,0.0005
+CERCAM (mut.),0.0005
+ARHGDIB,0.0005
+ATP1A3,0.0005
+BLOC1S4 (mut.),0.0005
+SEPTIN7,0.0005
+ANKRD12 (mut.),0.0005
+PRUNE2 (mut.),0.0005
+LMOD1,0.0005
+MCCC2,0.0005
+ALG14 (mut.),0.0005
+KRT8,0.0005
+AP1S3 (mut.),0.0005
+MALL,0.0005
+EEF1G,0.0005
+GTF2IP1,0.0005
+TRPV6 (mut.),0.0005
+TKT,0.0005
+DUOX2,0.0005
+ITIH5,0.0005
+PKP2 (mut.),0.0005
+ANAPC11 (mut.),0.0005
+CYP27A1,0.0005
+ANGEL2 (mut.),0.0005
+KANK2,0.0005
+ATP1A2,0.0005
+FER1L6 (mut.),0.0005
+EFHC1 (mut.),0.0005
+ICAM1,0.0005
+C4BPA (mut.),0.0005
+LGMN,0.0005
+ZNF292 (mut.),0.0005
+E2F7 (mut.),0.0005
+ADIPOR2 (mut.),0.0005
+ANKRD30B (mut.),0.0005
+UCP2,0.0005
+PLD3,0.0005
+HSD17B6,0.0005
+ACAT1,0.0005
+TFAP2A,0.0005
+TMED2,0.0005
+COPG1,0.0005
+SDC3,0.0005
+MAP1A,0.0005
+ARHGDIA,0.0005
+NLRC5 (mut.),0.0005
+ANTXR1,0.0005
+TBC1D9B (mut.),0.0005
+ITGA11 (mut.),0.0005
+SEC62,0.0005
+ADAMTS4 (mut.),0.0005
+CUBN,0.0005
+TUBA1B,0.0005
+ASB6 (mut.),0.0005
+CCDC88C (mut.),0.0005
+ENPEP,0.0005
+C4A,0.0005
+CNTNAP4 (mut.),0.0005
+SERPINB1,0.0005
+GPAA1,0.0005
+MAGED2,0.0005
+CTCF (mut.),0.0005
+TBC1D14,0.0005
+CNDP2,0.0005
+LGALS3BP,0.0005
+CACNA1G (mut.),0.0005
+DRD5 (meth.),0.0005
+CASR (mut.),0.0005
+ATP6V0A4 (mut.),0.0005
+TCP1,0.0005
+TAGLN,0.0005
+DPP3 (mut.),0.0005
+SDK1 (mut.),0.0005
+ADRA1A (mut.),0.0005
+CAV2,0.0005
+TGM4,0.0005
+CNTNAP5 (mut.),0.0005
+ADH4,0.0005
+PGCKA1 (mut.),0.0005
+VWA1,0.0005
+RPL18A,0.0005
+C7,0.0005
+ASB15 (mut.),0.0005
+SLC22A3,0.0005
+ATP2A3,0.0005
+ELOF1 (mut.),0.0005
+CDK6,0.0005
+SLC12A2,0.0005
+MFAP4,0.0005
+CAPN12 (mut.),0.0005
+RAB11FIP1,0.0005
+FAT3 (mut.),0.0005
+DMD (mut.),0.0005
+RASSF2,0.0005
+CCDC65 (mut.),0.0005
+THRA,0.0005
+VAMP8,0.0005
+PABPC1,0.0005
+ELF3,0.0005
+GNS,0.0005
+BTG2,0.0005
+ACTL8 (mut.),0.0005
+APTX (mut.),0.0005
+MC2R (meth.),0.0005
+CDK6 (mut.),0.0005
+CPNE5 (mut.),0.0005
+FXYD3,0.0005
+EIF3E,0.0005
+FADS2,0.0005
+IGF2R,0.0005
+CCNI,0.0005
+BORA (mut.),0.0005
+KDELR1,0.0005
+DAP,0.0005
+LRP1B (mut.),0.0005
+SLC1A2,0.0005
+PGRMC1,0.0005
+NDRG1,0.0005
+ATRAID (mut.),0.0005
+SEL1L,0.0005
+ACRV1 (mut.),0.0005
+COPB1 (mut.),0.0005
+CDIP1 (mut.),0.0005
+RPL41,0.0005
+CDSN,0.0005
+GDI1,0.0005
+ITGAD (mut.),0.0005
+DPEP1 (mut.),0.0005
+ETFB,0.0005
+CNST (mut.),0.0005
+H3-3A,0.0005
+GPR158 (mut.),0.0005
+RBBP7,0.0005
+MAZ,0.0005
+RPS17,0.0005
+CRYAB,0.0005
+RPL10,0.0005
+CPXM2 (mut.),0.0005
+CHEK2 (mut.),0.0005
+ABCB9 (mut.),0.0005
+APCDD1,0.0005
+GAPDH,0.0005
+ZDBF2 (mut.),0.0005
+LDHA,0.0005
+PLEC,0.0005
+PREX1,0.0005
+CTTN,0.0005
+DEK,0.0005
+CENPA (mut.),0.0005
+ACAP1 (mut.),0.0005
+SERBP1,0.0005
+AGBL1 (mut.),0.0005
+ENPP3 (mut.),0.0005
+ATP6V1A,0.0005
+APOBEC2 (mut.),0.0005
+PTGIS,0.0005
+PCOLCE,0.0005
+SLC44A4,0.0005
+ADCY10 (mut.),0.0005
+YWHAH,0.0005
+HTR3E (mut.),0.0005
+ABCG8 (mut.),0.0005
+SRGN,0.0005
+NELL2,0.0005
+S100A8,0.0005
+DNAH9 (mut.),0.0005
+RGMA,0.0005
+PDIA4,0.0005
+ARFGAP1 (mut.),0.0005
+MT1E,0.0005
+GPX4,0.0005
+ACTG2 (mut.),0.0005
+AK9 (mut.),0.0005
+SFN,0.0005
+CLPX (mut.),0.0005
+EIF3H,0.0005
+ACTN2 (mut.),0.0005
+ANLN (mut.),0.0005
+RPS23,0.0005
+ALOX12 (mut.),0.0005
+MROH2B (mut.),0.0005
+CNGB1 (mut.),0.0005
+POU5F1,0.0005
+RGL3 (mut.),0.0005
+ELOB,0.0005
+C1orf87 (mut.),0.0005
+ARL1 (mut.),0.0005
+BID (mut.),0.0005
+ADAMTS7 (mut.),0.0005
+ODF4 (mut.),0.0005
+GALNT7,0.0005
+NDUFS5,0.0005
+MCL1,0.0005
+VPS13B (mut.),0.0005
+AMFR (mut.),0.0005
+RASD1,0.0005
+DPEP1,0.0005
+SOD1,0.0005
+CCAR2 (mut.),0.0005
+GAS6,0.0005
+POR,0.0005
+SLC25A39,0.0005
+FGFR4 (mut.),0.0005
+ABHD3 (mut.),0.0005
+RPL6,0.0005
+CUL4A,0.0005
+PI15,0.0005
+CLSTN1,0.0005
+CALD1,0.0005
+CDK10 (mut.),0.0005
+SYPL1,0.0005
+AOC1,0.0005
+CAPN7 (mut.),0.0005
+FASN,0.0005
+ARSG (mut.),0.0005
+ADH4 (mut.),0.0005
+CES2,0.0005
+APH1A (mut.),0.0005
+TPD52,0.0005
+C11orf54 (mut.),0.0005
+LPL,0.0005
+SELENBP1,0.0005
+IGFBP3,0.0005
+MGAT1,0.0005
+PLVAP,0.0005
+PIK3R4 (mut.),0.0005
+CXCL1,0.0005
+SORT1,0.0005
+NOTCH2,0.0005
+APOD,0.0005
+ITPR3,0.0005
+RPS7,0.0004
+CC2D1B (mut.),0.0004
+NLRC4 (mut.),0.0004
+PBX1,0.0004
+PTPRF,0.0004
+BBS12 (mut.),0.0004
+ANKRD45 (mut.),0.0004
+RNF187,0.0004
+RPS2,0.0004
+HSPB1,0.0004
+MIB1 (mut.),0.0004
+CSRP1,0.0004
+ACOT9 (mut.),0.0004
+LMO7,0.0004
+CCDC141 (mut.),0.0004
+FKBP4,0.0004
+SORL1,0.0004
+ACOT2 (mut.),0.0004
+TFDP1,0.0004
+TPSAB1,0.0004
+COL7A1,0.0004
+TGM3,0.0004
+DAB2,0.0004
+FGFR3,0.0004
+RPL34,0.0004
+OVGP1,0.0004
+RPL35A,0.0004
+TOP2A,0.0004
+BPGM (mut.),0.0004
+CD68,0.0004
+IGFBP5,0.0004
+ERBB4 (mut.),0.0004
+C1QB,0.0004
+EMC10,0.0004
+CASP2 (mut.),0.0004
+DNMT3B,0.0004
+ACTL10 (mut.),0.0004
+LRMDA (meth.),0.0004
+RPS13,0.0004
+NLRP7,0.0004
+RPSA2,0.0004
+S100A1,0.0004
+BAG6,0.0004
+TUBA1C,0.0004
+SLC1A5,0.0004
+LUM,0.0004
+PTMA,0.0004
+BNC1 (mut.),0.0004
+CHORDC1 (mut.),0.0004
+MIF,0.0004
+ALDOC,0.0004
+TBC1D9,0.0004
+GPC1,0.0004
+CHCHD2,0.0004
+RPS11,0.0004
+ACYP2 (mut.),0.0004
+CMBL,0.0004
+MSX1,0.0004
+MPZ,0.0004
+MPZL2,0.0004
+CENPO (mut.),0.0004
+ERP29,0.0004
+TUBB4A,0.0004
+RPN1,0.0004
+MGST1,0.0004
+CRHR2 (mut.),0.0004
+CEBPA,0.0004
+ITIH1 (mut.),0.0004
+CHSY3 (mut.),0.0004
+ANO2 (mut.),0.0004
+RPS24,0.0004
+CLDN3,0.0004
+FTL,0.0004
+HK1,0.0004
+PPP1R12B,0.0004
+THBS2,0.0004
+WBP2,0.0004
+ZNF831 (mut.),0.0004
+YAP1,0.0004
+SLC7A5,0.0004
+ATP6AP2,0.0004
+PHB1,0.0004
+NGFR,0.0004
+CTNNA1,0.0004
+KMT2B (mut.),0.0004
+SELENOW,0.0004
+CAND1,0.0004
+ABAT,0.0004
+GAS5,0.0004
+MDH2,0.0004
+GBP2,0.0004
+AR (mut.),0.0004
+SLC25A6,0.0004
+SERPINE2,0.0004
+GPX1,0.0004
+MCM2 (mut.),0.0004
+RPL3,0.0004
+APOBEC3F (mut.),0.0004
+GALNT2 (mut.),0.0004
+PFKP,0.0004
+CLEC16A (mut.),0.0004
+FMR1 (mut.),0.0004
+SLC39A6,0.0004
+ABCA3,0.0004
+CAPN2,0.0004
+ARMCX3,0.0004
+NAT8,0.0004
+NIPSNAP2,0.0004
+FLNB,0.0004
+ARPC5 (mut.),0.0004
+CKAP2L (mut.),0.0004
+S100A3,0.0004
+AGAP3 (mut.),0.0004
+CDK18 (mut.),0.0004
+CEP170 (mut.),0.0004
+DDX10 (mut.),0.0004
+ADAMTS6 (mut.),0.0004
+FGFR2 (mut.),0.0004
+RPS3,0.0004
+SORBS1,0.0004
+MTSS2,0.0004
+MORF4L2,0.0004
+PHB2,0.0004
+ACADVL,0.0004
+ANKRD66 (mut.),0.0004
+AMBN (mut.),0.0004
+CD14,0.0004
+PTBP1,0.0004
+ANK1 (mut.),0.0004
+HSPD1,0.0004
+CHGA,0.0004
+TANGO6 (mut.),0.0004
+ADAMTS2 (mut.),0.0004
+CPXM1,0.0004
+CAND2 (mut.),0.0004
+GLUL,0.0004
+P4HB,0.0004
+BRD4 (mut.),0.0004
+DDOST,0.0004
+CRIP2,0.0004
+CLPTM1L,0.0004
+SLC38A1,0.0004
+SLC2A3,0.0004
+AGO3 (mut.),0.0004
+SYNPO2,0.0004
+TNS4,0.0004
+RPS29,0.0004
+AEBP1 (mut.),0.0004
+EID1,0.0004
+MT2A,0.0004
+EGFL6 (mut.),0.0004
+DLL1 (mut.),0.0004
+B4GALT5 (mut.),0.0004
+RPL23,0.0004
+ANKRD6 (mut.),0.0004
+SIK1,0.0004
+CDCP1 (mut.),0.0004
+UPK1B,0.0004
+MARCKS,0.0004
+SOD3,0.0004
+SLC38A10,0.0004
+TUBB3,0.0004
+CUTA,0.0004
+ACSL3,0.0004
+ODC1,0.0004
+GAS7,0.0004
+DCXR,0.0004
+LAMC1,0.0004
+ADAR,0.0004
+CPB2,0.0004
+COL18A1,0.0004
+ETS1,0.0004
+SLC7A8,0.0004
+MMGT1 (mut.),0.0004
+AP2A2 (mut.),0.0004
+QNG1 (mut.),0.0004
+PKP3,0.0004
+ATP6AP1 (mut.),0.0004
+CROT (mut.),0.0004
+ATP6V1G1 (mut.),0.0004
+ATP6V1G2-DDX39B (mut.),0.0004
+CAT,0.0004
+COL17A1 (mut.),0.0004
+MCAM,0.0004
+COX5B,0.0004
+SHMT2,0.0004
+ALDH1A3,0.0004
+CDK2AP1,0.0004
+SPP1,0.0004
+FANCA (mut.),0.0004
+ERGIC1,0.0004
+ASRGL1,0.0004
+CLCN5 (mut.),0.0004
+ABCF3 (mut.),0.0004
+CAPN3,0.0004
+COQ7 (mut.),0.0004
+GSDMA (mut.),0.0004
+ITIH3,0.0004
+B3GNT2 (mut.),0.0004
+KCNN3 (mut.),0.0004
+BBS5 (mut.),0.0004
+PPDPF,0.0004
+SIPA1L1 (mut.),0.0004
+ACY3 (mut.),0.0004
+COL12A1,0.0004
+AGBL4 (mut.),0.0004
+MXRA8,0.0004
+PIP5K1C (mut.),0.0004
+C1QBP (mut.),0.0004
+MMP9,0.0004
+DIP2B (mut.),0.0004
+SNHG5,0.0004
+RNF213,0.0004
+RPN2,0.0004
+AUH (mut.),0.0004
+MYO6,0.0004
+KLHL11 (mut.),0.0004
+AGPAT4 (mut.),0.0004
+GATM,0.0004
+PCDHGC3,0.0004
+COL16A1,0.0004
+DDX17,0.0004
+RPLP1,0.0004
+AP4B1 (mut.),0.0004
+ERLIN2,0.0004
+ATP11A,0.0004
+BMP1 (mut.),0.0004
+HK2,0.0004
+NEFH,0.0004
+ID3,0.0004
+ACLY,0.0004
+EDEM1 (mut.),0.0004
+PRUNE2,0.0004
+CELSR2,0.0004
+ATF5,0.0004
+KIF1C,0.0004
+ARX (mut.),0.0004
+COL22A1 (mut.),0.0004
+CCDC116 (mut.),0.0004
+GALNT11,0.0004
+CATSPERD (mut.),0.0004
+PGGHG,0.0004
+ELN,0.0004
+ST13,0.0004
+PDGFRA,0.0004
+ETV4,0.0004
+BCL7C (mut.),0.0004
+TFRC,0.0004
+ARG2 (mut.),0.0004
+ADI1,0.0004
+NR4A1,0.0004
+MTCH1,0.0004
+IGSF10 (mut.),0.0004
+RPS25,0.0004
+STMN3,0.0004
+PTTG1IP,0.0004
+SIRPA,0.0004
+ALPL,0.0004
+GNG11 (mut.),0.0004
+A4GALT (mut.),0.0004
+ASNS (mut.),0.0004
+CYP17A1 (mut.),0.0004
+ETS2,0.0004
+GABBR1,0.0004
+APOL4 (mut.),0.0004
+ATP5F1A,0.0004
+PLIN2,0.0004
+RPL30,0.0004
+ACSL4,0.0004
+ALDOB,0.0004
+DNER (mut.),0.0004
+TTC3,0.0003
+IL1RN,0.0003
+BGLAP (mut.),0.0003
+MUC20,0.0003
+HLA-E,0.0003
+TUBA1A,0.0003
+MAGI1 (mut.),0.0003
+C19orf48P,0.0003
+RASA3 (mut.),0.0003
+PLXNB2,0.0003
+TYMP,0.0003
+ATP2B4,0.0003
+DSP (mut.),0.0003
+ACP2 (mut.),0.0003
+CREG1,0.0003
+SEPTIN3,0.0003
+PRKCSH,0.0003
+RPL37,0.0003
+HSPH1,0.0003
+COL9A2,0.0003
+CHRDL1 (mut.),0.0003
+APLNR,0.0003
+ABI3BP (mut.),0.0003
+TPM1,0.0003
+PIGT,0.0003
+CARS2 (mut.),0.0003
+RPS27A,0.0003
+ZNF185,0.0003
+SEC61A1,0.0003
+FCGRT,0.0003
+MIR4279 (mut.),0.0003
+PRDM16 (mut.),0.0003
+HPD,0.0003
+CD180 (mut.),0.0003
+NREP,0.0003
+CAPN8 (mut.),0.0003
+NDUFA4,0.0003
+EXTL1 (mut.),0.0003
+ITIH2,0.0003
+ELF3 (mut.),0.0003
+GRIA1 (mut.),0.0003
+FBN1,0.0003
+ACTR8 (mut.),0.0003
+DUSP1,0.0003
+ITGA6,0.0003
+ABCC8 (mut.),0.0003
+ANG,0.0003
+CD44,0.0003
+GABPA (mut.),0.0003
+TGM2,0.0003
+CP,0.0003
+NECTIN2,0.0003
+TCF12,0.0003
+REEP6,0.0003
+S100A11,0.0003
+NEFL,0.0003
+NASP,0.0003
+ATP2A1 (mut.),0.0003
+ANKUB1 (mut.),0.0003
+GAA,0.0003
+TBX3,0.0003
+TMED10,0.0003
+F8 (mut.),0.0003
+CCND2,0.0003
+AGXT,0.0003
+C17orf75 (mut.),0.0003
+RHBDD2,0.0003
+LMAN1,0.0003
+ST14,0.0003
+PLAT,0.0003
+LAMB3,0.0003
+NECTIN1,0.0003
+IDH1,0.0003
+SMS,0.0003
+ADH1A (mut.),0.0003
+CDK2,0.0003
+LGALS3,0.0003
+ADCYAP1R1 (mut.),0.0003
+COL17A1,0.0003
+EEF1B2,0.0003
+KIF19 (mut.),0.0003
+IL1RAPL2 (mut.),0.0003
+CNOT4 (mut.),0.0003
+MDM2,0.0003
+TXNRD1,0.0003
+CDK4,0.0003
+UBA52,0.0003
+B3GNT3 (mut.),0.0003
+A2M (mut.),0.0003
+KIF1A,0.0003
+NCKAP1,0.0003
+LCP1,0.0003
+TRPM4,0.0003
+GREM1,0.0003
+TLN1,0.0003
+TMEM30A,0.0003
+NCL,0.0003
+ABCC1,0.0003
+RPL19,0.0003
+ADPGK (mut.),0.0003
+ZNF395,0.0003
+ACAA2,0.0003
+NRXN1 (mut.),0.0003
+ANKRA2 (mut.),0.0003
+MMP7,0.0003
+RPL38,0.0003
+MACROH2A1,0.0003
+CCDC59 (mut.),0.0003
+LAPTM4B,0.0003
+MET (mut.),0.0003
+CEACAM19 (mut.),0.0003
+BCKDHA (mut.),0.0003
+PRRC2C,0.0003
+ST6GAL1,0.0003
+EIF4G1 (mut.),0.0003
+DDR2 (mut.),0.0003
+CD276,0.0003
+PLAAT4,0.0003
+RCAN1,0.0003
+CALCA (mut.),0.0003
+NIBAN1,0.0003
+CLIC1,0.0003
+NRCAM,0.0003
+DENND5B (mut.),0.0003
+HSD11B1,0.0003
+TFPI,0.0003
+SFRP2,0.0003
+RERE,0.0003
+ENG,0.0003
+ACE2,0.0003
+SOX8,0.0003
+FKBP1A,0.0003
+SLC22A17,0.0003
+TNFRSF12A,0.0003
+TUBB6,0.0003
+SYT1,0.0003
+WARS1,0.0003
+PRDX6,0.0003
+GOLM1,0.0003
+B3GALT2 (mut.),0.0003
+NNMT,0.0003
+NPDC1,0.0003
+CEP128 (mut.),0.0003
+OGT,0.0003
+PTPRC,0.0003
+EVL,0.0003
+SLC34A2,0.0003
+PCDH11X (mut.),0.0003
+SERPINF2,0.0003
+AKR7A2 (mut.),0.0003
+GIPC1,0.0003
+CABLES1,0.0003
+RAC1,0.0003
+AAGAB (mut.),0.0003
+TIMP2,0.0003
+IL11RA (mut.),0.0003
+RASSF4,0.0003
+CSDE1,0.0003
+NOTCH2 (mut.),0.0003
+PHYH,0.0003
+SPARCL1,0.0003
+TGOLN2,0.0003
+PCSK1,0.0003
+ST3GAL1,0.0003
+ABHD12B (mut.),0.0003
+TCF7,0.0003
+ATP6AP1,0.0003
+ATP6V1E2 (mut.),0.0003
+AGPAT2,0.0003
+YWHAG,0.0003
+CCT4,0.0003
+BSG,0.0003
+DPYSL3,0.0003
+MMP2,0.0003
+PGK1,0.0003
+AQP1 (mut.),0.0003
+SERPINE1,0.0003
+ATP10A (mut.),0.0003
+PSMB3,0.0003
+C20orf96 (mut.),0.0003
+OAS2,0.0003
+ANXA11 (mut.),0.0003
+AMACR (mut.),0.0003
+LMO7 (mut.),0.0003
+SCN3A (mut.),0.0003
+BIN1,0.0003
+FARP1,0.0003
+DYSF (mut.),0.0003
+AKR1B1,0.0003
+DAG1,0.0003
+PRSS16,0.0003
+TENM4 (mut.),0.0003
+TBL1XR1,0.0003
+GATA3,0.0003
+S100A9,0.0003
+ATP11C (mut.),0.0003
+ASB10 (mut.),0.0003
+PLCB1 (mut.),0.0003
+MAP3K5 (mut.),0.0003
+H19,0.0003
+RIDA,0.0003
+C19orf84 (mut.),0.0003
+SULF1,0.0003
+LDLR,0.0003
+DSTN,0.0003
+SON,0.0003
+CD248,0.0003
+BGN,0.0003
+INSIG1,0.0003
+ARF1,0.0003
+LITAF,0.0003
+PPIF,0.0003
+ZFP36L2,0.0003
+BRDT (mut.),0.0003
+RPL4,0.0003
+ACSS3 (mut.),0.0003
+PDXK,0.0003
+PTP4A1,0.0003
+SLC47A1,0.0003
+CAP1,0.0003
+SMOC1,0.0003
+TSPAN13,0.0003
+ASPN,0.0003
+SSR4,0.0003
+CTSH,0.0003
+GPX2,0.0003
+CD81,0.0003
+DDB1,0.0003
+PKM,0.0003
+DSEL (mut.),0.0003
+HPX,0.0003
+TRPM3 (mut.),0.0003
+APPL2 (mut.),0.0003
+SERINC1,0.0003
+CAPN1,0.0003
+PRSS23,0.0003
+APC2,0.0003
+FSCN1,0.0003
+ABI1 (mut.),0.0003
+H1-10,0.0003
+DDX3X,0.0003
+BCAN,0.0003
+CXCL17,0.0003
+LGALS4,0.0003
+TRIB2,0.0003
+MAT2A,0.0003
+SPHKAP (mut.),0.0003
+RGS1,0.0003
+RAC2,0.0003
+CXCL8,0.0003
+MYL12B,0.0003
+ECE1,0.0003
+TUBB2A,0.0003
+GOLGA8A,0.0003
+MYO18B (mut.),0.0003
+HLA-DPB1,0.0003
+OAZ1,0.0003
+SH3BGRL,0.0003
+FKBP8,0.0003
+INSRR (mut.),0.0003
+MAP10 (mut.),0.0003
+ARAF (mut.),0.0003
+CD47,0.0003
+PALLD,0.0003
+CXCL12,0.0003
+RBP1,0.0003
+CNGA2 (mut.),0.0003
+C1S,0.0003
+APP,0.0003
+PCNA,0.0003
+DST,0.0003
+ABHD2,0.0003
+PABPC1 (mut.),0.0003
+BLK (mut.),0.0003
+BEST4 (mut.),0.0003
+MIR1225 (mut.),0.0003
+IFITM1,0.0003
+CEP44 (mut.),0.0003
+EPHB4,0.0003
+ANKRD26 (mut.),0.0003
+CMBL (mut.),0.0003
+PXN,0.0003
+GHITM,0.0003
+C18orf54 (mut.),0.0003
+SLC20A1,0.0003
+SNRPN,0.0003
+CCDC62 (mut.),0.0002
+ACSL1 (mut.),0.0002
+ATRIP (mut.),0.0002
+PIK3CG (mut.),0.0002
+ZMIZ1,0.0002
+CHGB,0.0002
+C2,0.0002
+SLC7A2,0.0002
+FAT2,0.0002
+SLC13A5,0.0002
+PDE4DIP,0.0002
+TMBIM1,0.0002
+PAPPA (mut.),0.0002
+LYNX1,0.0002
+RUNX1,0.0002
+IFIT1,0.0002
+ITPKB,0.0002
+TPP1,0.0002
+RANGAP1,0.0002
+TM9SF3,0.0002
+C16orf89,0.0002
+CCND3,0.0002
+BMP2K (mut.),0.0002
+PLEKHB1,0.0002
+ADO (mut.),0.0002
+RPS19,0.0002
+CHL1 (mut.),0.0002
+LBP,0.0002
+BTBD3 (mut.),0.0002
+GLUD1,0.0002
+C1R,0.0002
+AKR1C2 (mut.),0.0002
+TM4SF1,0.0002
+AMY2A (mut.),0.0002
+NAT1,0.0002
+GSTA3 (mut.),0.0002
+HMGB2,0.0002
+C4BPA,0.0002
+ACD (mut.),0.0002
+SYT11,0.0002
+PAM,0.0002
+SEC14L2,0.0002
+NFIX (mut.),0.0002
+NFATC2 (mut.),0.0002
+CYP2J2 (mut.),0.0002
+SLC26A4-AS1,0.0002
+ATP5F1E,0.0002
+MLLT6,0.0002
+GLO1,0.0002
+EGFR,0.0002
+HLA-F,0.0002
+PNMT,0.0002
+CDH1,0.0002
+TUBA4A,0.0002
+QRSL1,0.0002
+NECTIN4,0.0002
+QDPR,0.0002
+MAP1B,0.0002
+CPM,0.0002
+ADPRM (mut.),0.0002
+C3,0.0002
+ASL,0.0002
+OVCH1 (mut.),0.0002
+CTSF,0.0002
+SEL1L3,0.0002
+BPIFB2 (mut.),0.0002
+RTN3,0.0002
+SCPEP1,0.0002
+COL5A1,0.0002
+CLDN7,0.0002
+CD151 (mut.),0.0002
+NCOA4,0.0002
+VCL,0.0002
+FABP5,0.0002
+CD63,0.0002
+SOX9,0.0002
+ALPK1 (mut.),0.0002
+ANK2,0.0002
+APH1A,0.0002
+AHNAK,0.0002
+BTN1A1 (mut.),0.0002
+REEP5,0.0002
+BPIFB1 (mut.),0.0002
+UQCRC1,0.0002
+VCAM1,0.0002
+IVNS1ABP,0.0002
+FBLN1,0.0002
+MPZL1,0.0002
+CYP1B1,0.0002
+CNOT3 (mut.),0.0002
+PCSK1N,0.0002
+IGSF3,0.0002
+CLTB,0.0002
+FKBP5,0.0002
+TNNT1,0.0002
+RPL24,0.0002
+AP2B1,0.0002
+PITX1,0.0002
+ROBO2 (mut.),0.0002
+TGFBI,0.0002
+STC1,0.0002
+ADRB3 (mut.),0.0002
+CTSS,0.0002
+IPO5 (mut.),0.0002
+JUNB,0.0002
+UGP2,0.0002
+CYCS,0.0002
+RAB7A,0.0002
+ITM2C,0.0002
+CYP51A1,0.0002
+PPP3CA,0.0002
+ZFP36,0.0002
+TSIX,0.0002
+RPLP2,0.0002
+TXN,0.0002
+DNAJC10,0.0002
+APOBEC3A (mut.),0.0002
+PGA3,0.0002
+OLFML2B,0.0002
+EEF2K (mut.),0.0002
+KDELR2,0.0002
+CYFIP2,0.0002
+C3 (mut.),0.0002
+SEMA4B,0.0002
+STAT3,0.0002
+CORO1A,0.0002
+EIF4E1B (mut.),0.0002
+EIF3K,0.0002
+NHSL3,0.0002
+DDR1 (mut.),0.0002
+ALDOC (mut.),0.0002
+SFRP1,0.0002
+DSG2,0.0002
+ARHGEF6 (mut.),0.0002
+IGFBP4,0.0002
+ATF6 (mut.),0.0002
+SPATA31G1 (mut.),0.0002
+SCG3,0.0002
+COTL1,0.0002
+RPL35,0.0002
+COX6A1,0.0002
+TXNDC5,0.0002
+DDIT4,0.0002
+OS9,0.0002
+CAV1,0.0002
+ACTN1,0.0002
+CYP3A5,0.0002
+PRRX1,0.0002
+GCLC,0.0002
+OGDHL,0.0002
+SNX1,0.0002
+EBP,0.0002
+ADAMTSL4 (mut.),0.0002
+NNAT,0.0002
+CREB3L3,0.0002
+MFAP2,0.0002
+AMACR,0.0002
+TNS1,0.0002
+MSMO1,0.0002
+MYOF,0.0002
+FEZ1,0.0002
+SNORD15B (mut.),0.0002
+SPTAN1,0.0002
+FCHSD2 (mut.),0.0002
+SLC29A1,0.0002
+CD9,0.0002
+ECM1,0.0002
+CACNA1C (mut.),0.0002
+HIVEP1 (mut.),0.0002
+HSPE1,0.0002
+SLC12A7 (mut.),0.0002
+CILP,0.0002
+ARNT2 (mut.),0.0002
+CYP2C8,0.0002
+GPM6A,0.0002
+ASPH,0.0002
+CSPG5,0.0002
+DAAM2,0.0002
+CXCL9,0.0002
+SLC39A8,0.0002
+SMARCE1,0.0002
+EEF1A2,0.0002
+TSPO,0.0002
+BTNL3 (mut.),0.0002
+C1R (mut.),0.0002
+TGFBR2,0.0002
+PDXDC1,0.0002
+H2AZ1,0.0002
+NLRP2 (mut.),0.0002
+BACE2 (mut.),0.0002
+SRP9,0.0002
+INTS3 (mut.),0.0002
+PCDHA5 (mut.),0.0002
+LTBP2,0.0002
+PSME1,0.0002
+NDUFV1,0.0002
+HNRNPU,0.0002
+ECEL1,0.0002
+SLC4A4,0.0002
+DEFB125 (mut.),0.0002
+CLSTN2 (mut.),0.0002
+GJB2,0.0002
+VTN,0.0002
+CACNA2D1 (mut.),0.0002
+EIF4G1,0.0002
+COL14A1,0.0002
+GSTK1,0.0002
+SLC27A5,0.0002
+MT1F,0.0002
+AZIN1,0.0002
+WASF2,0.0002
+FAM83A,0.0002
+CDHR3 (mut.),0.0002
+DDX39B,0.0002
+VAMP2,0.0002
+ACSL5,0.0002
+HLA-DRA,0.0002
+NCOA2 (mut.),0.0002
+C1orf43,0.0002
+SELL,0.0002
+NSMF,0.0002
+CHPF,0.0002
+VNN1,0.0002
+MAPT,0.0002
+THBD,0.0002
+RPS8,0.0002
+KCTD12,0.0002
+MYH10,0.0002
+NDUFA11,0.0002
+MYL12A,0.0002
+ACOT7 (mut.),0.0002
+NUP210 (mut.),0.0002
+SQLE,0.0002
+HLA-H,0.0002
+ATP13A5 (mut.),0.0002
+GOT1,0.0002
+AMBP,0.0002
+CREB3L1,0.0002
+ACADVL (mut.),0.0002
+PMEPA1,0.0002
+CLCN7,0.0002
+RET,0.0002
+PLA2G1B,0.0002
+APOB,0.0002
+FAM210B,0.0002
+CYP2E1,0.0002
+AQP9,0.0002
+DDX55 (mut.),0.0002
+ATP5MC3,0.0002
+USP22,0.0002
+CLDN2,0.0002
+ELN (mut.),0.0002
+CKM,0.0002
+ANKRD49 (mut.),0.0002
+CHIA (mut.),0.0002
+AP1G2 (mut.),0.0002
+ZNF275,0.0002
+PDGFRB,0.0002
+GTF3C5 (mut.),0.0001
+GSTO1,0.0001
+PROS1,0.0001
+ECHS1,0.0001
+PSAP,0.0001
+NFE2L1,0.0001
+SYNM,0.0001
+SDHA,0.0001
+ENAH,0.0001
+HBA1,0.0001
+ZFAND5,0.0001
+MAOA,0.0001
+CCT2,0.0001
+LATS2 (mut.),0.0001
+HIF1A,0.0001
+NDUFA4L2,0.0001
+DPYSL2,0.0001
+SEM1,0.0001
+CD151,0.0001
+SCG2,0.0001
+AOX1,0.0001
+SERPINH1,0.0001
+GLS,0.0001
+EMP2,0.0001
+COX6B2 (mut.),0.0001
+F13A1,0.0001
+CNOT10 (mut.),0.0001
+NEB,0.0001
+MFSD12,0.0001
+SPOCK1,0.0001
+LRRK2,0.0001
+FXYD6,0.0001
+PLXNC1 (mut.),0.0001
+ID1,0.0001
+BOD1 (mut.),0.0001
+CYP8B1,0.0001
+EIF2S3,0.0001
+LCN2,0.0001
+XRCC6,0.0001
+CCT7,0.0001
+SLC4A1,0.0001
+EIF5A,0.0001
+KRT17,0.0001
+CTDSP2,0.0001
+SDC1,0.0001
+FAM47B (mut.),0.0001
+CXCR4,0.0001
+CX3CL1,0.0001
+SMCHD1 (mut.),0.0001
+DSC2,0.0001
+VIM,0.0001
+RPS21,0.0001
+PGD,0.0001
+SLC39A14,0.0001
+SCD,0.0001
+PRRC2B,0.0001
+KLF6,0.0001
+ATP4A (mut.),0.0001
+ARMC10 (mut.),0.0001
+MCF2L (mut.),0.0001
+ADAMTSL3 (mut.),0.0001
+RPL7,0.0001
+TAS1R1 (mut.),0.0001
+NID1 (mut.),0.0001
+PTPRD (mut.),0.0001
+NPC2,0.0001
+AHCYL1,0.0001
+PLXNA1 (mut.),0.0001
+NPC1 (mut.),0.0001
+KPNA2,0.0001
+ITGB1,0.0001
+AEBP1,0.0001
+GDI2,0.0001
+MME,0.0001
+FGFR2,0.0001
+EPHX1 (mut.),0.0001
+PYGL,0.0001
+SLC1A4,0.0001
+TM7SF2,0.0001
+GPRC5B,0.0001
+EPHA5 (mut.),0.0001
+CD177,0.0001
+ARNT2,0.0001
+ACO2,0.0001
+ABCC5,0.0001
+BMPR1B,0.0001
+SLC25A29,0.0001
+HNRNPF,0.0001
+RRBP1,0.0001
+AFF4 (mut.),0.0001
+SKP1,0.0001
+THBS4,0.0001
+ATF3,0.0001
+CCN1,0.0001
+DIAPH1,0.0001
+RPL23A,0.0001
+SLC38A4,0.0001
+SPAG9 (mut.),0.0001
+MEG3,0.0001
+IRAK1,0.0001
+FTCD,0.0001
+CACNA1E (mut.),0.0001
+BBIP1 (mut.),0.0001
+AGT,0.0001
+KCNJ16,0.0001
+HES6,0.0001
+OAS3,0.0001
+RAMP1,0.0001
+JCHAIN,0.0001
+C19orf25 (mut.),0.0001
+CNBP,0.0001
+ADAMTS1,0.0001
+PBXIP1,0.0001
+IRF2BP2,0.0001
+VWF,0.0001
+ARID3B (mut.),0.0001
+KLF5,0.0001
+CYP2A6,0.0001
+C1QTNF7 (mut.),0.0001
+GALNT2,0.0001
+H3-3B,0.0001
+FLNA,0.0001
+SLC16A3,0.0001
+HIPK2,0.0001
+FN1,0.0001
+BEX3,0.0001
+CDH3,0.0001
+SMTN,0.0001
+ID4,0.0001
+CDHR5 (mut.),0.0001
+EMC6 (mut.),0.0001
+PTHLH,0.0001
+MYH3,0.0001
+ISG15,0.0001
+MET,0.0001
+LAMP2,0.0001
+F5,0.0001
+H1-0,0.0001
+ACTR2,0.0001
+EZR,0.0001
+OAT,0.0001
+LAMA4,0.0001
+KRAS,0.0001
+ABCA13 (mut.),0.0001
+HNRNPUL1,0.0001
+L1CAM,0.0001
+PRH1,0.0001
+MT1X,0.0001
+THY1,0.0001
+CDHR5,0.0001
+ALPK2 (mut.),0.0001
+TSC22D1,0.0001
+GASK1B,0.0001
+SUSD2,0.0001
+SYNGR2,0.0001
+PRB3,0.0001
+LGALS1,0.0001
+BCAT2 (mut.),0.0001
+PRH2,0.0001
+FKBP10,0.0001
+PHLDA1,0.0001
+CAMK2A,0.0001
+DEXI (mut.),0.0001
+ZNF106,0.0001
+TFCP2L1,0.0001
+CD74,0.0001
+SLC2A1,0.0001
+TARP,0.0001
+LRP10,0.0001
+DHCR24,0.0001
+FHL1,0.0001
+PRPF8,0.0001
+RPL7A,0.0001
+NSG2,0.0001
+APOM,0.0001
+ENSA,0.0001
+A1BG,0.0001
+PRDX5,0.0001
+MYO1B,0.0001
+COL27A1 (mut.),0.0001
+ELOVL5,0.0001
+APLP1,0.0001
+RPL14,0.0001
+NPNT,0.0001
+TPT1,0.0001
+ANPEP (mut.),0.0001
+GFRA1,0.0001
+SCGB3A1,0.0001
+HDLBP,0.0001
+ATF4,0.0001
+SPOCK2,0.0001
+CD36,0.0001
+PSME2,0.0001
+ATP5MG,0.0001
+HSPG2,0.0001
+FCGR3A,0.0001
+TMED3,0.0001
+LY6E,0.0001
+SPINT1,0.0001
+SH3BGRL3,0.0001
+PRKACB,0.0001
+MYH11,0.0001
+AGBL2 (mut.),0.0001
+S100A13,0.0001
+EIF3D,0.0001
+KLK1,0.0001
+JPT2,0.0001
+CPNE1,0.0001
+CBFB (mut.),0.0001
+CLCN2 (mut.),0.0001
+KRTAP22-1 (mut.),0.0001
+PPBP,0.0001
+CNPY1 (mut.),0.0001
+AHNAK2,0.0001
+KRT23,0.0001
+CDC42,0.0001
+C14orf180 (mut.),0.0001
+BHMT,0.0001
+GM2A,0.0001
+HLA-A,0.0001
+CD93,0.0001
+CSF1R (mut.),0.0001
+CD163,0.0001
+SLC38A2,0.0001
+RPS6,0.0001
+ELAPOR1,0.0001
+USP11,0.0001
+RPS5,0.0001
+APOL1,0.0001
+FUS,0.0001
+MIR454 (mut.),0.0001
+GBP1,0.0001
+TTYH1,0.0001
+CAPS,0.0001
+DCBLD2,0.0001
+SUB1,0.0001
+PLXNA1,0.0001
+RCN1,0.0001
+H1-2,0.0001
+SCARB2,0.0001
+NFKBIA,0.0001
+BHLHE40,0.0001
+KDELR1 (mut.),0.0001
+ACAN,0.0001
+CA12,0.0001
+PPA1,0.0001
+TSHR,0.0001
+TSPAN1,0.0001
+DDX54 (mut.),0.0001
+RAB31,0.0001
+HTRA1,0.0001
+OPLAH (mut.),0.0001
+PIK3R1,0.0001
+LRP4,0.0001
+LAMB1,0.0001
+STARD10,0.0001
+CERS2,0.0001
+HNRNPA3,0.0001
+PLAU,0.0000
+IFITM2,0.0000
+MXRA7,0.0000
+RAP1GAP,0.0000
+PTGR1,0.0000
+ALDH1A1,0.0000
+LAPTM4A,0.0000
+PLCG2,0.0000
+LTBP1,0.0000
+COL6A2,0.0000
+EIF4B,0.0000
+TXNIP,0.0000
+SFRP4,0.0000
+CLIP2,0.0000
+COPA,0.0000
+GLMP,0.0000
+ACSL5 (mut.),0.0000
+SF3B1,0.0000
+STEAP2,0.0000
+HECW2 (mut.),0.0000
+SLCO2B1,0.0000
+EPCAM,0.0000
+SPRY4,0.0000
+CAPZA2,0.0000
+ADAM21 (mut.),0.0000
+ADH1C (mut.),0.0000
+GOT2,0.0000
+HBG2,0.0000
+DEPDC1 (mut.),0.0000
+ANAPC2 (mut.),0.0000
+TPSB2,0.0000
+GREB1 (mut.),0.0000
+DEF6 (mut.),0.0000
+PCDHA9 (mut.),0.0000
+ALDH4A1,0.0000
+PYGM,0.0000
+DIO2,0.0000
+SUMF2,0.0000
+HNRNPK,0.0000
+MALAT1,0.0000
+NFE2L2,0.0000
+SPATA31D1 (mut.),0.0000
+ANXA2P2,0.0000
+DDC,0.0000
+ALDH1B1,0.0000
+ADGRF5,0.0000
+GANAB,0.0000
+CALM1,0.0000
+SUPT20H (mut.),0.0000
+SDCBP,0.0000
+STARD3,0.0000
+MAPK6 (mut.),0.0000
+NBL1,0.0000
+IER3,0.0000
+EPB41L1,0.0000
+EGF (mut.),0.0000
+MGLL,0.0000
+CBX3,0.0000
+LRP2,0.0000
+CANT1,0.0000
+PTBP3,0.0000
+RPL13,0.0000
+PRAP1,0.0000
+PFKL,0.0000
+LEFTY1,0.0000
+ITGB6,0.0000
+EIF3A,0.0000
+CHI3L2,0.0000
+VOPP1,0.0000
+CHRNA3,0.0000
+UGDH,0.0000
+PCLO (mut.),0.0000
+PAICS,0.0000
+QKI,0.0000
+PRKDC,0.0000
+HID1,0.0000
+NPTX1,0.0000
+CELSR1,0.0000
+SLC39A7,0.0000
+CD8A (mut.),0.0000
+FTH1,0.0000
+PRRC2A,0.0000
+PDCD4,0.0000
+SCARA3,0.0000
+STXBP1,0.0000
+DAZAP2,0.0000
+STAT6,0.0000
+AMER2 (mut.),0.0000
+COMP,0.0000
+AMY2B,0.0000
+CYP2D6,0.0000
+CYP3A7,0.0000
+NDUFA13,0.0000
+HACD3,0.0000
+C19orf33,0.0000
+FAM234B,0.0000
+SPTBN1,0.0000
+CAPRIN1 (mut.),0.0000
+CHD4,0.0000
+HNRNPA2B1,0.0000
+PMP22,0.0000
+SEMA3C,0.0000
+TOP2A (mut.),0.0000
+ADCY7 (mut.),0.0000
+MYO15B,0.0000
+GSTM1,0.0000
+FDPS,0.0000
+ANGPTL2,0.0000
+WSB1,0.0000
+SHISA5,0.0000
+NUMA1,0.0000
+GPR148 (mut.),0.0000
+HPR,0.0000
+FAM83H,0.0000
+VCAN,0.0000
+MGP,0.0000
+HMCN1,0.0000
+CD34,0.0000
+CIITA (mut.),0.0000
+STOM,0.0000
+FNDC1,0.0000
+HMOX1,0.0000
+CCL18,0.0000
+CARF (mut.),0.0000
+TNK2,0.0000
+RNASET2,0.0000
+TSPAN7,0.0000
+LTBP3,0.0000
+HEG1,0.0000
+CALB1,0.0000
+BASP1,0.0000
+CEMIP,0.0000
+ZFP36L1,0.0000
+SPDEF,0.0000
+DNAJB1,0.0000
+CYP21A2,0.0000
+PROM2,0.0000
+APOBEC3G (mut.),0.0000
+UBE3C (mut.),0.0000
+NET1,0.0000
+RHOBTB3,0.0000
+CFH,0.0000
+RPL31,0.0000
+ATP9A,0.0000
+TMEM123,0.0000
+IFI27,0.0000
+HYOU1,0.0000
+CPE,0.0000
+ITGA3,0.0000
+ADIRF,0.0000
+SRI,0.0000
+LANCL2,0.0000
+SERPINF1,0.0000
+C1QC,0.0000
+DDX43 (mut.),0.0000
+PADI2,0.0000
+KLHL13 (mut.),0.0000
+TACC1,0.0000
+CITED1,0.0000
+CTSV,0.0000
+SLC3A2,0.0000
+PLXND1,0.0000
+SFTPD,0.0000
+C8G,0.0000
+ESF1 (mut.),0.0000
+COL3A1 (mut.),0.0000
+CLU,0.0000
+COX4I1,0.0000
+ARPC1B,0.0000
+ARL6IP1,0.0000
+PTPRN,0.0000
+BSCL2,0.0000
+GJB6,0.0000
+TINAGL1,0.0000
+DBI,0.0000
+MYADM,0.0000
+IMPDH2,0.0000
+GUK1,0.0000
+RDH10,0.0000
+ANKH,0.0000
+MKRN1,0.0000
+PSMD4,0.0000
+OSGIN1,0.0000

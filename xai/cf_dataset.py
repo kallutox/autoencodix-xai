@@ -1,13 +1,6 @@
-import glob
-import re
-import json
-import sys
-
 from helper_functions import *
-from collections import Counter
-from matplotlib_venn import venn3
-import matplotlib.pyplot as plt
 from xai_methods import captum_importance_values
+warnings.filterwarnings("ignore")
 
 
 def disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, beeswarmplot=False, beta=0.01, top_n=15):
@@ -75,9 +68,18 @@ def disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, be
     output_dir = "cf_reports"
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, f"all_features_{beta_val}_{xai_method}.txt")
+
+    # with open(output_file, "w") as f:
+    #     for feature in all_features:
+    #         f.write(f"{feature}\n")
+
+    gene_metadata = get_cf_metadata(all_features)
+    gene_names = [gene_metadata[id] for id in all_features if id in gene_metadata]
+
     with open(output_file, "w") as f:
-        for feature in all_features:
-            f.write(f"{feature}\n")
+        f.write("Gene Name,Score\n")
+        for gene_name, score in zip(gene_names, all_attribution_values):
+            f.write(f"{gene_name},{score:.4f}\n")
 
     return top_features, all_features, all_attribution_values
 
@@ -135,11 +137,14 @@ def print_overlap_only():
 
 
 def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_plot=False, beta=0.01):
+    print(f"Calculating DeepLiftShap attributions now.")
     dls_top15, dls_all, dls_attr = disease_results_using_model_aggr(xai_method='deepliftshap', barplot=bar_plot, beeswarmplot=beeswarm_plot, top_n=15, beta=beta)
+    print(f"\nCalculating LIME attributions now.")
     lime_top15, lime_all, lime_attr = disease_results_using_model_aggr(xai_method='lime', barplot=bar_plot, beeswarmplot=beeswarm_plot, top_n=15, beta=beta)
+    print(f"\nCalculating Integrated Gradients attributions now.")
     ig_top15, ig_all, ig_attr = disease_results_using_model_aggr(xai_method='integrated_gradients', barplot=bar_plot, beeswarmplot=beeswarm_plot, top_n=15, beta=beta)
 
-    feature_overlap(dls_top15, lime_top15, ig_top15)
+    feature_overlap(dls_top15, lime_top15, ig_top15, dataset='cf')
 
     # plot venn diagram
     if venn_diagram:
@@ -148,7 +153,7 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
         else:
             beta_val = '1'
 
-        plot_venn_diagram(dls_top15, lime_top15, ig_top15, beta_val, 15, show=False, dataset='cf')
+        plot_venn_diagram(dls_top15, lime_top15, ig_top15, beta, 15, show=False, dataset='cf')
 
         dls_top100 = dls_all[:100]
         lime_top100 = lime_all[:100]
@@ -158,7 +163,7 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
         print(f"LIME Top 100: {len(lime_top100)}")
         print(f"IG Top 100: {len(ig_top100)}")
 
-        plot_venn_diagram(dls_top100, lime_top100, ig_top100, beta_val, 100, show=False, dataset='cf')
+        plot_venn_diagram(dls_top100, lime_top100, ig_top100, beta, 100, show=False, dataset='cf')
 
     if histogram:
         plot_attribution_histogram(dls_attr, beta, xai_method='deepliftshap', show=True, dataset='cf')
@@ -176,6 +181,7 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
 
 #disease_results_using_model_aggr()
 run_cf_analysis(beta=1, bar_plot=True, venn_diagram=True)
+
 # topf, allf, allattr = disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, top_n=15, beta=0.01)
 # plot_attribution_histogram(allattr, xai_method='deepliftshap')
 
