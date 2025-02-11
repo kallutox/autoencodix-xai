@@ -1,0 +1,2 @@
+source,native,name,p_value,significant,description,term_size,query_size,intersection_size,effective_domain_size,precision,recall,query,parents
+TF,TF:M01400_1,Factor: Dlx-3; motif: NNNNNATAATTACMNNN; match class: 1,0.009015071549131058,True,Factor: Dlx-3; motif: NNNNNATAATTACMNNN; match class: 1,235,98,18,5333,0.1836734693877551,0.07659574468085106,query_1,['TF:M01400']

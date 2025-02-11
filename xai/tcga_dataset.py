@@ -142,7 +142,7 @@ def run_tcga_analysis(cancer_type, bar_plot=True, histogram=True, venn_diagram=T
 
 def get_results_final_cancers(beta):
     #cancer_list = ['LAML', 'PRAD', 'THCA', 'OV', 'LGG']
-    cancer_list =['LAML', 'PRAD', 'THCA']
+    cancer_list = ['PRAD', 'THCA']
 
     for cancer in cancer_list:
         run_tcga_analysis(cancer_type=cancer, beta=beta, bar_plot=True, venn_diagram=True, show=False)
@@ -153,7 +153,7 @@ def parse_ranking_file(cancer_type, xai_method, beta):
     if beta == 0.01:
         beta = '001'
     file_path = f"tcga_reports/all_features_{cancer_type}_{beta}_{xai_method}.txt"
-    df = pd.read_csv(file_path, header=None, names=['Feature', 'Score'])
+    df = pd.read_csv(file_path, skiprows=1, header=None, names=['Feature', 'Score'])
 
     df['Modality'] = df['Feature'].apply(
         lambda x: 'meth.' if '(meth.)' in x else 'mut.' if '(mut.)' in x else 'RNA'
@@ -251,6 +251,11 @@ def plot_rank_distribution_multi(df_dls, df_lime, df_ig, cancer_type, beta):
 
     df_all = pd.concat([df_dls, df_lime, df_ig], ignore_index=True)
     df_all["Modality"].replace({"meth.": "Methylation", "mut.": "Mutation"}, inplace=True)
+    df_all["Modality"] = pd.Categorical(
+        df_all["Modality"],
+        categories=["RNA", "Methylation", "Mutation"],
+        ordered=True
+    )
 
     plt.figure(figsize=(8, 6))
     plt.style.use("seaborn-whitegrid")
@@ -431,13 +436,12 @@ def within_group_stat_test(cancer_type):
         analyze_method_ranks(df_all, method)
 
 
-def between_groups_stat_test(cancer_type):
-    df_all = parse_all_methods(cancer_type, beta=0.01)
+def between_groups_stat_test(cancer_type, beta):
+    df_all = parse_all_methods(cancer_type, beta)
     modalities = df_all['Modality'].unique()
     for mod in modalities:
         print(f"\n\nModality: {mod}")
         analyze_modality_across_methods(df_all, mod)
-
 
 
 # # results for all cancers
@@ -449,4 +453,4 @@ def between_groups_stat_test(cancer_type):
 #     modality_results_by_cancer(cancer, beta=0.01)
 
 
-get_results_final_cancers(beta=1)
+between_groups_stat_test('LAML', beta=1)

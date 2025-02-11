@@ -1,0 +1,6 @@
+source,native,name,p_value,significant,description,term_size,query_size,intersection_size,effective_domain_size,precision,recall,query,parents
+HPA,HPA:0390053,prostate; glandular cells[High],4.68612381562292e-06,True,prostate; glandular cells[High],417,97,29,5333,0.29896907216494845,0.06954436450839328,query_1,['HPA:0390052']
+HPA,HPA:0390000,prostate,5.1055822171359785e-06,True,prostate,1818,97,64,5333,0.6597938144329897,0.0352035203520352,query_1,['HPA:0000000']
+HPA,HPA:0390051,prostate; glandular cells[≥Low],5.1055822171359785e-06,True,prostate; glandular cells[≥Low],1818,97,64,5333,0.6597938144329897,0.0352035203520352,query_1,['HPA:0390000']
+HPA,HPA:0390052,prostate; glandular cells[≥Medium],8.57974625524369e-06,True,prostate; glandular cells[≥Medium],1271,97,52,5333,0.5360824742268041,0.040912667191188044,query_1,['HPA:0390051']
+HPA,HPA:0270000,kidney,0.039217890340553264,True,kidney,2378,97,67,5333,0.6907216494845361,0.028174936921783012,query_1,['HPA:0000000']

@@ -1,0 +1,5 @@
+source,native,name,p_value,significant,description,term_size,query_size,intersection_size,effective_domain_size,precision,recall,query,parents
+TF,TF:M08976_1,Factor: SRY; motif: AACAATNR; match class: 1,0.0021844836944839036,True,Factor: SRY; motif: AACAATNR; match class: 1,2068,99,65,5333,0.6565656565656566,0.031431334622823985,query_1,['TF:M08976']
+TF,TF:M07376,Factor: beta-catenin; motif: CTTTGWTN,0.019330633878155597,True,Factor: beta-catenin; motif: CTTTGWTN,1169,99,44,5333,0.4444444444444444,0.037639007698887936,query_1,['TF:M00000']
+TF,TF:M01230_1,Factor: ZNF333; motif: ATAAT; match class: 1,0.020236819148161767,True,Factor: ZNF333; motif: ATAAT; match class: 1,2916,99,78,5333,0.7878787878787878,0.026748971193415638,query_1,['TF:M01230']
+TF,TF:M00423,Factor: FOXJ2; motif: AYMATAATATTTKN,0.023005422898522837,True,Factor: FOXJ2; motif: AYMATAATATTTKN,1773,99,57,5333,0.5757575757575758,0.032148900169204735,query_1,['TF:M00000']

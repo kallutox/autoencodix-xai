@@ -1,0 +1,2 @@
+source,native,name,p_value,significant,description,term_size,query_size,intersection_size,effective_domain_size,precision,recall,query,parents
+TF,TF:M11383,Factor: ESE-1; motif: ACCAGGAAGTANNNNNNNAAWAA,0.019376311426669963,True,Factor: ESE-1; motif: ACCAGGAAGTANNNNNNNAAWAA,1002,99,40,5333,0.40404040404040403,0.03992015968063872,query_1,['TF:M00000']

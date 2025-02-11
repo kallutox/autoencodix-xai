@@ -1,0 +1,7 @@
+source,native,name,p_value,significant,description,term_size,query_size,intersection_size,effective_domain_size,precision,recall,query,parents
+HPA,HPA:0390053,prostate; glandular cells[High],2.482662289975494e-05,True,prostate; glandular cells[High],417,97,28,5333,0.28865979381443296,0.0671462829736211,query_1,['HPA:0390052']
+HPA,HPA:0390052,prostate; glandular cells[≥Medium],3.240082373831789e-05,True,prostate; glandular cells[≥Medium],1271,97,51,5333,0.5257731958762887,0.04012588512981904,query_1,['HPA:0390051']
+HPA,HPA:0390000,prostate,0.0008104198646317311,True,prostate,1818,97,60,5333,0.6185567010309279,0.033003300330033,query_1,['HPA:0000000']
+HPA,HPA:0390051,prostate; glandular cells[≥Low],0.0008104198646317311,True,prostate; glandular cells[≥Low],1818,97,60,5333,0.6185567010309279,0.033003300330033,query_1,['HPA:0390000']
+HP,HP:0002021,Pyloric stenosis,0.014641512596035149,True,"Pyloric stenosis, also known as infantile hypertrophic pyloric stenosis, is an uncommon condition in infants characterized by abnormal thickening of the pylorus muscles in the stomach leading to gastric outlet obstruction. Clinically infants are well at birth. Then, at 3 to 6 weeks of age, the infants present with projectile vomiting, potentially leading to dehydration and weight loss.",42,97,7,5333,0.07216494845360824,0.16666666666666666,query_1,['HP:0004400']
+HP,HP:0004400,Abnormality of the pylorus,0.023555043162784596,True,An abnormality of the pylorus.,45,97,7,5333,0.07216494845360824,0.15555555555555556,query_1,['HP:0002577']

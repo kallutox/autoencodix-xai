@@ -1,0 +1,2 @@
+source,native,name,p_value,significant,description,term_size,query_size,intersection_size,effective_domain_size,precision,recall,query,parents
+TF,TF:M03560_1,Factor: PMX1; motif: TAATHA; match class: 1,0.040228644158040526,True,Factor: PMX1; motif: TAATHA; match class: 1,2632,98,72,5333,0.7346938775510204,0.02735562310030395,query_1,['TF:M03560']
