@@ -1201,12 +1201,13 @@ def plot_attribution_histogram(attribution_values, beta, xai_method='deepliftsha
     if show:
         plt.show()
 
+
 def get_gene_rank(gene_name, gene_list):
     if gene_name in gene_list:
         position = gene_list.index(gene_name)
         print(f"{gene_name} position: {position+1}")
     else:
         position = None
-        print(f"{gene_name} is not in the list.")
+        #print(f"{gene_name} is not in the list.")
 
     return position

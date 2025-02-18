@@ -395,12 +395,12 @@ def test_differences_in_methods(df_modality):
 
     # If significant, do post-hoc Dunn test
     if pval < 0.05:
-        print("Post-hoc Dunn test results (FDR corrected):")
+        print("Post-hoc Dunn test results:")
         # We need a “long form” DataFrame with columns [group_col, val_col]
         data_long = df_modality[['Method', 'Rank']]
         dunn_res = sp.posthoc_dunn(data_long, val_col='Rank',
-                                   group_col='Method',
-                                   p_adjust='fdr_bh')
+                                   group_col='Method'
+                                   )
         print(dunn_res)
     else:
         print("No significant difference among methods for this modality.")

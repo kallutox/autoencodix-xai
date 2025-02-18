@@ -1,4 +1,5 @@
 from helper_functions import *
+import ast
 
 data_cf = pd.read_parquet("../data/raw/cf_clinical_data_formatted.parquet")
 data_tcga = pd.read_parquet("../data/raw/data_clinical_formatted.parquet")
@@ -156,7 +157,42 @@ def check_for_genes():
             print(f"{eid} does not exist in the DataFrame.")
 
 
+def clean_data():
+    file_path = "cf_reports/all_features_001_deepliftshap.txt"
 
+    with open(file_path, "r") as file:
+        lines = file.readlines()
+
+    # Process each line to extract the feature name and score
+    data = []
+    for line in lines:
+        try:
+            # Split metadata and score
+            metadata_part, score_part = line.rsplit(",", 1)
+            score = float(score_part.strip())  # Convert score to float
+
+            # Convert metadata from string to dictionary safely
+            metadata_dict = ast.literal_eval(metadata_part.strip())
+
+            # Extract feature name
+            feature_name = metadata_dict.get("feature_name", "Unknown")
+
+            # Append to data list
+            data.append([feature_name, score])
+        except Exception as e:
+            print(f"Skipping line due to error: {e}")
+
+    # Create DataFrame
+    df_cleaned = pd.DataFrame(data, columns=["Gene Name", "Score"])
+
+    # Save to CSV
+    output_csv = "cf_reports/cleaned_features_001_deepliftshap.txt"
+    df_cleaned.to_csv(output_csv, index=False)
+
+    print(df_cleaned.head())
+
+
+clean_data()
 
 
 

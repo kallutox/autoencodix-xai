@@ -1,0 +1,9 @@
+2025-02-11 17:59:15,760 enrichr6026835856::[INFO    ] User defined gene sets is given: materials/c2.all.v2024.1.Hs.symbols.gmt
+2025-02-11 17:59:15,831 enrichr6026835856::[INFO    ] Run: c2.all.v2024.1.Hs.symbols.gmt 
+2025-02-11 17:59:15,831 enrichr6026835856::[DEBUG   ] Off-line enrichment analysis with library: c2.all.v2024.1.Hs.symbols.gmt
+2025-02-11 17:59:20,499 enrichr6026835856::[INFO    ]   Background is not set! Use all 22192 genes in c2.all.v2024.1.Hs.symbols.gmt.
+2025-02-11 17:59:20,500 enrichr6026835856::[INFO    ] ['MT-ND2', 'MIR4485', 'CFTR', 'MT-ND1']
+2025-02-11 17:59:20,500 enrichr6026835856::[INFO    ] ['HSP90AB4P', 'MXD3', 'MTFR1L', 'IDE']
+2025-02-11 17:59:20,869 enrichr6026835856::[INFO    ] Save enrichment results for c2.all.v2024.1.Hs.symbols.gmt 
+2025-02-11 17:59:21,411 enrichr6026835856::[DEBUG   ] Generate figures
+2025-02-11 17:59:21,412 enrichr6026835856::[INFO    ] Done.
