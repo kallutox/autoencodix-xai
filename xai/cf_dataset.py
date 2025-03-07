@@ -4,10 +4,8 @@ warnings.filterwarnings("ignore")
 
 
 def disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, beeswarmplot=False, beta=0.01, top_n=15):
-
-    beta001_ids = ['cf_001_1', 'cf_001_2', 'cf_001_3', 'cf_001_4', 'cf_001_5', 'cf_001_6', 'cf_001_7', 'cf_001_8', 'cf_001_9', 'cf_001_10']
-    beta1_ids = ['cf_1_1', 'cf_1_2', 'cf_1_3', 'cf_1_4', 'cf_1_5', 'cf_1_6', 'cf_1_7', 'cf_1_8', 'cf_1_9', 'cf_1_10']
-    #beta001_ids = ['cf_001_1', 'cf_001_2']
+    beta001_ids = [f'cf_001_{i}' for i in range(1, 11)]
+    beta1_ids = [f'cf_1_{i}' for i in range(1, 11)]
 
     if beta == 0.01:
         model_ids = beta001_ids
@@ -48,7 +46,6 @@ def disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, be
     for feature in aggregated_attributions:
         aggregated_attributions[feature] /= len(model_ids)
 
-    # Convert aggregated_attributions back to a tensor-like format
     attributions_tensor = torch.tensor(list(aggregated_attributions.values()))
     feature_names = list(aggregated_attributions.keys())
 
@@ -68,10 +65,6 @@ def disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, be
     output_dir = "cf_reports"
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, f"all_features_{beta_val}_{xai_method}.txt")
-
-    # with open(output_file, "w") as f:
-    #     for feature in all_features:
-    #         f.write(f"{feature}\n")
 
     gene_metadata = get_cf_metadata(all_features)
     gene_names = [gene_metadata[id] for id in all_features if id in gene_metadata]
@@ -148,11 +141,6 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
 
     # plot venn diagram
     if venn_diagram:
-        if beta == 0.01:
-            beta_val = '001'
-        else:
-            beta_val = '1'
-
         plot_venn_diagram(dls_top15, lime_top15, ig_top15, beta, 15, show=False, dataset='cf')
 
         dls_top100 = dls_all[:100]
@@ -177,20 +165,3 @@ def run_cf_analysis(bar_plot=True, histogram=True, venn_diagram=True, beeswarm_p
     get_cftr_rank(dls_all)
     get_cftr_rank(lime_all)
     get_cftr_rank(ig_all)
-
-
-#disease_results_using_model_aggr()
-run_cf_analysis(beta=1, bar_plot=True, venn_diagram=True)
-
-# topf, allf, allattr = disease_results_using_model_aggr(xai_method='deepliftshap', barplot=True, top_n=15, beta=0.01)
-# plot_attribution_histogram(allattr, xai_method='deepliftshap')
-
-# deepliftshap_features = load_sorted_features("deepliftshap")
-# lime_features = load_sorted_features("lime")
-# integrated_gradients_features = load_sorted_features("integrated_gradients")
-#
-# gene_id = 'ENSG00000170421'
-# get_gene_rank(gene_id, deepliftshap_features)
-# get_gene_rank(gene_id, lime_features)
-# get_gene_rank(gene_id, integrated_gradients_features)
-

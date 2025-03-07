@@ -4,7 +4,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import shap
-import tensorflow as tf
 from helper_functions import *
 from captum.attr import GradientShap, DeepLiftShap, LRP, IntegratedGradients, LimeBase, Lime
 from src.models.models import Vanillix, Varix
@@ -26,11 +25,11 @@ def captum_importance_values(
     """
     Function returns attribution values according to parameters specified.
     :param run_id: id to identify model
-    :param model_type: 'AE', 'VAE' supported
+    :param model_type: 'VAE' supported
     :param data_types: 'RNA' etc. TBD
     :param dimension: if latent_space_explain is True, refers to latent dimension; else it refers to feature of model output
     :param latent_space_explain: if True, attribution scores are calculated for a dimension in latent space; else for model output
-    :param xai_method: 'deepliftshap', 'gradientshap', 'lrp' supported
+    :param xai_method: 'deepliftshap', 'integrated_gradient', 'lime' supported
     :param visualize: plots shap.summary_plot of 10 top features
     :param return_delta: if True, returns attributions and delta values, else only attributions
 
@@ -81,12 +80,6 @@ def captum_importance_values(
         model = Varix(input_dim, config_latent_dim)
         model_wrapper = VAEWrapper(model)
         model_encoder_dim = VAEEncoderSingleDim(model, dimension)
-
-    elif model_type == "vanillix":
-        model = Vanillix(input_dim, config_latent_dim)
-        model_wrapper = AEWrapper(model)
-        model_encoder_dim = AEEncoderSingleDim(model, dimension)
-
     else:
         print(
             "{} is not a valid model type, please choose Varix or Vanillix instead.".format(
@@ -142,14 +135,6 @@ def captum_importance_values(
         absolute_attributions = stacked_attributions.abs()  # according to van der Linden et al. (2019)
         attributions = absolute_attributions.mean(dim=0)
 
-    elif xai_method == "lrp":
-        lrp = LRP(model)
-        attributions, delta = lrp.attribute(
-            inputs=test_tensor,
-            return_convergence_delta=True,
-            target=dimension if not latent_space_explain else None
-        )
-
     else:
         print(
             "{} is not a valid method type, please choose deepshap, integrated_gradients, or lime instead.".format(
@@ -159,7 +144,7 @@ def captum_importance_values(
         sys.exit()
 
     if visualize:
-        if xai_method == 'lime': #or xai_method == 'integrated_gradients'
+        if xai_method == 'lime':
             shap.summary_plot(
                 stacked_attributions.numpy(),
                 test_tensor,

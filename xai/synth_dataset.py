@@ -11,11 +11,6 @@ from xai_methods import captum_importance_values
 
 # synthetic signal function
 def signal_strength_plot_across_model(xai_method='deepliftshap'):
-    """
-    Calculates and plots the number of synthetic features in the top 10 for one or multiple base folders,
-    including the variance of values by signal strength.
-    """
-
     base_folders = ['base1', 'base2', 'base3']
     aggregated_top_10_positions = []
     num_configs_per_signal = None
@@ -39,7 +34,7 @@ def signal_strength_plot_across_model(xai_method='deepliftshap'):
 
             run_id = config_data.get("RUN_ID")
 
-            # Check for a missing RUN_ID and skip if not present
+            # check for a missing RUN_ID and skip if not present
             if run_id is None:
                 print(f"Skipping file {file_path} because it does not contain a RUN_ID.")
                 continue
@@ -109,30 +104,18 @@ def signal_strength_plot_across_model(xai_method='deepliftshap'):
         ["#4354b5", "#43a2b5", "#43b582"]
     )
 
-    # bar plot
-    # plt.figure(figsize=(10, 6))
-    # plt.bar(signal_strength, average_counts, color=["#627ad1"], width=0.05, align='center', yerr=std_dev_counts, capsize=5)
-    # plt.xlabel('Signal Strength')
-    # plt.ylabel('Average Number of Synthetic Features in Top 10')
-    # plt.title(f'Synthetic Features in Top 10 for {xai_name}', fontsize=15, fontweight="bold")
-    # plt.xticks(np.arange(0.1, 1.0, 0.1))
-
     # box plot
     plt.figure(figsize=(10, 6))
 
-    # Create boxplots with positions corresponding to the signal strengths
     positions = np.arange(0.1, 1.0, 0.1)  # Match your signal strengths
     plt.boxplot(all_counts, positions=positions, widths=0.05)
 
-    # Set labels and title
     plt.xlabel("Signal Strength")
     plt.ylabel("Number of Synthetic Features in Top 10")
     plt.title(f"Synthetic Features in Top 10 for {xai_name}", fontsize=15, fontweight="bold")
 
-    # Fix the x-axis ticks to match the signal strength values
     plt.xticks(positions, [f"{s:.1f}" for s in signal_strength])
 
-    # save the plot
     base_names = "_".join(base_folders)
     os.makedirs("synth_reports/figures", exist_ok=True)
     plt.savefig(f"synth_reports/figures/synth_data_{base_names}_{xai_method}_male_target_abs.png")
@@ -151,10 +134,6 @@ def signal_strength_plot_across_model(xai_method='deepliftshap'):
 
 
 def signal_strength_plot_across_model_scatter(xai_method='deepliftshap'):
-    """
-    Calculates and plots the number of synthetic features in the top 10 for one or multiple base folders,
-    including the variance of values by signal strength, with scatter dots jittered to avoid overlap.
-    """
 
     base_folders = ['base1', 'base2', 'base3']
     aggregated_top_10_positions = []
@@ -217,7 +196,6 @@ def signal_strength_plot_across_model_scatter(xai_method='deepliftshap'):
 
         aggregated_top_10_positions.append(top_10_positions)
 
-    # Calculate average counts and standard deviation across configurations
     average_counts = []
     std_dev_counts = []
     scatter_points = []
@@ -228,13 +206,9 @@ def signal_strength_plot_across_model_scatter(xai_method='deepliftshap'):
         std_dev_counts.append(np.std(counts_per_base))
         scatter_points.append(counts_per_base)
 
-    # Define signal strengths based on the number of configs
     signal_strength = [0.1 * i for i in range(1, num_configs_per_signal + 1)]
 
-    # Plot bar chart with variance and scatter points
     plt.figure(figsize=(10, 6))
-
-    # Bar plot with variance markers
     plt.bar(
         signal_strength,
         average_counts,
@@ -243,7 +217,6 @@ def signal_strength_plot_across_model_scatter(xai_method='deepliftshap'):
         align='center',
         yerr=std_dev_counts,
         capsize=5,
-        #label='Average Count'
     )
 
     # Scatter plot for individual data points with jitter
@@ -255,18 +228,14 @@ def signal_strength_plot_across_model_scatter(xai_method='deepliftshap'):
             color="lightgrey",
             alpha=0.7,
             s=50,
-            #label='Individual Values' if i == 0 else None  # Only label the first scatterplot for legend
         )
 
-    # Customize plot
     plt.xlabel('Signal Strength', fontsize=12)
     plt.ylabel('Average Number of Synthetic Features in Top 10', fontsize=12)
     plt.title(f'Synthetic Features in Top 10 for {xai_method}', fontsize=15, fontweight="bold")
     plt.xticks(np.arange(0.1, 1.0, 0.1))
-    #plt.legend(fontsize=12)
     plt.tight_layout()
 
-    # Save and show the plot
     os.makedirs("synth_data/figures", exist_ok=True)
     plt.savefig(f"synth_reports/figures/synth_data_{xai_method}_scatter_plot.png")
     plt.show()
@@ -276,7 +245,7 @@ def signal_strength_plot_single_model(xai_method='deepliftshap', num_repeats=3):
     config_folder = f"../synth_configs/base1"
     top_10_positions = []
 
-    # Sort config files by signal strength
+    # sort config files by signal strength
     config_files = glob.glob(os.path.join(config_folder, "*_config.yaml"))
     config_files = sorted(config_files, key=lambda x: int(re.search(r'(\d+)signal', x).group(1)))
 
@@ -288,7 +257,7 @@ def signal_strength_plot_single_model(xai_method='deepliftshap', num_repeats=3):
 
         run_id = config_data.get("RUN_ID")
 
-        # Check for a missing RUN_ID and skip if not present
+        # check for a missing RUN_ID and skip if not present
         if run_id is None:
             print(f"Skipping file {file_path} because it does not contain a RUN_ID.")
             continue
@@ -330,7 +299,7 @@ def signal_strength_plot_single_model(xai_method='deepliftshap', num_repeats=3):
 
         top_10_positions.append(signal_positions)
 
-    # Calculate average counts and standard deviation for each signal strength
+    # calculate average counts and standard deviation for each signal strength
     average_counts = []
     std_dev_counts = []
     for signal_runs in top_10_positions:
@@ -338,7 +307,7 @@ def signal_strength_plot_single_model(xai_method='deepliftshap', num_repeats=3):
         average_counts.append(np.mean(counts))
         std_dev_counts.append(np.std(counts))
 
-    # Define signal strengths based on the number of configs
+    # define signal strengths based on the number of configs
     signal_strength = [0.1 * i for i in range(1, num_configs_per_signal + 1)]
 
     plt.figure(figsize=(10, 6))
@@ -348,12 +317,12 @@ def signal_strength_plot_single_model(xai_method='deepliftshap', num_repeats=3):
     plt.title(f'Synthetic Features in Top 10 for {xai_method}', fontsize=15, fontweight="bold")
     plt.xticks(np.arange(0.1, 1.0, 0.1))
 
-    # Save the plot
+    # save the plot
     os.makedirs("synth_data/figures", exist_ok=True)
     plt.savefig(f"synth_reports/figures/synth_data_base1_{xai_method}_male_target.png")
     plt.show()
 
-    # Save the averaged positions data
+    # save the averaged positions data
     data_to_save = {
         "signal_strength": signal_strength,
         "average_counts": average_counts,
@@ -383,8 +352,6 @@ def feature_importance_and_visualize(run_id, data_set, xai_method='deepliftshap'
         get_interim_data(run_id, 'varix')
     )
 
-    #top_n_attributions_with_plot(attribution_dict, top_n=10)
-
     top_features = get_top_features(attribution_dict, 10)
 
     if synth_test:
@@ -411,7 +378,7 @@ def intra_model_overlap(intra_run_id, top_n=100, num_repeats=3):
     for xai_method in xai_methods:
         intra_top_features = []
 
-        # Calculate feature importance n times for the current XAI method
+        # calculate feature importance n times for the current XAI method
         for _ in range(num_repeats):
             attribution_values = captum_importance_values(
                 run_id=intra_run_id,
@@ -432,17 +399,11 @@ def intra_model_overlap(intra_run_id, top_n=100, num_repeats=3):
             top_features = get_top_features(attribution_dict, top_n=top_n)
             intra_top_features.append(top_features)
 
-        # Flatten the lists and count the occurrence of each feature across all runs
         all_features = [feature for sublist in intra_top_features for feature in sublist]
         feature_counts = Counter(all_features)
-
-        # Count features that appear in all 5 lists
         overlap_in_all = sum(1 for count in feature_counts.values() if count == len(intra_top_features))
-
-        # Store the result for the current XAI method
         overlap_results[xai_method] = overlap_in_all
 
-    # Plot the barplot
     sns.set_style("whitegrid")
     sns.set_context("notebook", rc={"lines.linewidth": 3})
     palette = sns.color_palette("pastel")
@@ -459,15 +420,6 @@ def intra_model_overlap(intra_run_id, top_n=100, num_repeats=3):
 
 
 def intra_inter_overlap(top_n=100, num_repeats=3):
-    """
-    Plots intra- and inter-model reproducibility as grouped barplots.
-
-    Args:
-        intra_run_id (str): Run ID for intra-model reproducibility.
-        base_run_ids (list): List of run IDs for inter-model reproducibility (e.g., ['base1', 'base2', 'base3']).
-        top_n (int): Number of top features to consider.
-        num_repeats (int): Number of repetitions for intra-model reproducibility.
-    """
     xai_methods = ['deepliftshap', 'lime', 'integrated_gradients']
     overlap_results_intra = {}
     overlap_results_inter = {}
@@ -482,7 +434,7 @@ def intra_inter_overlap(top_n=100, num_repeats=3):
     intra_run_id = 'base1'
 
     for xai_method in xai_methods:
-        # Intra-model reproducibility
+        # intra-model reproducibility
         intra_top_features = []
 
         for _ in range(num_repeats):
@@ -517,7 +469,7 @@ def intra_inter_overlap(top_n=100, num_repeats=3):
         overlap_in_all_intra = sum(1 for count in feature_counts_intra.values() if count == len(intra_top_features))
         overlap_results_intra[xai_method] = overlap_in_all_intra
 
-        # Inter-model reproducibility
+        # inter-model reproducibility
         inter_top_features = []
 
         for run_id in base_run_ids:
@@ -546,12 +498,11 @@ def intra_inter_overlap(top_n=100, num_repeats=3):
         overlap_in_all_inter = sum(1 for count in feature_counts_inter.values() if count == len(base_run_ids))
         overlap_results_inter[xai_method] = overlap_in_all_inter
 
-    # Plot grouped barplot
     sns.set_style("whitegrid")
     sns.set_context("notebook", rc={"lines.linewidth": 3})
 
-    x = np.arange(len(xai_methods))  # Bar positions
-    width = 0.35  # Width of each bar
+    x = np.arange(len(xai_methods))
+    width = 0.35
 
     plt.figure(figsize=(10, 6))
 
@@ -580,9 +531,6 @@ def intra_inter_overlap(top_n=100, num_repeats=3):
     plt.title(f"Overlap of Top {top_n} Features: Intra vs Inter Model", fontsize=15, fontweight="bold")
     plt.legend(fontsize=12)
 
-
-
-    # Save and show the plot
     os.makedirs("synth_data/figures", exist_ok=True)
     plt.savefig(f"synth_reports/figures/overlap_intra_inter_{top_n}top_features_{num_repeats}runs.png")
     plt.tight_layout()
@@ -590,13 +538,6 @@ def intra_inter_overlap(top_n=100, num_repeats=3):
 
 
 def intra_inter_correlation(top_n=100, num_repeats=3):
-    """
-    Plots intra- and inter-model Spearman's correlation as grouped barplots.
-
-    Args:
-        top_n (int): Number of top features to consider.
-        num_repeats (int): Number of repetitions for intra-model correlation.
-    """
     xai_methods = ['deepliftshap', 'lime', 'integrated_gradients']
     base_run_ids = ['base1', 'base2', 'base3', 'base4', 'base5']
     max_bases = len(base_run_ids)
@@ -611,7 +552,7 @@ def intra_inter_correlation(top_n=100, num_repeats=3):
     correlation_results_inter = {}
 
     for xai_method in xai_methods:
-        # Intra-model correlation
+        # intra-model correlation
         intra_correlations = []
 
         for _ in range(num_repeats):
@@ -647,14 +588,13 @@ def intra_inter_correlation(top_n=100, num_repeats=3):
                 get_interim_data(intra_run_id, 'varix')
             )
 
-            # Get ranks for top_n features
             ranked_features_1 = sorted(attribution_dict_1.items(), key=lambda x: x[1], reverse=True)[:top_n]
             ranked_features_2 = sorted(attribution_dict_2.items(), key=lambda x: x[1], reverse=True)[:top_n]
 
             features_1 = [feature[0] for feature in ranked_features_1]
             features_2 = [feature[0] for feature in ranked_features_2]
 
-            # Compute Spearman's correlation
+            # compute Spearman's correlation
             ranks_1 = np.arange(1, len(features_1) + 1)
             ranks_2 = [ranks_1[features_1.index(f)] if f in features_1 else len(ranks_1) + 1 for f in features_2]
             spearman_corr, _ = spearmanr(ranks_1, ranks_2)
@@ -662,7 +602,7 @@ def intra_inter_correlation(top_n=100, num_repeats=3):
 
         correlation_results_intra[xai_method] = np.mean(intra_correlations)
 
-        # Inter-model correlation
+        # nter-model correlation
         inter_correlations = []
 
         for i, run_id_1 in enumerate(base_run_ids):
@@ -824,7 +764,6 @@ def inter_model_aggregation_overlap(num_repeats=3, top_n=100):
     plt.savefig(f"synth_reports/figures/inter_model_aggr_{num_repeats}repeats.png")
     plt.show()
 
-    # Return overlap results for further use
     return overlap_results
 
 
@@ -900,7 +839,6 @@ def intra_model_aggregation_overlap(num_repeats=10, top_n=100):
     plt.savefig(f"synth_reports/figures/intra_model_aggr_{num_repeats}repeats.png")
     plt.show()
 
-    # Return overlap results for further use
     return overlap_results
 
 
@@ -982,7 +920,6 @@ def intra_model_aggregation_corr(num_repeats=3, top_n=100):
     plt.savefig(f"synth_reports/figures/intra_model_correlation_{num_repeats}repeats.png")
     plt.show()
 
-    # Return correlation results for further use
     return correlation_results
 
 
@@ -1387,5 +1324,4 @@ def intra_inter_aggr_spearman_correlation(num_repeats_intra=10, num_repeats_inte
 
     return spearman_results_intra, spearman_results_inter
 
-
-intra_inter_overlap(top_n=15)
+#intra_inter_overlap(top_n=15)

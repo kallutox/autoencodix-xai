@@ -18,16 +18,13 @@ from scipy.stats import f_oneway
 import mygene
 import warnings
 
-# Suppress all warnings (due to gene name retrieval or LIME)
+# Suppress all warnings (due to gene name retrieval warnings)
 warnings.filterwarnings("ignore")
 
-# project_directory = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
 
 class VAEEncoderSingleDim(nn.Module):
-    """A class to access a specific latent dimension of the VAE's encoder part directly"""
-
     def __init__(self, vae_model, dim):
         super(VAEEncoderSingleDim, self).__init__()
         # Accessing the required components from the original VAE model
@@ -39,8 +36,6 @@ class VAEEncoderSingleDim(nn.Module):
         self.dim = dim  # latent dim
 
     def forward(self, x):
-        #print(f"Input shape before view: {x.shape}")
-
         if x.shape[1] != self.input_dim:
             raise ValueError(
                 f"Expected input with {self.input_dim} features, but got {x.shape[1]} features. "
@@ -48,9 +43,6 @@ class VAEEncoderSingleDim(nn.Module):
             )
 
         total_elements = x.numel()
-        #print(f"Total elements: {total_elements}, Input_dim: {self.input_dim}")
-
-        # Ensure the total number of elements is a multiple of input_dim
         assert total_elements % self.input_dim == 0, (
             f"Total elements {total_elements} is not a multiple of input_dim {self.input_dim}"
         )
@@ -67,52 +59,15 @@ class VAEEncoderSingleDim(nn.Module):
 
 
 class VAEWrapper(nn.Module):
-    """A class to access only the model's reconstructed output from a VAE model."""
-
     def __init__(self, model):
         super(VAEWrapper, self).__init__()
         self.vae_model = model
 
     def forward(self, x):
-        # Ensure input tensor is correctly reshaped if necessary
         if x.dim() != 2 or x.shape[1] != self.vae_model.input_dim:
             x = x.view(-1, self.vae_model.input_dim)
 
         reconstructed, _, _ = self.vae_model(x)
-        return reconstructed
-
-
-class AEEncoderSingleDim(nn.Module):
-    """A class to access a specific latent dimension of the AE's encoder part directly."""
-
-    def __init__(self, ae_model, dim):
-        super(AEEncoderSingleDim, self).__init__()
-        self.encoder = ae_model.encoder  # Access the encoder directly
-        self.dim = dim  # Specify which dimension of the latent space to access
-
-    def forward(self, x):
-        # Ensure x is properly shaped
-        if x.dim() != 2 or x.shape[1] != self.encoder[0].in_features:
-            x = x.view(-1, self.encoder[0].in_features)
-
-        latent = self.encoder(x)  # Get the latent representation
-        output = latent[:, self.dim]  # Access the specific latent dimension
-        return output.unsqueeze(1)  # Keep output as [batch_size, 1]
-
-
-class AEWrapper(nn.Module):
-    """A class to access only the model's reconstructed output from a Vanilla Autoencoder."""
-
-    def __init__(self, model):
-        super(AEWrapper, self).__init__()
-        self.ae_model = model
-
-    def forward(self, x):
-        # Assuming x might need reshaping to match input_dim if not already processed
-        if x.dim() != 2 or x.shape[1] != self.ae_model.input_dim:
-            x = x.view(-1, self.ae_model.input_dim)
-
-        reconstructed, _, _ = self.ae_model(x)
         return reconstructed
 
 
@@ -275,12 +230,10 @@ def attribution_per_feature(attributions, data):
     else:
         average_attributions = np.mean(np.abs(attributions.detach().numpy()), axis=0)
 
-    #print("data: ", data)
     if isinstance(data, list):
         feature_names = data
     else:
         feature_names = list(data.columns)
-    #print("feature names: ", feature_names)
 
     processed_feature_names = []
     if not isinstance(attributions, dict):
@@ -304,60 +257,43 @@ def get_top_features(attribution_dict, top_n=10):
 
 
 def top_n_attributions_with_plot(attribution_dict, top_n=10):
-    """
-    Get the top N features with their attributions, calculate the average for the rest with min/max range,
-    and plot the result as a barplot.
-
-    Parameters:
-        attribution_dict (dict): A dictionary of feature names and their attributions.
-        top_n (int): Number of top features to display.
-
-    Returns:
-        pd.DataFrame: A DataFrame containing the top N features and the average of the rest.
-        The function also creates a bar plot of the attributions.
-    """
-    # Sort attributions in descending order
     sorted_attributions = sorted(attribution_dict.items(), key=lambda x: x[1], reverse=True)
 
-    # Extract top N features
     top_features = sorted_attributions[:top_n]
 
-    # Extract the rest of the features
+    # Eextract the remaining features
     rest_features = sorted_attributions[top_n:]
     rest_attributions = [value for _, value in rest_features]
 
-    # Calculate mean, min, and max for the rest
+    # calculate mean, min, and max for the rest
     rest_mean = np.mean(rest_attributions)
     rest_min = np.min(rest_attributions)
     rest_max = np.max(rest_attributions)
 
-    # Create a DataFrame for the top N features
     data = pd.DataFrame(top_features, columns=["Feature", "Attribution"])
-    data["Error"] = 0  # Set error to 0 for top features as individual errors are not calculated
+    data["Error"] = 0
 
-    # Add the average of the rest as the last row using pd.concat()
     rest_row = pd.DataFrame({
         "Feature": ["Average of remaining features"],
         "Attribution": [rest_mean],
-        "Error": [0],  # No error for bar height itself
+        "Error": [0],
         "Min": [rest_min],
         "Max": [rest_max]
     })
     data = pd.concat([data, rest_row], ignore_index=True)
 
-    # Reverse the order for plotting (highest at the top, average at the bottom)
+    # reverse the order for plotting (highest at the top, average at the bottom)
     data = data.iloc[::-1].reset_index(drop=True)
 
-    # Plot the results
+    # plot the results
     sns.set_style("whitegrid")
     sns.set_context("notebook", rc={"lines.linewidth": 3})
 
-    # Create the bar plot
+    # create the bar plot
     plt.figure(figsize=(10, 6))
     palette = sns.color_palette("pastel")
     bar_colors = [palette[i % len(palette)] for i in range(len(data))]
 
-    # Plot the bars
     plt.barh(
         data["Feature"],
         data["Attribution"],
@@ -365,37 +301,30 @@ def top_n_attributions_with_plot(attribution_dict, top_n=10):
         alpha=0.9,
     )
 
-    # Add min/max range as a horizontal line for the "Average of remaining features"
     rest_index = data[data["Feature"] == "Average of remaining features"].index[0]
     plt.hlines(
-        y=rest_index + 0.5,  # Center the line horizontally for the last bar
+        y=rest_index + 0.5,
         xmin=data.loc[rest_index, "Min"],
         xmax=data.loc[rest_index, "Max"],
         color="black",
         linestyle="--",
         linewidth=1.5,
-        label="Range (min-max)" if rest_index == len(data) - 1 else None,  # Add label only once
+        label="Range (min-max)" if rest_index == len(data) - 1 else None,
     )
 
-    # Draw a vertical line at x=0
     plt.axvline(0, color="black", linestyle="--", linewidth=1, alpha=0.7)
 
-    # Add labels and title
     plt.xlabel("Attribution Value", fontsize=12)
     plt.ylabel("Feature", fontsize=12)
     plt.title(f"Top {top_n} Features and Average of Remaining Features", fontsize=14)
 
-    # Configure y-axis ticks
     plt.yticks(
         range(len(data)),
         data["Feature"],
         fontsize=12
     )
 
-    # Add legend for the range line
     plt.legend(loc="lower right")
-
-    # Adjust layout
     plt.tight_layout()
     plt.show()
 
@@ -403,15 +332,6 @@ def top_n_attributions_with_plot(attribution_dict, top_n=10):
 
 
 def get_cf_metadata(ensembl_ids=None):
-    """
-    Fetches metadata for the provided Ensembl IDs. If no IDs are provided, returns the entire metadata.
-
-    Args:
-        ensembl_ids (list or pd.Index, optional): List of Ensembl IDs for which metadata is to be fetched.
-
-    Returns:
-        dict: Dictionary with Ensembl IDs as keys and their metadata as values.
-    """
     var_path = os.path.join(
         os.path.abspath(os.path.join(current_directory, "..")),
         "data",
@@ -444,15 +364,6 @@ def get_cf_clin_data():
 
 
 def get_tcga_metadata(entrez_ids):
-    """
-    Maps feature names (Entrez Gene IDs) to Hugo symbols using the TCGA mutation dataset.
-
-    Args:
-        feature_names (pd.Index or list): Feature names (Entrez Gene IDs) from expr_tcga.
-
-    Returns:
-        dict: A dictionary mapping Entrez Gene IDs to their corresponding Hugo symbols.
-    """
     mg = mygene.MyGeneInfo()
 
     stripped_ids = [gene_id.split('_')[1] for gene_id in entrez_ids]
@@ -486,24 +397,11 @@ def get_tcga_clin_data():
 
 
 def get_training_data(run_id, input_data):
-    """
-    Filters the input data to only include training samples for the given run_id.
-
-    Parameters:
-        run_id (str): Identifier for the current run.
-        input_data (pd.DataFrame): The interim data containing all samples.
-        sample_split_path (str): Path to the sample_split.parquet file.
-
-    Returns:
-        pd.DataFrame: Filtered input data containing only training samples.
-    """
-
     sample_split_path = f"../data/processed/{run_id}/sample_split.parquet"
     sample_split = pd.read_parquet(sample_split_path)
 
     training_samples = sample_split[sample_split["SPLIT"] == "train"]["SAMPLE_ID"]
 
-    # Filter the input_data based on the training samples
     filtered_input_data = input_data[
         input_data.index.isin(training_samples)
     ]
@@ -525,10 +423,7 @@ def get_best_dimension_by_sex_ttest(run_id):
             female_values = merged_df[merged_df['sex'] == 'female'][column]
 
             t_stat, p_val = ttest_ind(male_values, female_values, equal_var=False)
-            p_values[latent_number] = p_val  # Use the integer latent number as the key
-
-            #print(f"Dimension {latent_number} - Males: {len(male_values)}, Females: {len(female_values)}")
-            #print(f"p-value: {p_val}\n")
+            p_values[latent_number] = p_val
 
     best_dimension = min(p_values, key=p_values.get)
     return best_dimension
@@ -550,51 +445,28 @@ def get_best_dimension_by_sex_means(run_id):
 
             male_mean = male_values.mean()
             female_mean = female_values.mean()
-
             mean_diff = abs(male_mean - female_mean)
-
             mean_differences[int(latent_number)] = mean_diff
 
-            #print(f"Dimension {latent_number} - Male Mean: {male_mean}, Female Mean: {female_mean}")
-            #print(f"Absolute Difference in Means: {mean_diff}\n")
-
     best_dimension = max(mean_differences, key=mean_differences.get)
-    #print(f"The best dimension based on mean difference is {best_dimension} with a difference of {mean_differences[best_dimension]}")
     return int(best_dimension)
 
 
 def get_sex_specific_split(input_data, clin_data, test_n, ref_n, which_data='input', seed=None):
-    """
-    Select n random samples where sex == "male" as the test tensor and
-    m random samples of all sexes as the reference tensor, ensuring no overlap.
-    If ref_n == 1, the reference tensor contains the average values across all remaining indices.
-
-    Parameters:
-    - input_data (pd.DataFrame): Dataframe containing input data.
-    - clin_data (pd.DataFrame): Dataframe containing clinical data with a 'sex' column.
-    - test_n (int): Number of samples where sex == "male" for the test tensor.
-    - ref_n (int): Number of samples for the reference tensor (all sexes) or 1 for the average reference tensor.
-    - which_data (str): Whether to specify test samples based on 'input' or 'reference'.
-    - seed (int): Random seed for reproducibility (default is None).
-
-    Returns:
-    - test_tensor (torch.Tensor): Tensor of n random samples where sex == "male".
-    - reference_tensor (torch.Tensor): Tensor of m random samples or the average values tensor if ref_n == 1.
-    """
     if seed is not None:
         torch.manual_seed(seed)
 
-    # Ensure input and clin_data have matching indices
+    # ensure input and clin_data have matching indices
     clin_data = clin_data.loc[input_data.index]
 
-    # Filter male samples
+    # filter male samples
     male_samples = clin_data[clin_data["sex"] == "male"].index
-    female_unknown_samples = clin_data[clin_data["sex"].isin(["female", "unknown"])].index
+    #female_unknown_samples = clin_data[clin_data["sex"].isin(["female", "unknown"])].index
 
     if which_data == 'input':
         test_indices = male_samples.to_series().sample(n=test_n, random_state=seed).index
 
-        # Reference indices
+        # reference indices
         remaining_indices = input_data.index.difference(test_indices)
         if ref_n == 1:
             reference_indices = remaining_indices
@@ -611,41 +483,23 @@ def get_sex_specific_split(input_data, clin_data, test_n, ref_n, which_data='inp
             "'input' or 'reference' expected for which_data"
         )
 
-    # Extract corresponding data for test and reference
+    # extract corresponding data for test and reference
     test_data = input_data.loc[test_indices]
 
     if ref_n == 1:
-        # Compute the average values for reference data
+        # compute the average values for reference data
         reference_data = input_data.loc[remaining_indices].mean(axis=0)
         reference_tensor = torch.tensor(reference_data.values.reshape(1, -1), dtype=torch.float32)
     else:
         reference_data = input_data.loc[reference_indices]
         reference_tensor = torch.tensor(reference_data.values, dtype=torch.float32)
 
-    # Convert test data to tensor
     test_tensor = torch.tensor(test_data.values, dtype=torch.float32)
 
     return test_tensor, reference_tensor
 
 
 def get_cf_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
-    """
-    Select n random samples where sex == "male" as the test tensor and
-    m random samples of all sexes as the reference tensor, ensuring no overlap.
-    If ref_n == 1, the reference tensor contains the average values across all remaining indices.
-
-    Parameters:
-    - input_data (pd.DataFrame): Dataframe containing input data.
-    - clin_data (pd.DataFrame): Dataframe containing clinical data with a 'sex' column.
-    - test_n (int): Number of samples where sex == "male" for the test tensor.
-    - ref_n (int): Number of samples for the reference tensor (all sexes) or 1 for the average reference tensor.
-    - which_data (str): Whether to specify test samples based on 'input' or 'reference'.
-    - seed (int): Random seed for reproducibility (default is None).
-
-    Returns:
-    - test_tensor (torch.Tensor): Tensor of n random samples where sex == "male".
-    - reference_tensor (torch.Tensor): Tensor of m random samples or the average values tensor if ref_n == 1.
-    """
     if seed is not None:
         torch.manual_seed(seed)
 
@@ -653,7 +507,7 @@ def get_cf_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
     clin_data = clin_data.loc[input_data.index]
 
     cf_samples = clin_data[clin_data['disease'] == 'cystic fibrosis'].index
-    normal_samples = clin_data[clin_data['disease'] == 'normal'].index
+    #normal_samples = clin_data[clin_data['disease'] == 'normal'].index
 
     test_indices = cf_samples.to_series().sample(n=test_n, random_state=seed).index
 
@@ -679,30 +533,11 @@ def get_cf_specific_split(input_data, clin_data, test_n, ref_n, seed=None):
 
 
 def get_cancer_specific_split(input_data, clin_data, cancer_type, test_n, ref_n, seed=None):
-    """
-    Select n random samples where CANCER_TYPE_ACRONYM == cancer_type as the test tensor
-    and m random samples from all cancer types as the reference tensor, ensuring no overlap.
-    If ref_n == 1, the reference tensor contains the average values across all remaining indices.
-
-    Parameters:
-    - input_data (pd.DataFrame): Dataframe containing input data.
-    - clin_data (pd.DataFrame): Dataframe containing clinical data with a 'CANCER_TYPE_ACRONYM' column.
-    - cancer_type (str): Cancer type acronym to specify the test group.
-    - test_n (int): Number of samples where CANCER_TYPE_ACRONYM == cancer_type for the test tensor.
-    - ref_n (int): Number of samples for the reference tensor (all cancer types) or 1 for the average reference tensor.
-    - seed (int): Random seed for reproducibility (default is None).
-
-    Returns:
-    - test_tensor (torch.Tensor): Tensor of n random samples where CANCER_TYPE_ACRONYM == cancer_type.
-    - reference_tensor (torch.Tensor): Tensor of m random samples or the average values tensor if ref_n == 1.
-    """
     if seed is not None:
         torch.manual_seed(seed)
 
     clin_data = clin_data.loc[input_data.index]
     cancer_samples = clin_data[clin_data['CANCER_TYPE_ACRONYM'] == cancer_type].index
-    #print(f"Available samples for {cancer_type}: {len(cancer_samples)}")
-
     test_indices = cancer_samples.to_series().sample(n=test_n, random_state=seed).index
 
     remaining_indices = input_data.index.difference(test_indices)
@@ -729,15 +564,13 @@ def bar_plot_top_features(attributions, data, top_n=15, dataset='synth', xai_met
     attribution_dict = attribution_per_feature(attributions, data)
     top_features = get_top_features(attribution_dict, top_n=top_n)
 
-    # Prepare data for plotting
     top_features_names = [feature for feature in top_features]
     top_features_scores = [attribution_dict[feature] for feature in top_features]
 
-    # Reverse for horizontal barplot (highest score at the top)
+    # reverse for horizontal barplot (highest score at the top)
     top_features_names.reverse()
     top_features_scores.reverse()
 
-    # Set seaborn style and context
     sns.set_style("whitegrid")
     sns.set_context("notebook", rc={"lines.linewidth": 3})
 
@@ -756,7 +589,7 @@ def bar_plot_top_features(attributions, data, top_n=15, dataset='synth', xai_met
     else:
         xai_name = None
 
-    # Create the barplot with a gradient
+    # create the barplot with a gradient
     plt.figure(figsize=(8, 6))
     for i, (name, score, color) in enumerate(zip(top_features_names, top_features_scores, colors)):
         plt.barh(name, score, color=color, alpha=0.9)
@@ -767,7 +600,7 @@ def bar_plot_top_features(attributions, data, top_n=15, dataset='synth', xai_met
     else:
         plt.title(f"{xai_name} - Top {n} Features by Attribution Value", fontsize=14, fontweight="bold")
     plt.tight_layout()
-    # Save and show the plot
+
     if dataset == 'synth':
         os.makedirs("synth_reports/figures", exist_ok=True)
         plt.savefig(f"synth_reports/figures/top_features_stacked_barplot.png")
@@ -780,106 +613,13 @@ def bar_plot_top_features(attributions, data, top_n=15, dataset='synth', xai_met
     #plt.show()
 
 
-# TODO - does not work
-def stacked_bar_plot_top_features(attributions, data, clin_data, feature_names, dataset='synth', cancer_type='LUAD', top_n=10):
-    try:
-        # Attribution dictionary
-        attribution_dict = attribution_per_feature(attributions, data)
-        top_features = get_top_features(attribution_dict, top_n=top_n)
-
-        # Map feature IDs to gene names
-        gene_metadata = get_cf_metadata(feature_names)
-        feature_id_to_gene_name = {id: gene_metadata[id]['feature_name'] for id in feature_names if id in gene_metadata}
-
-        # Prepare data for plotting
-        top_feature_ids = [feature for feature in top_features]  # Feature IDs
-        top_features_scores = [attribution_dict[feature] for feature in top_features]
-        top_feature_names = [feature_id_to_gene_name.get(feature, feature) for feature in top_feature_ids]
-
-        # Reverse for horizontal barplot (highest score at the top)
-        top_feature_ids.reverse()
-        top_features_scores.reverse()
-        top_feature_names.reverse()
-
-        # Calculate contributions by lung conditions
-        lung_conditions = clin_data['lung_condition'].unique()
-        condition_contributions = {condition: [] for condition in lung_conditions}
-
-        for feature_id in top_feature_ids:
-            for condition in lung_conditions:
-                # Get clinical data for this condition
-                condition_data = clin_data[clin_data['lung_condition'] == condition]
-
-                # Calculate the average contribution of this feature in this condition
-                if feature_id in condition_data.columns:
-                    avg_contribution = condition_data[feature_id].mean()
-                else:
-                    avg_contribution = 0
-                condition_contributions[condition].append(avg_contribution)
-
-        # Normalize contributions to ensure stacked percentages
-        for i in range(len(top_feature_ids)):
-            total = sum(condition_contributions[cond][i] for cond in lung_conditions)
-            if total > 0:
-                for cond in lung_conditions:
-                    condition_contributions[cond][i] /= total
-
-        # Stacked bar plot
-        colors = ["#4354b5", "#43a2b5", "#43b582", "#FF6347", "#FFD700"]  # Add more colors if needed
-        condition_colors = {cond: color for cond, color in zip(lung_conditions, colors)}
-
-        plt.figure(figsize=(10, 8))
-        bottom = np.zeros(len(top_feature_names))
-        for condition, color in condition_colors.items():
-            plt.barh(top_feature_names, condition_contributions[condition], color=color, label=condition, left=bottom)
-            bottom += np.array(condition_contributions[condition])
-
-        # Add labels and title
-        plt.xlabel("Attribution Value (normalized)", fontsize=12)
-        plt.ylabel("Features", fontsize=12)
-        plt.title(f"Top {top_n} Features by Attribution Value with Lung Condition Contributions", fontsize=14, fontweight="bold")
-        plt.legend(title="Lung Conditions", bbox_to_anchor=(1.05, 1), loc='upper left')
-        plt.tight_layout()
-
-        # Save and show plot
-
-        if dataset == 'synth':
-            os.makedirs("synth_reports/figures", exist_ok=True)
-            plt.savefig(f"synth_reports/figures/top_features_stacked_barplot.png")
-        elif dataset == 'cf':
-            os.makedirs("cf_reports", exist_ok=True)
-            plt.savefig(f"cf_reports/venn_diagram_all_explainers.png")
-        elif dataset == 'tcga':
-            os.makedirs("tcga_reports", exist_ok=True)
-            plt.savefig(f"tcga_reports/{cancer_type}_venn_diagram_all_explainers.png")
-        plt.show()
-
-    except Exception as e:
-        print("An error occurred during plotting:", e)
-
-
 def zero_counts_per_feature(attributions, test_tensor):
-    """
-    Calculate the percentage of samples with zero attribution scores for each feature.
-
-    Args:
-        attributions (torch.Tensor): Attribution scores with shape [num_samples, num_features].
-        test_tensor (torch.Tensor): The input tensor for which the attributions were calculated.
-
-    Returns:
-        zero_percentage (list): Percentage of zero attributions per feature.
-    """
-    # Ensure the attributions are a tensor if not already
     if not isinstance(attributions, torch.Tensor):
         attributions = torch.tensor(attributions, dtype=torch.float32)
 
-    # Boolean mask where attributions are zero
     zero_mask = (attributions == 0)
-
-    # Count the number of zero scores per feature
     zero_counts = zero_mask.sum(dim=0).numpy()  # Summing across samples (rows)
 
-    # Calculate percentage of zeros
     num_samples = test_tensor.shape[0]
     zero_percentage = (zero_counts / num_samples) * 100
 
@@ -899,10 +639,10 @@ def calculate_zero_score_percentage(attr_dict):
     zero_percentage_dict = {}
 
     for feature, scores in attr_dict.items():
-        if isinstance(scores, (list, np.ndarray)):  # Handle lists or arrays of scores
+        if isinstance(scores, (list, np.ndarray)):
             total_scores = len(scores)
             zero_count = np.sum(np.array(scores) == 0)
-        else:  # Handle single score
+        else:
             total_scores = 1
             zero_count = 1 if scores == 0 else 0
 
@@ -979,18 +719,7 @@ def get_best_dimension_tcga_by_cancer_means(run_id, cancer_type_acronym):
 
 
 def get_best_dimension_by_cancer_anova(run_id, cancer_type_acronym):
-    """
-    Identifies the latent dimension that best separates a specific cancer type from all other cancer types
-    based on one-way ANOVA tests.
-
-    Args:
-        run_id (str): Identifier for the specific run.
-        cancer_type_acronym (str): The acronym of the cancer type to analyze.
-
-    Returns:
-        int: The latent dimension with the highest F-statistic.
-    """
-    # List of valid cancer types
+    # list of valid cancer types
     cancer_list = ['CHOL', 'OV', 'CESC', 'UCS', 'PRAD', 'DLBC', 'PCPG', 'KIRC', 'UVM', 'BLCA', 'STAD', 'UCEC', 'LGG',
                    'KIRP', 'READ', 'COAD', 'LIHC', 'LUAD', 'GBM', 'THCA', 'PAAD', 'SARC', 'MESO', 'ACC', 'HNSC', 'ESCA',
                    'LUSC', 'SKCM', 'KICH', 'BRCA', 'THYM', 'LAML', 'TGCT']
@@ -1029,12 +758,15 @@ def get_best_dimension_by_cancer_lda(run_id, cancer_type_acronym):
     cancer_list = ['CHOL','OV','CESC','UCS','PRAD','DLBC','PCPG','KIRC','UVM','BLCA','STAD','UCEC','LGG','KIRP','READ',
                    'COAD','LIHC','LUAD','GBM','THCA','PAAD','SARC','MESO','ACC','HNSC','ESCA','LUSC','SKCM','KICH','BRCA',
                    'THYM','LAML','TGCT']
+
     if cancer_type_acronym not in cancer_list:
         raise ValueError("Invalid cancer type.")
+
     latent_df = get_latent_space(run_id)
     clin_df = get_tcga_clin_data()
     merged_df = latent_df.merge(clin_df[['CANCER_TYPE_ACRONYM']], left_index=True, right_index=True)
     fisher_scores = {}
+
     for column in merged_df.columns:
         if "L_COMBINED-METH_MUT_RNA__varix_INPUT_" in column:
             latent_number = int(column.split("_")[-1])
@@ -1080,13 +812,13 @@ def feature_overlap(dls_list, lime_list, ig_list, dataset='cf'):
     overlap_2_3 = set(gene_names_lime) & set(gene_names_ig)
     overlap_all = set(gene_names_dls) & set(gene_names_lime) & set(gene_names_ig)
 
-    # Calculate unique features for each explainer
+    # calculate unique features for each explainer
     unique_dls = set(gene_names_dls) - (set(gene_names_lime) | set(gene_names_ig))
     unique_lime = set(gene_names_lime) - (set(gene_names_dls) | set(gene_names_ig))
     unique_ig = set(gene_names_ig) - (set(gene_names_dls) | set(gene_names_lime))
 
 
-    # Print the overlaps and unique features
+    # print the overlaps and unique features
     print("Overlapping Features:")
     print(f"DLS & LIME: {list(overlap_1_2)}")
     print(f"DLS & IG: {list(overlap_1_3)}")
@@ -1100,25 +832,18 @@ def feature_overlap(dls_list, lime_list, ig_list, dataset='cf'):
 
 
 def plot_venn_diagram(dls_set, lime_set, ig_set, beta, n, show=True, dataset='cf', cancer_type='LUAD'):
-    """
-    Plots a Venn diagram showing overlaps between three sets of features.
-    Only colors regions with actual overlaps to maintain visual simplicity.
-    """
-    # Convert lists to sets
+    # convert lists to sets
     dls_set = set(dls_set)
     lime_set = set(lime_set)
     ig_set = set(ig_set)
 
-    # Set up the figure
     plt.figure(figsize=(6, 6))
 
-    # Create the Venn diagram
     venn = venn3(
         [dls_set, lime_set, ig_set],
         ('DeepLiftShap', 'LIME', 'Integrated Gradients')
     )
 
-    # Define colors for each region
     patch_colors = {
         '100': "#4354b5",  # DLS only (Blue)
         '010': "#43a2b5",  # LIME only (Teal)
@@ -1129,12 +854,11 @@ def plot_venn_diagram(dls_set, lime_set, ig_set, beta, n, show=True, dataset='cf
         '111': "#7a87cc"   # All three (Purple)
     }
 
-    # Apply colors to the patches
     for patch_id, color in patch_colors.items():
         patch = venn.get_patch_by_id(patch_id)
         if patch is not None:
             patch.set_color(color)
-            patch.set_alpha(0.6)  # Set transparency for the color
+            patch.set_alpha(0.6)
 
     plt.title(f"Top {n} Features Overlap", fontsize=14, fontweight="bold")
     plt.tight_layout()

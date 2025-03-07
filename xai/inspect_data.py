@@ -88,15 +88,6 @@ def example_plot():
 
 
 def get_cf_metadata_old(ensembl_ids=None):
-    """
-    Fetches metadata for the provided Ensembl IDs. If no IDs are provided, returns the entire metadata.
-
-    Args:
-        ensembl_ids (list or pd.Index, optional): List of Ensembl IDs for which metadata is to be fetched.
-
-    Returns:
-        dict: Dictionary with Ensembl IDs as keys and their metadata as values.
-    """
     var_path = os.path.join(
         os.path.abspath(os.path.join(current_directory, "..")),
         "data",
@@ -118,17 +109,6 @@ def get_cf_metadata_old(ensembl_ids=None):
 
 
 def update_feature_names_only(meta_data_preprocessed, meta_data_original):
-    """
-    Updates the `feature_name` in `meta_data_preprocessed` with `original_gene_symbols`
-    from `meta_data_original` for entries where `feature_name` starts with "ENSG".
-
-    Args:
-        meta_data_preprocessed (dict): The preprocessed metadata dictionary.
-        meta_data_original (dict): The original metadata dictionary.
-
-    Returns:
-        dict: Updated `meta_data_preprocessed`.
-    """
     for key, entry in meta_data_preprocessed.items():
         # Check if the feature_name starts with ENSG
         if entry.get("feature_name", "").startswith("ENSG"):
@@ -190,22 +170,4 @@ def clean_data():
     df_cleaned.to_csv(output_csv, index=False)
 
     print(df_cleaned.head())
-
-
-clean_data()
-
-
-
-# sub_keys = set()  # Use a set to avoid duplicates
-# for key, inner_dict in meta_data_old.items():
-#     sub_keys.update(inner_dict.keys())
-#
-# print(meta_data_processed)
-
-
-# # update feature_names manually:
-# new_meta_data["ENSG00000185641"]["feature_name"] =
-# new_meta_data["ENSG00000230979"]["feature_name"] =
-# new_meta_data["ENSG00000233635"]["feature_name"] =
-
 

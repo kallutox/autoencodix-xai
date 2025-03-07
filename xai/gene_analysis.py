@@ -79,18 +79,6 @@ def get_gene_lists_tcga(beta, cancer_type):
 
 
 def calculate_average_gene_rank(candidate_genes, ranked_genes):
-    """
-    For each gene in candidate_genes, find its 1-indexed rank in ranked_genes.
-    Print the rank for each gene (or indicate if the gene is not found), and
-    compute the average rank of all genes that are present in ranked_genes.
-
-    Parameters:
-    - candidate_genes (list): List of gene names to look for.
-    - ranked_genes (list): Ranked list of gene names.
-
-    Returns:
-    - float or None: The average rank of found genes, or None if no genes were found.
-    """
     positions = []
     for gene in candidate_genes:
         if gene in ranked_genes:
@@ -217,7 +205,7 @@ def get_gene_info_cf(beta, gene_n):
 
 
 def get_gene_info_tcga(beta, cancer_type, gene_n):
-    dls_genes, lime_genes, ig_genes = get_gene_lists_tcga(beta, cancer_type)
+    dls_genes, lime_genes, ig_genes, _, _, _ = get_gene_lists_tcga(beta, cancer_type)
     dls_genes = dls_genes[:gene_n]
     lime_genes = lime_genes[:gene_n]
     ig_genes = ig_genes[:gene_n]
@@ -270,8 +258,6 @@ def pathway_enrichment_analysis_cf(beta, gene_n):
     dls_enrichment_results = gp.profile(organism='hsapiens', query=dls_genes, background=all_genes)
     print(dls_enrichment_results[
               ['source', 'name', 'description', 'p_value', 'intersection_size', 'parents']])
-    #sorted_results = dls_enrichment_results.sort_values(by='intersection_size', ascending=False)
-    #print(sorted_results[['source', 'name', 'description', 'p_value', 'intersection_size', 'parents']])
 
     print("LIME - Genes:")
     lime_enrichment_results = gp.profile(organism='hsapiens', query=lime_genes, background=all_genes)
@@ -327,7 +313,7 @@ def pathway_enrichment_analysis_gsea_cf(beta, gene_n):
 
 
 def pathway_enrichment_analysis_tcga(beta, cancer_type, gene_n):
-    dls_genes, lime_genes, ig_genes = get_gene_lists_tcga(beta, cancer_type)
+    dls_genes, lime_genes, ig_genes, _, _, _ = get_gene_lists_tcga(beta, cancer_type)
     dls_genes = dls_genes[:gene_n]
     lime_genes = lime_genes[:gene_n]
     ig_genes = ig_genes[:gene_n]
@@ -376,79 +362,3 @@ def pairwise_test_ranks(disease, associated_genes):
 
         t_stat, p_value = stats.ttest_rel(ranks_beta001, ranks_beta1)
         print(f"{method} paired t-test: t = {t_stat:.3f}, p = {p_value:.3f}")
-
-
-if __name__ == "__main__":
-    # cystic fibrosis
-    # gene list from malacards
-    cf_associated_genes = ['CFTR', 'TGFB1', 'FCGR2A', 'CLN6', 'SERPINA1', 'HFE', 'SCNN1B', 'SCNN1A', 'ELN', 'CAV1',
-                              'DNAH5', 'DNAH11', 'CCDC40', 'DNAI1', 'CCDC39', 'ABCC6', 'RSPH1']
-
-    # tcga
-    # gene lists from malacard
-    laml_associated_genes = ['CEBPA', 'DNMT3A', 'JAK2', 'GATA2', 'TERT', 'FLT3', 'RUNX1', 'NPM1', 'KIT', 'KRAS',
-                                'ETV6', 'LPP', 'CHIC2', 'MLLT10', 'NUP214']
-    prad_associated_genes = ['TP53', 'SPOP', 'PTEN', 'AKT1', 'PIK3CA', 'ERBB2', 'CTNNB1', 'BRAF', 'CDKN2A', 'IDH1',
-                                'SMAD4', 'HRAS', 'MAP2K1', 'MED12', 'XPO1', 'CNOT9', 'LRRC56', 'APC', 'PXMP4', 'WDR19'
-                             'BAX', 'PART1', 'MIEN1', 'ITGA2B', 'KLK3', 'MIR145', 'AR', 'MIR221', 'NKX3-1']
-    thca_associated_genes = ['RET', 'HRAS', 'KRAS', 'LRRC56', 'BRAF', 'NRAS', 'PTEN', 'APC', 'TP53', 'PRKAR1A',
-                                'KIT', 'DICER1', 'WRN', 'PTCSC3', 'MALAT1', 'PVT1', 'GAS5', 'HOTAIR', 'NEAT1', 'H19']
-
-    cancer_types = ['LAML', 'PRAD', 'THCA']
-
-    # CF
-    # print('Ranks of disease associated genes:')
-    # print('Beta = 0.01:')
-    # get_all_gene_ranks_cf(beta=0.01, gene_list=cf_associated_genes)
-    # print('\nBeta = 1:')
-    # get_all_gene_ranks_cf(beta=1, gene_list=cf_associated_genes)
-    #pairwise_test_ranks('cf', cf_associated_genes)
-
-    # LAML
-    # print('Ranks of disease associated genes - LAML:')
-    # print('Beta = 0.01:')
-    # get_all_gene_ranks_tcga('LAML', 0.01, laml_associated_genes)
-    # print('\nBeta = 1:')
-    # get_all_gene_ranks_tcga('LAML', 1, laml_associated_genes)
-    # pairwise_test_ranks('LAML', laml_associated_genes)
-
-    # PRAD
-    # print('Ranks of disease associated genes - PRAD:')
-    # print('Beta = 0.01:')
-    # get_all_gene_ranks_tcga('PRAD', 0.01, prad_associated_genes)
-    # print('\nBeta = 1:')
-    # get_all_gene_ranks_tcga('PRAD', 1, prad_associated_genes)
-    #pairwise_test_ranks('PRAD', prad_associated_genes)
-
-    # THCA
-    # print('Ranks of disease associated genes - THCA:')
-    # print('Beta = 0.01:')
-    # get_all_gene_ranks_tcga('THCA', 0.01, thca_associated_genes)
-    # print('\nBeta = 1:')
-    # get_all_gene_ranks_tcga('THCA', 1, thca_associated_genes)
-    #pairwise_test_ranks('THCA', thca_associated_genes)
-
-
-    # functional gene analysis
-    # CF
-    print('\n\nFunctional Gene Analysis:')
-    print('Beta = 0.01:')
-    get_gene_info_cf(beta=0.01, gene_n=15)
-    print('\nBeta = 1:')
-    get_gene_info_cf(beta=1, gene_n=15)
-
-    #get_gene_info_tcga(beta=0.01, cancer_type='LAML', gene_n=15)
-
-    # pathway enrichment analysis
-    # print('\n\nPathway Enrichment Analysis:')
-    # print('Beta = 0.01:')
-    # pathway_enrichment_analysis_cf(0.01, 100)
-    # print('Beta = 1:')
-    # pathway_enrichment_analysis_cf(1, 100)
-
-    # GSEA path enrichment analysis - unranked (top 100) and ranked (all genes)
-    #pathway_enrichment_analysis_gsea_cf(0.01, 100)
-
-    #pathway_enrichment_analysis_tcga(0.01, 'THCA', 100)
-
-

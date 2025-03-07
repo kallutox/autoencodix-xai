@@ -58,9 +58,7 @@ def get_sorted_dimensions_by_cancer_lda(run_id, cancer_type_acronym):
 
 
 def get_top_dim(top_n=5):
-    #run_ids = ['tcga_001_1', 'tcga_001_2']
-    run_ids = ['tcga_001_1', 'tcga_001_2', 'tcga_001_3', 'tcga_001_4', 'tcga_001_5', 'tcga_001_6', 'tcga_001_7',
-               'tcga_001_8', 'tcga_001_9', 'tcga_001_10']
+    run_ids = [f"tcga_001_{i}" for i in range(1, 11)]
 
     cancer_list = ['OV', 'CESC', 'PRAD', 'PCPG', 'KIRC', 'BLCA', 'STAD', 'UCEC', 'LGG',
                    'KIRP', 'COAD', 'LIHC', 'LUAD', 'THCA', 'PAAD', 'SARC', 'HNSC', 'ESCA',
@@ -252,5 +250,5 @@ def run_dimension_analysis(top_n=1, show=False):
         visualize_exclusivity_vs_score(aggregated_results_1)
 
 
-run_dimension_analysis()
+#run_dimension_analysis()
 #get_top_dim()

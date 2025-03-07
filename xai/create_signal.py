@@ -21,13 +21,3 @@ for i in feature_n:
     with open(f"../data/raw/feature_list_{i}.txt", "w") as f:
        f.write("\n".join(random_features))
 
-
-# # testing if it works
-# feature_synth = pd.Index(random_features).intersection(rna_data.columns).to_list()
-#
-# with open("../data/raw/sample_list_female.txt", "r") as f:
-#     sample_synth = f.read().splitlines()
-#
-# intersected_data = rna_data.loc[sample_synth, feature_synth]
-# print(intersected_data)
-

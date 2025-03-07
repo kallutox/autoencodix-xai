@@ -11,11 +11,8 @@ warnings.filterwarnings("ignore")
 
 
 def disease_results_using_model_aggr(cancer_type, xai_method='deepliftshap', barplot=True, beeswarmplot=False, beta=0.01, top_n=15):
-
-    beta001_ids = ['tcga_001_1', 'tcga_001_2', 'tcga_001_3', 'tcga_001_4', 'tcga_001_5', 'tcga_001_6', 'tcga_001_7',
-                   'tcga_001_8', 'tcga_001_9', 'tcga_001_10']
-    beta1_ids = ['tcga_1_1', 'tcga_1_2', 'tcga_1_3', 'tcga_1_4', 'tcga_1_5', 'tcga_1_6', 'tcga_1_7', 'tcga_1_8',
-                 'tcga_1_9', 'tcga_1_10']
+    beta001_ids = [f"tcga_001_{i}" for i in range(1, 11)]
+    beta1_ids = [f"tcga_1_{i}" for i in range(1, 11)]
 
     if beta == 0.01:
         model_ids = beta001_ids
@@ -59,9 +56,6 @@ def disease_results_using_model_aggr(cancer_type, xai_method='deepliftshap', bar
 
     attributions_tensor = torch.tensor(list(aggregated_attributions.values()))
     feature_names = list(aggregated_attributions.keys())
-
-    #print("attribution tensor: ", attributions_tensor)
-    #print("attribution tensor length: ", len(attributions_tensor))
 
     gene_metadata = get_tcga_metadata(feature_names)
     gene_names = [gene_metadata[id] for id in feature_names if id in gene_metadata]
@@ -141,8 +135,7 @@ def run_tcga_analysis(cancer_type, bar_plot=True, histogram=True, venn_diagram=T
 
 
 def get_results_final_cancers(beta):
-    #cancer_list = ['LAML', 'PRAD', 'THCA', 'OV', 'LGG']
-    cancer_list = ['PRAD', 'THCA']
+    cancer_list = ['LAML', 'PRAD', 'THCA']
 
     for cancer in cancer_list:
         run_tcga_analysis(cancer_type=cancer, beta=beta, bar_plot=True, venn_diagram=True, show=False)
@@ -165,6 +158,19 @@ def parse_ranking_file(cancer_type, xai_method, beta):
     return df_sorted
 
 
+def load_cancer_features(xai_method, cancer="LAML", beta="001", directory="tcga_reports"):
+    file_path = os.path.join(directory, f"all_features_{cancer}_{beta}_{xai_method}.txt")
+
+    if os.path.exists(file_path):
+        with open(file_path, "r") as f:
+            lines = f.readlines()[1:]  # skip header
+            feature_list = [line.split(",")[0].strip() for line in lines]  # extract only the gene name
+        return feature_list
+    else:
+        print(f"File not found: {file_path}")
+        return []
+
+
 def parse_all_methods(cancer_type, beta=0.01):
     methods = ['deepliftshap', 'lime', 'integrated_gradients']
     all_data = []
@@ -184,10 +190,6 @@ def rank_distribution_stats(df_sorted):
 
 
 def modality_distribution_stats(df_modality):
-    """
-    Given a DataFrame filtered to one modality,
-    compute summary stats (mean, median, std) of 'Rank' by 'Method'.
-    """
     stats = df_modality.groupby('Method')['Rank'].agg(['mean', 'median', 'std'])
     stats = stats.round(2)
     return stats
@@ -329,11 +331,6 @@ def modality_results_by_cancer(cancer_type, beta):
 
 
 def test_differences_in_ranks(df_sorted):
-    """
-    Perform a Kruskal-Wallis test within this method's DataFrame
-    to see if rank distributions differ across modalities.
-    If significant, do post-hoc comparisons (Dunn test).
-    """
     # Extract rank distributions for each modality
     modalities = df_sorted['Modality'].unique()
     groups = []
@@ -361,10 +358,6 @@ def test_differences_in_ranks(df_sorted):
 
 
 def analyze_method_ranks(df_all, method_name):
-    """
-    Extract ranks for a single method, summarize rank distribution by modality,
-    and run Kruskal–Wallis + post-hoc if desired.
-    """
     df_method = df_all[df_all['Method'] == method_name].copy()
 
     # Summaries
@@ -377,13 +370,8 @@ def analyze_method_ranks(df_all, method_name):
 
 
 def test_differences_in_methods(df_modality):
-    """
-    Perform a Kruskal–Wallis test comparing rank distributions
-    across *methods* for a single modality.
-    If significant, run a post-hoc Dunn test.
-    """
     methods = df_modality['Method'].unique()
-    # Collect the rank distributions, one group per method
+    # collect the rank distributions, one group per method
     groups = []
     for m in methods:
         ranks = df_modality.loc[df_modality['Method'] == m, 'Rank']
@@ -393,10 +381,9 @@ def test_differences_in_methods(df_modality):
     H_stat, pval = kruskal(*groups)
     print(f"\nKruskal–Wallis H={H_stat:.3f}, p={pval:.3e}")
 
-    # If significant, do post-hoc Dunn test
+    # if significant, do post-hoc Dunn test
     if pval < 0.05:
         print("Post-hoc Dunn test results:")
-        # We need a “long form” DataFrame with columns [group_col, val_col]
         data_long = df_modality[['Method', 'Rank']]
         dunn_res = sp.posthoc_dunn(data_long, val_col='Rank',
                                    group_col='Method'
@@ -407,50 +394,31 @@ def test_differences_in_methods(df_modality):
 
 
 def analyze_modality_across_methods(df_all, modality):
-    """
-    1) Filter df_all to just the chosen modality.
-    2) Compute stats of rank by Method.
-    3) Perform Kruskal–Wallis + post-hoc if needed.
-    """
     df_mod = df_all[df_all['Modality'] == modality].copy()
 
     if df_mod.empty:
         print(f"No data found for modality: {modality}")
         return
 
-    # Summaries
     stats = modality_distribution_stats(df_mod)
     print(f"\nRank Distribution Stats for modality = {modality}")
     print(stats)
 
-    # Statistical test
     test_differences_in_methods(df_mod)
 
 
-def within_group_stat_test(cancer_type):
+def within_group_stat_test(cancer_type, beta=0.01):
     # within method statistical testing of modality ranking
-    df_all = parse_all_methods(cancer_type, beta=0.01)
+    df_all = parse_all_methods(cancer_type, beta)
     methods = ['deepliftshap', 'lime', 'integrated_gradients']
     for method in methods:
         print(f"\n\nMethod: {method}")
         analyze_method_ranks(df_all, method)
 
 
-def between_groups_stat_test(cancer_type, beta):
+def between_groups_stat_test(cancer_type, beta=0.01):
     df_all = parse_all_methods(cancer_type, beta)
     modalities = df_all['Modality'].unique()
     for mod in modalities:
         print(f"\n\nModality: {mod}")
         analyze_modality_across_methods(df_all, mod)
-
-
-# # results for all cancers
-# # cancer_list = ['LAML', 'PRAD', 'THCA', 'OV', 'LGG']
-# cancer_list = ['LAML', 'PRAD', 'THCA']
-#
-# for cancer in cancer_list:
-#     print(cancer)
-#     modality_results_by_cancer(cancer, beta=0.01)
-
-
-between_groups_stat_test('LAML', beta=1)
