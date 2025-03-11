@@ -316,14 +316,14 @@ def plot_latent_2D_new(
     logger = getlogger(cfg)
     numeric = False
 
-    if not (type(labels[0]) is str):
+    if not isinstance(labels[0], str):
         if len(np.unique(labels)) > 3:
             if not cfg["PLOT_NUMERIC"]:
                 logger.info(
-                    f"The provided label column is numeric and converted to categories."
+                    "The provided label column is numeric and converted to categories."
                 )
                 labels = pd.qcut(
-                    labels, q=4, labels=["1stQ", "2ndQ", f"3rdQ", f"4thQ"]
+                    labels, q=4, labels=["1stQ", "2ndQ", "3rdQ", "4thQ"]
                 ).astype(str)
             else:
                 center = False
@@ -363,10 +363,7 @@ def plot_latent_2D_new(
 
     if center:
         unique_labels = np.unique(labels)
-        if custom_palette:
-            center_colors = dict(zip(unique_labels, custom_palette))
-        else:
-            center_colors = None
+        center_colors = dict(zip(unique_labels, custom_palette)) if custom_palette else None
 
         means = embedding.groupby(by=labels).mean()
         for label in unique_labels:
@@ -392,17 +389,18 @@ def plot_latent_2D_new(
         plt.yscale(scale)
         plt.xscale(scale)
 
-    ax2.set_xlabel("Dim 1")
-    ax2.set_ylabel("Dim 2")
+    ax2.set_xlabel("Dim. 1")
+    ax2.set_ylabel("Dim. 2")
 
     if not no_leg:
         num_clusters = len(np.unique(labels))
-        legend_fontsize = 24 if num_clusters <= 10 else 14  # Adjust font size for larger clusters
-        legend_title_fontsize = 26 if num_clusters <= 10 else 16  # Adjust title font size for larger clusters
+        legend_fontsize = 24 if num_clusters <= 10 else 14
+        legend_title_fontsize = 26 if num_clusters <= 10 else 16
 
         sns.move_legend(
             ax2,
-            loc="upper right",  # Specify legend location
+            loc="upper left",
+            bbox_to_anchor=(1.05, 1),
             title=param,
             frameon=True,
             fontsize=legend_fontsize,
