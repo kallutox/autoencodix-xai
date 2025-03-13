@@ -1,6 +1,12 @@
-### Explainable Variational Autoencoders for Genetic Research
+### Explainable β-VAEs for Biomarker Discovery
 **A Comparative Study of Post-hoc XAI Methods**  
 <br /><br />
-[Abstract to be added]
+Despite ongoing medical progress, a substantial number of people worldwide suffer from diseases, with genetic disorders such as cancer and cystic fibrosis (CF) presenting particularly complex challenges. These conditions often exhibit high heterogeneity, making reliable biomarker identification crucial for diagnosis, treatment prediction, and personalized medicine. Autoencoders show promise in extracting meaningful patterns from such data, but their opacity limits research potential. Explainable AI (XAI) addresses this issue by enhancing model transparency.
+
+This study investigated the potential of explainable β-Variational Autoencoders (β-VAE) for disease biomarker discovery, using a model aggregation approach to improve result reliability. Currently, there is limited guidance on selecting the optimal XAI method for VAEs, and no prior research has compared how variations in β-values influence feature importance in the context of XAI. Thus, three post-hoc explainability methods—DeepLiftShap, LIME, and Integrated Gradients—were compared across two disease datasets of varying complexities, focusing on CF and cancer. To assess the impact of latent space disentanglement, the analysis was conducted on two model variants trained with β = 0.01 and β = 1, respectively. To avoid confirmation bias, the top genes were then biologically validated through comparison with established disease markers before being analyzed in relation to their functionality.
+
+The results show that DeepLiftShap and Integrated Gradients largely agreed, providing consistent feature importance rankings, while LIME’s results diverged. They also revealed that the lower $\beta$-value was more effective, especially on the single-cell CF dataset, prioritizing established disease markers. Biologically, the methods identified known disease markers and genes with strong literature support or tissue connections to the target cancers. These findings suggest the general suitability of $\beta$-VAEs for biomarker discovery, though further validation to exclude false positives is needed to ensure reliability. Future work should focus on aggregating results across different model instances or configurations, and on researching combining post-hoc methods with intrinsically interpretable models.
+
+
 <br /><br />
 Master Thesis Project by Isabella Kreller, Leipzig University
